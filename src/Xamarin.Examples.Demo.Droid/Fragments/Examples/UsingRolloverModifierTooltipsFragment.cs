@@ -1,0 +1,85 @@
+﻿using Android.Graphics;
+using Android.Util;
+using Java.Lang;
+using SciChart.Charting.Model;
+using SciChart.Charting.Model.DataSeries;
+using SciChart.Charting.Modifiers;
+using SciChart.Charting.Visuals;
+using SciChart.Charting.Visuals.Axes;
+using SciChart.Charting.Visuals.PointMarkers;
+using SciChart.Charting.Visuals.RenderableSeries;
+using SciChart.Data.Model;
+using SciChart.Drawing.Common;
+using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo.Droid.Fragments.Base;
+
+namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
+{
+    [ExampleDefinition("Using RolloverModifier Tooltips")]
+    public class UsingRolloverModifierTooltipsFragment : ExampleBaseFragment
+    {
+        public override int ExampleLayoutId => Resource.Layout.Example_Single_Chart_Fragment;
+
+        public SciChartSurface Surface => View.FindViewById<SciChartSurface>(Resource.Id.chart);
+
+        protected override void InitExample()
+        {
+            Surface.XAxes.Add(new NumericAxis(Activity));
+            Surface.YAxes.Add(new NumericAxis(Activity) {GrowBy = new DoubleRange(0.2, 0.2)});
+
+            var ds1 = new XyDataSeries<double, double> {SeriesName = "Sinewave A"};
+            var ds2 = new XyDataSeries<double, double> {SeriesName = "Sinewave B"};
+            var ds3 = new XyDataSeries<double, double> {SeriesName = "Sinewave C"};
+
+            const double count = 100;
+            const double k = 2*Math.Pi/30;
+            for (int i = 0; i < count; i++)
+            {
+                var phi = k*i;
+                var sin = Math.Sin(phi);
+
+                ds1.Append(i, (1.0 + i/count) * sin);
+                ds2.Append(i, (0.5 + i/count) * sin);
+                ds3.Append(i, (i/count) * sin);
+            }
+
+            Surface.RenderableSeries = new RenderableSeriesCollection
+            {
+                new FastLineRenderableSeries
+                {
+                    DataSeries = ds1,
+                    StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.SteelBlue).WithThickness(2, ComplexUnitType.Dip).Build(),
+                    PointMarker = new EllipsePointMarker
+                    {
+                        Width = (int) TypedValue.ApplyDimension(ComplexUnitType.Dip, 7, Activity.Resources.DisplayMetrics), 
+                        Height = (int) TypedValue.ApplyDimension(ComplexUnitType.Dip, 7, Activity.Resources.DisplayMetrics), 
+                        FillStyle = new SolidBrushStyle(Color.Lavender)
+                    }
+                }, 
+                new FastLineRenderableSeries
+                {
+                    DataSeries = ds2,
+                    StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.DarkGreen).WithThickness(2, ComplexUnitType.Dip).Build(),
+                    PointMarker = new EllipsePointMarker
+                    {
+                        Width = (int) TypedValue.ApplyDimension(ComplexUnitType.Dip, 7, Activity.Resources.DisplayMetrics), 
+                        Height = (int) TypedValue.ApplyDimension(ComplexUnitType.Dip, 7, Activity.Resources.DisplayMetrics), 
+                        FillStyle = new SolidBrushStyle(Color.Lavender)
+                    }
+                }, 
+                new FastLineRenderableSeries
+                {
+                    DataSeries = ds3,
+                    StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.LightSteelBlue).WithThickness(2, ComplexUnitType.Dip).Build(),
+                }, 
+            };
+
+            Surface.ChartModifiers.Add(new RolloverModifier
+            {
+                ShowTooltip = true,
+                ShowAxisLabels = true,
+                DrawVerticalLine = true
+            });
+        }
+    }
+}
