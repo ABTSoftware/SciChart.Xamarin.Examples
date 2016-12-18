@@ -14,7 +14,7 @@ namespace SciChart.Examples.Demo.Data
         {
         }
 
-        public IList<double> XData { get { return this.Select(x => x.X).ToArray(); } }
-        public IList<double> YData { get { return this.Select(x => x.Y).ToArray(); } }
+        public double[] XData { get { return this.Select(x => x.X).ToArray(); } }
+        public double[] YData { get { return this.Select(x => x.Y).ToArray(); } }
     }
 } 
