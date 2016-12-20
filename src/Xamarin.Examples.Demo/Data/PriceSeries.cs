@@ -24,17 +24,17 @@ namespace SciChart.Examples.Demo.Data
         /// <summary>
         /// Extracts the Open column of the PriceSeries as an array
         /// </summary>
-        public IList<double> OpenData { get { return this.Select(x => x.Open).ToArray(); } }
+        public double[] OpenData { get { return this.Select(x => x.Open).ToArray(); } }
 
         /// <summary>
         /// Extracts the High column of the PriceSeries as an array
         /// </summary>
-        public IList<double> HighData { get { return this.Select(x => x.High).ToArray(); } }
+        public double[] HighData { get { return this.Select(x => x.High).ToArray(); } }
 
         /// <summary>
         /// Extracts the Low column of the PriceSeries as an array
         /// </summary>
-        public IList<double> LowData { get { return this.Select(x => x.Low).ToArray(); } }
+        public double[] LowData { get { return this.Select(x => x.Low).ToArray(); } }
 
         /// <summary>
         /// Extracts the Close column of the PriceSeries as an array
@@ -44,12 +44,12 @@ namespace SciChart.Examples.Demo.Data
         /// <summary>
         /// Extracts the Volume column of the PriceSeries as an array
         /// </summary>
-        public IList<long> VolumeData { get { return this.Select(x => x.Volume).ToArray(); } }
+        public long[] VolumeData { get { return this.Select(x => x.Volume).ToArray(); } }
 
         public PriceSeries Clip(int startIndex, int endIndex)
         {
             var result = new PriceSeries(endIndex - startIndex);
-            for (int i = startIndex; i < endIndex; i++)
+            for (var i = startIndex; i < endIndex; i++)
             {
                 result.Add(this[i]);
             }
