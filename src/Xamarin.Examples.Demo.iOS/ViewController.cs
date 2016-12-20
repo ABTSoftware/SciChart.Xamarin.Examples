@@ -9,55 +9,55 @@ namespace Xamarin.Examples.Demo.iOS
 {
     public partial class ViewController : UITableViewController
     {
-		protected ViewController (IntPtr handle) : base (handle)
+        private List<Example> _examples = new List<Example>();
+        private Type _currentChartType;
+
+        protected ViewController(IntPtr handle) : base(handle)
         {
         }
 
-		List<Example> _examples = new List<Example>();
-		Type currentChartType;
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
 
-		public override void ViewDidLoad()
-		{
-			base.ViewDidLoad();
+            TableView.DataSource = this;
+            TableView.Delegate = this;
 
-			this.TableView.DataSource = this;
-			this.TableView.Delegate = this;
+            _examples = ExampleManager.Instance.Examples;
+        }
 
-			_examples = ExampleManager.Instance.Examples;
-		}
+        public override nint RowsInSection(UITableView tableview, nint section)
+        {
+            return _examples.Count;
+        }
 
-		public override nint RowsInSection(UITableView tableview, nint section)
-		{
-			return _examples.Count;
-		}
+        public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
+        {
+            var cell = tableView.DequeueReusableCell("chartCell");
+            var item = _examples[indexPath.Row].Title;
 
-		public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
-		{
-			UITableViewCell cell = tableView.DequeueReusableCell("chartCell");
-			string item = _examples[indexPath.Row].Title;
+            if (cell == null)
+            {
+                cell = new UITableViewCell(UITableViewCellStyle.Default, "chartCell");
+            }
 
-			if (cell == null)
-			{
-				cell = new UITableViewCell(UITableViewCellStyle.Default, "chartCell");
-			}
-			cell.TextLabel.Text = item;
+            cell.TextLabel.Text = item;
 
-			return cell;
-		}
+            return cell;
+        }
 
-		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
-		{
-			currentChartType = _examples[indexPath.Row].FragmentType;
-			PerformSegue("showChartSegue", null);
-		}
+        public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+        {
+            _currentChartType = _examples[indexPath.Row].FragmentType;
+            PerformSegue("showChartSegue", null);
+        }
 
-		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
-		{
-			base.PrepareForSegue(segue, sender);
+        public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+        {
+            base.PrepareForSegue(segue, sender);
 
-			var chartView = segue.DestinationViewController.View as ChartView;
-			chartView.InitChartView(Activator.CreateInstance(currentChartType) as SCIChartSurfaceView);
-		}
-
+            var chartView = segue.DestinationViewController.View as ChartView;
+            chartView?.InitChartView(Activator.CreateInstance(_currentChartType) as SCIChartSurfaceView);
+        }
     }
 }

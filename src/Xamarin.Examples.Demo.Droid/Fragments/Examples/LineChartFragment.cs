@@ -43,7 +43,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 Surface.YAxes.Add(yAxis);
                 Surface.RenderableSeries.Add(renderableSeries);
 
-                Surface.ChartModifiers = new ChartModifierCollection()
+                Surface.ChartModifiers = new ChartModifierCollection
                 {
                     new ZoomPanModifier(),
                     new PinchZoomModifier(),

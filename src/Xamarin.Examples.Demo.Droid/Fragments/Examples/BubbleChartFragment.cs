@@ -25,9 +25,6 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
         protected override void InitExample()
         {
-            var xAxis = new DateAxis(Activity) {GrowBy = new DoubleRange(0, 0.1)};
-            var yAxis = new NumericAxis(Activity) {GrowBy = new DoubleRange(0, 0.1)};
-
             var dataSeries = new XyzDataSeries<DateTime, double, double>();
             var tradeDataSource = DataManager.Instance.GetTradeticks().ToArray();
 
@@ -35,6 +32,9 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 tradeDataSource.Select(x => x.TradeDate),
                 tradeDataSource.Select(x => x.TradePrice),
                 tradeDataSource.Select(x => x.TradeSize));
+
+            var xAxis = new DateAxis(Activity) {GrowBy = new DoubleRange(0, 0.1)};
+            var yAxis = new NumericAxis(Activity) {GrowBy = new DoubleRange(0, 0.1)};
 
             var lineSeries = new FastLineRenderableSeries
             {

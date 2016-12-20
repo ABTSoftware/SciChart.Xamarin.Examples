@@ -19,7 +19,7 @@ namespace SciChart.Examples.Demo.Data
         /// <summary>
         /// Extracts the DateTime column of the PriceSeries as an array
         /// </summary>
-        public IList<DateTime> TimeData { get { return this.Select(x => x.DateTime).ToArray(); } }
+        public DateTime[] TimeData { get { return this.Select(x => x.DateTime).ToArray(); } }
 
         /// <summary>
         /// Extracts the Open column of the PriceSeries as an array
@@ -39,7 +39,7 @@ namespace SciChart.Examples.Demo.Data
         /// <summary>
         /// Extracts the Close column of the PriceSeries as an array
         /// </summary>
-        public IList<double> CloseData { get { return this.Select(x => x.Close).ToArray(); } }
+        public double[] CloseData { get { return this.Select(x => x.Close).ToArray(); } }
 
         /// <summary>
         /// Extracts the Volume column of the PriceSeries as an array

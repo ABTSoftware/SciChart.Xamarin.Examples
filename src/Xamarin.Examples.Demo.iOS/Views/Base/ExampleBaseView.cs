@@ -1,12 +1,14 @@
-﻿using System;
-using UIKit;
-using SciChart.iOS.Charting;
+﻿using SciChart.iOS.Charting;
 
-
-namespace Xamarin.Examples.Demo.iOS
+namespace Xamarin.Examples.Demo.iOS.Views.Base
 {
-	public class ExampleBaseView: SCIChartSurfaceViewBase
-	{
-		
-	}
+    public abstract class ExampleBaseView : SCIChartSurfaceView
+    {
+        protected ExampleBaseView()
+        {
+            InitExample();
+        }
+
+        protected abstract void InitExample();
+    }
 }

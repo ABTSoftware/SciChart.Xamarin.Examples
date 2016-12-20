@@ -13,7 +13,6 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Base
 
         public abstract int ExampleLayoutId { get; }
 
-
         public override void OnStart()
         {
             base.OnStart();

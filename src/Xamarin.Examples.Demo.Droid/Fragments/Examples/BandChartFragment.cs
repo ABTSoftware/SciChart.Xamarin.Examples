@@ -37,7 +37,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 GrowBy = new DoubleRange(0.1, 0.1)
             };
 
-            var rs = new FastBandRenderableSeries()
+            var rs = new FastBandRenderableSeries
             {
                 DataSeries = dataSeries,
                 StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.Argb(0xFF, 0xFF, 0x19, 0x19)).Build(),

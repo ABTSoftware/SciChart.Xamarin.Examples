@@ -1,25 +1,22 @@
-using Foundation;
 using System;
 using UIKit;
 using SciChart.iOS.Charting;
 
 namespace Xamarin.Examples.Demo.iOS
 {
-	public partial class ChartView : UIView
+    public partial class ChartView : UIView
     {
-		SCIChartSurfaceViewBase chartView;
-
-        public ChartView (IntPtr handle) : base (handle)
+        public ChartView(IntPtr handle) : base(handle)
         {
         }
 
-		public void InitChartView(SCIChartSurfaceView view)
-		{
-			chartView = view;
-			chartView.Frame = this.Frame;
-			chartView.TranslatesAutoresizingMaskIntoConstraints = true;
+        public void InitChartView(SCIChartSurfaceView view)
+        {
+            SCIChartSurfaceViewBase sciChartSurfaceView = view;
+            sciChartSurfaceView.Frame = Frame;
+            sciChartSurfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
 
-			this.Add(chartView);
-		}
-	}
+            this.Add(sciChartSurfaceView);
+        }
+    }
 }
