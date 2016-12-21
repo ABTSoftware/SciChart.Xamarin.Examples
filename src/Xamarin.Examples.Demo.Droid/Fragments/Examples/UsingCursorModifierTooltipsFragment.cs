@@ -54,7 +54,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     new FastLineRenderableSeries { DataSeries = ds4, StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.Gold).WithThickness(2, ComplexUnitType.Dip).Build() },
                 };
 
-                Surface.ChartModifiers.Add(new CursorModifier()
+                Surface.ChartModifiers.Add(new CursorModifier
                 {
                     ShowAxisLabels = true,
                     ShowTooltip = true,

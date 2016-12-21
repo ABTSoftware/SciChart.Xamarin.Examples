@@ -17,7 +17,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var data1 = DataManager.Instance.GetDampedSinewave(1.0, 0.005, 1000, 12);
 
             var dataSeries = new SCIXyyDataSeries<double, double>();
-            dataSeries.AppendRange(data0.XData, data0.YData, data1.YData, 1000);
+            dataSeries.Append(data0.XData, data0.YData, data1.YData);
 
             //TODO Remove AxisId, should be default (DefaultAxisId)
             var axisStyle = StyleHelper.GetDefaultAxisStyle();
