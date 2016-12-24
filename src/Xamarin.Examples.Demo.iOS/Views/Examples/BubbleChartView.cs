@@ -15,7 +15,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         protected override void InitExample()
         {
-            var dataSeries = new SCIXyzDataSeries<DateTime, double, double>();
+            var dataSeries = new XyzDataSeries<DateTime, double, double>();
             var tradeDataSource = DataManager.Instance.GetTradeticks().ToArray();
 
             dataSeries.Append(
@@ -23,18 +23,13 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 tradeDataSource.Select(x => x.TradePrice).ToArray(),
                 tradeDataSource.Select(x => x.TradeSize).ToArray());
 
-            //TODO Remove AxisId, should be default (DefaultAxisId)
             var axisStyle = StyleHelper.GetDefaultAxisStyle();
-            //TODO Add GrowBy = new DoubleRange(0, 0.1)
-            var xAxis = new SCIDateTimeAxis {IsXAxis = true, AxisId = "xAxis", Style = axisStyle};
-            //TODO Add GrowBy = new DoubleRange(0, 0.1)
-            var yAxis = new SCINumericAxis {AxisId = "yAxis", Style = axisStyle};
+            var xAxis = new SCIDateTimeAxis {IsXAxis = true, GrowBy = new SCIDoubleRange(0, 0.1), Style = axisStyle};
+            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0, 0.1), Style = axisStyle};
 
             var lineSeries = new SCIFastLineRenderableSeries
             {
                 DataSeries = dataSeries,
-                XAxisId = "xAxis",
-                YAxisId = "yAxis",
                 Style = {LinePen = new SCIPenSolid(0xFFFF3333, 1f)}
             };
 
@@ -44,14 +39,11 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var bubbleSeries = new SCIBubbleRenderableSeries
             {
                 DataSeries = dataSeries,
-                XAxisId = "xAxis",
-                YAxisId = "yAxis",
                 ZScale = 3,
                 //AutoZRange = false,
                 Style =
                 {
-                    BubbleBrush =
-                        new SCIBrushLinearGradient(0x7f090048, 0x30090048, SCILinearGradientDirection.Vertical)
+                    BubbleBrush = new SCIBrushLinearGradient(0x7f090048, 0x30090048, SCILinearGradientDirection.Vertical)
                 }
             };
 
@@ -61,7 +53,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.AttachAxis(xAxis, true);
             Surface.AttachAxis(yAxis, false);
             Surface.AttachRenderableSeries(lineSeries);
-            Surface.AttachRenderableSeries(bubbleSeries);
+			Surface.AttachRenderableSeries(bubbleSeries);
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
             {

@@ -21,56 +21,52 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
         protected override void InitExample()
         {
+            var xAxis = new NumericAxis(Activity);
+            var yAxis = new NumericAxis(Activity);
+
+            var ds1 = new XyDataSeries<double, double> {SeriesName = "Curve A"};
+            var ds2 = new XyDataSeries<double, double> {SeriesName = "Curve B"};
+            var ds3 = new XyDataSeries<double, double> {SeriesName = "Curve C"};
+            var ds4 = new XyDataSeries<double, double> {SeriesName = "Curve D"};
+
+            var ds1Points = DataManager.Instance.GetStraightLine(4000, 1.0, 10);
+            var ds2Points = DataManager.Instance.GetStraightLine(3000, 1.0, 10);
+            var ds3Points = DataManager.Instance.GetStraightLine(2000, 1.0, 10);
+            var ds4Points = DataManager.Instance.GetStraightLine(1000, 1.0, 10);
+
+            ds1.Append(ds1Points.XData, ds1Points.YData);
+            ds2.Append(ds2Points.XData, ds2Points.YData);
+            ds3.Append(ds3Points.XData, ds3Points.YData);
+            ds4.Append(ds4Points.XData, ds4Points.YData);
+
             using (Surface.SuspendUpdates())
             {
-                var xAxis = new NumericAxis(Activity);
-                var yAxis = new NumericAxis(Activity);
-
-                var ds1 = new XyDataSeries<double, double> { SeriesName = "Curve A"};
-                var ds2 = new XyDataSeries<double, double> { SeriesName = "Curve B"};
-                var ds3 = new XyDataSeries<double, double> { SeriesName = "Curve C"};
-                var ds4 = new XyDataSeries<double, double> { SeriesName = "Curve D"};
-
-                var ds1Points = DataManager.Instance.GetStraightLine(4000, 1.0, 10);
-                var ds2Points = DataManager.Instance.GetStraightLine(3000, 1.0, 10);
-                var ds3Points = DataManager.Instance.GetStraightLine(2000, 1.0, 10);
-                var ds4Points = DataManager.Instance.GetStraightLine(1000, 1.0, 10);
-
-                ds1.Append(ds1Points.XData, ds1Points.YData);
-                ds2.Append(ds2Points.XData, ds2Points.YData);
-                ds3.Append(ds3Points.XData, ds3Points.YData);
-                ds4.Append(ds4Points.XData, ds4Points.YData);
-
-                var line1Color = Color.Argb(0xFF, 0xFF, 0xFF, 0x00);
-                var line2Color = Color.Argb(0xFF, 0x27, 0x9B, 0x27);
-                var line3Color = Color.Argb(0xFF, 0xFF, 0x19, 0x19);
-                var line4Color = Color.Argb(0xFF, 0x19, 0x64, 0xFF);
-
                 Surface.XAxes.Add(xAxis);
                 Surface.YAxes.Add(yAxis);
+
                 Surface.RenderableSeries = new RenderableSeriesCollection
                 {
                     new FastLineRenderableSeries
                     {
                         DataSeries = ds1,
-                        StrokeStyle = new PenStyle.Builder(Activity).WithThickness(2f).WithColor(line1Color).Build()
+                        StrokeStyle = new PenStyle.Builder(Activity).WithThickness(2f).WithColor(Color.Rgb(0xFF, 0xFF, 0x00)).Build()
                     },
                     new FastLineRenderableSeries
                     {
                         DataSeries = ds2,
-                        StrokeStyle = new PenStyle.Builder(Activity).WithThickness(2f).WithColor(line2Color).Build()
+                        StrokeStyle = new PenStyle.Builder(Activity).WithThickness(2f).WithColor(Color.Rgb(0x27, 0x9B, 0x27)).Build()
                     },
                     new FastLineRenderableSeries
                     {
                         DataSeries = ds3,
-                        StrokeStyle = new PenStyle.Builder(Activity).WithThickness(2f).WithColor(line3Color).Build()
+                        StrokeStyle = new PenStyle.Builder(Activity).WithThickness(2f).WithColor(Color.Rgb(0xFF, 0x19, 0x19)).Build()
                     },
                     new FastLineRenderableSeries
                     {
                         DataSeries = ds4,
-                        StrokeStyle = new PenStyle.Builder(Activity).WithThickness(2f).WithColor(line4Color).Build(),
-                        IsVisible = false
-                    },
+                        IsVisible = false,
+                        StrokeStyle = new PenStyle.Builder(Activity).WithThickness(2f).WithColor(Color.Rgb(0x19, 0x64, 0xFF)).Build()
+                    }
                 };
 
                 var legendModifier = new LegendModifier(Activity);

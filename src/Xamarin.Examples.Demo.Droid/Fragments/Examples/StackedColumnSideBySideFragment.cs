@@ -111,10 +111,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 Surface.YAxes.Add(yAxis);
                 Surface.RenderableSeries.Add(columnsCollection);
 
-                Surface.ChartModifiers = new ChartModifierCollection
-                {
-                    new TooltipModifier(),
-                };
+                Surface.ChartModifiers = new ChartModifierCollection {new TooltipModifier()};
             }
         }
 

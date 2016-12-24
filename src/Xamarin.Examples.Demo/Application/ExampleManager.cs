@@ -14,7 +14,6 @@ namespace SciChart.Examples.Demo.Application
 
         public List<Example> Examples { get; }
 
-        //TODO
         private ExampleManager()
         {
             var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => Attribute.IsDefined(t, typeof(ExampleDefinition)));

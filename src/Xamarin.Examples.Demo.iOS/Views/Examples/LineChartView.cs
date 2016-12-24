@@ -15,21 +15,16 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         {
             var fourierSeries = DataManager.Instance.GetFourierSeries(1.0, 0.1);
 
-            var dataSeries = new SCIXyDataSeries<double, double>();
-            dataSeries.AppendRange(fourierSeries.XData, fourierSeries.YData, fourierSeries.Count);
+            var dataSeries = new XyDataSeries<double, double>();
+            dataSeries.Append(fourierSeries.XData, fourierSeries.YData);
 
-            //TODO Remove AxisId, should be default (DefaultAxisId)
             var axisStyle = StyleHelper.GetDefaultAxisStyle();
-            //TODO Add GrowBy = new DoubleRange(0.1, 0.1)
-            var xAxis = new SCINumericAxis {IsXAxis = true, AxisId = "xAxis", Style = axisStyle};
-            //TODO Add GrowBy = new DoubleRange(0.1, 0.1)
-            var yAxis = new SCINumericAxis {AxisId = "yAxis", Style = axisStyle};
+            var xAxis = new SCINumericAxis {IsXAxis = true, GrowBy = new SCIDoubleRange(0.1, 0.1), Style = axisStyle};
+            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1), Style = axisStyle};
 
             var renderSeries = new SCIFastLineRenderableSeries
             {
                 DataSeries = dataSeries,
-                XAxisId = "xAxis",
-                YAxisId = "yAxis",
                 Style = {LinePen = new SCIPenSolid(0xFF99EE99, 0.7f)}
             };
 

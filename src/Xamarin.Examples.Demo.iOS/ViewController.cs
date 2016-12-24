@@ -48,7 +48,7 @@ namespace Xamarin.Examples.Demo.iOS
 
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {
-            _currentChartType = _examples[indexPath.Row].FragmentType;
+            _currentChartType = _examples[indexPath.Row].ExampleType;
             PerformSegue("showChartSegue", null);
         }
 

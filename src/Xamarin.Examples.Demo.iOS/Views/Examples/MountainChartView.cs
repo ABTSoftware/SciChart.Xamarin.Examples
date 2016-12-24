@@ -16,21 +16,16 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         {
             var priceData = DataManager.Instance.GetPriceDataIndu();
 
-            var dataSeries = new SCIXyDataSeries<DateTime, double>();
-            dataSeries.AppendRange(priceData.TimeData, priceData.CloseData, priceData.Count);
+            var dataSeries = new XyDataSeries<DateTime, double>();
+            dataSeries.Append(priceData.TimeData, priceData.CloseData);
 
-            //TODO Remove AxisId, should be default (DefaultAxisId)
             var axisStyle = StyleHelper.GetDefaultAxisStyle();
-            //TODO Add GrowBy = new DoubleRange(0.1, 0.1)
-            var xAxis = new SCIDateTimeAxis {IsXAxis = true, AxisId = "xAxis", Style = axisStyle};
-            //TODO Add GrowBy = new DoubleRange(0.1, 0.1)
-            var yAxis = new SCINumericAxis {AxisId = "yAxis", Style = axisStyle};
+            var xAxis = new SCIDateTimeAxis {IsXAxis = true, GrowBy = new SCIDoubleRange(0.1, 0.1), Style = axisStyle};
+            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1), Style = axisStyle};
 
             var renderSeries = new SCIFastMountainRenderableSeries
             {
                 DataSeries = dataSeries,
-                XAxisId = "xAxis",
-                YAxisId = "yAxis",
                 Style =
                 {
                     AreaBrush = new SCIBrushLinearGradient(0xAAFF8D42, 0x88090E11, SCILinearGradientDirection.Vertical),

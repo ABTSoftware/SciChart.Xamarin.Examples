@@ -16,22 +16,16 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var data0 = DataManager.Instance.GetDampedSinewave(1.0, 0.01, 1000);
             var data1 = DataManager.Instance.GetDampedSinewave(1.0, 0.005, 1000, 12);
 
-            var dataSeries = new SCIXyyDataSeries<double, double>();
-            dataSeries.Append(data0.XData, data0.YData, data1.YData);
+            var dataSeries = new XyyDataSeries<double, double>();
+			dataSeries.Append(data0.XData, data0.YData, data1.YData);
 
-            //TODO Remove AxisId, should be default (DefaultAxisId)
             var axisStyle = StyleHelper.GetDefaultAxisStyle();
-            //TODO Add VisibleRange = new SCIDoubleRange(1.1, 2.7)
-            var xAxis = new SCINumericAxis {IsXAxis = true, AxisId = "xAxis", Style = axisStyle};
-            //TODO Add GrowBy = new DoubleRange(0.1, 0.1)
-            var yAxis = new SCINumericAxis {AxisId = "yAxis", Style = axisStyle};
+            var xAxis = new SCINumericAxis {IsXAxis = true, VisibleRange = new SCIDoubleRange(1.1, 2.7), Style = axisStyle};
+            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1), Style = axisStyle};
 
-            //TODO Add SCIBandRenderableSeries
             var renderSeries = new SCIBandRenderableSeries
             {
                 DataSeries = dataSeries,
-                XAxisId = "xAxis",
-                YAxisId = "yAxis",
                 Style = new SCIBandSeriesStyle
                 {
                     Pen1 = new SCIPenSolid(0xFFFF1919, 0.7f),
@@ -48,13 +42,12 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.AttachAxis(yAxis, false);
             Surface.AttachRenderableSeries(renderSeries);
 
-            var modifierGroup = new SCIModifierGroup(new ISCIChartModifierProtocol[]
+            Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
             {
                 new SCIZoomPanModifier(),
                 new SCIPinchZoomModifier(),
                 new SCIZoomExtentsModifier()
             });
-            Surface.ChartModifier = modifierGroup;
 
             Surface.InvalidateElement();
         }

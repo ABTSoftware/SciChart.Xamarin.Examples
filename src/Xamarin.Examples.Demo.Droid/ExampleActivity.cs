@@ -34,7 +34,7 @@ namespace Xamarin.Examples.Demo.Droid
             }
             else
             {
-                _exampleFragment = Activator.CreateInstance(_example.FragmentType) as ExampleBaseFragment;
+                _exampleFragment = Activator.CreateInstance(_example.ExampleType) as ExampleBaseFragment;
             }
 
             if (_exampleFragment != null && !_exampleFragment.IsInLayout)

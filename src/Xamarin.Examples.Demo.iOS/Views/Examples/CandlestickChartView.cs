@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
 using SciChart.iOS.Charting;
@@ -18,26 +17,22 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         {
             var data = DataManager.Instance.GetPriceDataIndu();
 
-            var dataSeries = new SCIOhlcDataSeries<DateTime, double>();
+            var dataSeries = new OhlcDataSeries<DateTime, double>();
             dataSeries.Append(data.TimeData, data.OpenData, data.HighData, data.LowData, data.CloseData);
 
-            //TODO Remove AxisId, should be default (DefaultAxisId)
             var axisStyle = StyleHelper.GetDefaultAxisStyle();
-            var xAxis = new SCICategoryDateTimeAxis{ IsXAxis = true, AxisId = "xAxis", Style = axisStyle };
-            //TODO Add GrowBy = new DoubleRange(0.1, 0.1)
-            var yAxis = new SCINumericAxis { AxisId = "yAxis", Style = axisStyle };
+            var xAxis = new SCICategoryDateTimeAxis {IsXAxis = true, Style = axisStyle};
+            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1), Style = axisStyle};
 
             var renderSeries = new SCIFastCandlestickRenderableSeries
             {
                 DataSeries = dataSeries,
-                XAxisId = "xAxis",
-                YAxisId = "yAxis",
                 Style =
                 {
-                    UpWickPen = new SCIPenSolid(UIColor.Green, 1f),
-                    DownWickPen = new SCIPenSolid(UIColor.Red, 1f),
-                    UpBodyBrush = new SCIBrushSolid(UIColor.Green),
-                    DownBodyBrush= new SCIBrushSolid(UIColor.Red)
+                    StrokeUpStyle = new SCIPenSolid(UIColor.Green, 1f),
+                    StrokeDownStyle = new SCIPenSolid(UIColor.Red, 1f),
+                    FillUpBrushStyle = new SCIBrushSolid(UIColor.Green),
+                    FillDownBrushStyle= new SCIBrushSolid(UIColor.Red)
                 }
             };
 
