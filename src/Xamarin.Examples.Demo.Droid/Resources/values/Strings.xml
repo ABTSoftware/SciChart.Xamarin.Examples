@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="ApplicationName">SciChart.Examples.Demo</string>
-    <string name="Start">Start</string>
-    <string name="Pause">Pause</string>
-    <string name="Reset">Reset</string>
-</resources>
