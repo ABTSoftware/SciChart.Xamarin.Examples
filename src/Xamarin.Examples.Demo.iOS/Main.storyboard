@@ -51,7 +51,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="24" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="110" y="74"/>
+            <point key="canvasLocation" x="488" y="79"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="29">
@@ -61,7 +61,7 @@
                         <viewControllerLayoutGuide type="top" id="27"/>
                         <viewControllerLayoutGuide type="bottom" id="28"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="31" customClass="ExampleView">
+                    <view key="view" contentMode="scaleToFill" id="31" customClass="ExampleView" clipsSubviews="YES">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -69,7 +69,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="32" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1676" y="81"/>
+            <point key="canvasLocation" x="1341" y="67"/>
         </scene>
     </scenes>
     <resources>
@@ -81,4 +81,7 @@
         <image name="Icon-Small-40.png" width="40" height="40"/>
         <image name="Icon-Small.png" width="29" height="29"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>

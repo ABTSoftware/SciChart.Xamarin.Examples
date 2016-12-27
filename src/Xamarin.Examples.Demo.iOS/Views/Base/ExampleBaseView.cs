@@ -3,13 +3,12 @@ using UIKit;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Base
 {
-    public abstract class ExampleBaseView : SCIChartSurfaceView
+    public class ExampleBaseView : UIView
     {
         protected ExampleBaseView()
         {
-            //InitExample();
         }
 
-        public abstract void InitExample();
+		public virtual void InitExample() { }
     }
 }

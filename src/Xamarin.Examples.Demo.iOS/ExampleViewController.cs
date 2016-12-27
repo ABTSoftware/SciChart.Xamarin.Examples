@@ -9,19 +9,17 @@ namespace Xamarin.Examples.Demo.iOS
     {
         public ExampleViewController(IntPtr handle) : base(handle)
         {
+			this.EdgesForExtendedLayout = UIRectEdge.None;
         }
 
         public void InitChartView(Type exampleType)
         {
-            var example = (ExampleBaseView) Activator.CreateInstance(exampleType);
-            var lineChartView = (LineChartView) example;
+			var example = Activator.CreateInstance(exampleType) as ExampleBaseView;
+            example.Frame = View.Frame;
+            example.TranslatesAutoresizingMaskIntoConstraints = true;
+			example.InitExample();
 
-            lineChartView.ExampleView.Frame = View.Frame;
-            lineChartView.ExampleView.TranslatesAutoresizingMaskIntoConstraints = true;
-
-            View.Add(lineChartView.ExampleView);
-
-            lineChartView.InitExample();
+            View.Add(example);
         }
     }
 }

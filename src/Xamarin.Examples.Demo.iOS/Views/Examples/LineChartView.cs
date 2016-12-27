@@ -11,13 +11,23 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
     public class LineChartView : ExampleBaseView
     {
         public SCIChartSurface Surface;
-
-        public SingleChartView ExampleView => SingleChartView.Create();
+		public SCIChartSurfaceView SurfaceView = new SCIChartSurfaceView();
 
         public override void InitExample()
         {
-            var sciChartSurfaceViewBase = ExampleView.SciChartSurfaceView;
-            Surface = new SCIChartSurface(sciChartSurfaceViewBase);
+			var layoutView = SingleChartView.Create();
+			layoutView.Frame = this.Frame;
+			layoutView.TranslatesAutoresizingMaskIntoConstraints = true;
+			this.Add(layoutView);
+
+			SurfaceView.Frame = layoutView.SciChartSurfaceView.Frame;
+			SurfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
+
+			layoutView.SciChartSurfaceView.Add(SurfaceView);
+
+
+
+			Surface = new SCIChartSurface(SurfaceView);
             StyleHelper.SetSurfaceDefaultStyle(Surface);
 
             var fourierSeries = DataManager.Instance.GetFourierSeries(1.0, 0.1);
