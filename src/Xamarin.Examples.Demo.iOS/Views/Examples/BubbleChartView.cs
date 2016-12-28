@@ -3,7 +3,9 @@ using System.Linq;
 using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
 using SciChart.iOS.Charting;
+using UIKit;
 using Xamarin.Examples.Demo.iOS.Helpers;
+using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
@@ -11,10 +13,21 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
     [ExampleDefinition("Bubble Chart")]
     public class BubbleChartView : ExampleBaseView
     {
+        private readonly SingleChartView _exampleView = SingleChartView.Create();
+
         public SCIChartSurface Surface;
+
+        public override UIView ExampleView => _exampleView;
 
         protected override void InitExample()
         {
+            var surfaceView = _exampleView.SciChartSurfaceView;
+            surfaceView.Frame = _exampleView.Frame;
+            surfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
+
+            Surface = new SCIChartSurface(surfaceView);
+            StyleHelper.SetSurfaceDefaultStyle(Surface);
+
             var dataSeries = new XyzDataSeries<DateTime, double, double>();
             var tradeDataSource = DataManager.Instance.GetTradeticks().ToArray();
 
@@ -46,9 +59,6 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     BubbleBrush = new SCIBrushLinearGradient(0x7f090048, 0x30090048, SCILinearGradientDirection.Vertical)
                 }
             };
-
-            Surface = new SCIChartSurface(this);
-            StyleHelper.SetSurfaceDefaultStyle(Surface);
 
             Surface.AttachAxis(xAxis, true);
             Surface.AttachAxis(yAxis, false);

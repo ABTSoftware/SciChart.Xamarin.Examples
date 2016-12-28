@@ -1,8 +1,8 @@
-﻿using System;
-using SciChart.Examples.Demo.Fragments.Base;
+﻿using SciChart.Examples.Demo.Fragments.Base;
 using SciChart.iOS.Charting;
 using UIKit;
 using Xamarin.Examples.Demo.iOS.Helpers;
+using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
@@ -10,10 +10,21 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
     [ExampleDefinition("Stacked Column Side By Side Chart")]
     public class StackedColumnSideBySideView : ExampleBaseView
     {
+        private readonly SingleChartView _exampleView = SingleChartView.Create();
+
         public SCIChartSurface Surface;
+
+        public override UIView ExampleView => _exampleView;
 
         protected override void InitExample()
         {
+            var surfaceView = _exampleView.SciChartSurfaceView;
+            surfaceView.Frame = _exampleView.Frame;
+            surfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
+
+            Surface = new SCIChartSurface(surfaceView);
+            StyleHelper.SetSurfaceDefaultStyle(Surface);
+
             var xAxis = new SCINumericAxis
             {
                 IsXAxis = true,
@@ -70,10 +81,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 }
                 else
                 {
-                    indiaDataSeries.Append(xValue, Double.NaN);
-                    usaDataSeries.Append(xValue, Double.NaN);
-                    indonesiaDataSeries.Append(xValue, Double.NaN);
-                    brazilDataSeries.Append(xValue, Double.NaN);
+                    indiaDataSeries.Append(xValue, double.NaN);
+                    usaDataSeries.Append(xValue, double.NaN);
+                    indonesiaDataSeries.Append(xValue, double.NaN);
+                    brazilDataSeries.Append(xValue, double.NaN);
                 }
                 pakistanDataSeries.Append(xValue, pakistan[i]);
                 nigeriaDataSeries.Append(xValue, nigeria[i]);
@@ -98,12 +109,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             columnsCollection.AddSeries(GetRenderableSeries(japanDataSeries, UIColor.FromRGB(0x00, 0x6C, 0x6A), UIColor.FromRGB(0x00, 0xab, 0xa9)));
             columnsCollection.AddSeries(GetRenderableSeries(restOfTheWorldDataSeries, UIColor.FromRGB(0x3D, 0x00, 0x49), UIColor.FromRGB(0x56, 0x00, 0x68)));
 
-            Surface = new SCIChartSurface(this);
-            StyleHelper.SetSurfaceDefaultStyle(Surface);
-
             Surface.AttachAxis(xAxis, true);
             Surface.AttachAxis(yAxis, false);
-			Surface.AttachRenderableSeries(columnsCollection);
+            Surface.AttachRenderableSeries(columnsCollection);
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[] {new SCITooltipModifier()});
 
@@ -113,14 +121,14 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         private SCIStackedColumnRenderableSeries GetRenderableSeries(IDataSeries dataSeries, UIColor strokeColor, UIColor fillColor)
         {
             return new SCIStackedColumnRenderableSeries
-			{
-				DataSeries = dataSeries,
-				Style = new SCIColumnSeriesStyle
-				{
-					FillBrush = new SCIBrushSolid(fillColor),
-					BorderPen = new SCIPenSolid(strokeColor, 1f)
-				}
-			};
+            {
+                DataSeries = dataSeries,
+                Style = new SCIColumnSeriesStyle
+                {
+                    FillBrush = new SCIBrushSolid(fillColor),
+                    BorderPen = new SCIPenSolid(strokeColor, 1f)
+                }
+            };
         }
     }
 }

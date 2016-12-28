@@ -4,6 +4,7 @@ using SciChart.Examples.Demo.Fragments.Base;
 using SciChart.iOS.Charting;
 using UIKit;
 using Xamarin.Examples.Demo.iOS.Helpers;
+using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
@@ -11,10 +12,21 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
     [ExampleDefinition("Candlestick Chart")]
     public class CandlestickChartView : ExampleBaseView
     {
+        private readonly SingleChartView _exampleView = SingleChartView.Create();
+
         public SCIChartSurface Surface;
+
+        public override UIView ExampleView => _exampleView;
 
         protected override void InitExample()
         {
+            var surfaceView = _exampleView.SciChartSurfaceView;
+            surfaceView.Frame = _exampleView.Frame;
+            surfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
+
+            Surface = new SCIChartSurface(surfaceView);
+            StyleHelper.SetSurfaceDefaultStyle(Surface);
+
             var data = DataManager.Instance.GetPriceDataIndu();
 
 			var dataSeries = new OhlcDataSeries<DateTime, double>(TypeOfSeries.XCategory);
@@ -35,9 +47,6 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     FillDownBrushStyle= new SCIBrushSolid(UIColor.Red)
                 }
             };
-
-            Surface = new SCIChartSurface(this);
-            StyleHelper.SetSurfaceDefaultStyle(Surface);
 
             Surface.AttachAxis(xAxis, true);
             Surface.AttachAxis(yAxis, false);

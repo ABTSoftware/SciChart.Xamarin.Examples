@@ -1,6 +1,7 @@
 ﻿using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
 using SciChart.iOS.Charting;
+using UIKit;
 using Xamarin.Examples.Demo.iOS.Helpers;
 using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
@@ -10,24 +11,19 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
     [ExampleDefinition("Line Chart")]
     public class LineChartView : ExampleBaseView
     {
+        private readonly SingleChartView _exampleView = SingleChartView.Create();
+
         public SCIChartSurface Surface;
-		public SCIChartSurfaceView SurfaceView = new SCIChartSurfaceView();
 
-        public override void InitExample()
+        public override UIView ExampleView => _exampleView;
+
+        protected override void InitExample()
         {
-			var layoutView = SingleChartView.Create();
-			layoutView.Frame = this.Frame;
-			layoutView.TranslatesAutoresizingMaskIntoConstraints = true;
-			this.Add(layoutView);
+            var surfaceView = _exampleView.SciChartSurfaceView;
+            surfaceView.Frame = _exampleView.Frame;
+            surfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
 
-			SurfaceView.Frame = layoutView.SciChartSurfaceView.Frame;
-			SurfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
-
-			layoutView.SciChartSurfaceView.Add(SurfaceView);
-
-
-
-			Surface = new SCIChartSurface(SurfaceView);
+            Surface = new SCIChartSurface(surfaceView);
             StyleHelper.SetSurfaceDefaultStyle(Surface);
 
             var fourierSeries = DataManager.Instance.GetFourierSeries(1.0, 0.1);

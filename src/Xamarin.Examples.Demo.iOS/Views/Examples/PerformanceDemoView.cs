@@ -1,16 +1,20 @@
 ﻿using System;
-using System.Timers;
-using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
 using SciChart.iOS.Charting;
+using UIKit;
+using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
 
-namespace Xamarin.Examples.Demo.iOS.Views
+namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
     [ExampleDefinition("Performance Demo")]
     public class PerformanceDemoView : ExampleBaseView
     {
+        private readonly SingleChartView _exampleView = SingleChartView.Create();
+
         public SCIChartSurface Surface;
+
+        public override UIView ExampleView => _exampleView;
 
         //private static readonly int MaxPointCount = CalculateMaxPointCountToDisplay();
         //private const int TimerInterval = 10;

@@ -110,9 +110,22 @@
     <Compile Include="Resources\Layout\SingleChartView.designer.cs">
       <DependentUpon>SingleChartView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Examples\MountainChartView.cs" />
+    <Compile Include="Views\Examples\ScatterChartView.cs" />
+    <Compile Include="Views\Examples\StackedBarChartView.cs" />
+    <Compile Include="Views\Examples\StackedColumnChartView.cs" />
+    <Compile Include="Views\Examples\StackedColumnSideBySideView.cs" />
+    <Compile Include="Views\Examples\StackedMountainChartView.cs" />
+    <Compile Include="Views\Examples\UsingCursorModifierTooltipsView.cs" />
+    <Compile Include="Views\Examples\UsingRolloverModifierTooltipsView.cs" />
+    <Compile Include="Views\Examples\UsingTooltipModifierTooltipsView.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Examples\BandChartView.cs" />
+    <Compile Include="Views\Examples\BubbleChartView.cs" />
+    <Compile Include="Views\Examples\CandlestickChartView.cs" />
+    <Compile Include="Views\Examples\LegendView.cs" />
     <Compile Include="Views\Examples\LineChartView.cs" />
     <Compile Include="Views\Base\ExampleBaseView.cs" />
     <Compile Include="ExampleView.cs" />
@@ -157,7 +170,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <Reference Include="SciChart.iOS.Charting">
-      <HintPath>..\packages\SciChart.iOS.2.0.0.104\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
+      <HintPath>..\packages\SciChart.iOS.2.0.0.108\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

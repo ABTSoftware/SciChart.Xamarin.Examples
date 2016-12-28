@@ -2,7 +2,9 @@
 using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
 using SciChart.iOS.Charting;
+using UIKit;
 using Xamarin.Examples.Demo.iOS.Helpers;
+using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
@@ -10,10 +12,21 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
     [ExampleDefinition("Mountain Chart")]
     public class MountainChartView : ExampleBaseView
     {
+        private readonly SingleChartView _exampleView = SingleChartView.Create();
+
         public SCIChartSurface Surface;
+
+        public override UIView ExampleView => _exampleView;
 
         protected override void InitExample()
         {
+            var surfaceView = _exampleView.SciChartSurfaceView;
+            surfaceView.Frame = _exampleView.Frame;
+            surfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
+
+            Surface = new SCIChartSurface(surfaceView);
+            StyleHelper.SetSurfaceDefaultStyle(Surface);
+
             var priceData = DataManager.Instance.GetPriceDataIndu();
 
             var dataSeries = new XyDataSeries<DateTime, double>();
@@ -32,9 +45,6 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     BorderPen = new SCIPenSolid(0xaaffc9a8, 0.7f)
                 }
             };
-
-            Surface = new SCIChartSurface(this);
-            StyleHelper.SetSurfaceDefaultStyle(Surface);
 
             Surface.AttachAxis(xAxis, true);
             Surface.AttachAxis(yAxis, false);

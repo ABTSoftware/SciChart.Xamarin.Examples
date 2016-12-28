@@ -2,6 +2,7 @@
 using SciChart.iOS.Charting;
 using UIKit;
 using Xamarin.Examples.Demo.iOS.Helpers;
+using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
@@ -9,10 +10,21 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
     [ExampleDefinition("Stacked Bar Chart")]
     public class StackedBarChartView :ExampleBaseView
     {
+        private readonly SingleChartView _exampleView = SingleChartView.Create();
+
         public SCIChartSurface Surface;
+
+        public override UIView ExampleView => _exampleView;
 
         protected override void InitExample()
         {
+            var surfaceView = _exampleView.SciChartSurfaceView;
+            surfaceView.Frame = _exampleView.Frame;
+            surfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
+
+            Surface = new SCIChartSurface(surfaceView);
+            StyleHelper.SetSurfaceDefaultStyle(Surface);
+
             var xAxis = new SCINumericAxis {IsXAxis = true, AxisAlignment = SCIAxisAlignmentMode.Left};
             var yAxis = new SCINumericAxis {AxisAlignment = SCIAxisAlignmentMode.Bottom, FlipCoordinates = true};
 
@@ -32,21 +44,18 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             }
 
             //TODO finish after porting StackedSeries to Xamarin from iOS
-            //var series1 = GetRenderableSeries(ds1, UIColor.FromRGB(0x56, 0x78, 0x93), UIColor.FromRGB(0x56, 0x78, 0x93), UIColor.FromRGB(0x3D, 0x55, 0x68));
-            //var series2 = GetRenderableSeries(ds2, UIColor.FromRGB(0xAC, 0xBC, 0xCA), UIColor.FromRGB(0xAC, 0xBC, 0xCA), UIColor.FromRGB(0x43, 0x9A, 0xAF));
-            //var series3 = GetRenderableSeries(ds3, UIColor.FromRGB(0xDB, 0xE0, 0xE1), UIColor.FromRGB(0xDB, 0xE0, 0xE1), UIColor.FromRGB(0xB6, 0xC1, 0xC3));
+            var series1 = GetRenderableSeries(ds1, UIColor.FromRGB(0x56, 0x78, 0x93), UIColor.FromRGB(0x56, 0x78, 0x93), UIColor.FromRGB(0x3D, 0x55, 0x68));
+            var series2 = GetRenderableSeries(ds2, UIColor.FromRGB(0xAC, 0xBC, 0xCA), UIColor.FromRGB(0xAC, 0xBC, 0xCA), UIColor.FromRGB(0x43, 0x9A, 0xAF));
+            var series3 = GetRenderableSeries(ds3, UIColor.FromRGB(0xDB, 0xE0, 0xE1), UIColor.FromRGB(0xDB, 0xE0, 0xE1), UIColor.FromRGB(0xB6, 0xC1, 0xC3));
 
-            //var columnsCollection = new VerticallyStackedColumnsCollection();
-            //columnsCollection.Add(series1);
-            //columnsCollection.Add(series2);
-            //columnsCollection.Add(series3);
-
-            Surface = new SCIChartSurface(this);
-            StyleHelper.SetSurfaceDefaultStyle(Surface);
+            var columnsCollection = new SCIStackedVerticalColumnGroupSeries();
+            columnsCollection.AddSeries(series1);
+            columnsCollection.AddSeries(series2);
+            columnsCollection.AddSeries(series3);
 
             Surface.AttachAxis(xAxis, true);
             Surface.AttachAxis(yAxis, false);
-            //Surface.AttachRenderableSeries(columnsCollection);
+            Surface.AttachRenderableSeries(columnsCollection);
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
             {
@@ -57,15 +66,18 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.InvalidateElement();
         }
 
-        //private StackedColumnRenderableSeries GetRenderableSeries(IDataSeries dataSeries, UIColor strokeColor, UIColor fillColorStart, UIColor fillColorEbd)
-        //{
-        //    return new StackedColumnRenderableSeries
-        //    {
-        //        DataSeries = dataSeries,
-        //        DataPointWidth = 0.8,
-        //        StrokeStyle = new PenStyle.Builder(Activity).WithColor(strokeColor).WithThickness(1f, ComplexUnitType.Dip).Build(),
-        //        FillBrushStyle = new LinearGradientBrushStyle(0, 0, 0, 1, fillColorStart, fillColorEbd, TileMode.Clamp)
-        //    };
-        //}
+        private SCIStackedColumnRenderableSeries GetRenderableSeries(IDataSeries dataSeries, UIColor strokeColor, UIColor fillColorStart, UIColor fillColorEnd)
+        {
+            return new SCIStackedColumnRenderableSeries
+            {
+                DataSeries = dataSeries,
+                Style = new SCIColumnSeriesStyle
+                {
+                    DataPointWidth = 0.8,
+                    BorderPen = new SCIPenSolid(strokeColor, 1f),
+                    FillBrush = new SCIBrushLinearGradient(fillColorStart, fillColorEnd, SCILinearGradientDirection.Vertical)
+                }
+            };
+        }
     }
 }

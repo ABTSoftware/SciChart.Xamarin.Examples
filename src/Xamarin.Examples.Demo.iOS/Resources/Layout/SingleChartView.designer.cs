@@ -15,7 +15,7 @@ namespace Xamarin.Examples.Demo.iOS.Resources.Layout
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-		Examples.Demo.iOS.Views.Base.ExampleBaseView Surface { get; set; }
+        SciChart.iOS.Charting.SCIChartSurfaceView Surface { get; set; }
 
         void ReleaseDesignerOutlets ()
         {

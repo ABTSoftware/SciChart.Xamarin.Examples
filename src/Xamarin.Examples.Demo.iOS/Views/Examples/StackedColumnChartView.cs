@@ -2,6 +2,7 @@
 using SciChart.iOS.Charting;
 using UIKit;
 using Xamarin.Examples.Demo.iOS.Helpers;
+using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
@@ -9,10 +10,21 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
     [ExampleDefinition("Stacked Column Chart")]
     public class StackedColumnChartView : ExampleBaseView
     {
+        private readonly SingleChartView _exampleView = SingleChartView.Create();
+
         public SCIChartSurface Surface;
+
+        public override UIView ExampleView => _exampleView;
 
         protected override void InitExample()
         {
+            var surfaceView = _exampleView.SciChartSurfaceView;
+            surfaceView.Frame = _exampleView.Frame;
+            surfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
+
+            Surface = new SCIChartSurface(surfaceView);
+            StyleHelper.SetSurfaceDefaultStyle(Surface);
+
             var xAxis = new SCINumericAxis { IsXAxis = true };
             var yAxis = new SCINumericAxis();
 
@@ -57,13 +69,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             //columnsCollection.AddSeries(verticalCollection1);
             //columnsCollection.AddSeries(verticalCollection2);
 
-            Surface = new SCIChartSurface(this);
-            StyleHelper.SetSurfaceDefaultStyle(Surface);
-
             Surface.AttachAxis(xAxis, true);
             Surface.AttachAxis(yAxis, false);
             Surface.AttachRenderableSeries(verticalCollection1);
-			Surface.AttachRenderableSeries(verticalCollection2);
+            Surface.AttachRenderableSeries(verticalCollection2);
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
             {
@@ -79,10 +88,11 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             return new SCIStackedColumnRenderableSeries
             {
                 DataSeries = dataSeries,
-				Style = new SCIColumnSeriesStyle { 
-					FillBrush = new SCIBrushSolid(fillColor),
-					BorderPen = new SCIPenSolid(strokeColor, 1f)
-				}
+                Style = new SCIColumnSeriesStyle
+                {
+                    FillBrush = new SCIBrushSolid(fillColor),
+                    BorderPen = new SCIPenSolid(strokeColor, 1f)
+                }
             };
         }
     }

@@ -1,9 +1,9 @@
-﻿using Foundation;
-using SciChart.Examples.Demo.Data;
+﻿using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
 using SciChart.iOS.Charting;
 using UIKit;
 using Xamarin.Examples.Demo.iOS.Helpers;
+using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
@@ -11,10 +11,21 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
     [ExampleDefinition("Chart Legends API")]
     public class LegendView : ExampleBaseView
     {
+        private readonly SingleChartView _exampleView = SingleChartView.Create();
+
         public SCIChartSurface Surface;
+
+        public override UIView ExampleView => _exampleView;
 
         protected override void InitExample()
         {
+            var surfaceView = _exampleView.SciChartSurfaceView;
+            surfaceView.Frame = _exampleView.Frame;
+            surfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
+
+            Surface = new SCIChartSurface(surfaceView);
+            StyleHelper.SetSurfaceDefaultStyle(Surface);
+
             var xAxis = new SCINumericAxis {IsXAxis = true};
             var yAxis = new SCINumericAxis();
 
@@ -32,9 +43,6 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             ds2.Append(ds2Points.XData, ds2Points.YData);
             ds3.Append(ds3Points.XData, ds3Points.YData);
             ds4.Append(ds4Points.XData, ds4Points.YData);
-
-            Surface = new SCIChartSurface(this);
-            StyleHelper.SetSurfaceDefaultStyle(Surface);
 
             Surface.AttachAxis(xAxis, true);
             Surface.AttachAxis(yAxis, false);

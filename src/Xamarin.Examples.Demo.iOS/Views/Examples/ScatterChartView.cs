@@ -3,6 +3,7 @@ using SciChart.Examples.Demo.Fragments.Base;
 using SciChart.iOS.Charting;
 using UIKit;
 using Xamarin.Examples.Demo.iOS.Helpers;
+using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
@@ -10,10 +11,21 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
     [ExampleDefinition("Scatter Chart")]
     public class ScatterChartView : ExampleBaseView
     {
+        private readonly SingleChartView _exampleView = SingleChartView.Create();
+
         public SCIChartSurface Surface;
+
+        public override UIView ExampleView => _exampleView;
 
         protected override void InitExample()
         {
+            var surfaceView = _exampleView.SciChartSurfaceView;
+            surfaceView.Frame = _exampleView.Frame;
+            surfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
+
+            Surface = new SCIChartSurface(surfaceView);
+            StyleHelper.SetSurfaceDefaultStyle(Surface);
+
             var dampedSinewave = DataManager.Instance.GetDampedSinewave(1.0, 0.02, 150, 5);
 
             var dataSeries = new XyDataSeries<double, double>();
@@ -37,9 +49,6 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     }
                 }
             };
-
-            Surface = new SCIChartSurface(this);
-            StyleHelper.SetSurfaceDefaultStyle(Surface);
 
             Surface.AttachAxis(xAxis, true);
             Surface.AttachAxis(yAxis, false);

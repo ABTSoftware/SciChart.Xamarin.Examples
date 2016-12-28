@@ -2,7 +2,9 @@
 using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
 using SciChart.iOS.Charting;
+using UIKit;
 using Xamarin.Examples.Demo.iOS.Helpers;
+using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
@@ -13,10 +15,21 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         private const uint SteelBlueColor = 4282811060U;
         private const uint IndianRedColor = 4291648604U;
 
+        private readonly SingleChartView _exampleView = SingleChartView.Create();
+
         public SCIChartSurface Surface;
+
+        public override UIView ExampleView => _exampleView;
 
         protected override void InitExample()
         {
+            var surfaceView = _exampleView.SciChartSurfaceView;
+            surfaceView.Frame = _exampleView.Frame;
+            surfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
+
+            Surface = new SCIChartSurface(surfaceView);
+            StyleHelper.SetSurfaceDefaultStyle(Surface);
+
             var axisStyle = StyleHelper.GetDefaultAxisStyle();
             var xAxis = new SCINumericAxis {IsXAxis = true, GrowBy = new SCIDoubleRange(0.1, 0.1), AutoRange = SCIAutoRangeMode.Always, Style = axisStyle};
             var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1), Style = axisStyle};
@@ -31,9 +44,6 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
             ds1.Append(scaledXValues, ds1Points.YData);
             ds2.Append(ds2Points.XData, ds2Points.YData);
-
-            Surface = new SCIChartSurface(this);
-            StyleHelper.SetSurfaceDefaultStyle(Surface);
 
             Surface.AttachAxis(xAxis, true);
             Surface.AttachAxis(yAxis, false);
