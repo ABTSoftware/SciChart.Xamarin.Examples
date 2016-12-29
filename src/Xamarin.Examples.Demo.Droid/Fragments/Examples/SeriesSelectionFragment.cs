@@ -45,18 +45,18 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             using (Surface.SuspendUpdates())
             {
                 Surface.XAxes.Add(xAxis);
-                Surface.YAxes = new AxisCollection() {leftAxis, rightAxis};
+                Surface.YAxes = new AxisCollection {leftAxis, rightAxis};
 
                 var initialColor = Color.Blue;
 
-                for (int i = 0; i < SeriesCount; i++)
+                for (var i = 0; i < SeriesCount; i++)
                 {
                     var alignment = i%2 == 0 ? AxisAlignment.Left : AxisAlignment.Right;
-                    var ds = GenerateDataSeries(alignment, i);
+                    var dataSeries = GenerateDataSeries(alignment, i);
 
                     var rs = new FastLineRenderableSeries
                     {
-                        DataSeries = ds,
+                        DataSeries = dataSeries,
                         YAxisId = alignment.Name(),
                         StrokeStyle = new PenStyle.Builder(Activity).WithColor(initialColor).WithThickness(2, ComplexUnitType.Dip).Build()
                     };
@@ -70,7 +70,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 }
 
                 var selectedStrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.White).WithThickness(4f).Build();
-                var selectedPointMarker = new EllipsePointMarker()
+                var selectedPointMarker = new EllipsePointMarker
                 {
                     Width = (int) TypedValue.ApplyDimension(ComplexUnitType.Dip, 10, Context.Resources.DisplayMetrics),
                     Height = (int) TypedValue.ApplyDimension(ComplexUnitType.Dip, 10, Context.Resources.DisplayMetrics),
@@ -78,7 +78,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.White).WithThickness(1f).Build()
                 };
 
-                Surface.ChartModifiers.Add(new SeriesSelectionModifier()
+                Surface.ChartModifiers.Add(new SeriesSelectionModifier
                 {
                     SelectedSeriesStyle = new SelectedSeriesStyle(selectedStrokeStyle, selectedPointMarker)
                 });
@@ -87,16 +87,16 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
         private static IDataSeries GenerateDataSeries(AxisAlignment alignment, int index)
         {
-            var ds = new XyDataSeries<double, double> {SeriesName = $"Series {index}"};
+            var dataSeries = new XyDataSeries<double, double> {SeriesName = $"Series {index}"};
 
             var gradient = alignment == AxisAlignment.Right ? index : -index;
             var start = alignment == AxisAlignment.Right ? 0d : 14000d;
 
             var straightLine = DataManager.Instance.GetStraightLine(gradient, start, SeriesPointCount);
 
-            ds.Append(straightLine.XData, straightLine.YData);
+            dataSeries.Append(straightLine.XData, straightLine.YData);
 
-            return ds;
+            return dataSeries;
         }
     }
 

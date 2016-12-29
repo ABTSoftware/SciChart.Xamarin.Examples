@@ -8,8 +8,8 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Scatter Chart")]
-    public class ScatterChartView : ExampleBaseView
+    [ExampleDefinition("Impulse Chart")]
+    public class ImpulseChartView : ExampleBaseView
     {
         private readonly SingleChartView _exampleView = SingleChartView.Create();
 
@@ -28,26 +28,27 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface = new SCIChartSurface(_exampleView.SciChartSurfaceView);
             StyleHelper.SetSurfaceDefaultStyle(Surface);
 
-            var dampedSinewave = DataManager.Instance.GetDampedSinewave(1.0, 0.02, 150, 5);
+            var ds1Points = DataManager.Instance.GetDampedSinewave(1.0, 0.05, 50, 5);
 
             var dataSeries = new XyDataSeries<double, double>();
-            dataSeries.Append(dampedSinewave.XData, dampedSinewave.YData);
+            dataSeries.Append(ds1Points.XData, ds1Points.YData);
 
             var axisStyle = StyleHelper.GetDefaultAxisStyle();
             var xAxis = new SCINumericAxis {IsXAxis = true, GrowBy = new SCIDoubleRange(0.1, 0.1), Style = axisStyle};
             var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1), Style = axisStyle};
 
-            var renderSeries = new SCIXyScatterRenderableSeries
+            var renderSeries = new SCIFastImpulseRenderableSeries
             {
                 DataSeries = dataSeries,
                 Style =
                 {
+                    LinePen = new SCIPenSolid(UIColor.FromRGB(0x00, 0x66, 0xFF), 0.7f),
                     PointMarker = new SCIEllipsePointMarker
                     {
-                        FillBrush = new SCIBrushSolid(UIColor.FromRGB(70, 130, 180)),
-                        BorderPen = new SCIPenSolid(UIColor.FromRGB(176, 196, 222), 2f),
-                        Width = 15,
-                        Height = 15
+                        FillBrush = new SCIBrushSolid(UIColor.FromRGB(0x00, 0x66, 0xFF)),
+                        BorderPen = new SCIPenSolid(UIColor.FromRGB(0x00, 0x66, 0xFF), 2f),
+                        Width = 10,
+                        Height = 10
                     }
                 }
             };

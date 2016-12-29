@@ -8,7 +8,7 @@ namespace Xamarin.Examples.Demo.iOS.Resources.Layout
 {
     public partial class PerformanceDemoView : UIStackView
     {
-        //public SCIChartSurfaceView SciChartSurfaceView => Surface;
+        //public SCIChartSurfaceView ChartContainer => Surface;
 
         public PerformanceDemoView (IntPtr handle) : base (handle)
         {

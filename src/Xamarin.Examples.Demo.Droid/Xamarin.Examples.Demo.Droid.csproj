@@ -120,6 +120,7 @@
     <Compile Include="Fragments\Examples\DashboardStyleChartsFragment.cs" />
     <Compile Include="Fragments\Examples\FifoChartFragment.cs" />
     <Compile Include="Fragments\Examples\HeatmapChartFragment.cs" />
+    <Compile Include="Fragments\Examples\ImpulseChartFragment.cs" />
     <Compile Include="Fragments\Examples\InteractionWithAnnotationsFragment.cs" />
     <Compile Include="Fragments\Examples\LegendFragment.cs" />
     <Compile Include="Fragments\Examples\LineChartFragment.cs" />
@@ -135,8 +136,8 @@
     <Compile Include="Fragments\Examples\UsingRolloverModifierTooltipsFragment.cs" />
     <Compile Include="Fragments\Examples\UsingTooltipModifierTooltipsFragment.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
@@ -204,22 +205,22 @@
   -->
   <ItemGroup>
     <Reference Include="SciChart.Android.Core">
-      <HintPath>..\packages\SciChart.Android.2.0.0.108\lib\xamarin-android\SciChart.Android.Core.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.2.0.0.113\lib\xamarin-android\SciChart.Android.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SciChart.Android.Data">
-      <HintPath>..\packages\SciChart.Android.2.0.0.108\lib\xamarin-android\SciChart.Android.Data.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.2.0.0.113\lib\xamarin-android\SciChart.Android.Data.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SciChart.Android.Drawing">
-      <HintPath>..\packages\SciChart.Android.2.0.0.108\lib\xamarin-android\SciChart.Android.Drawing.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.2.0.0.113\lib\xamarin-android\SciChart.Android.Drawing.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SciChart.Android.Charting">
-      <HintPath>..\packages\SciChart.Android.2.0.0.108\lib\xamarin-android\SciChart.Android.Charting.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.2.0.0.113\lib\xamarin-android\SciChart.Android.Charting.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

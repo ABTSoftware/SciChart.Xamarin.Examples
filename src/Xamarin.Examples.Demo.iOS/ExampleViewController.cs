@@ -15,10 +15,15 @@ namespace Xamarin.Examples.Demo.iOS
             var example = (ExampleBaseView) Activator.CreateInstance(exampleType);
             var exampleView = example.ExampleView;
 
-            exampleView.Frame = View.Frame;
+            example.Frame = View.Frame;
+            example.TranslatesAutoresizingMaskIntoConstraints = true;
+
+            exampleView.Frame = example.Frame;
             exampleView.TranslatesAutoresizingMaskIntoConstraints = true;
 
-            View.Add(exampleView);
+            example.Add(exampleView);
+
+            View.Add(example);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace SciChart.Examples.Demo.Application
         {
             var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => Attribute.IsDefined(t, typeof(ExampleDefinition)));
 
-            Examples = types.Select(t => new Example(t)).ToList();
+            Examples = types.Select(t => new Example(t)).OrderBy(ex => ex.Title).ToList();
         }
 
         public Example GetExampleByTitle(string exampleTitle)

@@ -39,7 +39,12 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         //private volatile bool _isRunning = false;
         //private Timer _timer;
-        protected override void InitExample()
+        protected override void UpdateFrame()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void InitExampleInternal()
         {
             throw new NotImplementedException();
         }

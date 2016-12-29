@@ -18,18 +18,20 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         public override UIView ExampleView => _exampleView;
 
-        protected override void InitExample()
+        protected override void UpdateFrame()
         {
-            var surfaceView = _exampleView.SciChartSurfaceView;
-            surfaceView.Frame = _exampleView.Frame;
-            surfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
+            _exampleView.SciChartSurfaceView.Frame = _exampleView.Frame;
+            _exampleView.SciChartSurfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
+        }
 
-            Surface = new SCIChartSurface(surfaceView);
+        protected override void InitExampleInternal()
+        {
+            Surface = new SCIChartSurface(_exampleView.SciChartSurfaceView);
             StyleHelper.SetSurfaceDefaultStyle(Surface);
 
             var data = DataManager.Instance.GetPriceDataIndu();
 
-			var dataSeries = new OhlcDataSeries<DateTime, double>(TypeOfSeries.XCategory);
+            var dataSeries = new OhlcDataSeries<DateTime, double>(TypeOfSeries.XCategory);
             dataSeries.Append(data.TimeData, data.OpenData, data.HighData, data.LowData, data.CloseData);
 
             var axisStyle = StyleHelper.GetDefaultAxisStyle();

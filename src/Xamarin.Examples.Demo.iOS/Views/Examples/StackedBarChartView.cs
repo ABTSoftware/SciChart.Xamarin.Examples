@@ -16,13 +16,15 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         public override UIView ExampleView => _exampleView;
 
-        protected override void InitExample()
+        protected override void UpdateFrame()
         {
-            var surfaceView = _exampleView.SciChartSurfaceView;
-            surfaceView.Frame = _exampleView.Frame;
-            surfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
+            _exampleView.SciChartSurfaceView.Frame = _exampleView.Frame;
+            _exampleView.SciChartSurfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
+        }
 
-            Surface = new SCIChartSurface(surfaceView);
+        protected override void InitExampleInternal()
+        {
+            Surface = new SCIChartSurface(_exampleView.SciChartSurfaceView);
             StyleHelper.SetSurfaceDefaultStyle(Surface);
 
             var xAxis = new SCINumericAxis {IsXAxis = true, AxisAlignment = SCIAxisAlignmentMode.Left};

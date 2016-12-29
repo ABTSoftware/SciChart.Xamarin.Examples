@@ -2,20 +2,22 @@
 
 namespace Xamarin.Examples.Demo.iOS.Views.Base
 {
-    public abstract class ExampleBaseView
+    public abstract class ExampleBaseView : UIView
     {
         public abstract UIView ExampleView { get; }
 
         protected ExampleBaseView()
         {
-            Init();
-        }
-
-        private void Init()
-        {
             InitExample();
         }
 
-        protected abstract void InitExample();
+        private void InitExample()
+        {
+            UpdateFrame();
+            InitExampleInternal();
+        }
+
+        protected abstract void UpdateFrame();
+        protected abstract void InitExampleInternal();
     }
 }

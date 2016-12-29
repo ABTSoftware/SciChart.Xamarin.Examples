@@ -20,9 +20,9 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
         private SciChartSurface Surface => View.FindViewById<SciChartSurface>(Resource.Id.chart);
 
-        private const int Width = 300, Height = 200;
+        private const int Width = 300;
+        private const int Height = 200;
         private const int SeriesPerPeriod = 30;
-        
 
         private readonly Timer _timer = new Timer(40) {AutoReset = true};
         private int _timerIndex = 0;
@@ -80,7 +80,6 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
             _timerIndex++;
         }
-
 
         public override void OnDestroyView()
         {
