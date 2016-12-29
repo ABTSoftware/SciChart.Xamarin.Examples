@@ -55,45 +55,36 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             View.FindViewById<Button>(Resource.Id.pause).Click += (sender, args) => Pause();
             View.FindViewById<Button>(Resource.Id.reset).Click += (sender, args) => Reset();
 
+            var xAxis = new NumericAxis(Activity)
+            {
+                AutoRange = AutoRange.Always,
+                AxisTitle = "X-Axis"
+            };
+
+            var yAxis = new NumericAxis(Activity)
+            {
+                AutoRange = AutoRange.Always,
+                AxisTitle = "Y-Axis"
+            };
+
+            var rs1 = new FastLineRenderableSeries
+            {
+                DataSeries = _mainSeries,
+                StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.Argb(0xFF, 0x40, 0x83, 0xB7)).WithThickness(2, ComplexUnitType.Dip).Build()
+            };
+            var rs2 = new FastLineRenderableSeries
+            {
+                DataSeries = _maLowSeries,
+                StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.Argb(0xFF, 0xFF, 0xA5, 0x00)).WithThickness(2, ComplexUnitType.Dip).Build()
+            };
+            var rs3 = new FastLineRenderableSeries
+            {
+                DataSeries = _maHighSeries,
+                StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.Argb(0xFF, 0xE1, 0x32, 0x19)).WithThickness(2, ComplexUnitType.Dip).Build()
+            };
+
             using (Surface.SuspendUpdates())
             {
-                var xAxis = new NumericAxis(Activity)
-                {
-                    AutoRange = AutoRange.Always,
-                    AxisTitle = "X-Axis"
-                };
-
-                var yAxis = new NumericAxis(Activity)
-                {
-                    AutoRange = AutoRange.Always,
-                    AxisTitle = "Y-Axis"
-                };
-
-                var rs1 = new FastLineRenderableSeries()
-                {
-                    DataSeries = _mainSeries,
-                    StrokeStyle =
-                        new PenStyle.Builder(Activity).WithColor(Color.Argb(0xFF, 0x40, 0x83, 0xB7))
-                            .WithThickness(2, ComplexUnitType.Dip)
-                            .Build()
-                };
-                var rs2 = new FastLineRenderableSeries()
-                {
-                    DataSeries = _maLowSeries,
-                    StrokeStyle =
-                        new PenStyle.Builder(Activity).WithColor(Color.Argb(0xFF, 0xFF, 0xA5, 0x00))
-                            .WithThickness(2, ComplexUnitType.Dip)
-                            .Build()
-                };
-                var rs3 = new FastLineRenderableSeries()
-                {
-                    DataSeries = _maHighSeries,
-                    StrokeStyle =
-                        new PenStyle.Builder(Activity).WithColor(Color.Argb(0xFF, 0xE1, 0x32, 0x19))
-                            .WithThickness(2, ComplexUnitType.Dip)
-                            .Build()
-                };
-
                 Surface.XAxes.Add(xAxis);
                 Surface.YAxes.Add(yAxis);
 
@@ -171,7 +162,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 _secondYValues.Clear();
                 _thirdYValues.Clear();
 
-                for (int i = 0; i < BufferSize; i++)
+                for (var i = 0; i < BufferSize; i++)
                 {
                     _xValue++;
                     _yValue += _random.NextDouble() - 0.5;

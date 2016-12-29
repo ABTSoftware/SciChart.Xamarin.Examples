@@ -11,21 +11,21 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
     [ExampleDefinition("Line Chart")]
     public class LineChartView : ExampleBaseView
     {
-        private readonly SingleChartView _exampleView = SingleChartView.Create();
+        private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();
 
         public SCIChartSurface Surface;
 
-        public override UIView ExampleView => _exampleView;
+        public override UIView ExampleView => _exampleViewLayout;
 
         protected override void UpdateFrame()
         {
-            _exampleView.SciChartSurfaceView.Frame = _exampleView.Frame;
-            _exampleView.SciChartSurfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
+            _exampleViewLayout.SciChartSurfaceView.Frame = _exampleViewLayout.Frame;
+            _exampleViewLayout.SciChartSurfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
         }
 
         protected override void InitExampleInternal()
         {
-            Surface = new SCIChartSurface(_exampleView.SciChartSurfaceView);
+            Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
             StyleHelper.SetSurfaceDefaultStyle(Surface);
 
             var fourierSeries = DataManager.Instance.GetFourierSeries(1.0, 0.1);
@@ -43,8 +43,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 Style = {LinePen = new SCIPenSolid(0xFF99EE99, 0.7f)}
             };
 
-            Surface.AttachAxis(xAxis, true);
-            Surface.AttachAxis(yAxis, false);
+            Surface.XAxes.AddItem(xAxis);
+            Surface.YAxes.AddItem(yAxis);
             Surface.AttachRenderableSeries(renderSeries);
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]

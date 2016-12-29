@@ -27,8 +27,7 @@
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
-    <CodesignProvision>
-    </CodesignProvision>
+    <CodesignProvision>4fde46f7-b6ae-46c0-9330-54466398efe9</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -102,13 +101,13 @@
     <Compile Include="Helpers\StyleHelper.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="Resources\Layout\PerformanceDemoView.cs" />
-    <Compile Include="Resources\Layout\PerformanceDemoView.designer.cs">
-      <DependentUpon>PerformanceDemoView.cs</DependentUpon>
+    <Compile Include="Resources\Layout\PerformanceDemoViewLayout.cs" />
+    <Compile Include="Resources\Layout\PerformanceDemoViewLayout.designer.cs">
+      <DependentUpon>PerformanceDemoViewLayout.cs</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Layout\SingleChartView.cs" />
-    <Compile Include="Resources\Layout\SingleChartView.designer.cs">
-      <DependentUpon>SingleChartView.cs</DependentUpon>
+    <Compile Include="Resources\Layout\SingleChartViewLayout.cs" />
+    <Compile Include="Resources\Layout\SingleChartViewLayout.designer.cs">
+      <DependentUpon>SingleChartViewLayout.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\UIColorExtension.cs" />
     <Compile Include="Views\Examples\HeatmapChartView.cs" />
@@ -137,8 +136,8 @@
     <Compile Include="MainViewController.designer.cs">
       <DependentUpon>MainViewController.cs</DependentUpon>
     </Compile>
-    <BundleResource Include="Resources\Layout\PerformanceDemoView.xib" />
-    <InterfaceDefinition Include="Resources\Layout\SingleChartView.xib" />
+    <InterfaceDefinition Include="Resources\Layout\SingleChartViewLayout.xib" />
+    <InterfaceDefinition Include="Resources\Layout\PerformanceDemoViewLayout.xib" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -171,7 +170,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <Reference Include="SciChart.iOS.Charting">
-      <HintPath>..\packages\SciChart.iOS.2.0.0.113\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
+      <HintPath>..\packages\SciChart.iOS.2.0.0.114\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

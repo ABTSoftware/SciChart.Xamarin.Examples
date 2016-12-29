@@ -10,11 +10,19 @@ using System.CodeDom.Compiler;
 
 namespace Xamarin.Examples.Demo.iOS.Resources.Layout
 {
-    [Register ("PerformanceDemoView")]
-    partial class PerformanceDemoView
+    [Register ("SingleChartViewLayout")]
+    partial class SingleChartViewLayout
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        SciChart.iOS.Charting.SCIChartSurfaceView Surface { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
+            if (Surface != null) {
+                Surface.Dispose ();
+                Surface = null;
+            }
         }
     }
 }

@@ -16,21 +16,21 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         private const uint DarkGreenColor = 4278215680U;
         private const uint LightSteelBlueColor = 4289774814U;
 
-        private readonly SingleChartView _exampleView = SingleChartView.Create();
+        private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();
 
         public SCIChartSurface Surface;
 
-        public override UIView ExampleView => _exampleView;
+        public override UIView ExampleView => _exampleViewLayout;
 
         protected override void UpdateFrame()
         {
-            _exampleView.SciChartSurfaceView.Frame = _exampleView.Frame;
-            _exampleView.SciChartSurfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
+            _exampleViewLayout.SciChartSurfaceView.Frame = _exampleViewLayout.Frame;
+            _exampleViewLayout.SciChartSurfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
         }
 
         protected override void InitExampleInternal()
         {
-            Surface = new SCIChartSurface(_exampleView.SciChartSurfaceView);
+            Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
             StyleHelper.SetSurfaceDefaultStyle(Surface);
 
             var axisStyle = StyleHelper.GetDefaultAxisStyle();
