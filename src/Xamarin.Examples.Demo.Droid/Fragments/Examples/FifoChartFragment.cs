@@ -57,19 +57,19 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 AutoRange = AutoRange.Always
             };
             
-            var rs1 = new FastLineRenderableSeries()
+            var rs1 = new FastLineRenderableSeries
             {
                 DataSeries = _ds1,
                 StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.Argb(0xFF, 0x40, 0x83, 0xB7)).WithThickness(2, ComplexUnitType.Dip).Build()
             };
 
-            var rs2 = new FastLineRenderableSeries()
+            var rs2 = new FastLineRenderableSeries
             {
                 DataSeries = _ds2,
                 StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.Argb(0xFF, 0xFF, 0xA5, 0x00)).WithThickness(2, ComplexUnitType.Dip).Build()
             };
 
-            var rs3 = new FastLineRenderableSeries()
+            var rs3 = new FastLineRenderableSeries
             {
                 DataSeries = _ds3,
                 StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.Argb(0xFF, 0xE1, 0x32, 0x19)).WithThickness(2, ComplexUnitType.Dip).Build()

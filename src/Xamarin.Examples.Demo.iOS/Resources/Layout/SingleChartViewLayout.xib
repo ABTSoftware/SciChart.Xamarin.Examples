@@ -14,7 +14,7 @@
             <subviews>
                 <view contentMode="scaleToFill" id="5" customClass="SCIChartSurfaceView" clipsSubviews="YES">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <autoresizingMask key="autoresizingMask" heightSizable="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinX="YES" flexibleMaxY="YES" flexibleMinY="YES"/>
+                    <autoresizingMask key="autoresizingMask" heightSizable="YES" widthSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>

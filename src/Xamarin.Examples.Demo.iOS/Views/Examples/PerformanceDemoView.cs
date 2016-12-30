@@ -14,7 +14,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
     [ExampleDefinition("Performance Demo")]
     public class PerformanceDemoView : ExampleBaseView
     {
-        private readonly PerformanceDemoViewLayout _exampleViewLayout = PerformanceDemoViewLayout.Create();
+        private readonly SingleRealtimeChartLayout _exampleViewLayout = SingleRealtimeChartLayout.Create();
 
         public SCIChartSurface Surface;
 

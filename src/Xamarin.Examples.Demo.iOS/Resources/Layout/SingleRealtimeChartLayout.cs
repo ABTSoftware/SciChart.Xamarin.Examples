@@ -6,7 +6,7 @@ using UIKit;
 
 namespace Xamarin.Examples.Demo.iOS.Resources.Layout
 {
-    public partial class PerformanceDemoViewLayout : UIStackView
+    public partial class SingleRealtimeChartLayout : UIStackView
     {
         public UIButton Start => StartButton;
 
@@ -16,14 +16,14 @@ namespace Xamarin.Examples.Demo.iOS.Resources.Layout
 
         public SCIChartSurfaceView SciChartSurfaceView => Surface;
 
-        public PerformanceDemoViewLayout(IntPtr handle) : base(handle)
+        public SingleRealtimeChartLayout(IntPtr handle) : base(handle)
         {
         }
 
-        public static PerformanceDemoViewLayout Create()
+        public static SingleRealtimeChartLayout Create()
         {
-            var pointersArray = NSBundle.MainBundle.LoadNib("PerformanceDemoViewLayout", null, null);
-            var view = Runtime.GetNSObject<PerformanceDemoViewLayout>(pointersArray.ValueAt(0));
+            var pointersArray = NSBundle.MainBundle.LoadNib("SingleRealtimeChartLayout", null, null);
+            var view = Runtime.GetNSObject<SingleRealtimeChartLayout>(pointersArray.ValueAt(0));
 
             return view;
         }

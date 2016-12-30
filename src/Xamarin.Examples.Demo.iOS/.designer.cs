@@ -7,11 +7,12 @@
 using Foundation;
 using System;
 using System.CodeDom.Compiler;
+using UIKit;
 
-namespace Xamarin.Examples.Demo.iOS.Resources.Layout
+namespace Xamarin.Examples.Demo.iOS
 {
-    [Register ("PerformanceDemoViewLayout")]
-    partial class PerformanceDemoViewLayout
+    [Register ("SingleRealtimeChartLayou")]
+    partial class SingleRealtimeChartLayou
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -25,9 +26,9 @@ namespace Xamarin.Examples.Demo.iOS.Resources.Layout
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton StartButton { get; set; }
 
-        [Outlet]
+        [Action ("PauseButton_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
-        SciChart.iOS.Charting.SCIChartSurfaceView Surface { get; set; }
+        partial void PauseButton_TouchUpInside (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
@@ -44,11 +45,6 @@ namespace Xamarin.Examples.Demo.iOS.Resources.Layout
             if (StartButton != null) {
                 StartButton.Dispose ();
                 StartButton = null;
-            }
-
-            if (Surface != null) {
-                Surface.Dispose ();
-                Surface = null;
             }
         }
     }

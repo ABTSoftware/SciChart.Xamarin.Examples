@@ -43,8 +43,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 Style = {LinePen = new SCIPenSolid(0xFF99EE99, 0.7f)}
             };
 
-            Surface.XAxes.AddItem(xAxis);
-            Surface.YAxes.AddItem(yAxis);
+            Surface.AttachAxis(xAxis, true);
+            Surface.AttachAxis(yAxis, false);
             Surface.AttachRenderableSeries(renderSeries);
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]

@@ -101,15 +101,20 @@
     <Compile Include="Helpers\StyleHelper.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="Resources\Layout\PerformanceDemoViewLayout.cs" />
-    <Compile Include="Resources\Layout\PerformanceDemoViewLayout.designer.cs">
-      <DependentUpon>PerformanceDemoViewLayout.cs</DependentUpon>
-    </Compile>
     <Compile Include="Resources\Layout\SingleChartViewLayout.cs" />
     <Compile Include="Resources\Layout\SingleChartViewLayout.designer.cs">
       <DependentUpon>SingleChartViewLayout.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\UIColorExtension.cs" />
+    <Compile Include=".cs" />
+    <Compile Include=".designer.cs">
+      <DependentUpon>.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Layout\SingleRealtimeChartLayout.cs" />
+    <Compile Include="Resources\Layout\SingleRealtimeChartLayout.designer.cs">
+      <DependentUpon>SingleRealtimeChartLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Examples\FifoChartView.cs" />
     <Compile Include="Views\Examples\HeatmapChartView.cs" />
     <Compile Include="Views\Examples\ImpulseChartView.cs" />
     <Compile Include="Views\Examples\MountainChartView.cs" />
@@ -137,7 +142,7 @@
       <DependentUpon>MainViewController.cs</DependentUpon>
     </Compile>
     <InterfaceDefinition Include="Resources\Layout\SingleChartViewLayout.xib" />
-    <InterfaceDefinition Include="Resources\Layout\PerformanceDemoViewLayout.xib" />
+    <InterfaceDefinition Include="Resources\Layout\SingleRealtimeChartLayout.xib" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -170,7 +175,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <Reference Include="SciChart.iOS.Charting">
-      <HintPath>..\packages\SciChart.iOS.2.0.0.114\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
+      <HintPath>..\packages\SciChart.iOS.2.0.0.116\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" id="38" customClass="PerformanceDemoViewLayout">
+        <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" id="38" customClass="SingleRealtimeChartLayout">
             <rect key="frame" x="0.0" y="0.0" width="398" height="407"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <point key="canvasLocation" x="-206" y="-287"/>
