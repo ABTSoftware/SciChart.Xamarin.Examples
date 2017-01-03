@@ -12,18 +12,23 @@ namespace Xamarin.Examples.Demo.iOS
 
         public void InitChartView(Type exampleType)
         {
-            var example = (ExampleBaseView) Activator.CreateInstance(exampleType);
+            var example = (ExampleBaseView)Activator.CreateInstance(exampleType);
             var exampleView = example.ExampleView;
 
-            example.Frame = View.Frame;
+            example.Frame = new CoreGraphics.CGRect(0, 60,
+                                                    View.Frame.Width,
+                                                    View.Frame.Height - 60);
+
             example.TranslatesAutoresizingMaskIntoConstraints = true;
 
-            exampleView.Frame = example.Frame;
+            exampleView.Frame = new CoreGraphics.CGRect(0, 0,
+                                                    example.Frame.Width,
+                                                    example.Frame.Height);
             exampleView.TranslatesAutoresizingMaskIntoConstraints = true;
 
-            example.Add(exampleView);
+            example.AddSubview(exampleView);
 
-            View.Add(example);
+            View.AddSubview(example);
         }
     }
 }

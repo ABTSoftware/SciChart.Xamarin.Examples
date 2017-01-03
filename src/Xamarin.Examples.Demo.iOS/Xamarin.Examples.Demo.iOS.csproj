@@ -27,7 +27,7 @@
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
-    <CodesignProvision>4fde46f7-b6ae-46c0-9330-54466398efe9</CodesignProvision>
+    <CodesignProvision>fbf677bd-a366-4216-9a77-c20eb88d4991</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -119,6 +119,7 @@
     <Compile Include="Views\Examples\FifoChartView.cs" />
     <Compile Include="Views\Examples\HeatmapChartView.cs" />
     <Compile Include="Views\Examples\ImpulseChartView.cs" />
+    <Compile Include="Views\Examples\InteractionWithAnnotationsView.cs" />
     <Compile Include="Views\Examples\MountainChartView.cs" />
     <Compile Include="Views\Examples\PerformanceDemoView.cs" />
     <Compile Include="Views\Examples\ScatterChartView.cs" />
@@ -177,7 +178,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <Reference Include="SciChart.iOS.Charting">
-      <HintPath>..\packages\SciChart.iOS.2.0.0.122\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
+      <HintPath>..\packages\SciChart.iOS.2.0.0.125\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

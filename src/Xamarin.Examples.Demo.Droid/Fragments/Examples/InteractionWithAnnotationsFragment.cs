@@ -32,9 +32,9 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 dataSeries.Append(priceBar.DateTime, priceBar.Open, priceBar.High, priceBar.Low, priceBar.Close);
             }
 
-            Surface.XAxes.Add(new CategoryDateAxis(Activity) { VisibleRange = new DoubleRange(0, 199) });
-            Surface.YAxes.Add(new NumericAxis(Activity) { VisibleRange = new DoubleRange(30, 37) });
-            Surface.RenderableSeries.Add(new FastCandlestickRenderableSeries() { DataSeries = dataSeries });
+            Surface.XAxes.Add(new CategoryDateAxis(Activity) {VisibleRange = new DoubleRange(0, 199)});
+            Surface.YAxes.Add(new NumericAxis(Activity) {VisibleRange = new DoubleRange(30, 37)});
+            Surface.RenderableSeries.Add(new FastCandlestickRenderableSeries {DataSeries = dataSeries});
 
             Surface.Annotations = new AnnotationCollection
             {
