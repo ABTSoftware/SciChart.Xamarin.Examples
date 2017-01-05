@@ -70,7 +70,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 };
 
                 var legendModifier = new LegendModifier(Activity);
-                legendModifier.SetGetLegendDataFor(SourceMode.AllSeries);
+                legendModifier.SetSourceMode(SourceMode.AllSeries);
 
                 Surface.ChartModifiers.Add(legendModifier);
             }
