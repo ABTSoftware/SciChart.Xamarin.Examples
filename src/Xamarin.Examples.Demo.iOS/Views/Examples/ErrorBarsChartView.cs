@@ -34,7 +34,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             dataSeries.Append(data0.XData, data0.YData);
 
             var axisStyle = StyleHelper.GetDefaultAxisStyle();
-            var xAxis = new SCINumericAxis { IsXAxis = true, Style = axisStyle, AutoRange = SCIAutoRangeMode.Always };
+            var xAxis = new SCINumericAxis { GrowBy = new SCIDoubleRange(0.1, 0.1), Style = axisStyle };
             var yAxis = new SCINumericAxis { GrowBy = new SCIDoubleRange(0.1, 0.1), Style = axisStyle };
 
             var verticalRenderableSeries = new SCIFastFixedErrorBarsRenderableSeries
@@ -54,9 +54,6 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 DataSeries = dataSeries,
                 ErrorDirection = SCIErrorBarDirection.SCIErrorBarDirectionHorizontal,
                 ErrorDataPointWidth = 0.5,
-                ErrorLow = 0.1,
-                ErrorHigh = 0.3,
-                ErrorType = SCIErrorBarType.SCIErrorBarTypeRelative,
                 Style = new SCIErrorBarsSeriesStyle
                 {
                     LinePen = new SCIPenSolid(UIColor.Red, 0.7f)
