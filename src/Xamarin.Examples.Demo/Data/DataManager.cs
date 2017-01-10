@@ -40,47 +40,47 @@ namespace SciChart.Examples.Demo.Data
             return doubleSeries;
         }
 
-        public FanDataPoint GetFanData(int count)
+        public void GetFanData(int count, Action<FanDataPoint> handler)
         {
-            //    var dateTime = new DateTime();
-            //    var lastValue = 0.0;
-            //    var i = 0;
-            //    while (i <= count) {
-            //        var nextValue = lastValue + Getra(-0.5, max: 0.5);
-            //        lastValue = nextValue;
-            //        dateTime = dateTime.addingTimeInterval(3600 * 24);
+            var dateTime = new DateTime();
 
+            var lastValue = 0.0;
+            var i = 0;
+            var dataPoint = new FanDataPoint();
 
-            //    var dataPoint = SCSDataPoint()
-            //    dataPoint.date = dateTime
-            //    dataPoint.actualValue = nextValue
-            //    if i > 4 {
-            //            dataPoint.maxValue = nextValue + (Double(i) - 5) * 0.3
-            //        dataPoint.value1 = nextValue + (Double(i) - 5) * 0.2
-            //        dataPoint.value2 = nextValue + (Double(i) - 5) * 0.1
-            //        dataPoint.value3 = nextValue - (Double(i) - 5) * 0.1
-            //        dataPoint.value4 = nextValue - (Double(i) - 5) * 0.2
-            //        dataPoint.minValue = nextValue - (Double(i) - 5) * 0.3
-            //    }
+            while (i < count)
+            {
+                var nextValue = lastValue + _random.NextDouble() - 0.5;
+                lastValue = nextValue;
+                dateTime = dateTime.AddDays(1);
 
-            //        handler(dataPoint)
+                dataPoint.Date = dateTime;
+                dataPoint.ActualValue = nextValue;
 
+                if (i > 4)
+                {
+                    dataPoint.MaxValue = nextValue + ((double)i - 5) * 0.3;
+                    dataPoint.Value1 = nextValue + ((double)i - 5) * 0.2;
+                    dataPoint.Value2 = nextValue + ((double)i - 5) * 0.1;
+                    dataPoint.Value3 = nextValue - ((double)i - 5) * 0.1;
+                    dataPoint.Value4 = nextValue - ((double)i - 5) * 0.2;
+                    dataPoint.MinValue = nextValue - ((double)i - 5) * 0.3;
+                }
+                handler(dataPoint);
 
-            //    i += 1
-            //}
-            return null;
-
+                i += 1;
+            }
         }
 
         public void SetRandomDoubleSeries(DoubleSeries doubleValues, int count)
         {
             var amplitude = _random.NextDouble() + 0.5;
-            var freq = Math.PI*(_random.NextDouble() + 0.5)*10;
+            var freq = Math.PI * (_random.NextDouble() + 0.5) * 10;
             var offset = _random.NextDouble() - 0.5;
 
             for (var i = 0; i < count; i++)
             {
-                doubleValues.Add(new XyPoint {X = i, Y = offset + amplitude*Math.Sin(freq*i)});
+                doubleValues.Add(new XyPoint { X = i, Y = offset + amplitude * Math.Sin(freq * i) });
             }
         }
 
@@ -110,17 +110,17 @@ namespace SciChart.Examples.Demo.Data
             {
                 var xyPoint = new XyPoint();
 
-                var time = 10.0*i/count;
-                var wn = 2*Math.PI/count*10;
+                var time = 10.0 * i / count;
+                var wn = 2 * Math.PI / count * 10;
 
                 xyPoint.X = time;
-                xyPoint.Y = Math.PI*amplitude*
-                            (Math.Sin(i*wn + phaseShift) +
-                             0.33*Math.Sin(i*3*wn + phaseShift) +
-                             0.20*Math.Sin(i*5*wn + phaseShift) +
-                             0.14*Math.Sin(i*7*wn + phaseShift) +
-                             0.11*Math.Sin(i*9*wn + phaseShift) +
-                             0.09*Math.Sin(i*11*wn + phaseShift));
+                xyPoint.Y = Math.PI * amplitude *
+                            (Math.Sin(i * wn + phaseShift) +
+                             0.33 * Math.Sin(i * 3 * wn + phaseShift) +
+                             0.20 * Math.Sin(i * 5 * wn + phaseShift) +
+                             0.14 * Math.Sin(i * 7 * wn + phaseShift) +
+                             0.11 * Math.Sin(i * 9 * wn + phaseShift) +
+                             0.09 * Math.Sin(i * 11 * wn + phaseShift));
 
                 series.Add(xyPoint);
             }
@@ -139,7 +139,7 @@ namespace SciChart.Examples.Demo.Data
         public DoubleSeries GetNoisySinewave(double amplitude, double phase, int count, double noiseAmplitude)
         {
             var sinewave = GetSinewave(amplitude, phase, count);
-            
+
             // Add some noise
             for (var i = 0; i < count; i++)
             {
@@ -155,19 +155,19 @@ namespace SciChart.Examples.Demo.Data
 
             for (var i = 0; i < pad; i++)
             {
-                var time = 10*i/(double) count;
-                doubleSeries.Add(new XyPoint {X = time});
+                var time = 10 * i / (double)count;
+                doubleSeries.Add(new XyPoint { X = time });
             }
 
             for (int i = pad, j = 0; i < count; i++, j++)
             {
                 var xyPoint = new XyPoint();
 
-                var time = 10*i/(double) count;
-                var wn = 2*Math.PI/(count/(double) freq);
+                var time = 10 * i / (double)count;
+                var wn = 2 * Math.PI / (count / (double)freq);
 
                 xyPoint.X = time;
-                xyPoint.Y = amplitude*Math.Sin(j*wn + phase);
+                xyPoint.Y = amplitude * Math.Sin(j * wn + phase);
                 doubleSeries.Add(xyPoint);
 
                 amplitude *= 1.0 - dampingFactor;
@@ -215,7 +215,7 @@ namespace SciChart.Examples.Demo.Data
             return priceSeries;
         }
 
-        public DoubleSeries GetLissajousCurve( double alpha, double beta, double delta, int count)
+        public DoubleSeries GetLissajousCurve(double alpha, double beta, double delta, int count)
         {
             var doubleSeries = new DoubleSeries(count);
 
