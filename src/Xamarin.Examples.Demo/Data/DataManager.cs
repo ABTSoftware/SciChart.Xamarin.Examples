@@ -40,6 +40,38 @@ namespace SciChart.Examples.Demo.Data
             return doubleSeries;
         }
 
+        public FanDataPoint GetFanData(int count)
+        {
+            //    var dateTime = new DateTime();
+            //    var lastValue = 0.0;
+            //    var i = 0;
+            //    while (i <= count) {
+            //        var nextValue = lastValue + Getra(-0.5, max: 0.5);
+            //        lastValue = nextValue;
+            //        dateTime = dateTime.addingTimeInterval(3600 * 24);
+
+
+            //    var dataPoint = SCSDataPoint()
+            //    dataPoint.date = dateTime
+            //    dataPoint.actualValue = nextValue
+            //    if i > 4 {
+            //            dataPoint.maxValue = nextValue + (Double(i) - 5) * 0.3
+            //        dataPoint.value1 = nextValue + (Double(i) - 5) * 0.2
+            //        dataPoint.value2 = nextValue + (Double(i) - 5) * 0.1
+            //        dataPoint.value3 = nextValue - (Double(i) - 5) * 0.1
+            //        dataPoint.value4 = nextValue - (Double(i) - 5) * 0.2
+            //        dataPoint.minValue = nextValue - (Double(i) - 5) * 0.3
+            //    }
+
+            //        handler(dataPoint)
+
+
+            //    i += 1
+            //}
+            return null;
+
+        }
+
         public void SetRandomDoubleSeries(DoubleSeries doubleValues, int count)
         {
             var amplitude = _random.NextDouble() + 0.5;

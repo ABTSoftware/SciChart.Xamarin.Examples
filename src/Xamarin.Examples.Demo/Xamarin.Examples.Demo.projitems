@@ -20,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data\PriceSeries.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\TradeData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\XyPoint.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\FanDataPoint.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Data\EURUSD_Daily.csv" />

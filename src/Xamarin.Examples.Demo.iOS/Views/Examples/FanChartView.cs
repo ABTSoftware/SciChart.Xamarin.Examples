@@ -7,10 +7,10 @@ using Xamarin.Examples.Demo.iOS.Helpers;
 using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
 
-namespace Xamarin.Examples.Demo.iOS.Views.Examples
+namespace Xamarin.Examples.Demo.iOS
 {
-    [ExampleDefinition("Mountain Chart")]
-    public class MountainChartView : ExampleBaseView
+    [ExampleDefinition("Line Chart")]
+    public class FanChartView : ExampleBaseView
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();
 
@@ -29,24 +29,19 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
             StyleHelper.SetSurfaceDefaultStyle(Surface);
 
-            var priceData = DataManager.Instance.GetPriceDataIndu();
+            var fourierSeries = DataManager.Instance.GetFourierSeries(1.0, 0.1);
 
-            var dataSeries = new XyDataSeries<DateTime, double>();
-            dataSeries.DataDistributionCalculator = new SCIUserDefinedDistributionCalculator();
-            dataSeries.Append(priceData.TimeData, priceData.CloseData);
+            var dataSeries = new XyDataSeries<double, double>();
+            dataSeries.Append(fourierSeries.XData, fourierSeries.YData);
 
             var axisStyle = StyleHelper.GetDefaultAxisStyle();
-            var xAxis = new SCIDateTimeAxis {GrowBy = new SCIDoubleRange(0.1, 0.1), Style = axisStyle};
-            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1), Style = axisStyle};
+            var xAxis = new SCINumericAxis { IsXAxis = true, GrowBy = new SCIDoubleRange(0.1, 0.1), Style = axisStyle };
+            var yAxis = new SCINumericAxis { GrowBy = new SCIDoubleRange(0.1, 0.1), Style = axisStyle };
 
-            var renderSeries = new SCIFastMountainRenderableSeries
+            var renderSeries = new SCIFastLineRenderableSeries
             {
                 DataSeries = dataSeries,
-                Style =
-                {
-                    AreaBrush = new SCIBrushLinearGradient(0xAAFF8D42, 0x88090E11, SCILinearGradientDirection.Vertical),
-                    BorderPen = new SCIPenSolid(0xaaffc9a8, 0.7f)
-                }
+                Style = { LinePen = new SCIPenSolid(0xFF99EE99, 0.7f) }
             };
 
             Surface.AttachAxis(xAxis, true);
