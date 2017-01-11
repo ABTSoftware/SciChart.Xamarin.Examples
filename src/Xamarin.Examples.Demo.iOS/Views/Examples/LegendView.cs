@@ -70,8 +70,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 Style = {LinePen = new SCIPenSolid(UIColor.FromRGB(0x19, 0x64, 0xFF), 2f)}
             });
 
-            var legendModifier = new SCILegendModifier();
-            legendModifier.SetSourceMode(SCISourceMode.All);
+            var legendModifier = new SCILegendCollectionModifier();
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[] {legendModifier});
 
