@@ -94,8 +94,6 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             _timer.Elapsed += OnTick;
             _timer.AutoReset = true;
             _timer.Start();
-
-            Surface.InvalidateElement();
         }
 
         private void Pause()
@@ -121,6 +119,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
             _maLow.Clear();
             _maHigh.Clear();
+
+            Surface.InvalidateElement();
         }
 
         private void OnTick(object sender, ElapsedEventArgs e)
@@ -160,6 +160,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             _mainSeries.Append(_xValues, _firstYValues);
             _maLowSeries.Append(_xValues, _secondYValues);
             _maHighSeries.Append(_xValues, _thirdYValues);
+
+            Surface.InvalidateElement();
         }
 
         private static int CalculateMaxPointCountToDisplay()

@@ -8,9 +8,42 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Line Chart")]
-	public class LineChartView : ExampleBaseView
+	[ExampleDefinition("Palette Provider")]
+	public class PaletteProviderView : ExampleBaseView
 	{
+		class ZeroLinePaletteProvider : SCIPaletteProvider
+		{
+			SCILineSeriesStyle _style;
+			double _zeroLine;
+			ISCICoordinateCalculatorProtocol _yCoordCalc;
+
+			public ZeroLinePaletteProvider()
+			{
+				_style = new SCILineSeriesStyle();
+				_style.DrawPointMarkers = false;
+				_style.LinePen = new SCIPenSolid(UIColor.Blue, (float)0.7);
+				_zeroLine = 0;
+				_yCoordCalc = null;
+			}
+
+			public override void UpdateData(ISCIRenderPassDataProtocol data)
+			{
+				_yCoordCalc = data.YCoordinateCalculator;
+			}
+
+			public override ISCIStyleProtocol StyleForPoint(double x, double y, int index)
+			{
+				double value = _yCoordCalc.GetDataValueFrom(y);
+				if (value < _zeroLine)
+				{
+					return _style;
+				}
+				else {
+					return null;
+				}
+			}
+		}
+
 		private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();
 
 		public SCIChartSurface Surface;
@@ -42,7 +75,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 				DataSeries = dataSeries,
 				Style = { LinePen = new SCIPenSolid(0xFF99EE99, 0.7f) }
 			};
-
+			renderSeries.PaletteProvider = new ZeroLinePaletteProvider();
 			Surface.AttachAxis(xAxis, true);
 			Surface.AttachAxis(yAxis, false);
 			Surface.AttachRenderableSeries(renderSeries);

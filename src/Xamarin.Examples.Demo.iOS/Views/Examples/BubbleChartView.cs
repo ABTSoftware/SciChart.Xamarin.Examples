@@ -39,7 +39,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 tradeDataSource.Select(x => x.TradeSize).ToArray());
 
             var axisStyle = StyleHelper.GetDefaultAxisStyle();
-            var xAxis = new SCIDateTimeAxis {IsXAxis = true, GrowBy = new SCIDoubleRange(0, 0.1), Style = axisStyle};
+            var xAxis = new SCIDateTimeAxis {IsXAxis = true, GrowBy = new SCIDoubleRange(0.0, 0.1), Style = axisStyle};
+            xAxis.TextFormatting = "hh:mm:ss";
             var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0, 0.1), Style = axisStyle};
 
             var lineSeries = new SCIFastLineRenderableSeries

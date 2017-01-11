@@ -149,6 +149,7 @@
     <InterfaceDefinition Include="Resources\Layout\SingleRealtimeChartLayout.xib" />
     <Compile Include="Views\Examples\ErrorBarsChartView.cs" />
     <Compile Include="Views\Examples\FanChartView.cs" />
+    <Compile Include="Views\Examples\PaletteProviderView.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -181,7 +182,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <Reference Include="SciChart.iOS.Charting">
-      <HintPath>..\packages\SciChart.iOS.2.0.0.139\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
+      <HintPath>..\packages\SciChart.iOS.2.0.0.143\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
