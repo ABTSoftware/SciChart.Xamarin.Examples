@@ -29,27 +29,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         protected override void InitExampleInternal()
         {
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
-            StyleHelper.SetSurfaceDefaultStyle(Surface);
 
-            var axisStyle = StyleHelper.GetDefaultAxisStyle();
-            var xAxis = new SCINumericAxis
-            {
-                IsXAxis = true,
-                AutoRange = SCIAutoRangeMode.Always,
-                Style = axisStyle
-            };
-            var leftAxis = new SCINumericAxis
-            {
-                AxisAlignment = SCIAxisAlignmentMode.Left,
-                AxisId = SCIAxisAlignmentMode.Left.ToString(),
-                Style = axisStyle
-            };
-            var rightAxis = new SCINumericAxis
-            {
-                AxisAlignment = SCIAxisAlignmentMode.Right,
-                AxisId = SCIAxisAlignmentMode.Right.ToString(),
-                Style = axisStyle
-            };
+            var xAxis = new SCINumericAxis {IsXAxis = true, AutoRange = SCIAutoRangeMode.Always};
+            var leftAxis = new SCINumericAxis {AxisAlignment = SCIAxisAlignmentMode.Left, AxisId = SCIAxisAlignmentMode.Left.ToString()};
+            var rightAxis = new SCINumericAxis {AxisAlignment = SCIAxisAlignmentMode.Right, AxisId = SCIAxisAlignmentMode.Right.ToString()};
 
             Surface.AttachAxis(xAxis, true);
             Surface.AttachAxis(leftAxis, false);

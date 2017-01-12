@@ -4,7 +4,6 @@ using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
 using SciChart.iOS.Charting;
 using UIKit;
-using Xamarin.Examples.Demo.iOS.Helpers;
 using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
 
@@ -28,7 +27,6 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         protected override void InitExampleInternal()
         {
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
-            StyleHelper.SetSurfaceDefaultStyle(Surface);
 
             var dataSeries = new XyzDataSeries<DateTime, double, double>();
             var tradeDataSource = DataManager.Instance.GetTradeticks().ToArray();
@@ -38,10 +36,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 tradeDataSource.Select(x => x.TradePrice).ToArray(),
                 tradeDataSource.Select(x => x.TradeSize).ToArray());
 
-            var axisStyle = StyleHelper.GetDefaultAxisStyle();
-            var xAxis = new SCIDateTimeAxis {IsXAxis = true, GrowBy = new SCIDoubleRange(0.0, 0.1), Style = axisStyle};
-            xAxis.TextFormatting = "hh:mm:ss";
-            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0, 0.1), Style = axisStyle};
+            var xAxis = new SCIDateTimeAxis {IsXAxis = true, GrowBy = new SCIDoubleRange(0.0, 0.1)};
+            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0, 0.1)};
 
             var lineSeries = new SCIFastLineRenderableSeries
             {
@@ -55,8 +51,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var bubbleSeries = new SCIBubbleRenderableSeries
             {
                 DataSeries = dataSeries,
-                //ZScale = 3,
-                //AutoZRange = false,
+                ZScaleFactor = 1,
+                AutoZRange = false,
                 Style =
                 {
                     BubbleBrush = new SCIBrushLinearGradient(0x7f090048, 0x30090048, SCILinearGradientDirection.Vertical)

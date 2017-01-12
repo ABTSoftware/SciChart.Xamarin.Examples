@@ -25,13 +25,12 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         protected override void InitExampleInternal()
         {
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
-            StyleHelper.SetSurfaceDefaultStyle(Surface);
 
             var xAxis = new SCINumericAxis
             {
                 IsXAxis = true,
                 AutoTicks = false,
-                //MajorDelta = 1,
+                MajorDelta = 1,
                 //MinorDelta = 0.5,
                 //LabelProvider = new YearsLabelProvider(),
                 Style = {DrawMajorBands = true}

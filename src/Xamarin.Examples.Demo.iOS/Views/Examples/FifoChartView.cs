@@ -3,7 +3,6 @@ using System.Timers;
 using SciChart.Examples.Demo.Fragments.Base;
 using SciChart.iOS.Charting;
 using UIKit;
-using Xamarin.Examples.Demo.iOS.Helpers;
 using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
 
@@ -43,7 +42,6 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         protected override void InitExampleInternal()
         {
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
-            StyleHelper.SetSurfaceDefaultStyle(Surface);
 
             _exampleViewLayout.Start.TouchUpInside += (sender, args) => Start();
             _exampleViewLayout.Pause.TouchUpInside += (sender, args) => Pause();

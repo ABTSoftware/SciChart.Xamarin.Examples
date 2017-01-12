@@ -26,16 +26,14 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         protected override void InitExampleInternal()
         {
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
-            StyleHelper.SetSurfaceDefaultStyle(Surface);
 
             var dampedSinewave = DataManager.Instance.GetDampedSinewave(1.0, 0.02, 150, 5);
 
             var dataSeries = new XyDataSeries<double, double>();
             dataSeries.Append(dampedSinewave.XData, dampedSinewave.YData);
 
-            var axisStyle = StyleHelper.GetDefaultAxisStyle();
-            var xAxis = new SCINumericAxis {IsXAxis = true, GrowBy = new SCIDoubleRange(0.1, 0.1), Style = axisStyle};
-            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1), Style = axisStyle};
+            var xAxis = new SCINumericAxis {IsXAxis = true, GrowBy = new SCIDoubleRange(0.1, 0.1)};
+            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
 
             var renderSeries = new SCIXyScatterRenderableSeries
             {

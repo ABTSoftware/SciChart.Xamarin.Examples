@@ -2,7 +2,6 @@
 using SciChart.Examples.Demo.Fragments.Base;
 using SciChart.iOS.Charting;
 using UIKit;
-using Xamarin.Examples.Demo.iOS.Helpers;
 using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
 
@@ -28,11 +27,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         protected override void InitExampleInternal()
         {
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
-            StyleHelper.SetSurfaceDefaultStyle(Surface);
 
-            var axisStyle = StyleHelper.GetDefaultAxisStyle();
-            var xAxis = new SCINumericAxis {IsXAxis = true, VisibleRange = new SCIDoubleRange(3, 6), AutoRange = SCIAutoRangeMode.Always, Style = axisStyle};
-            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0, 0.1), Style = axisStyle};
+            var xAxis = new SCINumericAxis {IsXAxis = true, VisibleRange = new SCIDoubleRange(3, 6), AutoRange = SCIAutoRangeMode.Always};
+            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0, 0.1)};
 
             var ds1 = new XyDataSeries<double, double> { SeriesName = "Green Series" };
             var ds2 = new XyDataSeries<double, double> { SeriesName = "Red Series" };

@@ -51,7 +51,7 @@
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <CodesignKey>iPhone Developer</CodesignKey>
-    <MtouchDebug>true</MtouchDebug>
+    <MtouchDebug>True</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchSdkVersion>10.2</MtouchSdkVersion>
     <MtouchFloat32>true</MtouchFloat32>
@@ -101,7 +101,6 @@
     <Compile Include="ExampleViewController.designer.cs">
       <DependentUpon>ExampleViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\StyleHelper.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Resources\Layout\SingleChartViewLayout.cs" />
@@ -178,7 +177,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <Reference Include="SciChart.iOS.Charting">
-      <HintPath>..\packages\SciChart.iOS.2.0.0.150\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
+      <HintPath>..\packages\SciChart.iOS.2.0.0.154\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

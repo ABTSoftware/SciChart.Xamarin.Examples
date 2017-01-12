@@ -3,7 +3,6 @@ using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
 using SciChart.iOS.Charting;
 using UIKit;
-using Xamarin.Examples.Demo.iOS.Helpers;
 using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
 
@@ -27,16 +26,14 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         protected override void InitExampleInternal()
         {
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
-            StyleHelper.SetSurfaceDefaultStyle(Surface);
 
             var data = DataManager.Instance.GetPriceDataIndu();
 
             var dataSeries = new OhlcDataSeries<DateTime, double>(TypeOfSeries.XCategory);
             dataSeries.Append(data.TimeData, data.OpenData, data.HighData, data.LowData, data.CloseData);
 
-            var axisStyle = StyleHelper.GetDefaultAxisStyle();
-            var xAxis = new SCICategoryDateTimeAxis {IsXAxis = true, Style = axisStyle};
-            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1), Style = axisStyle};
+            var xAxis = new SCICategoryDateTimeAxis {IsXAxis = true};
+            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
 
             var renderSeries = new SCIFastCandlestickRenderableSeries
             {

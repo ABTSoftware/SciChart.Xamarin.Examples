@@ -2,7 +2,6 @@
 using SciChart.Examples.Demo.Fragments.Base;
 using SciChart.iOS.Charting;
 using UIKit;
-using Xamarin.Examples.Demo.iOS.Helpers;
 using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
 
@@ -26,16 +25,14 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         protected override void InitExampleInternal()
         {
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
-            StyleHelper.SetSurfaceDefaultStyle(Surface);
 
             var ds1Points = DataManager.Instance.GetDampedSinewave(1.0, 0.05, 50, 5);
 
             var dataSeries = new XyDataSeries<double, double>();
             dataSeries.Append(ds1Points.XData, ds1Points.YData);
 
-            var axisStyle = StyleHelper.GetDefaultAxisStyle();
-            var xAxis = new SCINumericAxis {IsXAxis = true, GrowBy = new SCIDoubleRange(0.1, 0.1), Style = axisStyle};
-            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1), Style = axisStyle};
+            var xAxis = new SCINumericAxis {IsXAxis = true, GrowBy = new SCIDoubleRange(0.1, 0.1)};
+            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
 
             var renderSeries = new SCIFastImpulseRenderableSeries
             {

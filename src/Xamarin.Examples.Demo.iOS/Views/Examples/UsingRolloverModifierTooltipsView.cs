@@ -31,11 +31,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         protected override void InitExampleInternal()
         {
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
-            StyleHelper.SetSurfaceDefaultStyle(Surface);
 
-            var axisStyle = StyleHelper.GetDefaultAxisStyle();
-            var xAxis = new SCINumericAxis {IsXAxis = true, Style = axisStyle};
-            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.2, 0.2), Style = axisStyle};
+            var xAxis = new SCINumericAxis {IsXAxis = true};
+            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.2, 0.2)};
 
             var ds1 = new XyDataSeries<double, double> {SeriesName = "Sinewave A"};
             var ds2 = new XyDataSeries<double, double> {SeriesName = "Sinewave B"};

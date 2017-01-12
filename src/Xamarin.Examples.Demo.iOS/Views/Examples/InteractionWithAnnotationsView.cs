@@ -2,10 +2,8 @@
 using System.Linq;
 using Foundation;
 using SciChart.Examples.Demo.Data;
-using SciChart.Examples.Demo.Fragments.Base;
 using SciChart.iOS.Charting;
 using UIKit;
-using Xamarin.Examples.Demo.iOS.Helpers;
 using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
 
@@ -29,7 +27,6 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         protected override void InitExampleInternal()
         {
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
-            StyleHelper.SetSurfaceDefaultStyle(Surface);
 
             var dataSeries = new OhlcDataSeries<DateTime, double>();
 
@@ -38,9 +35,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 dataSeries.Append(priceBar.DateTime, priceBar.Open, priceBar.High, priceBar.Low, priceBar.Close);
             }
 
-            var axisStyle = StyleHelper.GetDefaultAxisStyle();
-            var xAxis = new SCICategoryDateTimeAxis {IsXAxis = true, VisibleRange = new SCIDoubleRange(0, 199), Style = axisStyle};
-            var yAxis = new SCINumericAxis { VisibleRange = new SCIDoubleRange(30, 37), Style = axisStyle};
+            var xAxis = new SCICategoryDateTimeAxis {IsXAxis = true, VisibleRange = new SCIDoubleRange(0, 199)};
+            var yAxis = new SCINumericAxis { VisibleRange = new SCIDoubleRange(30, 37)};
 
             Surface.AttachAxis(xAxis, true);
             Surface.AttachAxis(yAxis, false);

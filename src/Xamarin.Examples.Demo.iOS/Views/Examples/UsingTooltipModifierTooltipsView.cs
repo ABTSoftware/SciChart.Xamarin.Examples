@@ -3,7 +3,6 @@ using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
 using SciChart.iOS.Charting;
 using UIKit;
-using Xamarin.Examples.Demo.iOS.Helpers;
 using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
 
@@ -30,11 +29,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         protected override void InitExampleInternal()
         {
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
-            StyleHelper.SetSurfaceDefaultStyle(Surface);
 
-            var axisStyle = StyleHelper.GetDefaultAxisStyle();
-            var xAxis = new SCINumericAxis {IsXAxis = true, GrowBy = new SCIDoubleRange(0.1, 0.1), AutoRange = SCIAutoRangeMode.Always, Style = axisStyle};
-            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1), Style = axisStyle};
+            var xAxis = new SCINumericAxis {IsXAxis = true, GrowBy = new SCIDoubleRange(0.1, 0.1), AutoRange = SCIAutoRangeMode.Always};
+            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
 
             var ds1 = new XyDataSeries<double, double> { SeriesName = "Lissajous Curve", AcceptUnsortedData = true };
             var ds2 = new XyDataSeries<double, double> { SeriesName = "Sinewave", AcceptUnsortedData = true };
