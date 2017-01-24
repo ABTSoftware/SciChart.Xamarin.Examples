@@ -34,9 +34,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var leftAxis = new SCINumericAxis {AxisAlignment = SCIAxisAlignmentMode.Left, AxisId = SCIAxisAlignmentMode.Left.ToString()};
             var rightAxis = new SCINumericAxis {AxisAlignment = SCIAxisAlignmentMode.Right, AxisId = SCIAxisAlignmentMode.Right.ToString()};
 
-            Surface.AttachAxis(xAxis, true);
-            Surface.AttachAxis(leftAxis, false);
-            Surface.AttachAxis(rightAxis, false);
+            Surface.XAxes.Add(xAxis);
+            Surface.YAxes.Add(leftAxis);
+            Surface.YAxes.Add(rightAxis);
 
             var initialColor = UIColor.Blue;
 
@@ -57,7 +57,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 var newB = initialColor.B() == 0 ? 0 : initialColor.B() - 2;
                 initialColor = UIColor.FromRGB((byte)newR, initialColor.G(), (byte)newB);
 
-                Surface.AttachRenderableSeries(rs);
+				Surface.RenderableSeries.Add(rs);
             }
 
             //var selectedStrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.White).WithThickness(4f).Build();

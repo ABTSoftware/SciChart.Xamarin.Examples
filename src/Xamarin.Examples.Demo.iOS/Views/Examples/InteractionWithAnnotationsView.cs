@@ -38,9 +38,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var xAxis = new SCICategoryDateTimeAxis {IsXAxis = true, VisibleRange = new SCIDoubleRange(0, 199)};
             var yAxis = new SCINumericAxis { VisibleRange = new SCIDoubleRange(30, 37)};
 
-            Surface.AttachAxis(xAxis, true);
-            Surface.AttachAxis(yAxis, false);
-            Surface.AttachRenderableSeries(new SCIFastCandlestickRenderableSeries { DataSeries = dataSeries });
+			Surface.XAxes.Add(xAxis);
+            Surface.YAxes.Add(yAxis);
+			Surface.RenderableSeries.Add(new SCIFastCandlestickRenderableSeries { DataSeries = dataSeries });
 
             Surface.Annotation = new SCIAnnotationGroup(new NSObject[]
             {

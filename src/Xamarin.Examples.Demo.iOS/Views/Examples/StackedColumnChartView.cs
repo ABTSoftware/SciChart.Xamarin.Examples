@@ -69,10 +69,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             //columnsCollection.AddSeries(verticalCollection1);
             //columnsCollection.AddSeries(verticalCollection2);
 
-            Surface.AttachAxis(xAxis, true);
-            Surface.AttachAxis(yAxis, false);
-            Surface.AttachRenderableSeries(verticalCollection1);
-            Surface.AttachRenderableSeries(verticalCollection2);
+            Surface.XAxes.Add(xAxis);
+            Surface.YAxes.Add(yAxis);
+			Surface.RenderableSeries.Add(verticalCollection1);
+			Surface.RenderableSeries.Add(verticalCollection2);
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
             {

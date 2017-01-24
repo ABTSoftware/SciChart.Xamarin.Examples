@@ -46,12 +46,12 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             ds3.Append(data3.XData, data3.YData);
             ds4.Append(data4.XData, data4.YData);
 
-            Surface.AttachAxis(xAxis, true);
-            Surface.AttachAxis(yAxis, false);
-            Surface.AttachRenderableSeries(new SCIFastLineRenderableSeries {DataSeries = ds1, Style = {LinePen = new SCIPenSolid(UIColor.Green, 2f)}});
-            Surface.AttachRenderableSeries(new SCIFastLineRenderableSeries {DataSeries = ds2, Style = {LinePen = new SCIPenSolid(UIColor.Red, 2f)}});
-            Surface.AttachRenderableSeries(new SCIFastLineRenderableSeries {DataSeries = ds3, Style = {LinePen = new SCIPenSolid(UIColor.Gray, 2f)}});
-            Surface.AttachRenderableSeries(new SCIFastLineRenderableSeries {DataSeries = ds4, Style = {LinePen = new SCIPenSolid(GoldColor, 2f)}});
+			Surface.XAxes.Add(xAxis);
+			Surface.YAxes.Add(yAxis);
+			Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds1, Style = {LinePen = new SCIPenSolid(UIColor.Green, 2f)}});
+			Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds2, Style = {LinePen = new SCIPenSolid(UIColor.Red, 2f)}});
+			Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds3, Style = {LinePen = new SCIPenSolid(UIColor.Gray, 2f)}});
+			Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds4, Style = {LinePen = new SCIPenSolid(GoldColor, 2f)}});
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
             {

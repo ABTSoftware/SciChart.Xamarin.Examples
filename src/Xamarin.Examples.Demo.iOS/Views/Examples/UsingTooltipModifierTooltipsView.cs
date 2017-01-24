@@ -44,10 +44,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             ds1.Append(scaledXValues, ds1Points.YData);
             ds2.Append(ds2Points.XData, ds2Points.YData);
 
-            Surface.AttachAxis(xAxis, true);
-            Surface.AttachAxis(yAxis, false);
+			Surface.XAxes.Add(xAxis);
+            Surface.YAxes.Add(yAxis);
 
-            Surface.AttachRenderableSeries(new SCIFastLineRenderableSeries
+			Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
             {
                 DataSeries = ds1,
                 Style =
@@ -62,7 +62,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     }
                 }
             });
-            Surface.AttachRenderableSeries(new SCIFastLineRenderableSeries
+			Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
             {
                 DataSeries = ds2,
                 Style =

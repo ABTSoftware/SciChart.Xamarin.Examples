@@ -50,13 +50,13 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 Style = { LinePen = new SCIPenSolid(UIColor.Red, 1.0f) }
             };
 
-            Surface.AttachAxis(xAxis, true);
-            Surface.AttachAxis(yAxis, false);
+			Surface.XAxes.Add(xAxis);
+			Surface.YAxes.Add(yAxis);
 
-            Surface.AttachRenderableSeries(createRenderableSeriesWith(xyyDataSeries));
-            Surface.AttachRenderableSeries(createRenderableSeriesWith(xyyDataSeries1));
-            Surface.AttachRenderableSeries(createRenderableSeriesWith(xyyDataSeries2));
-            Surface.AttachRenderableSeries(dataRenderSeries);
+			Surface.RenderableSeries.Add(createRenderableSeriesWith(xyyDataSeries));
+			Surface.RenderableSeries.Add(createRenderableSeriesWith(xyyDataSeries1));
+			Surface.RenderableSeries.Add(createRenderableSeriesWith(xyyDataSeries2));
+			Surface.RenderableSeries.Add(dataRenderSeries);
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
             {

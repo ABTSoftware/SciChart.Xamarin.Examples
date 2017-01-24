@@ -61,9 +61,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             stackedGroup.AddSeries(bottomRenderSeries);
             stackedGroup.AddSeries(topRenderSeries);
 
-            Surface.AttachAxis(xAxis, true);
-            Surface.AttachAxis(yAxis, false);
-            Surface.AttachRenderableSeries(stackedGroup);
+            Surface.XAxes.Add(xAxis);
+            Surface.YAxes.Add(yAxis);
+			Surface.RenderableSeries.Add(stackedGroup);
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
             {

@@ -110,9 +110,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             columnsCollection.AddSeries(GetRenderableSeries(japanDataSeries, UIColor.FromRGB(0x00, 0x6C, 0x6A), UIColor.FromRGB(0x00, 0xab, 0xa9)));
             columnsCollection.AddSeries(GetRenderableSeries(restOfTheWorldDataSeries, UIColor.FromRGB(0x3D, 0x00, 0x49), UIColor.FromRGB(0x56, 0x00, 0x68)));
 
-            Surface.AttachAxis(xAxis, true);
-            Surface.AttachAxis(yAxis, false);
-            Surface.AttachRenderableSeries(columnsCollection);
+            Surface.XAxes.Add(xAxis);
+            Surface.YAxes.Add(yAxis);
+			Surface.RenderableSeries.Add(columnsCollection);
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[] {new SCITooltipModifier()});
 

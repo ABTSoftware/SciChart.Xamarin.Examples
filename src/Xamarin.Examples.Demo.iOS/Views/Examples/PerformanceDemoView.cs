@@ -74,11 +74,11 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 Style = { LinePen = new SCIPenSolid(UIColor.FromRGB(0xE1, 0x32, 0x19), 2f) }
             };
 
-            Surface.AttachAxis(xAxis, true);
-            Surface.AttachAxis(yAxis, false);
-            Surface.AttachRenderableSeries(rs1);
-            Surface.AttachRenderableSeries(rs2);
-            Surface.AttachRenderableSeries(rs3);
+			Surface.XAxes.Add(xAxis);
+			Surface.YAxes.Add(yAxis);
+			Surface.RenderableSeries.Add(rs1);
+			Surface.RenderableSeries.Add(rs2);
+			Surface.RenderableSeries.Add(rs3);
 
             Surface.InvalidateElement();
         }

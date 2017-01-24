@@ -73,11 +73,11 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 }
             };
 
-            Surface.AttachAxis(xAxis, true);
-            Surface.AttachAxis(yAxis, false);
-            Surface.AttachRenderableSeries(verticalRenderableSeries);
-            Surface.AttachRenderableSeries(horizontalRenderableSeries);
-            Surface.AttachRenderableSeries(renderSeries);
+			Surface.XAxes.Add(xAxis);
+			Surface.YAxes.Add(yAxis);
+			Surface.RenderableSeries.Add(verticalRenderableSeries);
+			Surface.RenderableSeries.Add(horizontalRenderableSeries);
+			Surface.RenderableSeries.Add(renderSeries);
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
             {

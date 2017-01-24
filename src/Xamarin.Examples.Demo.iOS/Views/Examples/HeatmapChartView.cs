@@ -69,9 +69,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 Style = { }
             };
 
-            Surface.XAxes.AddItem(xAxis);
-            Surface.YAxes.AddItem(yAxis);
-            Surface.AttachRenderableSeries(renderSeries);
+            Surface.XAxes.Add(xAxis);
+            Surface.YAxes.Add(yAxis);
+			Surface.RenderableSeries.Add(renderSeries);
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
             {
