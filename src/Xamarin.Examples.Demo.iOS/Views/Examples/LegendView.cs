@@ -26,7 +26,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         {
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
 
-            var xAxis = new SCINumericAxis {IsXAxis = true};
+            var xAxis = new SCINumericAxis();
             var yAxis = new SCINumericAxis();
 
             var ds1 = new XyDataSeries<double, double> {SeriesName = "Curve A"};
@@ -44,24 +44,24 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             ds3.Append(ds3Points.XData, ds3Points.YData);
             ds4.Append(ds4Points.XData, ds4Points.YData);
 
-			Surface.XAxes.Add(xAxis);
-			Surface.YAxes.Add(yAxis);
-			Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
+            Surface.XAxes.Add(xAxis);
+            Surface.YAxes.Add(yAxis);
+            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
             {
                 DataSeries = ds1,
                 Style = {LinePen = new SCIPenSolid(UIColor.FromRGB(0xFF, 0xFF, 0x00), 2f)}
             });
-			Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
+            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
             {
                 DataSeries = ds2,
                 Style = {LinePen = new SCIPenSolid(UIColor.FromRGB(0x27, 0x9B, 0x27), 2f)}
             });
-			Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
+            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
             {
                 DataSeries = ds3,
                 Style = {LinePen = new SCIPenSolid(UIColor.FromRGB(0xFF, 0x19, 0x19), 2f)}
             });
-			Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
+            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
             {
                 DataSeries = ds4,
                 IsVisible = false,

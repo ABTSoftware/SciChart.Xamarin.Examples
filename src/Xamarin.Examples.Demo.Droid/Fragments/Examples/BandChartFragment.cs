@@ -28,14 +28,8 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             var dataSeries = new XyyDataSeries<double, double>();
             dataSeries.Append(data0.XData, data0.YData, data1.YData);
 
-            var xAxis = new NumericAxis(Activity)
-            {
-                VisibleRange = new DoubleRange(1.1, 2.7)
-            };
-            var yAxis = new NumericAxis(Activity)
-            {
-                GrowBy = new DoubleRange(0.1, 0.1)
-            };
+            var xAxis = new NumericAxis(Activity) {VisibleRange = new DoubleRange(1.1, 2.7)};
+            var yAxis = new NumericAxis(Activity) {GrowBy = new DoubleRange(0.1, 0.1)};
 
             var rs = new FastBandRenderableSeries
             {

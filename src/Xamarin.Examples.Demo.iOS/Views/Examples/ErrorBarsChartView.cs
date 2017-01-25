@@ -31,8 +31,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var dataSeries = new XyDataSeries<double, double>();
             dataSeries.Append(data0.XData, data0.YData);
 
-            var xAxis = new SCINumericAxis { GrowBy = new SCIDoubleRange(0.1, 0.1) };
-            var yAxis = new SCINumericAxis { GrowBy = new SCIDoubleRange(0.1, 0.1) };
+            var xAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
+            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
 
             var verticalRenderableSeries = new SCIFastFixedErrorBarsRenderableSeries
             {
@@ -60,10 +60,12 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var renderSeries = new SCIFastLineRenderableSeries
             {
                 DataSeries = dataSeries,
-                Style = { 
+                Style =
+                { 
                     LinePen = new SCIPenSolid(new UIColor( 176.0f/255.0f, 196.0f/255.0f, 222.0f/255.0f, 1.0f), 0.7f),
                     DrawPointMarkers = true,
-                    PointMarker = new SCIEllipsePointMarker{
+                    PointMarker = new SCIEllipsePointMarker
+                    {
                         DrawBorder = true,
                         Width = 15,
                         Height = 15,
@@ -73,11 +75,11 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 }
             };
 
-			Surface.XAxes.Add(xAxis);
-			Surface.YAxes.Add(yAxis);
-			Surface.RenderableSeries.Add(verticalRenderableSeries);
-			Surface.RenderableSeries.Add(horizontalRenderableSeries);
-			Surface.RenderableSeries.Add(renderSeries);
+            Surface.XAxes.Add(xAxis);
+            Surface.YAxes.Add(yAxis);
+            Surface.RenderableSeries.Add(verticalRenderableSeries);
+            Surface.RenderableSeries.Add(horizontalRenderableSeries);
+            Surface.RenderableSeries.Add(renderSeries);
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
             {

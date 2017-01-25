@@ -32,7 +32,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         {
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
 
-            var xAxis = new SCINumericAxis {IsXAxis = true};
+            var xAxis = new SCINumericAxis();
             var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.2, 0.2)};
 
             var ds1 = new XyDataSeries<double, double> {SeriesName = "Sinewave A"};
@@ -51,9 +51,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 ds3.Append(i, (i/count)*sin);
             }
 
-			Surface.XAxes.Add(xAxis);
+            Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
-			Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
+            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
             {
                 DataSeries = ds1,
                 Style =
@@ -67,7 +67,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     }
                 }
             });
-			Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
+            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
             {
                 DataSeries = ds2,
                 Style =
@@ -81,7 +81,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     }
                 }
             });
-			Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
+            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
             {
                 DataSeries = ds3,
                 Style = {LinePen = new SCIPenSolid(LightSteelBlueColor, 2f)}

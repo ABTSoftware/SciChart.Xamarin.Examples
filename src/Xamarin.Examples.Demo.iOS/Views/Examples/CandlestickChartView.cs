@@ -32,7 +32,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var dataSeries = new OhlcDataSeries<DateTime, double>(TypeOfSeries.XCategory);
             dataSeries.Append(data.TimeData, data.OpenData, data.HighData, data.LowData, data.CloseData);
 
-            var xAxis = new SCICategoryDateTimeAxis {IsXAxis = true};
+            var xAxis = new SCICategoryDateTimeAxis();
             var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
 
             var renderSeries = new SCIFastCandlestickRenderableSeries
@@ -47,9 +47,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 }
             };
 
-			Surface.XAxes.Add(xAxis);
-			Surface.YAxes.Add(yAxis);
-			Surface.RenderableSeries.Add(renderSeries);
+            Surface.XAxes.Add(xAxis);
+            Surface.YAxes.Add(yAxis);
+            Surface.RenderableSeries.Add(renderSeries);
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
             {

@@ -36,7 +36,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 tradeDataSource.Select(x => x.TradePrice).ToArray(),
                 tradeDataSource.Select(x => x.TradeSize).ToArray());
 
-            var xAxis = new SCIDateTimeAxis {IsXAxis = true, GrowBy = new SCIDoubleRange(0.0, 0.1)};
+            var xAxis = new SCIDateTimeAxis {GrowBy = new SCIDoubleRange(0.0, 0.1)};
             var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0, 0.1)};
 
             var lineSeries = new SCIFastLineRenderableSeries
@@ -59,10 +59,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 }
             };
 
-			Surface.XAxes.Add(xAxis);
-			Surface.YAxes.Add(yAxis);
-			Surface.RenderableSeries.Add(lineSeries);
-			Surface.RenderableSeries.Add(bubbleSeries);
+            Surface.XAxes.Add(xAxis);
+            Surface.YAxes.Add(yAxis);
+            Surface.RenderableSeries.Add(lineSeries);
+            Surface.RenderableSeries.Add(bubbleSeries);
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
             {

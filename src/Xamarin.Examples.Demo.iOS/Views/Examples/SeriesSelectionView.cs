@@ -30,7 +30,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         {
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
 
-            var xAxis = new SCINumericAxis {IsXAxis = true, AutoRange = SCIAutoRangeMode.Always};
+            var xAxis = new SCINumericAxis {AutoRange = SCIAutoRangeMode.Always};
             var leftAxis = new SCINumericAxis {AxisAlignment = SCIAxisAlignmentMode.Left, AxisId = SCIAxisAlignmentMode.Left.ToString()};
             var rightAxis = new SCINumericAxis {AxisAlignment = SCIAxisAlignmentMode.Right, AxisId = SCIAxisAlignmentMode.Right.ToString()};
 
@@ -57,7 +57,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 var newB = initialColor.B() == 0 ? 0 : initialColor.B() - 2;
                 initialColor = UIColor.FromRGB((byte)newR, initialColor.G(), (byte)newB);
 
-				Surface.RenderableSeries.Add(rs);
+                Surface.RenderableSeries.Add(rs);
             }
 
             //var selectedStrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.White).WithThickness(4f).Build();

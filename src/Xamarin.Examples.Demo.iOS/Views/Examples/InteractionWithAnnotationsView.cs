@@ -35,12 +35,12 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 dataSeries.Append(priceBar.DateTime, priceBar.Open, priceBar.High, priceBar.Low, priceBar.Close);
             }
 
-            var xAxis = new SCICategoryDateTimeAxis {IsXAxis = true, VisibleRange = new SCIDoubleRange(0, 199)};
-            var yAxis = new SCINumericAxis { VisibleRange = new SCIDoubleRange(30, 37)};
+            var xAxis = new SCICategoryDateTimeAxis {VisibleRange = new SCIDoubleRange(0, 199)};
+            var yAxis = new SCINumericAxis {VisibleRange = new SCIDoubleRange(30, 37)};
 
-			Surface.XAxes.Add(xAxis);
+            Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
-			Surface.RenderableSeries.Add(new SCIFastCandlestickRenderableSeries { DataSeries = dataSeries });
+            Surface.RenderableSeries.Add(new SCIFastCandlestickRenderableSeries {DataSeries = dataSeries});
 
             Surface.Annotation = new SCIAnnotationGroup(new NSObject[]
             {

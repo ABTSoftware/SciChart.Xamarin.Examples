@@ -25,7 +25,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         {
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
 
-            var xAxis = new SCINumericAxis {IsXAxis = true, AxisAlignment = SCIAxisAlignmentMode.Left};
+            var xAxis = new SCINumericAxis {AxisAlignment = SCIAxisAlignmentMode.Left};
             var yAxis = new SCINumericAxis {AxisAlignment = SCIAxisAlignmentMode.Bottom, FlipCoordinates = true};
 
             var yValues1 = new[] {0.0, 0.1, 0.2, 0.4, 0.8, 1.1, 1.5, 2.4, 4.6, 8.1, 11.7, 14.4, 16.0, 13.7, 10.1, 6.4, 3.5, 2.5, 5.4, 6.4, 7.1, 8.0, 9.0};
@@ -55,7 +55,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
-			Surface.RenderableSeries.Add(columnsCollection);
+            Surface.RenderableSeries.Add(columnsCollection);
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
             {

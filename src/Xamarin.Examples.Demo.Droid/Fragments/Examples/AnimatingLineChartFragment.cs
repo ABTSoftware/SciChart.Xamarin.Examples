@@ -35,7 +35,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
         private readonly Random _random = new Random();
 
-        private readonly XyDataSeries<double, double> _dataSeries = new XyDataSeries<double, double>() { FifoCapacityValue = FifoCapacity };
+        private readonly XyDataSeries<double, double> _dataSeries = new XyDataSeries<double, double> { FifoCapacityValue = FifoCapacity };
 
         private volatile bool _isRunning;
         private double _t;
@@ -55,7 +55,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 var xAxis = new NumericAxis(Activity) { VisibleRange = _xVisibleRange, AutoRange = AutoRange.Never };
                 var yAxis = new NumericAxis(Activity) { GrowBy = new DoubleRange(0.1, 0.1), AutoRange = AutoRange.Always };
 
-                var rs = new AnimatingLineRenderableSeries()
+                var rs = new AnimatingLineRenderableSeries
                 {
                     DataSeries = _dataSeries,
                     StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.Argb(0xFF, 0x40, 0x83, 0xB7)).WithAntiAliasing(true).WithThickness(3).Build()

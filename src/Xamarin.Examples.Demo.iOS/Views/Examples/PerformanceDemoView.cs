@@ -55,7 +55,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             _exampleViewLayout.Pause.TouchUpInside += (sender, args) => Pause();
             _exampleViewLayout.Reset.TouchUpInside += (sender, args) => Reset();
 
-            var xAxis = new SCINumericAxis {IsXAxis = true, AutoRange = SCIAutoRangeMode.Always, AxisTitle = "X-Axis"};
+            var xAxis = new SCINumericAxis {AutoRange = SCIAutoRangeMode.Always, AxisTitle = "X-Axis"};
             var yAxis = new SCINumericAxis {AutoRange = SCIAutoRangeMode.Always, AxisTitle = "Y-Axis"};
 
             var rs1 = new SCIFastLineRenderableSeries
@@ -74,11 +74,11 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 Style = { LinePen = new SCIPenSolid(UIColor.FromRGB(0xE1, 0x32, 0x19), 2f) }
             };
 
-			Surface.XAxes.Add(xAxis);
-			Surface.YAxes.Add(yAxis);
-			Surface.RenderableSeries.Add(rs1);
-			Surface.RenderableSeries.Add(rs2);
-			Surface.RenderableSeries.Add(rs3);
+            Surface.XAxes.Add(xAxis);
+            Surface.YAxes.Add(yAxis);
+            Surface.RenderableSeries.Add(rs1);
+            Surface.RenderableSeries.Add(rs2);
+            Surface.RenderableSeries.Add(rs3);
 
             Surface.InvalidateElement();
         }

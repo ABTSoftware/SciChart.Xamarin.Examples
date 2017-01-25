@@ -32,7 +32,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var dataSeries = new XyDataSeries<double, double>();
             dataSeries.Append(dampedSinewave.XData, dampedSinewave.YData);
 
-            var xAxis = new SCINumericAxis {IsXAxis = true, GrowBy = new SCIDoubleRange(0.1, 0.1)};
+            var xAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
             var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
 
             var renderSeries = new SCIXyScatterRenderableSeries
@@ -52,7 +52,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
-			Surface.RenderableSeries.Add(renderSeries);
+            Surface.RenderableSeries.Add(renderSeries);
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
             {

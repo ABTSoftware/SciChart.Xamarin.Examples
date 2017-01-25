@@ -28,7 +28,6 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
             var xAxis = new SCINumericAxis
             {
-                IsXAxis = true,
                 AutoTicks = false,
                 MajorDelta = 1,
                 //MinorDelta = 0.5,
@@ -112,7 +111,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
-			Surface.RenderableSeries.Add(columnsCollection);
+            Surface.RenderableSeries.Add(columnsCollection);
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[] {new SCITooltipModifier()});
 

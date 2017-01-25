@@ -27,9 +27,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         {
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
 
-            var xAxis = new SCIDateTimeAxis { GrowBy = new SCIDoubleRange(0.1, 0.1) };
-            xAxis.TextFormatting = "dd/MM/YYYY";
-            var yAxis = new SCINumericAxis { GrowBy = new SCIDoubleRange(0.1, 0.1) };
+            var xAxis = new SCIDateTimeAxis {GrowBy = new SCIDoubleRange(0.1, 0.1), TextFormatting = "dd/MM/YYYY"};
+            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
 
             var dataSeries = new XyDataSeries<DateTime, double> {DataDistributionCalculator = new SCIUserDefinedDistributionCalculator()};
             var xyyDataSeries = new XyyDataSeries<DateTime, double> {DataDistributionCalculator = new SCIUserDefinedDistributionCalculator()};
@@ -50,13 +49,13 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 Style = { LinePen = new SCIPenSolid(UIColor.Red, 1.0f) }
             };
 
-			Surface.XAxes.Add(xAxis);
-			Surface.YAxes.Add(yAxis);
+            Surface.XAxes.Add(xAxis);
+            Surface.YAxes.Add(yAxis);
 
-			Surface.RenderableSeries.Add(createRenderableSeriesWith(xyyDataSeries));
-			Surface.RenderableSeries.Add(createRenderableSeriesWith(xyyDataSeries1));
-			Surface.RenderableSeries.Add(createRenderableSeriesWith(xyyDataSeries2));
-			Surface.RenderableSeries.Add(dataRenderSeries);
+            Surface.RenderableSeries.Add(createRenderableSeriesWith(xyyDataSeries));
+            Surface.RenderableSeries.Add(createRenderableSeriesWith(xyyDataSeries1));
+            Surface.RenderableSeries.Add(createRenderableSeriesWith(xyyDataSeries2));
+            Surface.RenderableSeries.Add(dataRenderSeries);
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
             {

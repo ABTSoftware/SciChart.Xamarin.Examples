@@ -25,9 +25,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         private readonly Random _random = new Random();
 
-        private readonly XyDataSeries<double, double> _ds1 = new XyDataSeries<double, double> { FifoCapacity = FifoCapacity };
-        private readonly XyDataSeries<double, double> _ds2 = new XyDataSeries<double, double> { FifoCapacity = FifoCapacity };
-        private readonly XyDataSeries<double, double> _ds3 = new XyDataSeries<double, double> { FifoCapacity = FifoCapacity };
+        private readonly XyDataSeries<double, double> _ds1 = new XyDataSeries<double, double> {FifoCapacity = FifoCapacity};
+        private readonly XyDataSeries<double, double> _ds2 = new XyDataSeries<double, double> {FifoCapacity = FifoCapacity};
+        private readonly XyDataSeries<double, double> _ds3 = new XyDataSeries<double, double> {FifoCapacity = FifoCapacity};
 
         private readonly SCIDoubleRange _xVisibleRange = new SCIDoubleRange(-GrowBy, VisibleRangeMax + GrowBy);
 
@@ -47,7 +47,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             _exampleViewLayout.Pause.TouchUpInside += (sender, args) => Pause();
             _exampleViewLayout.Reset.TouchUpInside += (sender, args) => Reset();
 
-            var xAxis = new SCINumericAxis {IsXAxis = true, VisibleRange = _xVisibleRange, AutoRange = SCIAutoRangeMode.Never};
+            var xAxis = new SCINumericAxis {VisibleRange = _xVisibleRange, AutoRange = SCIAutoRangeMode.Never};
             var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1), AutoRange = SCIAutoRangeMode.Always};
 
             var rs1 = new SCIFastLineRenderableSeries
@@ -66,11 +66,11 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 Style = { LinePen = new SCIPenSolid(UIColor.FromRGB(0xE1, 0x32, 0x19), 2f) }
             };
 
-			Surface.XAxes.Add(xAxis);
+            Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
-			Surface.RenderableSeries.Add(rs1);
-			Surface.RenderableSeries.Add(rs2);
-			Surface.RenderableSeries.Add(rs3);
+            Surface.RenderableSeries.Add(rs1);
+            Surface.RenderableSeries.Add(rs2);
+            Surface.RenderableSeries.Add(rs3);
 
             Surface.InvalidateElement();
 

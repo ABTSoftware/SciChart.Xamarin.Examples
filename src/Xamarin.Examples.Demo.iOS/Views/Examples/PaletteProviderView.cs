@@ -67,7 +67,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var dataSeries = new XyDataSeries<double, double>();
             dataSeries.Append(fourierSeries.XData, fourierSeries.YData);
 
-            var xAxis = new SCINumericAxis {IsXAxis = true, GrowBy = new SCIDoubleRange(0.1, 0.1)};
+            var xAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
             var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
 
             var renderSeries = new SCIFastLineRenderableSeries
@@ -76,9 +76,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 Style = {LinePen = new SCIPenSolid(0xFF99EE99, 0.7f)},
                 PaletteProvider = new ZeroLinePaletteProvider()
             };
-			Surface.XAxes.Add(xAxis);
-			Surface.YAxes.Add(yAxis);
-			Surface.RenderableSeries.Add(renderSeries);
+            Surface.XAxes.Add(xAxis);
+            Surface.YAxes.Add(yAxis);
+            Surface.RenderableSeries.Add(renderSeries);
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
             {

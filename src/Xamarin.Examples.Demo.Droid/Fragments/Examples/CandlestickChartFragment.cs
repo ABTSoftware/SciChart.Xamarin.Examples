@@ -29,10 +29,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             dataSeries.Append(data.TimeData, data.OpenData, data.HighData, data.LowData, data.CloseData);
 
             var xAxis = new CategoryDateAxis(Activity);
-            var yAxis = new NumericAxis(Activity)
-            {
-                GrowBy = new DoubleRange(0, 0.1)
-            };
+            var yAxis = new NumericAxis(Activity) {GrowBy = new DoubleRange(0, 0.1)};
 
             var rs = new FastCandlestickRenderableSeries
             {

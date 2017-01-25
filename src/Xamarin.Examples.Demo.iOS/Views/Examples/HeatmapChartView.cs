@@ -60,7 +60,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         {
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
 
-            var xAxis = new SCINumericAxis { IsXAxis = true };
+            var xAxis = new SCINumericAxis();
             var yAxis = new SCINumericAxis();
 
             var renderSeries = new SCIHeatMapRenderableSeries
@@ -71,7 +71,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
-			Surface.RenderableSeries.Add(renderSeries);
+            Surface.RenderableSeries.Add(renderSeries);
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
             {

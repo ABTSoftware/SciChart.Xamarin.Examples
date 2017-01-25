@@ -25,7 +25,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         {
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
 
-            var xAxis = new SCINumericAxis { IsXAxis = true };
+            var xAxis = new SCINumericAxis();
             var yAxis = new SCINumericAxis();
 
             var porkData = new double[] {10, 13, 7, 16, 4, 6, 20, 14, 16, 10, 24, 11};
@@ -71,8 +71,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
-			Surface.RenderableSeries.Add(verticalCollection1);
-			Surface.RenderableSeries.Add(verticalCollection2);
+            Surface.RenderableSeries.Add(verticalCollection1);
+            Surface.RenderableSeries.Add(verticalCollection2);
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
             {

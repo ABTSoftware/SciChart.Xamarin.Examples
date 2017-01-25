@@ -30,7 +30,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         {
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
 
-            var xAxis = new SCINumericAxis {IsXAxis = true, GrowBy = new SCIDoubleRange(0.1, 0.1), AutoRange = SCIAutoRangeMode.Always};
+            var xAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1), AutoRange = SCIAutoRangeMode.Always};
             var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
 
             var ds1 = new XyDataSeries<double, double> { SeriesName = "Lissajous Curve", AcceptUnsortedData = true };
@@ -44,10 +44,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             ds1.Append(scaledXValues, ds1Points.YData);
             ds2.Append(ds2Points.XData, ds2Points.YData);
 
-			Surface.XAxes.Add(xAxis);
+            Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
 
-			Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
+            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
             {
                 DataSeries = ds1,
                 Style =
@@ -62,7 +62,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     }
                 }
             });
-			Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
+            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
             {
                 DataSeries = ds2,
                 Style =
