@@ -1,5 +1,4 @@
 ﻿using Android.Graphics;
-using Android.Util;
 using SciChart.Charting.Model;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Modifiers;
@@ -34,7 +33,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             var renderableSeries = new FastLineRenderableSeries
             {
                 DataSeries = dataSeries,
-                StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.Rgb(0x27, 0x9B, 0x27)).WithThickness(2f, ComplexUnitType.Dip).Build()
+                StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0x27, 0x9B, 0x27), true, 2f),
             };
 
             using (Surface.SuspendUpdates())

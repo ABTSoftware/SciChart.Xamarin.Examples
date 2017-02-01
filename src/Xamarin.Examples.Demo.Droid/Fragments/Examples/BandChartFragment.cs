@@ -34,8 +34,8 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             var rs = new FastBandRenderableSeries
             {
                 DataSeries = dataSeries,
-                StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.Argb(0xFF, 0xFF, 0x19, 0x19)).Build(),
-                StrokeY1Style = new PenStyle.Builder(Activity).WithColor(Color.Argb(0xFF, 0x27, 0x9B, 0x27)).Build(),
+                StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0xFF, 0x19, 0x19)),
+                StrokeY1Style = new SolidPenStyle(Activity, Color.Argb(0xFF, 0x27, 0x9B, 0x27)),
                 FillBrushStyle = new SolidBrushStyle(Color.Argb(0x33, 0x27, 0x9B, 0x27)),
                 FillY1BrushStyle = new SolidBrushStyle(Color.Argb(0x33, 0xFF, 0x19, 0x19))
             };

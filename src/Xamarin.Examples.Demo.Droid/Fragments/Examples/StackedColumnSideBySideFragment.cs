@@ -120,7 +120,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             return new StackedColumnRenderableSeries
             {
                 DataSeries = dataSeries,
-                StrokeStyle = new PenStyle.Builder(Activity).WithColor(strokeColor).WithThickness(1f, ComplexUnitType.Dip).Build(),
+                StrokeStyle = new SolidPenStyle(Activity, strokeColor),
                 FillBrushStyle = new SolidBrushStyle(fillColor)
             };
         }

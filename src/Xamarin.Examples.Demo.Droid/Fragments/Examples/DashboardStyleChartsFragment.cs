@@ -3,7 +3,6 @@ using Android.Content;
 using Android.Graphics;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
-using Android.Util;
 using Android.Views;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Visuals;
@@ -34,13 +33,11 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 SeriesColors[i] = color;
             }
 
-            var builder = new PenStyle.Builder(Activity);
-
-            _chartTypesSource.Add(ChartTypeModelFactory.NewHorizontallyStackedColumns(builder));
-            _chartTypesSource.Add(ChartTypeModelFactory.NewVerticallyStackedColumns(builder, false));
-            _chartTypesSource.Add(ChartTypeModelFactory.NewVerticallyStackedColumns(builder, true));
-            _chartTypesSource.Add(ChartTypeModelFactory.NewVerticallyStackedMountains(builder, false));
-            _chartTypesSource.Add(ChartTypeModelFactory.NewVerticallyStackedMountains(builder, true));
+            _chartTypesSource.Add(ChartTypeModelFactory.NewHorizontallyStackedColumns(Activity));
+            _chartTypesSource.Add(ChartTypeModelFactory.NewVerticallyStackedColumns(Activity, false));
+            _chartTypesSource.Add(ChartTypeModelFactory.NewVerticallyStackedColumns(Activity, true));
+            _chartTypesSource.Add(ChartTypeModelFactory.NewVerticallyStackedMountains(Activity, false));
+            _chartTypesSource.Add(ChartTypeModelFactory.NewVerticallyStackedMountains(Activity, true));
 
             //this line fixes swiping lag of the viewPager by caching the pages
             ViewPager.OffscreenPageLimit = 5;
@@ -109,7 +106,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
         private static class ChartTypeModelFactory
         {
-            public static ChartTypeModel NewHorizontallyStackedColumns(PenStyle.Builder penBuilder)
+            public static ChartTypeModel NewHorizontallyStackedColumns(Context context)
             {
                 var seriesCollection = new HorizontallyStackedColumnsCollection();
                 for (var i = 0; i < 5; i++)
@@ -120,7 +117,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     var rSeries = new StackedColumnRenderableSeries
                     {
                         DataSeries = dataSeries,
-                        StrokeStyle = penBuilder.WithColor(new Color(SeriesColors[i * 2])).WithThickness(1f, ComplexUnitType.Dip).Build(),
+                        StrokeStyle = new SolidPenStyle(context, new Color(SeriesColors[i * 2])),
                         FillBrushStyle = new LinearGradientBrushStyle(0,0,0,1, new Color(SeriesColors[i * 2 + 1]), new Color(SeriesColors[i * 2]), TileMode.Clamp)
 
                     };
@@ -131,7 +128,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 return new ChartTypeModel(seriesCollection, name);
             }
 
-            public static ChartTypeModel NewVerticallyStackedColumns(PenStyle.Builder penBuilder, bool isOneHundredPercent)
+            public static ChartTypeModel NewVerticallyStackedColumns(Context context, bool isOneHundredPercent)
             {
                 var collection = new VerticallyStackedColumnsCollection {IsOneHundredPercent = isOneHundredPercent};
                 for (var i = 0; i < 5; i++)
@@ -142,7 +139,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     var rSeries = new StackedColumnRenderableSeries
                     {
                         DataSeries = dataSeries,
-                        StrokeStyle = penBuilder.WithColor(new Color(SeriesColors[i * 2])).WithThickness(1f, ComplexUnitType.Dip).Build(),
+                        StrokeStyle = new SolidPenStyle(context, new Color(SeriesColors[i * 2])),
                         FillBrushStyle = new LinearGradientBrushStyle(0, 0, 0, 1, new Color(SeriesColors[i * 2 + 1]), new Color(SeriesColors[i * 2]), TileMode.Clamp)
 
                     };
@@ -154,7 +151,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 return new ChartTypeModel(collection, name);
             }
 
-            public static ChartTypeModel NewVerticallyStackedMountains(PenStyle.Builder penBuilder, bool isOneHundredPercent)
+            public static ChartTypeModel NewVerticallyStackedMountains(Context context, bool isOneHundredPercent)
             {
                 var collection = new VerticallyStackedMountainsCollection {IsOneHundredPercent = isOneHundredPercent};
                 for (var i = 0; i < 5; i++)
@@ -165,7 +162,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     var rSeries = new StackedMountainRenderableSeries
                     {
                         DataSeries = dataSeries,
-                        StrokeStyle = penBuilder.WithColor(new Color(SeriesColors[i * 2])).WithThickness(1f, ComplexUnitType.Dip).Build(),
+                        StrokeStyle = new SolidPenStyle(context, new Color(SeriesColors[i * 2])),
                         AreaStyle = new LinearGradientBrushStyle(0, 0, 0, 1, new Color(SeriesColors[i * 2 + 1]), new Color(SeriesColors[i * 2]), TileMode.Clamp)
 
                     };

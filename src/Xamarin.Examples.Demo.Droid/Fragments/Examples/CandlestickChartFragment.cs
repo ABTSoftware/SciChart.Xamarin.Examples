@@ -34,8 +34,8 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             var rs = new FastCandlestickRenderableSeries
             {
                 DataSeries = dataSeries,
-                StrokeUpStyle = new PenStyle.Builder(Activity).WithColor(Color.Green).Build(),
-                StrokeDownStyle = new PenStyle.Builder(Activity).WithColor(Color.Red).Build(),
+                StrokeUpStyle = new SolidPenStyle(Activity, Color.Green),
+                StrokeDownStyle = new SolidPenStyle(Activity, Color.Red),
                 FillUpBrushStyle = new SolidBrushStyle(Color.Green),
                 FillDownBrushStyle = new SolidBrushStyle(Color.Red)
             };

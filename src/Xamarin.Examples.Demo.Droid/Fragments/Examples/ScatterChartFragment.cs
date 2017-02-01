@@ -39,7 +39,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     DataSeries = dataSeries,
                     PointMarker = new EllipsePointMarker
                     {
-                        StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.Argb(255, 176, 196, 222)).WithThickness(2, ComplexUnitType.Dip).Build(),
+                        StrokeStyle = new SolidPenStyle(Activity, Color.Argb(255, 176, 196, 222), true, 2f),
                         FillStyle = new SolidBrushStyle(Color.Argb(255, 70, 130, 180)),
                         Width = (int) TypedValue.ApplyDimension(ComplexUnitType.Dip, 15, Activity.Resources.DisplayMetrics),
                         Height = (int) TypedValue.ApplyDimension(ComplexUnitType.Dip, 15, Activity.Resources.DisplayMetrics)

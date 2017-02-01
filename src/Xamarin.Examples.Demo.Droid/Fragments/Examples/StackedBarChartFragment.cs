@@ -68,7 +68,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             {
                 DataSeries = dataSeries,
                 DataPointWidth = 0.8,
-                StrokeStyle = new PenStyle.Builder(Activity).WithColor(strokeColor).WithThickness(1f, ComplexUnitType.Dip).Build(),
+                StrokeStyle = new SolidPenStyle(Activity, strokeColor),
                 FillBrushStyle = new LinearGradientBrushStyle(0,0,0,1, fillColorStart, fillColorEbd, TileMode.Clamp)
             };
         }

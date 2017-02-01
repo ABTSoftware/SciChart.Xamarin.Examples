@@ -1,5 +1,4 @@
 using Android.Graphics;
-using Android.Util;
 using SciChart.Charting.Model;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Modifiers;
@@ -35,12 +34,12 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             var renderableSeries = new FastImpulseRenderableSeries
             {
                 DataSeries = dataSeries,
-                StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.Rgb(0x00, 0x66, 0xFF)).WithThickness(1f, ComplexUnitType.Dip).Build(),
+                StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0x00, 0x66, 0xFF), true, 2f),
                 PointMarker = new EllipsePointMarker
                 {
                     Width = 10,
                     Height = 10,
-                    StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.Rgb(0x00, 0x66, 0xFF)).WithThickness(0.7f, ComplexUnitType.Dip).Build(),
+                    StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0x00, 0x66, 0xFF), true, 2f),
                     FillStyle = new SolidBrushStyle(Color.Rgb(0x00, 0x66, 0xFF))
                 }
             };

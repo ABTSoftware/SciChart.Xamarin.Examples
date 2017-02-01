@@ -53,7 +53,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     new FastLineRenderableSeries
                     {
                         DataSeries = ds1,
-                        StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.SteelBlue).WithThickness(2, ComplexUnitType.Dip).Build(),
+                        StrokeStyle = new SolidPenStyle(Activity, Color.SteelBlue, true, 2f),
                         PointMarker = new EllipsePointMarker
                         {
                             Width = (int) TypedValue.ApplyDimension(ComplexUnitType.Dip, 7, Activity.Resources.DisplayMetrics),
@@ -64,7 +64,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     new FastLineRenderableSeries
                     {
                         DataSeries = ds2,
-                        StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.DarkGreen).WithThickness(2, ComplexUnitType.Dip).Build(),
+                        StrokeStyle = new SolidPenStyle(Activity, Color.DarkGreen, true, 2f),
                         PointMarker = new EllipsePointMarker
                         {
                             Width = (int) TypedValue.ApplyDimension(ComplexUnitType.Dip, 7, Activity.Resources.DisplayMetrics),
@@ -75,7 +75,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     new FastLineRenderableSeries
                     {
                         DataSeries = ds3,
-                        StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.LightSteelBlue).WithThickness(2, ComplexUnitType.Dip).Build()
+                        StrokeStyle = new SolidPenStyle(Activity, Color.LightSteelBlue, true, 2f),
                     },
                 };
 

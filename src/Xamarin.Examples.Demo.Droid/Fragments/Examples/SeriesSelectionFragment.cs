@@ -58,7 +58,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     {
                         DataSeries = dataSeries,
                         YAxisId = alignment.Name(),
-                        StrokeStyle = new PenStyle.Builder(Activity).WithColor(initialColor).WithThickness(2, ComplexUnitType.Dip).Build()
+                        StrokeStyle = new SolidPenStyle(Activity, initialColor, true, 2f),
                     };
 
                     // Colors are incremented for visual purposes only
@@ -69,13 +69,13 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     Surface.RenderableSeries.Add(rs);
                 }
 
-                var selectedStrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.White).WithThickness(4f).Build();
+                var selectedStrokeStyle = new SolidPenStyle(Activity, Color.White, true, 4f);
                 var selectedPointMarker = new EllipsePointMarker
                 {
                     Width = (int) TypedValue.ApplyDimension(ComplexUnitType.Dip, 10, Context.Resources.DisplayMetrics),
                     Height = (int) TypedValue.ApplyDimension(ComplexUnitType.Dip, 10, Context.Resources.DisplayMetrics),
                     FillStyle = new SolidBrushStyle(Color.Argb(0xFF, 0xFF, 0x00, 0xDC)),
-                    StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.White).WithThickness(1f).Build()
+                    StrokeStyle = new SolidPenStyle(Activity, Color.White)
                 };
 
                 Surface.ChartModifiers.Add(new SeriesSelectionModifier

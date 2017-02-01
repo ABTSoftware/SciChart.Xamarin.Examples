@@ -49,23 +49,23 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     new FastLineRenderableSeries
                     {
                         DataSeries = ds1,
-                        StrokeStyle = new PenStyle.Builder(Activity).WithThickness(2f).WithColor(Color.Rgb(0xFF, 0xFF, 0x00)).Build()
+                        StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0xFF, 0xFF, 0x00), true, 2f),
                     },
                     new FastLineRenderableSeries
                     {
                         DataSeries = ds2,
-                        StrokeStyle = new PenStyle.Builder(Activity).WithThickness(2f).WithColor(Color.Rgb(0x27, 0x9B, 0x27)).Build()
+                        StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0x27, 0x9B, 0x27), true, 2f),
                     },
                     new FastLineRenderableSeries
                     {
                         DataSeries = ds3,
-                        StrokeStyle = new PenStyle.Builder(Activity).WithThickness(2f).WithColor(Color.Rgb(0xFF, 0x19, 0x19)).Build()
+                        StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0xFF, 0x19, 0x19), true, 2f),
                     },
                     new FastLineRenderableSeries
                     {
                         DataSeries = ds4,
                         IsVisible = false,
-                        StrokeStyle = new PenStyle.Builder(Activity).WithThickness(2f).WithColor(Color.Rgb(0x19, 0x64, 0xFF)).Build()
+                        StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0x19, 0x64, 0xFF), true, 2f),
                     }
                 };
 

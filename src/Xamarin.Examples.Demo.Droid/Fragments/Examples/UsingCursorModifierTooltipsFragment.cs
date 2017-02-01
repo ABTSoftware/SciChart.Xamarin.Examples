@@ -48,10 +48,11 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
                 Surface.RenderableSeries = new RenderableSeriesCollection
                 {
-                    new FastLineRenderableSeries { DataSeries = ds1, StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.Green).WithThickness(2, ComplexUnitType.Dip).Build() },
-                    new FastLineRenderableSeries { DataSeries = ds2, StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.Red).WithThickness(2, ComplexUnitType.Dip).Build() },
-                    new FastLineRenderableSeries { DataSeries = ds3, StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.Gray).WithThickness(2, ComplexUnitType.Dip).Build() },
-                    new FastLineRenderableSeries { DataSeries = ds4, StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.Gold).WithThickness(2, ComplexUnitType.Dip).Build() },
+                    new FastLineRenderableSeries { DataSeries = ds1, StrokeStyle = new SolidPenStyle(Activity, Color.Green, true, 2) },
+                    new FastLineRenderableSeries { DataSeries = ds1, StrokeStyle = new SolidPenStyle(Activity, Color.Green, true, 2) },
+                    new FastLineRenderableSeries { DataSeries = ds2, StrokeStyle = new SolidPenStyle(Activity, Color.Red, true, 2) },
+                    new FastLineRenderableSeries { DataSeries = ds3, StrokeStyle = new SolidPenStyle(Activity, Color.Gray, true, 2) },
+                    new FastLineRenderableSeries { DataSeries = ds4, StrokeStyle = new SolidPenStyle(Activity, Color.Gold, true, 2) },
                 };
 
                 Surface.ChartModifiers.Add(new CursorModifier

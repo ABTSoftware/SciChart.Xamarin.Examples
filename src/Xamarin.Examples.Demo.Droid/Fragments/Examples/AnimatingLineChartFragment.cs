@@ -55,10 +55,11 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 var xAxis = new NumericAxis(Activity) { VisibleRange = _xVisibleRange, AutoRange = AutoRange.Never };
                 var yAxis = new NumericAxis(Activity) { GrowBy = new DoubleRange(0.1, 0.1), AutoRange = AutoRange.Always };
 
+                var color = Color.Argb(0xFF, 0x40, 0x83, 0xB7);
                 var rs = new AnimatingLineRenderableSeries
                 {
                     DataSeries = _dataSeries,
-                    StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.Argb(0xFF, 0x40, 0x83, 0xB7)).WithAntiAliasing(true).WithThickness(3).Build()
+                    StrokeStyle = new SolidPenStyle(Activity, color, true, 3)
                 };
 
                 Surface.XAxes.Add(xAxis);

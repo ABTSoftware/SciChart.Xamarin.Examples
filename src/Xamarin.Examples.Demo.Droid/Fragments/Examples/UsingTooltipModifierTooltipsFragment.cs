@@ -52,24 +52,24 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     new FastLineRenderableSeries
                     {
                         DataSeries = ds1,
-                        StrokeStyle = new PenStyle.Builder(Activity).WithColor(rs1Color).WithThickness(2, ComplexUnitType.Dip).Build(),
+                        StrokeStyle = new SolidPenStyle(Activity, rs1Color, true, 2f),
                         PointMarker = new EllipsePointMarker
                         {
                             Width = (int) TypedValue.ApplyDimension(ComplexUnitType.Dip, 5, Context.Resources.DisplayMetrics),
                             Height = (int) TypedValue.ApplyDimension(ComplexUnitType.Dip, 5, Context.Resources.DisplayMetrics),
-                            StrokeStyle = new PenStyle.Builder(Activity).WithColor(rs1Color).WithThickness(2, ComplexUnitType.Dip).Build(),
+                            StrokeStyle = new SolidPenStyle(Activity, rs1Color, true, 2f),
                             FillStyle = new SolidBrushStyle(rs1Color)
                         }
                     },
                     new FastLineRenderableSeries
                     {
                         DataSeries = ds2,
-                        StrokeStyle = new PenStyle.Builder(Activity).WithColor(rs2Color).WithThickness(2, ComplexUnitType.Dip).Build(),
+                            StrokeStyle = new SolidPenStyle(Activity, rs2Color, true, 2f),
                         PointMarker = new EllipsePointMarker
                         {
                             Width = (int) TypedValue.ApplyDimension(ComplexUnitType.Dip, 5, Context.Resources.DisplayMetrics),
                             Height = (int) TypedValue.ApplyDimension(ComplexUnitType.Dip, 5, Context.Resources.DisplayMetrics),
-                            StrokeStyle = new PenStyle.Builder(Activity).WithColor(rs2Color).WithThickness(2, ComplexUnitType.Dip).Build(),
+                            StrokeStyle = new SolidPenStyle(Activity, rs2Color, true, 2f),
                             FillStyle = new SolidBrushStyle(rs2Color)
                         }
                     },

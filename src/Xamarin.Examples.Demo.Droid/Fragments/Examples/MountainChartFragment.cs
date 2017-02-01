@@ -1,6 +1,5 @@
 ﻿using System;
 using Android.Graphics;
-using Android.Util;
 using SciChart.Charting.Model;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Modifiers;
@@ -35,7 +34,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             var renderableSeries = new FastMountainRenderableSeries
             {
                 DataSeries = dataSeries,
-                StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.Argb(0xAA, 0xFF, 0xC9, 0xA8)).WithThickness(2, ComplexUnitType.Dip).Build(),
+                StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xAA, 0xFF, 0xC9, 0xA8), true, 2f),
                 AreaStyle = new LinearGradientBrushStyle(0, 0, 1, 1, Color.Argb(0xAA, 0xFF, 0x8D, 0x42), Color.Argb(0x88, 0x09, 0x0E, 0x11), TileMode.Clamp)
             };
 

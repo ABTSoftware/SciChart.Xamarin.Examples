@@ -1,6 +1,5 @@
 ﻿using System.Timers;
 using Android.Graphics;
-using Android.Util;
 using Android.Widget;
 using Java.Lang;
 using SciChart.Charting.Model.DataSeries;
@@ -70,17 +69,17 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             var rs1 = new FastLineRenderableSeries
             {
                 DataSeries = _mainSeries,
-                StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.Argb(0xFF, 0x40, 0x83, 0xB7)).WithThickness(2, ComplexUnitType.Dip).Build()
+                StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0x40, 0x83, 0xB7), true, 2f),
             };
             var rs2 = new FastLineRenderableSeries
             {
                 DataSeries = _maLowSeries,
-                StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.Argb(0xFF, 0xFF, 0xA5, 0x00)).WithThickness(2, ComplexUnitType.Dip).Build()
+                StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0xFF, 0xA5, 0x00), true, 2f),
             };
             var rs3 = new FastLineRenderableSeries
             {
                 DataSeries = _maHighSeries,
-                StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.Argb(0xFF, 0xE1, 0x32, 0x19)).WithThickness(2, ComplexUnitType.Dip).Build()
+                StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0xE1, 0x32, 0x19), true, 2f),
             };
 
             using (Surface.SuspendUpdates())
