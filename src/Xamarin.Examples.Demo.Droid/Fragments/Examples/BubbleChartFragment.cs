@@ -43,7 +43,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
             var stops = new[] { 0, 0.95f, 1 };
             var colors = new int[] { Color.Transparent, Resources.GetColor(Resource.Color.color_primary), Color.Transparent };
-            var gradientFill = new RadialGradientBrushStyle(0.5f, 0.5f, 0.5f, 0.5f, colors, stops, TileMode.Clamp);
+            var gradientFill = new RadialGradientBrushStyle(0.5f, 0.5f, 0.5f, 0.5f, colors, stops);
 
             var bubbleSeries = new FastBubbleRenderableSeries
             {

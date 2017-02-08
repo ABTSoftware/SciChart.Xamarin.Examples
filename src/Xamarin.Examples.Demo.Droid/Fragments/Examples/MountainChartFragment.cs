@@ -35,7 +35,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             {
                 DataSeries = dataSeries,
                 StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xAA, 0xFF, 0xC9, 0xA8), true, 2f),
-                AreaStyle = new LinearGradientBrushStyle(0, 0, 1, 1, Color.Argb(0xAA, 0xFF, 0x8D, 0x42), Color.Argb(0x88, 0x09, 0x0E, 0x11), TileMode.Clamp)
+                AreaStyle = new LinearGradientBrushStyle(0, 0, 1, 1, Color.Argb(0xAA, 0xFF, 0x8D, 0x42), Color.Argb(0x88, 0x09, 0x0E, 0x11))
             };
 
             using (Surface.SuspendUpdates())

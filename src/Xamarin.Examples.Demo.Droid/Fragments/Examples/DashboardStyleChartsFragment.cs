@@ -118,7 +118,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     {
                         DataSeries = dataSeries,
                         StrokeStyle = new SolidPenStyle(context, new Color(SeriesColors[i * 2])),
-                        FillBrushStyle = new LinearGradientBrushStyle(0,0,0,1, new Color(SeriesColors[i * 2 + 1]), new Color(SeriesColors[i * 2]), TileMode.Clamp)
+                        FillBrushStyle = new LinearGradientBrushStyle(0,0,0,1, new Color(SeriesColors[i * 2 + 1]), new Color(SeriesColors[i * 2]))
 
                     };
                     seriesCollection.Add(rSeries);
@@ -140,7 +140,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     {
                         DataSeries = dataSeries,
                         StrokeStyle = new SolidPenStyle(context, new Color(SeriesColors[i * 2])),
-                        FillBrushStyle = new LinearGradientBrushStyle(0, 0, 0, 1, new Color(SeriesColors[i * 2 + 1]), new Color(SeriesColors[i * 2]), TileMode.Clamp)
+                        FillBrushStyle = new LinearGradientBrushStyle(0, 0, 0, 1, new Color(SeriesColors[i * 2 + 1]), new Color(SeriesColors[i * 2]))
 
                     };
                     collection.Add(rSeries);
@@ -163,7 +163,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     {
                         DataSeries = dataSeries,
                         StrokeStyle = new SolidPenStyle(context, new Color(SeriesColors[i * 2])),
-                        AreaStyle = new LinearGradientBrushStyle(0, 0, 0, 1, new Color(SeriesColors[i * 2 + 1]), new Color(SeriesColors[i * 2]), TileMode.Clamp)
+                        AreaStyle = new LinearGradientBrushStyle(0, 0, 0, 1, new Color(SeriesColors[i * 2 + 1]), new Color(SeriesColors[i * 2]))
 
                     };
                     collection.Add(rSeries);

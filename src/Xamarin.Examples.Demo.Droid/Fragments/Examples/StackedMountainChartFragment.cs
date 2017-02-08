@@ -58,7 +58,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             return new StackedMountainRenderableSeries
             {
                 DataSeries = dataSeries,
-                AreaStyle = new LinearGradientBrushStyle(0, 0, 0, 1, fillColorStart, fillColorEbd, TileMode.Clamp)
+                AreaStyle = new LinearGradientBrushStyle(0, 0, 0, 1, fillColorStart, fillColorEbd)
             };
         }
     }
