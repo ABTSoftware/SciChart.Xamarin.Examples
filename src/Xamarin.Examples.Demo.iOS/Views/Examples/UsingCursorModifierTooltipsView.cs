@@ -48,10 +48,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
-            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds1, Style = {LinePen = new SCIPenSolid(UIColor.Green, 2f)}});
-            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds2, Style = {LinePen = new SCIPenSolid(UIColor.Red, 2f)}});
-            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds3, Style = {LinePen = new SCIPenSolid(UIColor.Gray, 2f)}});
-            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds4, Style = {LinePen = new SCIPenSolid(GoldColor, 2f)}});
+            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds1, Style = {LinePen = new SCISolidPenStyle(UIColor.Green, 2f)}});
+            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds2, Style = {LinePen = new SCISolidPenStyle(UIColor.Red, 2f)}});
+            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds3, Style = {LinePen = new SCISolidPenStyle(UIColor.Gray, 2f)}});
+            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds4, Style = {LinePen = new SCISolidPenStyle(GoldColor, 2f)}});
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
             {

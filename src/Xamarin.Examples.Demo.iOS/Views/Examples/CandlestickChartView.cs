@@ -40,10 +40,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 DataSeries = dataSeries,
                 Style =
                 {
-                    StrokeUpStyle = new SCIPenSolid(UIColor.Green, 1f),
-                    StrokeDownStyle = new SCIPenSolid(UIColor.Red, 1f),
-                    FillUpBrushStyle = new SCIBrushSolid(UIColor.Green),
-                    FillDownBrushStyle= new SCIBrushSolid(UIColor.Red)
+                    StrokeUpStyle = new SCISolidPenStyle(UIColor.Green, 1f),
+                    StrokeDownStyle = new SCISolidPenStyle(UIColor.Red, 1f),
+                    FillUpBrushStyle = new SCISolidBrushStyle(UIColor.Green),
+                    FillDownBrushStyle= new SCISolidBrushStyle(UIColor.Red)
                 }
             };
 

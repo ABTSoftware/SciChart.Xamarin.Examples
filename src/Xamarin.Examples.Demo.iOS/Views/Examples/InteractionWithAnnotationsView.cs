@@ -92,7 +92,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     //Background = Activity.GetDrawable(Resource.Drawable.example_box_annotation_background_4),
                     Style =
                     {
-                        FillBrush = new SCIBrushSolid(UIColor.FromRGBA(0x02, 0x00, 0x59, 0x7f)),
+                        FillBrush = new SCISolidBrushStyle(UIColor.FromRGBA(0x02, 0x00, 0x59, 0x7f)),
                     },
                     XStart = 50,
                     YStart = 35.5,
@@ -104,7 +104,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     //Editable = true,
                     Style =
                     {
-                        LinePen = new SCIPenSolid(UIColor.FromRGBA(0xFF, 0x66, 0x00, 0xAA), 2f),
+                        LinePen = new SCISolidPenStyle(UIColor.FromRGBA(0xFF, 0x66, 0x00, 0xAA), 2f),
                     },
                     //Stroke = new PenStyle.Builder(Activity).WithThickness(2f).WithColor(Color.Argb(0xAA, 0xFF, 0x66, 0x00)).Build(),
                     XStart = 40,
@@ -117,7 +117,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     //Editable = true,
                     Style =
                     {
-                        LinePen = new SCIPenSolid(UIColor.FromRGBA(0xFF, 0x66, 0x00, 0xAA), 2f),
+                        LinePen = new SCISolidPenStyle(UIColor.FromRGBA(0xFF, 0x66, 0x00, 0xAA), 2f),
                     },
                     //Stroke = new PenStyle.Builder(Activity).WithThickness(2f).WithColor(Color.Argb(0xAA, 0xFF, 0x66, 0x00)).Build(),
                     XStart = 120,

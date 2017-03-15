@@ -90,8 +90,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 DataSeries = dataSeries,
                 Style = new SCIColumnSeriesStyle
                 {
-                    FillBrush = new SCIBrushSolid(fillColor),
-                    BorderPen = new SCIPenSolid(strokeColor, 1f)
+                    FillBrush = new SCISolidBrushStyle(fillColor),
+                    BorderPen = new SCISolidPenStyle(strokeColor, 1f)
                 }
             };
         }

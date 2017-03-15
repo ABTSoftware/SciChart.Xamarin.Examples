@@ -49,7 +49,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 {
                     DataSeries = dataSeries,
                     YAxisId = alignment.ToString(),
-                    Style = {LinePen = new SCIPenSolid(initialColor, 2f)}
+                    Style = {LinePen = new SCISolidPenStyle(initialColor, 2f)}
                 };
 
                 // Colors are incremented for visual purposes only

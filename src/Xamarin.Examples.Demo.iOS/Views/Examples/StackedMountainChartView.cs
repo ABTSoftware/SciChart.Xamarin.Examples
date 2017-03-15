@@ -43,8 +43,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 DataSeries = ds1,
                 Style =
                 {
-                    AreaBrush = new SCIBrushLinearGradient(0xe1e0dbdd, 0xc3c1b688, SCILinearGradientDirection.Vertical),
-                    BorderPen = new SCIPenSolid(0xaaffc9a8, 0.7f)
+                    AreaBrush = new SCILinearGradientBrushStyle(0xe1e0dbdd, 0xc3c1b688, SCILinearGradientDirection.Vertical),
+                    BorderPen = new SCISolidPenStyle(0xaaffc9a8, 0.7f)
                 }
             };
             var topRenderSeries = new SCIStackedMountainRenderableSeries
@@ -52,8 +52,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 DataSeries = ds2,
                 Style =
                 {
-                    AreaBrush = new SCIBrushLinearGradient(0xcacbdadd, 0xaf9a4388, SCILinearGradientDirection.Vertical),
-                    BorderPen = new SCIPenSolid(0xaaffc9a8, 0.7f)
+                    AreaBrush = new SCILinearGradientBrushStyle(0xcacbdadd, 0xaf9a4388, SCILinearGradientDirection.Vertical),
+                    BorderPen = new SCISolidPenStyle(0xaaffc9a8, 0.7f)
                 }
             };
 

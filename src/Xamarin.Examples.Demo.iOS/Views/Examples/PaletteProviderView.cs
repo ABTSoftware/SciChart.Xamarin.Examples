@@ -21,7 +21,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 _style = new SCILineSeriesStyle
                 {
                     DrawPointMarkers = false,
-                    LinePen = new SCIPenSolid(UIColor.Blue, (float) 0.7)
+                    LinePen = new SCISolidPenStyle(UIColor.Blue, (float) 0.7)
                 };
                 _zeroLine = 0;
                 _yCoordCalc = null;
@@ -73,7 +73,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var renderSeries = new SCIFastLineRenderableSeries
             {
                 DataSeries = dataSeries,
-                Style = {LinePen = new SCIPenSolid(0xFF99EE99, 0.7f)},
+                Style = {LinePen = new SCISolidPenStyle(0xFF99EE99, 0.7f)},
                 PaletteProvider = new ZeroLinePaletteProvider()
             };
             Surface.XAxes.Add(xAxis);

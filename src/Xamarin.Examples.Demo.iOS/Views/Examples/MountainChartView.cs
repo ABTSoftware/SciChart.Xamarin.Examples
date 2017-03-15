@@ -40,8 +40,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 DataSeries = dataSeries,
                 Style =
                 {
-                    AreaBrush = new SCIBrushLinearGradient(0xAAFF8D42, 0x88090E11, SCILinearGradientDirection.Vertical),
-                    BorderPen = new SCIPenSolid(0xaaffc9a8, 0.7f)
+                    AreaBrush = new SCILinearGradientBrushStyle(0xAAFF8D42, 0x88090E11, SCILinearGradientDirection.Vertical),
+                    BorderPen = new SCISolidPenStyle(0xaaffc9a8, 0.7f)
                 }
             };
 

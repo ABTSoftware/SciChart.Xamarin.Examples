@@ -58,12 +58,12 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 DataSeries = ds1,
                 Style =
                 {
-                    LinePen = new SCIPenSolid(SteelBlueColor, 2f),
+                    LinePen = new SCISolidPenStyle(SteelBlueColor, 2f),
                     PointMarker = new SCIEllipsePointMarker
                     {
                         Width = 7,
                         Height = 7,
-                        FillBrush = new SCIBrushSolid(LavenderColor)
+                        FillBrush = new SCISolidBrushStyle(LavenderColor)
                     }
                 }
             });
@@ -72,19 +72,19 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 DataSeries = ds2,
                 Style =
                 {
-                    LinePen = new SCIPenSolid(DarkGreenColor, 2f),
+                    LinePen = new SCISolidPenStyle(DarkGreenColor, 2f),
                     PointMarker = new SCIEllipsePointMarker
                     {
                         Width = 7,
                         Height = 7,
-                        FillBrush = new SCIBrushSolid(LavenderColor)
+                        FillBrush = new SCISolidBrushStyle(LavenderColor)
                     }
                 }
             });
             Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
             {
                 DataSeries = ds3,
-                Style = {LinePen = new SCIPenSolid(LightSteelBlueColor, 2f)}
+                Style = {LinePen = new SCISolidPenStyle(LightSteelBlueColor, 2f)}
             });
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]

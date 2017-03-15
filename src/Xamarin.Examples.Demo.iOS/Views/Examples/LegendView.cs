@@ -49,23 +49,23 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
             {
                 DataSeries = ds1,
-                Style = {LinePen = new SCIPenSolid(UIColor.FromRGB(0xFF, 0xFF, 0x00), 2f)}
+                Style = {LinePen = new SCISolidPenStyle(UIColor.FromRGB(0xFF, 0xFF, 0x00), 2f)}
             });
             Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
             {
                 DataSeries = ds2,
-                Style = {LinePen = new SCIPenSolid(UIColor.FromRGB(0x27, 0x9B, 0x27), 2f)}
+                Style = {LinePen = new SCISolidPenStyle(UIColor.FromRGB(0x27, 0x9B, 0x27), 2f)}
             });
             Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
             {
                 DataSeries = ds3,
-                Style = {LinePen = new SCIPenSolid(UIColor.FromRGB(0xFF, 0x19, 0x19), 2f)}
+                Style = {LinePen = new SCISolidPenStyle(UIColor.FromRGB(0xFF, 0x19, 0x19), 2f)}
             });
             Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
             {
                 DataSeries = ds4,
                 IsVisible = false,
-                Style = {LinePen = new SCIPenSolid(UIColor.FromRGB(0x19, 0x64, 0xFF), 2f)}
+                Style = {LinePen = new SCISolidPenStyle(UIColor.FromRGB(0x19, 0x64, 0xFF), 2f)}
             });
 
             var legendModifier = new SCILegendCollectionModifier();

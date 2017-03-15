@@ -52,13 +52,13 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 DataSeries = ds1,
                 Style =
                 {
-                    LinePen = new SCIPenSolid(SteelBlueColor, 2f),
+                    LinePen = new SCISolidPenStyle(SteelBlueColor, 2f),
                     PointMarker = new SCIEllipsePointMarker
                     {
                         Width = 5,
                         Height = 5,
-                        BorderPen = new SCIPenSolid(SteelBlueColor, 2f),
-                        FillBrush = new SCIBrushSolid(SteelBlueColor)
+                        BorderPen = new SCISolidPenStyle(SteelBlueColor, 2f),
+                        FillBrush = new SCISolidBrushStyle(SteelBlueColor)
                     }
                 }
             });
@@ -67,13 +67,13 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 DataSeries = ds2,
                 Style =
                 {
-                    LinePen = new SCIPenSolid(IndianRedColor, 2f),
+                    LinePen = new SCISolidPenStyle(IndianRedColor, 2f),
                     PointMarker = new SCIEllipsePointMarker
                     {
                         Width = 5,
                         Height = 5,
-                        BorderPen = new SCIPenSolid(IndianRedColor, 2f),
-                        FillBrush = new SCIBrushSolid(IndianRedColor)
+                        BorderPen = new SCISolidPenStyle(IndianRedColor, 2f),
+                        FillBrush = new SCISolidBrushStyle(IndianRedColor)
                     }
                 }
             });

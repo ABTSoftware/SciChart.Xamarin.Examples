@@ -39,11 +39,11 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 DataSeries = dataSeries,
                 Style =
                 {
-                    LinePen = new SCIPenSolid(UIColor.FromRGB(0x00, 0x66, 0xFF), 0.7f),
+                    LinePen = new SCISolidPenStyle(UIColor.FromRGB(0x00, 0x66, 0xFF), 0.7f),
                     PointMarker = new SCIEllipsePointMarker
                     {
-                        FillBrush = new SCIBrushSolid(UIColor.FromRGB(0x00, 0x66, 0xFF)),
-                        BorderPen = new SCIPenSolid(UIColor.FromRGB(0x00, 0x66, 0xFF), 2f),
+                        FillBrush = new SCISolidBrushStyle(UIColor.FromRGB(0x00, 0x66, 0xFF)),
+                        BorderPen = new SCISolidPenStyle(UIColor.FromRGB(0x00, 0x66, 0xFF), 2f),
                         Width = 10,
                         Height = 10
                     }

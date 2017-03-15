@@ -42,7 +42,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 ErrorType = SCIErrorBarType.SCIErrorBarTypeRelative,
                 Style = new SCIErrorBarsSeriesStyle
                 {
-                    LinePen = new SCIPenSolid( new UIColor( 70.0f / 255.0f, 130.0f / 255.0f, 180.0f / 255.0f, 1.0f), 0.7f)
+                    LinePen = new SCISolidPenStyle( new UIColor( 70.0f / 255.0f, 130.0f / 255.0f, 180.0f / 255.0f, 1.0f), 0.7f)
                 }
             };
 
@@ -53,7 +53,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 ErrorDataPointWidth = 0.5,
                 Style = new SCIErrorBarsSeriesStyle
                 {
-                    LinePen = new SCIPenSolid(UIColor.Red, 0.7f)
+                    LinePen = new SCISolidPenStyle(UIColor.Red, 0.7f)
                 }
             };
 
@@ -62,15 +62,15 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 DataSeries = dataSeries,
                 Style =
                 { 
-                    LinePen = new SCIPenSolid(new UIColor( 176.0f/255.0f, 196.0f/255.0f, 222.0f/255.0f, 1.0f), 0.7f),
+                    LinePen = new SCISolidPenStyle(new UIColor( 176.0f/255.0f, 196.0f/255.0f, 222.0f/255.0f, 1.0f), 0.7f),
                     DrawPointMarkers = true,
                     PointMarker = new SCIEllipsePointMarker
                     {
                         DrawBorder = true,
                         Width = 15,
                         Height = 15,
-                        BorderPen = new SCIPenSolid(new UIColor(176.0f/255.0f, 196.0f/255.0f, 222.0f/255.0f, 1.0f), 1.0f),
-                        FillBrush = new SCIBrushSolid(new UIColor( 70.0f/255.0f, 130.0f/255.0f, 180.0f/255.0f, 1.0f))
+                        BorderPen = new SCISolidPenStyle(new UIColor(176.0f/255.0f, 196.0f/255.0f, 222.0f/255.0f, 1.0f), 1.0f),
+                        FillBrush = new SCISolidBrushStyle(new UIColor( 70.0f/255.0f, 130.0f/255.0f, 180.0f/255.0f, 1.0f))
                     }
                 }
             };

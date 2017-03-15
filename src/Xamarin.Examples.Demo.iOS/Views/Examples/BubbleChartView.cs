@@ -42,7 +42,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var lineSeries = new SCIFastLineRenderableSeries
             {
                 DataSeries = dataSeries,
-                Style = {LinePen = new SCIPenSolid(0xFFFF3333, 1f)}
+                Style = {LinePen = new SCISolidPenStyle(0xFFFF3333, 1f)}
             };
 
             //var stops = new[] { 0, 0.95f, 1 };
@@ -55,7 +55,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 AutoZRange = false,
                 Style =
                 {
-                    BubbleBrush = new SCIBrushLinearGradient(0x7f090048, 0x30090048, SCILinearGradientDirection.Vertical)
+                    BubbleBrush = new SCILinearGradientBrushStyle(0x7f090048, 0x30090048, SCILinearGradientDirection.Vertical)
                 }
             };
 

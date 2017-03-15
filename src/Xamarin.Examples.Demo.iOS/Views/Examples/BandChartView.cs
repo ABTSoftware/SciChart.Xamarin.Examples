@@ -40,10 +40,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 DataSeries = dataSeries,
                 Style = new SCIBandSeriesStyle
                 {
-                    Pen1 = new SCIPenSolid(0xFFFF1919, 0.7f),
-                    Pen2 = new SCIPenSolid(0xFF279B27, 0.7f),
-                    Brush1 = new SCIBrushSolid(0x33279B27),
-                    Brush2 = new SCIBrushSolid(0x33FF1919)
+                    Pen1 = new SCISolidPenStyle(0xFFFF1919, 0.7f),
+                    Pen2 = new SCISolidPenStyle(0xFF279B27, 0.7f),
+                    Brush1 = new SCISolidBrushStyle(0x33279B27),
+                    Brush2 = new SCISolidBrushStyle(0x33FF1919)
                 }
             };
 

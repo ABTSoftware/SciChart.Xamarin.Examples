@@ -42,8 +42,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 {
                     PointMarker = new SCIEllipsePointMarker
                     {
-                        FillBrush = new SCIBrushSolid(UIColor.FromRGB(70, 130, 180)),
-                        BorderPen = new SCIPenSolid(UIColor.FromRGB(176, 196, 222), 2f),
+                        FillBrush = new SCISolidBrushStyle(UIColor.FromRGB(70, 130, 180)),
+                        BorderPen = new SCISolidPenStyle(UIColor.FromRGB(176, 196, 222), 2f),
                         Width = 15,
                         Height = 15
                     }

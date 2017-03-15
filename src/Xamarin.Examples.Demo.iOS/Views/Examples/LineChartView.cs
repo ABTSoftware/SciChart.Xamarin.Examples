@@ -37,7 +37,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var renderSeries = new SCIFastLineRenderableSeries
             {
                 DataSeries = dataSeries,
-                Style = {LinePen = new SCIPenSolid(0xFF99EE99, 0.7f)}
+                Style = {LinePen = new SCISolidPenStyle(0xFF99EE99, 0.7f)}
             };
 
             Surface.XAxes.Add(xAxis);

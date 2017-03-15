@@ -74,8 +74,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 Style = new SCIColumnSeriesStyle
                 {
                     DataPointWidth = 0.8,
-                    BorderPen = new SCIPenSolid(strokeColor, 1f),
-                    FillBrush = new SCIBrushLinearGradient(fillColorStart, fillColorEnd, SCILinearGradientDirection.Vertical)
+                    BorderPen = new SCISolidPenStyle(strokeColor, 1f),
+                    FillBrush = new SCILinearGradientBrushStyle(fillColorStart, fillColorEnd, SCILinearGradientDirection.Vertical)
                 }
             };
         }

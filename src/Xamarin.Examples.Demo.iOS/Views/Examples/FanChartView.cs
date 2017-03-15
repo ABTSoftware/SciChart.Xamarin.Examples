@@ -46,7 +46,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var dataRenderSeries = new SCIFastLineRenderableSeries
             {
                 DataSeries = dataSeries,
-                Style = { LinePen = new SCIPenSolid(UIColor.Red, 1.0f) }
+                Style = { LinePen = new SCISolidPenStyle(UIColor.Red, 1.0f) }
             };
 
             Surface.XAxes.Add(xAxis);
@@ -73,10 +73,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             {
                 Style =
                 {
-                    Brush1 = new SCIBrushSolid(new UIColor(1.0f, 0.4f, 0.4f, 0.5f)),
-                    Brush2 = new SCIBrushSolid(new UIColor(1.0f, 0.4f, 0.4f, 0.5f)),
-                    Pen1 = new SCIPenSolid(UIColor.Green, 0.5f),
-                    Pen2 = new SCIPenSolid(UIColor.Clear, 0.5f),
+                    Brush1 = new SCISolidBrushStyle(new UIColor(1.0f, 0.4f, 0.4f, 0.5f)),
+                    Brush2 = new SCISolidBrushStyle(new UIColor(1.0f, 0.4f, 0.4f, 0.5f)),
+                    Pen1 = new SCISolidPenStyle(UIColor.Green, 0.5f),
+                    Pen2 = new SCISolidPenStyle(UIColor.Clear, 0.5f),
                     DrawPointMarkers = false
                 },
                 DataSeries = dataSeries
