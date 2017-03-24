@@ -30,9 +30,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         {
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
 
-            var xAxis = new SCINumericAxis {AutoRange = SCIAutoRangeMode.Always};
-            var leftAxis = new SCINumericAxis {AxisAlignment = SCIAxisAlignmentMode.Left, AxisId = SCIAxisAlignmentMode.Left.ToString()};
-            var rightAxis = new SCINumericAxis {AxisAlignment = SCIAxisAlignmentMode.Right, AxisId = SCIAxisAlignmentMode.Right.ToString()};
+            var xAxis = new SCINumericAxis {AutoRange = SCIAutoRange.Always};
+            var leftAxis = new SCINumericAxis {AxisAlignment = SCIAxisAlignment.Left, AxisId = SCIAxisAlignment.Left.ToString()};
+            var rightAxis = new SCINumericAxis {AxisAlignment = SCIAxisAlignment.Right, AxisId = SCIAxisAlignment.Right.ToString()};
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(leftAxis);
@@ -42,7 +42,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
             for (var i = 0; i < SeriesCount; i++)
             {
-                var alignment = i % 2 == 0 ? SCIAxisAlignmentMode.Left : SCIAxisAlignmentMode.Right;
+                var alignment = i % 2 == 0 ? SCIAxisAlignment.Left : SCIAxisAlignment.Right;
                 var dataSeries = GenerateDataSeries(alignment, i);
 
                 var rs = new SCIFastLineRenderableSeries
@@ -77,12 +77,12 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.InvalidateElement();
         }
 
-        private static IDataSeries GenerateDataSeries(SCIAxisAlignmentMode alignment, int index)
+        private static IDataSeries GenerateDataSeries(SCIAxisAlignment alignment, int index)
         {
             var dataSeries = new XyDataSeries<double, double> { SeriesName = $"Series {index}" };
 
-            var gradient = alignment == SCIAxisAlignmentMode.Right ? index : -index;
-            var start = alignment == SCIAxisAlignmentMode.Right ? 0d : 14000d;
+            var gradient = alignment == SCIAxisAlignment.Right ? index : -index;
+            var start = alignment == SCIAxisAlignment.Right ? 0d : 14000d;
 
             var straightLine = DataManager.Instance.GetStraightLine(gradient, start, SeriesPointCount);
 

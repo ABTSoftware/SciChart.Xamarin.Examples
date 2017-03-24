@@ -6,10 +6,11 @@ using SciChart.iOS.Charting;
 using UIKit;
 using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
+using SciChart.Examples.Demo.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    //[ExampleDefinition("Interaction with Annotations")]
+    [ExampleDefinition("Interaction with Annotations")]
     public class InteractionWithAnnotationsView : ExampleBaseView
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();
@@ -35,22 +36,22 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 dataSeries.Append(priceBar.DateTime, priceBar.Open, priceBar.High, priceBar.Low, priceBar.Close);
             }
 
-            var xAxis = new SCICategoryDateTimeAxis {VisibleRange = new SCIDoubleRange(0, 199)};
+            var xAxis = new SCIDateTimeAxis {VisibleRange = new SCIDoubleRange(0, 199)};
             var yAxis = new SCINumericAxis {VisibleRange = new SCIDoubleRange(30, 37)};
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
             Surface.RenderableSeries.Add(new SCIFastCandlestickRenderableSeries {DataSeries = dataSeries});
 
-            Surface.Annotation = new SCIAnnotationGroup(new NSObject[]
+            Surface.Annotation = new SCIAnnotationCollection(new NSObject[]
             {
                 new SCITextAnnotation
                 {
-                    CoordMode = SCIAnnotationCoordMode.Relative,
+                    CoordinateMode = SCIAnnotationCoordinateMode.Relative,
                     //HorizontalAnchorPoint = HorizontalAnchorPoint.Center,
                     Text = "EUR.USD",
-                    XPosition = 0.5,
-                    YPosition = 0.5,
+                    X1 = 0.5,
+                    Y1 = 0.5,
                     Style =
                     {
                         TextStyle = {FontSize = 72},
@@ -62,8 +63,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 {
                     //Editable = true,
                     Text = "Buy",
-                    XPosition = 10d,
-                    YPosition = 30.5d,
+                    X1 = 10d,
+                    Y1 = 30.5d,
                     //VerticalAnchorPoint = VerticalAnchorPoint.Bottom,
                     Style =
                     {
@@ -76,8 +77,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 {
                     //Editable = true,
                     Text = "Sell!",
-                    XPosition = 50d,
-                    YPosition = 34d,
+                    X1 = 50d,
+                    Y1 = 34d,
                     Style =
                     {
                         BackgroundColor = UIColor.FromRGBA(0x02, 0x00, 0x5a, 0x7f),
@@ -94,10 +95,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     {
                         FillBrush = new SCISolidBrushStyle(UIColor.FromRGBA(0x02, 0x00, 0x59, 0x7f)),
                     },
-                    XStart = 50,
-                    YStart = 35.5,
-                    XEnd= 120,
-                    YEnd= 32,
+                    X1 = 50,
+                    Y1 = 35.5,
+                    X2= 120,
+                    Y2= 32,
                 },
                 new SCILineAnnotation
                 {
@@ -107,10 +108,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                         LinePen = new SCISolidPenStyle(UIColor.FromRGBA(0xFF, 0x66, 0x00, 0xAA), 2f),
                     },
                     //Stroke = new PenStyle.Builder(Activity).WithThickness(2f).WithColor(Color.Argb(0xAA, 0xFF, 0x66, 0x00)).Build(),
-                    XStart = 40,
-                    YStart = 30.5,
-                    XEnd = 60,
-                    YEnd = 33.5,
+                    X1 = 40,
+                    Y1 = 30.5,
+                    X2 = 60,
+                    Y2 = 33.5,
                 },
                 new SCILineAnnotation
                 {
@@ -120,10 +121,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                         LinePen = new SCISolidPenStyle(UIColor.FromRGBA(0xFF, 0x66, 0x00, 0xAA), 2f),
                     },
                     //Stroke = new PenStyle.Builder(Activity).WithThickness(2f).WithColor(Color.Argb(0xAA, 0xFF, 0x66, 0x00)).Build(),
-                    XStart = 120,
-                    YStart = 30.5,
-                    XEnd = 175,
-                    YEnd = 36,
+                    X1 = 120,
+                    Y1 = 30.5,
+                    X2 = 175,
+                    Y2 = 36,
                 },
                 //new LineArrowAnnotation(Activity)
                 //{
@@ -188,8 +189,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 //},
                 new SCITextAnnotation
                 {
-                    XPosition = 50,
-                    YPosition = 37,
+                    X1 = 50,
+                    Y1 = 37,
                     //Editable = true,
                     Text = "Rotated text",
                     //FontStyle = new FontStyle.Builder(Activity).WithTextSize(20).WithTextColor(Color.White).Build(),

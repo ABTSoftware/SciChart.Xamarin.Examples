@@ -55,8 +55,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             _exampleViewLayout.Pause.TouchUpInside += (sender, args) => Pause();
             _exampleViewLayout.Reset.TouchUpInside += (sender, args) => Reset();
 
-            var xAxis = new SCINumericAxis {AutoRange = SCIAutoRangeMode.Always, AxisTitle = "X-Axis"};
-            var yAxis = new SCINumericAxis {AutoRange = SCIAutoRangeMode.Always, AxisTitle = "Y-Axis"};
+            var xAxis = new SCINumericAxis {AutoRange = SCIAutoRange.Always, AxisTitle = "X-Axis"};
+            var yAxis = new SCINumericAxis {AutoRange = SCIAutoRange.Always, AxisTitle = "Y-Axis"};
 
             var rs1 = new SCIFastLineRenderableSeries
             {

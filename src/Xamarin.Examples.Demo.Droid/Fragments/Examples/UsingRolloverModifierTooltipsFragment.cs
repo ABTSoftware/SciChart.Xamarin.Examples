@@ -1,6 +1,6 @@
 ﻿using System;
 using Android.Graphics;
-using Android.Util;
+using SciChart.Android.Core.Additions.Utility;
 using SciChart.Charting.Model;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Modifiers;
@@ -56,8 +56,8 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                         StrokeStyle = new SolidPenStyle(Activity, Color.SteelBlue, true, 2f),
                         PointMarker = new EllipsePointMarker
                         {
-                            Width = (int) TypedValue.ApplyDimension(ComplexUnitType.Dip, 7, Activity.Resources.DisplayMetrics),
-                            Height = (int) TypedValue.ApplyDimension(ComplexUnitType.Dip, 7, Activity.Resources.DisplayMetrics),
+                            Width = 7.ToDip(Context),
+                            Height = 7.ToDip(Context),
                             FillStyle = new SolidBrushStyle(Color.Lavender)
                         }
                     },
@@ -67,8 +67,8 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                         StrokeStyle = new SolidPenStyle(Activity, Color.DarkGreen, true, 2f),
                         PointMarker = new EllipsePointMarker
                         {
-                            Width = (int) TypedValue.ApplyDimension(ComplexUnitType.Dip, 7, Activity.Resources.DisplayMetrics),
-                            Height = (int) TypedValue.ApplyDimension(ComplexUnitType.Dip, 7, Activity.Resources.DisplayMetrics),
+                            Width = 7.ToDip(Context),
+                            Height = 7.ToDip(Context),
                             FillStyle = new SolidBrushStyle(Color.Lavender)
                         }
                     },

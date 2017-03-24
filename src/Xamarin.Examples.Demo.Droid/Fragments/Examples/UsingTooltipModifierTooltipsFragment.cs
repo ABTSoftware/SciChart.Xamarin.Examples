@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Android.Graphics;
-using Android.Util;
+using SciChart.Android.Core.Additions.Utility;
 using SciChart.Charting.Model;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Modifiers;
@@ -35,17 +35,16 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             var ds2Points = DataManager.Instance.GetSinewave(1.5, 1.0, 500);
 
             var scaledXValues = GetScaledValues(ds1Points.XData);
-
             ds1.Append(scaledXValues, ds1Points.YData);
             ds2.Append(ds2Points.XData, ds2Points.YData);
-            
+
+            var rs1Color = Color.SteelBlue;
+            var rs2Color = Color.Argb(0xFF, 0xFF, 0x33, 0x33);
+
             using (Surface.SuspendUpdates())
             {
                 Surface.XAxes.Add(xAxis);
                 Surface.YAxes.Add(yAxis);
-
-                var rs1Color = Color.SteelBlue;
-                var rs2Color = Color.IndianRed;
 
                 Surface.RenderableSeries = new RenderableSeriesCollection
                 {
@@ -55,8 +54,8 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                         StrokeStyle = new SolidPenStyle(Activity, rs1Color, true, 2f),
                         PointMarker = new EllipsePointMarker
                         {
-                            Width = (int) TypedValue.ApplyDimension(ComplexUnitType.Dip, 5, Context.Resources.DisplayMetrics),
-                            Height = (int) TypedValue.ApplyDimension(ComplexUnitType.Dip, 5, Context.Resources.DisplayMetrics),
+                            Width = 5.ToDip(Context),
+                            Height = 5.ToDip(Context),
                             StrokeStyle = new SolidPenStyle(Activity, rs1Color, true, 2f),
                             FillStyle = new SolidBrushStyle(rs1Color)
                         }
@@ -64,11 +63,11 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     new FastLineRenderableSeries
                     {
                         DataSeries = ds2,
-                            StrokeStyle = new SolidPenStyle(Activity, rs2Color, true, 2f),
+                        StrokeStyle = new SolidPenStyle(Activity, rs2Color, true, 2f),
                         PointMarker = new EllipsePointMarker
                         {
-                            Width = (int) TypedValue.ApplyDimension(ComplexUnitType.Dip, 5, Context.Resources.DisplayMetrics),
-                            Height = (int) TypedValue.ApplyDimension(ComplexUnitType.Dip, 5, Context.Resources.DisplayMetrics),
+                            Width = 5.ToDip(Context),
+                            Height = 5.ToDip(Context),
                             StrokeStyle = new SolidPenStyle(Activity, rs2Color, true, 2f),
                             FillStyle = new SolidBrushStyle(rs2Color)
                         }
@@ -82,7 +81,6 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
         private static IList<double> GetScaledValues(IList<double> values)
         {
             var size = values.Count;
-
             var scaledValues = new List<double>(size);
 
             for (var i = 0; i < size; i++)

@@ -16,8 +16,8 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
     [ExampleDefinition("FIFO Chart")]
     public class FifoChartFragment : ExampleBaseFragment
     {
-        private const int FifoCapacity = 200;
-        private const long TimerInterval = 10;
+        private const int FifoCapacity = 50;
+        private const long TimerInterval = 30;
         private const double OneOverTimeInteval = 1.0/TimerInterval;
         private const double VisibleRangeMax = FifoCapacity*OneOverTimeInteval;
         private const double GrowBy = VisibleRangeMax*0.1;
@@ -28,9 +28,9 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
         private readonly Random _random = new Random();
 
-        private readonly XyDataSeries<double, double> _ds1 = new XyDataSeries<double, double> { FifoCapacityValue = FifoCapacity };
-        private readonly XyDataSeries<double, double> _ds2 = new XyDataSeries<double, double> { FifoCapacityValue = FifoCapacity };
-        private readonly XyDataSeries<double, double> _ds3 = new XyDataSeries<double, double> { FifoCapacityValue = FifoCapacity };
+        private readonly XyDataSeries<double, double> _ds1 = new XyDataSeries<double, double> {FifoCapacityValue = FifoCapacity};
+        private readonly XyDataSeries<double, double> _ds2 = new XyDataSeries<double, double> {FifoCapacityValue = FifoCapacity};
+        private readonly XyDataSeries<double, double> _ds3 = new XyDataSeries<double, double> {FifoCapacityValue = FifoCapacity};
 
         private readonly DoubleRange _xVisibleRange = new DoubleRange(-GrowBy, VisibleRangeMax + GrowBy);
 
@@ -44,42 +44,21 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             View.FindViewById<Button>(Resource.Id.pause).Click += (sender, args) => Pause();
             View.FindViewById<Button>(Resource.Id.reset).Click += (sender, args) => Reset();
 
-            var xAxis = new NumericAxis(Activity)
-            {
-                VisibleRange = _xVisibleRange,
-                AutoRange = AutoRange.Never
-            };
-
-            var yAxis = new NumericAxis(Activity)
-            {
-                GrowBy = new DoubleRange(0.1, 0.1),
-                AutoRange = AutoRange.Always
-            };
+            var xAxis = new NumericAxis(Activity) {VisibleRange = _xVisibleRange, AutoRange = AutoRange.Never};
+            var yAxis = new NumericAxis(Activity) {GrowBy = new DoubleRange(0.1, 0.1), AutoRange = AutoRange.Always};
             
-            var rs1 = new FastLineRenderableSeries
+            var rs1 = new FastLineRenderableSeries {DataSeries = _ds1, StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0x40, 0x83, 0xB7), true, 2f)};
+            var rs2 = new FastLineRenderableSeries {DataSeries = _ds2, StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0xFF, 0xA5, 0x00), true, 2f)};
+            var rs3 = new FastLineRenderableSeries {DataSeries = _ds3, StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0xE1, 0x32, 0x19), true, 2f)};
+
+            using (Surface.SuspendUpdates())
             {
-                DataSeries = _ds1,
-                StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0x40, 0x83, 0xB7), true, 2f)
-            };
-
-            var rs2 = new FastLineRenderableSeries
-            {
-                DataSeries = _ds2,
-                StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0xFF, 0xA5, 0x00), true, 2f)
-            };
-
-            var rs3 = new FastLineRenderableSeries
-            {
-                DataSeries = _ds3,
-                StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0xE1, 0x32, 0x19), true, 2f)
-            };
-
-            Surface.XAxes.Add(xAxis);
-            Surface.YAxes.Add(yAxis);
-            Surface.RenderableSeries.Add(rs1);
-            Surface.RenderableSeries.Add(rs2);
-            Surface.RenderableSeries.Add(rs3);
-
+                Surface.XAxes.Add(xAxis);
+                Surface.YAxes.Add(yAxis);
+                Surface.RenderableSeries.Add(rs1);
+                Surface.RenderableSeries.Add(rs2);
+                Surface.RenderableSeries.Add(rs3);
+            }
             Start();
         }
 

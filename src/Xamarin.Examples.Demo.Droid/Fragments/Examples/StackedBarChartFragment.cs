@@ -1,5 +1,4 @@
 using Android.Graphics;
-using Android.Util;
 using SciChart.Charting.Model;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Modifiers;
@@ -53,11 +52,10 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 Surface.XAxes.Add(xAxis);
                 Surface.YAxes.Add(yAxis);
                 Surface.RenderableSeries.Add(columnsCollection);
-
                 Surface.ChartModifiers = new ChartModifierCollection
                 {
                     new CursorModifier(),
-                    new ZoomExtentsModifier(),
+                    new ZoomExtentsModifier()
                 };
             }
         }

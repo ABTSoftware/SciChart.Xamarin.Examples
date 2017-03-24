@@ -37,7 +37,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
             var yAxis = new SCINumericAxis
             {
-                AutoRange = SCIAutoRangeMode.Always,
+                AutoRange = SCIAutoRange.Always,
                 AxisTitle = "billions of People",
                 GrowBy = new SCIDoubleRange(0, 0.1),
                 Style = { DrawMajorBands = true }

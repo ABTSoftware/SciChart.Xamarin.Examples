@@ -39,39 +39,20 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             ds3.Append(ds3Points.XData, ds3Points.YData);
             ds4.Append(ds4Points.XData, ds4Points.YData);
 
+            var legendModifier = new LegendModifier(Activity);
+            legendModifier.SetSourceMode(SourceMode.AllSeries);
+
             using (Surface.SuspendUpdates())
             {
                 Surface.XAxes.Add(xAxis);
                 Surface.YAxes.Add(yAxis);
-
                 Surface.RenderableSeries = new RenderableSeriesCollection
                 {
-                    new FastLineRenderableSeries
-                    {
-                        DataSeries = ds1,
-                        StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0xFF, 0xFF, 0x00), true, 2f),
-                    },
-                    new FastLineRenderableSeries
-                    {
-                        DataSeries = ds2,
-                        StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0x27, 0x9B, 0x27), true, 2f),
-                    },
-                    new FastLineRenderableSeries
-                    {
-                        DataSeries = ds3,
-                        StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0xFF, 0x19, 0x19), true, 2f),
-                    },
-                    new FastLineRenderableSeries
-                    {
-                        DataSeries = ds4,
-                        IsVisible = false,
-                        StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0x19, 0x64, 0xFF), true, 2f),
-                    }
+                    new FastLineRenderableSeries {DataSeries = ds1, StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0xFF, 0xFF, 0x00), true, 2f)},
+                    new FastLineRenderableSeries {DataSeries = ds2, StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0x27, 0x9B, 0x27), true, 2f)},
+                    new FastLineRenderableSeries {DataSeries = ds3, StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0xFF, 0x19, 0x19), true, 2f)},
+                    new FastLineRenderableSeries {DataSeries = ds4, IsVisible = false, StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0x19, 0x64, 0xFF), true, 2f)}
                 };
-
-                var legendModifier = new LegendModifier(Activity);
-                legendModifier.SetSourceMode(SourceMode.AllSeries);
-
                 Surface.ChartModifiers.Add(legendModifier);
             }
         }

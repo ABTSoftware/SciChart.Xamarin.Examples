@@ -69,7 +69,6 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 Surface.XAxes.Add(xAxis);
                 Surface.YAxes.Add(yAxis);
                 Surface.RenderableSeries.Add(columnsCollection);
-
                 Surface.ChartModifiers = new ChartModifierCollection
                 {
                     new RolloverModifier(),

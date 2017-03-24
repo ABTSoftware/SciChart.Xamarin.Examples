@@ -23,33 +23,37 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
         protected override void InitExample()
         {
-            var data = DataManager.Instance.GetPriceDataIndu();
+            var priceSeries = DataManager.Instance.GetPriceDataIndu();
 
             var dataSeries = new OhlcDataSeries<DateTime, double>();
-            dataSeries.Append(data.TimeData, data.OpenData, data.HighData, data.LowData, data.CloseData);
+            dataSeries.Append(priceSeries.TimeData, priceSeries.OpenData, priceSeries.HighData, priceSeries.LowData,
+                priceSeries.CloseData);
 
-            var xAxis = new CategoryDateAxis(Activity);
-            var yAxis = new NumericAxis(Activity) {GrowBy = new DoubleRange(0, 0.1)};
+            var size = priceSeries.Count;
+            var xAxis = new CategoryDateAxis(Activity) {VisibleRange = new DoubleRange(size - 30, size), GrowBy = new DoubleRange(0, 0.1)};
+            var yAxis = new NumericAxis(Activity) {GrowBy = new DoubleRange(0, 0.1), AutoRange = AutoRange.Always};
 
-            var rs = new FastCandlestickRenderableSeries
+            var candlestickSeries = new FastCandlestickRenderableSeries
             {
                 DataSeries = dataSeries,
-                StrokeUpStyle = new SolidPenStyle(Activity, Color.Green),
-                StrokeDownStyle = new SolidPenStyle(Activity, Color.Red),
-                FillUpBrushStyle = new SolidBrushStyle(Color.Green),
-                FillDownBrushStyle = new SolidBrushStyle(Color.Red)
+                StrokeUpStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0x00, 0xAA, 0x00)),
+                StrokeDownStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0xFF, 0x00, 0x00)),
+                FillUpBrushStyle = new SolidBrushStyle(Color.Argb(0x88, 0x00, 0xAA, 0x00)),
+                FillDownBrushStyle = new SolidBrushStyle(Color.Argb(0x88, 0xFF, 0x00, 0x00))
             };
 
-            Surface.XAxes.Add(xAxis);
-            Surface.YAxes.Add(yAxis);
-            Surface.RenderableSeries.Add(rs);
-
-            Surface.ChartModifiers = new ChartModifierCollection()
+            using (Surface.SuspendUpdates())
             {
-                new ZoomPanModifier(),
-                new PinchZoomModifier(),
-                new ZoomExtentsModifier(),
-            };
+                Surface.XAxes.Add(xAxis);
+                Surface.YAxes.Add(yAxis);
+                Surface.RenderableSeries.Add(candlestickSeries);
+                Surface.ChartModifiers = new ChartModifierCollection
+                {
+                    new ZoomPanModifier(),
+                    new PinchZoomModifier(),
+                    new ZoomExtentsModifier(),
+                };
+            }
         }
     }
 }

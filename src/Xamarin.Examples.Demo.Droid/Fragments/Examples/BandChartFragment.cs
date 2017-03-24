@@ -22,14 +22,14 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
         protected override void InitExample()
         {
-            var data0 = DataManager.Instance.GetDampedSinewave(1.0, 0.01, 1000);
-            var data1 = DataManager.Instance.GetDampedSinewave(1.0, 0.005, 1000, 12);
-
-            var dataSeries = new XyyDataSeries<double, double>();
-            dataSeries.Append(data0.XData, data0.YData, data1.YData);
-
             var xAxis = new NumericAxis(Activity) {VisibleRange = new DoubleRange(1.1, 2.7)};
             var yAxis = new NumericAxis(Activity) {GrowBy = new DoubleRange(0.1, 0.1)};
+
+            var data = DataManager.Instance.GetDampedSinewave(1.0, 0.01, 1000);
+            var moreData = DataManager.Instance.GetDampedSinewave(1.0, 0.005, 1000, 12);
+
+            var dataSeries = new XyyDataSeries<double, double>();
+            dataSeries.Append(data.XData, data.YData, moreData.YData);
 
             var rs = new FastBandRenderableSeries
             {
@@ -44,7 +44,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             Surface.YAxes.Add(yAxis);
             Surface.RenderableSeries.Add(rs);
 
-            Surface.ChartModifiers = new ChartModifierCollection()
+            Surface.ChartModifiers = new ChartModifierCollection
             {
                 new ZoomPanModifier(),
                 new PinchZoomModifier(),

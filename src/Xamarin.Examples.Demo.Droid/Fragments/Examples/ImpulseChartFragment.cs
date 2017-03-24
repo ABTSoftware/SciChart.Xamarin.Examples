@@ -1,4 +1,7 @@
 using Android.Graphics;
+using Android.Util;
+using Java.Lang;
+using SciChart.Android.Core.Additions.Utility;
 using SciChart.Charting.Model;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Modifiers;
@@ -23,13 +26,12 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
         protected override void InitExample()
         {
-            var ds1Points = DataManager.Instance.GetDampedSinewave(1.0, 0.05, 50, 5);
-
-            var dataSeries = new XyDataSeries<double, double>();
-            dataSeries.Append(ds1Points.XData, ds1Points.YData);
-
             var xAxis = new NumericAxis(Activity) { GrowBy = new DoubleRange(0.1, 0.1) };
             var yAxis = new NumericAxis(Activity) { GrowBy = new DoubleRange(0.1, 0.1) };
+
+            var ds1Points = DataManager.Instance.GetDampedSinewave(1.0, 0.05, 50, 5);
+            var dataSeries = new XyDataSeries<double, double>();
+            dataSeries.Append(ds1Points.XData, ds1Points.YData);
 
             var renderableSeries = new FastImpulseRenderableSeries
             {
@@ -37,8 +39,8 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0x00, 0x66, 0xFF), true, 2f),
                 PointMarker = new EllipsePointMarker
                 {
-                    Width = 10,
-                    Height = 10,
+                    Width = 10.ToDip(Context),
+                    Height = 10.ToDip(Context),
                     StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0x00, 0x66, 0xFF), true, 2f),
                     FillStyle = new SolidBrushStyle(Color.Rgb(0x00, 0x66, 0xFF))
                 }
@@ -49,7 +51,6 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 Surface.XAxes.Add(xAxis);
                 Surface.YAxes.Add(yAxis);
                 Surface.RenderableSeries.Add(renderableSeries);
-
                 Surface.ChartModifiers = new ChartModifierCollection
                 {
                     new ZoomPanModifier(),

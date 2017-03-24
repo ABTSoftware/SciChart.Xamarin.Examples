@@ -1,7 +1,6 @@
 ﻿using Android.Graphics;
 using Android.Runtime;
-using Android.Util;
-using SciChart.Charting.Model;
+using SciChart.Android.Core.Additions.Utility;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Modifiers;
 using SciChart.Charting.Visuals;
@@ -29,26 +28,25 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
         protected override void InitExample()
         {
             var xAxis = new NumericAxis(Activity) {AutoRange = AutoRange.Always};
+            var leftAxis = new NumericAxis(Activity) {AxisAlignment = AxisAlignment.Left, AxisId = AxisAlignment.Left.Name()};
+            var rightAxis = new NumericAxis(Activity) {AxisAlignment = AxisAlignment.Right, AxisId = AxisAlignment.Right.Name()};
 
-            var leftAxis = new NumericAxis(Activity)
+            var selectedStrokeStyle = new SolidPenStyle(Activity, Color.White, true, 4f);
+            var selectedPointMarker = new EllipsePointMarker
             {
-                AxisAlignment = AxisAlignment.Left,
-                AxisId = AxisAlignment.Left.Name()
-            };
-
-            var rightAxis = new NumericAxis(Activity)
-            {
-                AxisAlignment = AxisAlignment.Right,
-                AxisId = AxisAlignment.Right.Name()
+                Width = 10.ToDip(Context),
+                Height = 10.ToDip(Context),
+                FillStyle = new SolidBrushStyle(Color.Argb(0xFF, 0xFF, 0x00, 0xDC)),
+                StrokeStyle = new SolidPenStyle(Activity, Color.White)
             };
 
             using (Surface.SuspendUpdates())
             {
                 Surface.XAxes.Add(xAxis);
-                Surface.YAxes = new AxisCollection {leftAxis, rightAxis};
+                Surface.YAxes.Add(leftAxis);
+                Surface.YAxes.Add(rightAxis);
 
                 var initialColor = Color.Blue;
-
                 for (var i = 0; i < SeriesCount; i++)
                 {
                     var alignment = i%2 == 0 ? AxisAlignment.Left : AxisAlignment.Right;
@@ -68,15 +66,6 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
                     Surface.RenderableSeries.Add(rs);
                 }
-
-                var selectedStrokeStyle = new SolidPenStyle(Activity, Color.White, true, 4f);
-                var selectedPointMarker = new EllipsePointMarker
-                {
-                    Width = (int) TypedValue.ApplyDimension(ComplexUnitType.Dip, 10, Context.Resources.DisplayMetrics),
-                    Height = (int) TypedValue.ApplyDimension(ComplexUnitType.Dip, 10, Context.Resources.DisplayMetrics),
-                    FillStyle = new SolidBrushStyle(Color.Argb(0xFF, 0xFF, 0x00, 0xDC)),
-                    StrokeStyle = new SolidPenStyle(Activity, Color.White)
-                };
 
                 Surface.ChartModifiers.Add(new SeriesSelectionModifier
                 {

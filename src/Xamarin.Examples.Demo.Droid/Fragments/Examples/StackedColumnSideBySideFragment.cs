@@ -1,12 +1,13 @@
 using Android.Graphics;
-using Android.Util;
+using Android.Views;
 using Java.Lang;
-using SciChart.Charting.Model;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Modifiers;
+using SciChart.Charting.Numerics.LabelProviders;
 using SciChart.Charting.Visuals;
 using SciChart.Charting.Visuals.Axes;
 using SciChart.Charting.Visuals.RenderableSeries;
+using SciChart.Core.Utility;
 using SciChart.Data.Model;
 using SciChart.Drawing.Common;
 using SciChart.Examples.Demo.Fragments.Base;
@@ -26,10 +27,10 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             var xAxis = new NumericAxis(Activity)
             {
                 AutoTicks = false,
-                //MajorDelta = 1,
-                //MinorDelta = 0.5,
+                MajorDelta = 1d.FromComparable(),
+                MinorDelta = 0.5d.FromComparable(),
                 DrawMajorBands = true,
-                //LabelProvider = new YearsLabelProvider(),
+                LabelProvider = new YearsLabelProvider(),
             };
             var yAxis = new NumericAxis(Activity)
             {
@@ -39,30 +40,30 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 DrawMajorBands = true,
             };
 
-            var china = new[] { 1.269, 1.330, 1.356, 1.304 };
-            var india = new[] { 1.004, 1.173, 1.236, 1.656 };
-            var usa = new[] { 0.282, 0.310, 0.319, 0.439 };
-            var indonesia = new[] { 0.214, 0.243, 0.254, 0.313 };
-            var brazil = new[] { 0.176, 0.201, 0.203, 0.261 };
-            var pakistan = new[] { 0.146, 0.184, 0.196, 0.276 };
-            var nigeria = new[] { 0.123, 0.152, 0.177, 0.264 };
-            var bangladesh = new[] { 0.130, 0.156, 0.166, 0.234 };
-            var russia = new[] { 0.147, 0.139, 0.142, 0.109 };
-            var japan = new[] { 0.126, 0.127, 0.127, 0.094 };
-            var restOfTheWorld = new[] { 2.466, 2.829, 3.005, 4.306 };
+            var china = new[] {1.269, 1.330, 1.356, 1.304};
+            var india = new[] {1.004, 1.173, 1.236, 1.656};
+            var usa = new[] {0.282, 0.310, 0.319, 0.439};
+            var indonesia = new[] {0.214, 0.243, 0.254, 0.313};
+            var brazil = new[] {0.176, 0.201, 0.203, 0.261};
+            var pakistan = new[] {0.146, 0.184, 0.196, 0.276};
+            var nigeria = new[] {0.123, 0.152, 0.177, 0.264};
+            var bangladesh = new[] {0.130, 0.156, 0.166, 0.234};
+            var russia = new[] {0.147, 0.139, 0.142, 0.109};
+            var japan = new[] {0.126, 0.127, 0.127, 0.094};
+            var restOfTheWorld = new[] {2.466, 2.829, 3.005, 4.306};
 
-            var chinaDataSeries = new XyDataSeries<double, double> { SeriesName = "China" };
-            var indiaDataSeries = new XyDataSeries<double, double> { SeriesName = "India" };
-            var usaDataSeries = new XyDataSeries<double, double> { SeriesName = "USA" };
-            var indonesiaDataSeries = new XyDataSeries<double, double> { SeriesName = "Indonesia" };
-            var brazilDataSeries = new XyDataSeries<double, double> { SeriesName = "Brazil" };
-            var pakistanDataSeries = new XyDataSeries<double, double> { SeriesName = "Pakistan" };
-            var nigeriaDataSeries = new XyDataSeries<double, double> { SeriesName = "Nigeria" };
-            var bangladeshDataSeries = new XyDataSeries<double, double> { SeriesName = "Bangladesh" };
-            var russiaDataSeries = new XyDataSeries<double, double> { SeriesName = "Russia" };
-            var japanDataSeries = new XyDataSeries<double, double> { SeriesName = "Japan" };
-            var restOfTheWorldDataSeries = new XyDataSeries<double, double> { SeriesName = "Rest Of The World" };
-            var totalDataSeries = new XyDataSeries<double, double> { SeriesName = "Total" };
+            var chinaDataSeries = new XyDataSeries<double, double> {SeriesName = "China"};
+            var indiaDataSeries = new XyDataSeries<double, double> {SeriesName = "India"};
+            var usaDataSeries = new XyDataSeries<double, double> {SeriesName = "USA"};
+            var indonesiaDataSeries = new XyDataSeries<double, double> {SeriesName = "Indonesia"};
+            var brazilDataSeries = new XyDataSeries<double, double> {SeriesName = "Brazil"};
+            var pakistanDataSeries = new XyDataSeries<double, double> {SeriesName = "Pakistan"};
+            var nigeriaDataSeries = new XyDataSeries<double, double> {SeriesName = "Nigeria"};
+            var bangladeshDataSeries = new XyDataSeries<double, double> {SeriesName = "Bangladesh"};
+            var russiaDataSeries = new XyDataSeries<double, double> {SeriesName = "Russia"};
+            var japanDataSeries = new XyDataSeries<double, double> {SeriesName = "Japan"};
+            var restOfTheWorldDataSeries = new XyDataSeries<double, double> {SeriesName = "Rest Of The World"};
+            var totalDataSeries = new XyDataSeries<double, double> {SeriesName = "Total"};
 
             for (var i = 0; i < 4; i++)
             {
@@ -105,13 +106,16 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             columnsCollection.Add(GetRenderableSeries(japanDataSeries, Color.Rgb(0x00, 0x6C, 0x6A), Color.Rgb(0x00, 0xab, 0xa9)));
             columnsCollection.Add(GetRenderableSeries(restOfTheWorldDataSeries, Color.Rgb(0x3D, 0x00, 0x49), Color.Rgb(0x56, 0x00, 0x68)));
 
+            var legendModifier = new LegendModifier(Activity);
+            legendModifier.SetLegendPosition(GravityFlags.Top | GravityFlags.Left, 10);
+
             using (Surface.SuspendUpdates())
             {
                 Surface.XAxes.Add(xAxis);
                 Surface.YAxes.Add(yAxis);
                 Surface.RenderableSeries.Add(columnsCollection);
-
-                Surface.ChartModifiers = new ChartModifierCollection {new TooltipModifier()};
+                Surface.ChartModifiers.Add(legendModifier);
+                Surface.ChartModifiers.Add(new TooltipModifier());
             }
         }
 
@@ -123,6 +127,52 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 StrokeStyle = new SolidPenStyle(Activity, strokeColor),
                 FillBrushStyle = new SolidBrushStyle(fillColor)
             };
+        }
+    }
+
+    class YearsLabelFormatter : Object, ILabelFormatter
+    {
+        private readonly string[] _xLabels = {"2000", "2010", "2014", "2050"};
+
+        public void Update(Object axis)
+        {
+        }
+
+        public ICharSequence FormatLabelFormatted(IComparable dataValue)
+        {
+            var i = (int) ComparableUtil.ToDouble(dataValue);
+            var result = "";
+            if (i >= 0 && i < 4)
+            {
+                result = _xLabels[i];
+            }
+            return new String(result);
+        }
+
+        public ICharSequence FormatCursorLabelFormatted(IComparable dataValue)
+        {
+            var i = (int)ComparableUtil.ToDouble(dataValue);
+            string result;
+            if (i >= 0 && i < 4)
+            {
+                result = _xLabels[i];
+            }
+            else if (i < 0)
+            {
+                result = _xLabels[0];
+            }
+            else
+            {
+                result = _xLabels[3];
+            }
+            return new String(result);
+        }
+    }
+
+    class YearsLabelProvider : FormatterLabelProviderBase
+    {
+        public YearsLabelProvider() : base(typeof (NumericAxis).ToClass(), new YearsLabelFormatter())
+        {
         }
     }
 }

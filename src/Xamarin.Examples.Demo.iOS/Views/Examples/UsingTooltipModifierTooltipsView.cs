@@ -30,7 +30,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         {
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
 
-            var xAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1), AutoRange = SCIAutoRangeMode.Always};
+            var xAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1), AutoRange = SCIAutoRange.Always};
             var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
 
             var ds1 = new XyDataSeries<double, double> { SeriesName = "Lissajous Curve", AcceptUnsortedData = true };

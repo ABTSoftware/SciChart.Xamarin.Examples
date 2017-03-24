@@ -22,26 +22,20 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
         protected override void InitExample()
         {
-            var fourierSeries = DataManager.Instance.GetFourierSeries(1.0, 0.1);
+            var xAxis = new NumericAxis(Activity) {GrowBy = new DoubleRange(0.1, 0.1), VisibleRange = new DoubleRange(1.1, 2.7)};
+            var yAxis = new NumericAxis(Activity) {GrowBy = new DoubleRange(0.1, 0.1)};
 
+            var fourierSeries = DataManager.Instance.GetFourierSeries(1.0, 0.1);
             var dataSeries = new XyDataSeries<double, double>();
             dataSeries.Append(fourierSeries.XData, fourierSeries.YData);
 
-            var xAxis = new NumericAxis(Activity) {GrowBy = new DoubleRange(0.1, 0.1)};
-            var yAxis = new NumericAxis(Activity) {GrowBy = new DoubleRange(0.1, 0.1)};
-
-            var renderableSeries = new FastLineRenderableSeries
-            {
-                DataSeries = dataSeries,
-                StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0x27, 0x9B, 0x27), true, 2f),
-            };
+            var renderableSeries = new FastLineRenderableSeries {DataSeries = dataSeries, StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0x27, 0x9B, 0x27), true, 2f)};
 
             using (Surface.SuspendUpdates())
             {
                 Surface.XAxes.Add(xAxis);
                 Surface.YAxes.Add(yAxis);
                 Surface.RenderableSeries.Add(renderableSeries);
-
                 Surface.ChartModifiers = new ChartModifierCollection
                 {
                     new ZoomPanModifier(),

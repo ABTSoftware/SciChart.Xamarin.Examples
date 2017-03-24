@@ -24,6 +24,9 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
         protected override void InitExample()
         {
+            var xAxis = new DateAxis(Activity) { GrowBy = new DoubleRange(0, 0.1) };
+            var yAxis = new NumericAxis(Activity) { GrowBy = new DoubleRange(0, 0.1) };
+
             var dataSeries = new XyzDataSeries<DateTime, double, double>();
             var tradeDataSource = DataManager.Instance.GetTradeticks().ToArray();
 
@@ -32,23 +35,17 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 tradeDataSource.Select(x => x.TradePrice),
                 tradeDataSource.Select(x => x.TradeSize));
 
-            var xAxis = new DateAxis(Activity) {GrowBy = new DoubleRange(0, 0.1)};
-            var yAxis = new NumericAxis(Activity) {GrowBy = new DoubleRange(0, 0.1)};
-
             var lineSeries = new FastLineRenderableSeries
             {
                 DataSeries = dataSeries,
                 StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0xFF, 0x33, 0x33))
             };
 
-            var stops = new[] { 0, 0.95f, 1 };
-            var colors = new int[] { Color.Transparent, Resources.GetColor(Resource.Color.color_primary), Color.Transparent };
-            var gradientFill = new RadialGradientBrushStyle(0.5f, 0.5f, 0.5f, 0.5f, colors, stops);
-
             var bubbleSeries = new FastBubbleRenderableSeries
             {
                 DataSeries = dataSeries,
-                BubbleBrushStyle = gradientFill,
+                BubbleBrushStyle = new SolidBrushStyle(0x77CCCCCC),
+                StrokeStyle = new SolidPenStyle(0xCCCCCC, true, 2f, null),
                 ZScaleFactor = 3,
                 AutoZRange = false,
             };
@@ -59,7 +56,6 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 Surface.YAxes.Add(yAxis);
                 Surface.RenderableSeries.Add(lineSeries);
                 Surface.RenderableSeries.Add(bubbleSeries);
-
                 Surface.ChartModifiers = new ChartModifierCollection
                 {
                     new RubberBandXyZoomModifier(),

@@ -4,6 +4,7 @@ using Android.Widget;
 using Java.Lang;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Visuals;
+using SciChart.Charting.Visuals.Annotations;
 using SciChart.Charting.Visuals.Axes;
 using SciChart.Charting.Visuals.RenderableSeries;
 using SciChart.Core.Model;
@@ -48,50 +49,41 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
         private volatile bool _isRunning = false;
         private Timer _timer;
 
+        private TextView _textView;
+
         protected override void InitExample()
         {
             View.FindViewById<Button>(Resource.Id.start).Click += (sender, args) => Start();
             View.FindViewById<Button>(Resource.Id.pause).Click += (sender, args) => Pause();
             View.FindViewById<Button>(Resource.Id.reset).Click += (sender, args) => Reset();
 
-            var xAxis = new NumericAxis(Activity)
-            {
-                AutoRange = AutoRange.Always,
-                AxisTitle = "X-Axis"
-            };
+            var xAxis = new NumericAxis(Activity) {AutoRange = AutoRange.Always};
+            var yAxis = new NumericAxis(Activity) {AutoRange = AutoRange.Always};
 
-            var yAxis = new NumericAxis(Activity)
-            {
-                AutoRange = AutoRange.Always,
-                AxisTitle = "Y-Axis"
-            };
+            var rs1 = new FastLineRenderableSeries {DataSeries = _mainSeries, StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0x40, 0x83, 0xB7), true, 2f)};
+            var rs2 = new FastLineRenderableSeries {DataSeries = _maLowSeries, StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0xFF, 0xA5, 0x00), true, 2f)};
+            var rs3 = new FastLineRenderableSeries {DataSeries = _maHighSeries, StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0xE1, 0x32, 0x19), true, 2f)};
 
-            var rs1 = new FastLineRenderableSeries
+            _textView = new TextView(Activity);
+            _textView.SetPadding(20, 20, 20, 20);
+            var annotation = new CustomAnnotation(Activity)
             {
-                DataSeries = _mainSeries,
-                StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0x40, 0x83, 0xB7), true, 2f),
+                CoordinateMode = AnnotationCoordinateMode.Relative,
+                ZIndex = -1,
+                X1Value = 0,
+                Y1Value = 0,
             };
-            var rs2 = new FastLineRenderableSeries
-            {
-                DataSeries = _maLowSeries,
-                StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0xFF, 0xA5, 0x00), true, 2f),
-            };
-            var rs3 = new FastLineRenderableSeries
-            {
-                DataSeries = _maHighSeries,
-                StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0xE1, 0x32, 0x19), true, 2f),
-            };
+            annotation.SetContentView(_textView);
 
             using (Surface.SuspendUpdates())
             {
                 Surface.XAxes.Add(xAxis);
                 Surface.YAxes.Add(yAxis);
-
                 Surface.RenderableSeries.Add(rs1);
                 Surface.RenderableSeries.Add(rs2);
                 Surface.RenderableSeries.Add(rs3);
+                Surface.Annotations.Add(annotation);
             }
-
             Start();
         }
 
@@ -175,6 +167,11 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 _mainSeries.Append(_xValues, _firstYValues);
                 _maLowSeries.Append(_xValues, _secondYValues);
                 _maHighSeries.Append(_xValues, _thirdYValues);
+
+                var count = _mainSeries.Count + _maLowSeries.Count + _maHighSeries.Count;
+                var text = "Amount of points: " + count;
+
+                _textView.SetText(text, TextView.BufferType.Normal);
             }
         }
 

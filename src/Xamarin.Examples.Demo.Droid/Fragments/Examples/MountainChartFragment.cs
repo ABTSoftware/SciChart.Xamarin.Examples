@@ -23,13 +23,12 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
         protected override void InitExample()
         {
-            var priceData = DataManager.Instance.GetPriceDataIndu();
-
-            var dataSeries = new XyDataSeries<DateTime, double>();
-            dataSeries.Append(priceData.TimeData, priceData.CloseData);
-
             var xAxis = new DateAxis(Activity) {GrowBy = new DoubleRange(0.1, 0.1)};
             var yAxis = new NumericAxis(Activity) {GrowBy = new DoubleRange(0.1, 0.1)};
+
+            var priceData = DataManager.Instance.GetPriceDataIndu();
+            var dataSeries = new XyDataSeries<DateTime, double>();
+            dataSeries.Append(priceData.TimeData, priceData.CloseData);
 
             var renderableSeries = new FastMountainRenderableSeries
             {
@@ -43,7 +42,6 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 Surface.XAxes.Add(xAxis);
                 Surface.YAxes.Add(yAxis);
                 Surface.RenderableSeries.Add(renderableSeries);
-
                 Surface.ChartModifiers = new ChartModifierCollection
                 {
                     new ZoomPanModifier(),

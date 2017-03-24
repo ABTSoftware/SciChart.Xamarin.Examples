@@ -28,7 +28,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         {
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
 
-            var xAxis = new SCINumericAxis {VisibleRange = new SCIDoubleRange(3, 6), AutoRange = SCIAutoRangeMode.Always};
+            var xAxis = new SCINumericAxis {VisibleRange = new SCIDoubleRange(3, 6), AutoRange = SCIAutoRange.Always};
             var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0, 0.1)};
 
             var ds1 = new XyDataSeries<double, double> {SeriesName = "Green Series"};
