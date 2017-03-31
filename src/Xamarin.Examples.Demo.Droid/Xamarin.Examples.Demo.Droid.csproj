@@ -111,7 +111,9 @@
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
     <Compile Include="Application\ExampleAdapter.cs" />
+    <Compile Include="Extensions\ModifiersExtensions.cs" />
     <Compile Include="ExampleActivity.cs" />
+    <Compile Include="Extensions\NumericExtensions.cs" />
     <Compile Include="Fragments\Base\ExampleBaseFragment.cs" />
     <Compile Include="Fragments\Examples\AnimatingLineChartFragment.cs" />
     <Compile Include="Fragments\Examples\BandChartFragment.cs" />
@@ -207,22 +209,22 @@
   -->
   <ItemGroup>
     <Reference Include="SciChart.Android.Core">
-      <HintPath>..\packages\SciChart.Android.2.0.0.202\lib\xamarin-android\SciChart.Android.Core.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.2.0.0.220\lib\xamarin-android\SciChart.Android.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SciChart.Android.Data">
-      <HintPath>..\packages\SciChart.Android.2.0.0.202\lib\xamarin-android\SciChart.Android.Data.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.2.0.0.220\lib\xamarin-android\SciChart.Android.Data.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SciChart.Android.Drawing">
-      <HintPath>..\packages\SciChart.Android.2.0.0.202\lib\xamarin-android\SciChart.Android.Drawing.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.2.0.0.220\lib\xamarin-android\SciChart.Android.Drawing.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SciChart.Android.Charting">
-      <HintPath>..\packages\SciChart.Android.2.0.0.202\lib\xamarin-android\SciChart.Android.Charting.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.2.0.0.220\lib\xamarin-android\SciChart.Android.Charting.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

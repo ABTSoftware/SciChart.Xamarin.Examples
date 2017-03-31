@@ -1,5 +1,4 @@
-﻿using Android.Graphics;
-using SciChart.Charting.Model;
+﻿using SciChart.Charting.Model;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Modifiers;
 using SciChart.Charting.Visuals;
@@ -8,6 +7,7 @@ using SciChart.Charting.Visuals.RenderableSeries;
 using SciChart.Drawing.Common;
 using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
@@ -48,10 +48,10 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 Surface.YAxes.Add(yAxis);
                 Surface.RenderableSeries = new RenderableSeriesCollection
                 {
-                    new FastLineRenderableSeries {DataSeries = ds1, StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0xFF, 0xFF, 0x00), true, 2f)},
-                    new FastLineRenderableSeries {DataSeries = ds2, StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0x27, 0x9B, 0x27), true, 2f)},
-                    new FastLineRenderableSeries {DataSeries = ds3, StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0xFF, 0x19, 0x19), true, 2f)},
-                    new FastLineRenderableSeries {DataSeries = ds4, IsVisible = false, StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0x19, 0x64, 0xFF), true, 2f)}
+                    new FastLineRenderableSeries {DataSeries = ds1, StrokeStyle = new SolidPenStyle(0xFFFFFF00, 2f.ToDip(Activity))},
+                    new FastLineRenderableSeries {DataSeries = ds2, StrokeStyle = new SolidPenStyle(0xFF279B27, 2f.ToDip(Activity))},
+                    new FastLineRenderableSeries {DataSeries = ds3, StrokeStyle = new SolidPenStyle(0xFFFF1919, 2f.ToDip(Activity))},
+                    new FastLineRenderableSeries {DataSeries = ds4, IsVisible = false, StrokeStyle = new SolidPenStyle(0xFF1964FF, 2f.ToDip(Activity))}
                 };
                 Surface.ChartModifiers.Add(legendModifier);
             }

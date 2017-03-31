@@ -2,20 +2,15 @@ using System;
 using SciChart.Examples.Demo.Fragments.Base;
 using SciChart.iOS.Charting;
 using UIKit;
-using Xamarin.Examples.Demo.iOS.Helpers;
 using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
+using Xamarin.Examples.Demo.Utils;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
     [ExampleDefinition("Using RolloverModifier Tooltips")]
     public class UsingRolloverModifierTooltipsView : ExampleBaseView
     {
-        private const uint SteelBlueColor = 4282811060U;
-        private const uint LavenderColor = 4293322490U;
-        private const uint DarkGreenColor = 4278215680U;
-        private const uint LightSteelBlueColor = 4289774814U;
-
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();
 
         public SCIChartSurface Surface;
@@ -58,12 +53,13 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 DataSeries = ds1,
                 Style =
                 {
-                    LinePen = new SCISolidPenStyle(SteelBlueColor, 2f),
+                    LinePen = new SCISolidPenStyle(ColorUtil.SteelBlue, 2f),
+                    DrawPointMarkers = true,
                     PointMarker = new SCIEllipsePointMarker
                     {
                         Width = 7,
                         Height = 7,
-                        FillBrush = new SCISolidBrushStyle(LavenderColor)
+                        FillBrush = new SCISolidBrushStyle(ColorUtil.Lavender)
                     }
                 }
             });
@@ -72,19 +68,20 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 DataSeries = ds2,
                 Style =
                 {
-                    LinePen = new SCISolidPenStyle(DarkGreenColor, 2f),
+                    LinePen = new SCISolidPenStyle(ColorUtil.DarkGreen, 2f),
+                    DrawPointMarkers = true,
                     PointMarker = new SCIEllipsePointMarker
                     {
                         Width = 7,
                         Height = 7,
-                        FillBrush = new SCISolidBrushStyle(LavenderColor)
+                        FillBrush = new SCISolidBrushStyle(ColorUtil.Lavender)
                     }
                 }
             });
             Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
             {
                 DataSeries = ds3,
-                Style = {LinePen = new SCISolidPenStyle(LightSteelBlueColor, 2f)}
+                Style = {LinePen = new SCISolidPenStyle(ColorUtil.LightSteelBlue, 2f)}
             });
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]

@@ -1,6 +1,5 @@
 ﻿using Android.Graphics;
 using Android.Runtime;
-using SciChart.Android.Core.Additions.Utility;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Modifiers;
 using SciChart.Charting.Visuals;
@@ -10,7 +9,9 @@ using SciChart.Charting.Visuals.RenderableSeries;
 using SciChart.Drawing.Common;
 using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
+using Xamarin.Examples.Demo.Utils;
 using Object = Java.Lang.Object;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
@@ -31,13 +32,13 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             var leftAxis = new NumericAxis(Activity) {AxisAlignment = AxisAlignment.Left, AxisId = AxisAlignment.Left.Name()};
             var rightAxis = new NumericAxis(Activity) {AxisAlignment = AxisAlignment.Right, AxisId = AxisAlignment.Right.Name()};
 
-            var selectedStrokeStyle = new SolidPenStyle(Activity, Color.White, true, 4f);
+            var selectedStrokeStyle = new SolidPenStyle(ColorUtil.White, 4f.ToDip(Activity));
             var selectedPointMarker = new EllipsePointMarker
             {
                 Width = 10.ToDip(Context),
                 Height = 10.ToDip(Context),
-                FillStyle = new SolidBrushStyle(Color.Argb(0xFF, 0xFF, 0x00, 0xDC)),
-                StrokeStyle = new SolidPenStyle(Activity, Color.White)
+                FillStyle = new SolidBrushStyle(0xFFFF00DC),
+                StrokeStyle = new SolidPenStyle(ColorUtil.White, 1f.ToDip(Activity))
             };
 
             using (Surface.SuspendUpdates())
@@ -56,7 +57,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     {
                         DataSeries = dataSeries,
                         YAxisId = alignment.Name(),
-                        StrokeStyle = new SolidPenStyle(Activity, initialColor, true, 2f),
+                        StrokeStyle = new SolidPenStyle(initialColor, 2f.ToDip(Activity))
                     };
 
                     // Colors are incremented for visual purposes only

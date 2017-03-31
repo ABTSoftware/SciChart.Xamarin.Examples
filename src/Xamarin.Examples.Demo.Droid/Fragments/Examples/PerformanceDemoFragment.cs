@@ -1,5 +1,4 @@
 ﻿using System.Timers;
-using Android.Graphics;
 using Android.Widget;
 using Java.Lang;
 using SciChart.Charting.Model.DataSeries;
@@ -11,6 +10,7 @@ using SciChart.Core.Model;
 using SciChart.Drawing.Common;
 using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
 using Math = Java.Lang.Math;
 using Random = System.Random;
@@ -60,9 +60,9 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             var xAxis = new NumericAxis(Activity) {AutoRange = AutoRange.Always};
             var yAxis = new NumericAxis(Activity) {AutoRange = AutoRange.Always};
 
-            var rs1 = new FastLineRenderableSeries {DataSeries = _mainSeries, StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0x40, 0x83, 0xB7), true, 2f)};
-            var rs2 = new FastLineRenderableSeries {DataSeries = _maLowSeries, StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0xFF, 0xA5, 0x00), true, 2f)};
-            var rs3 = new FastLineRenderableSeries {DataSeries = _maHighSeries, StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0xE1, 0x32, 0x19), true, 2f)};
+            var rs1 = new FastLineRenderableSeries {DataSeries = _mainSeries, StrokeStyle = new SolidPenStyle(0xFF4083B7, 2f.ToDip(Activity))};
+            var rs2 = new FastLineRenderableSeries {DataSeries = _maLowSeries, StrokeStyle = new SolidPenStyle(0xFFFFA500, 2f.ToDip(Activity))};
+            var rs3 = new FastLineRenderableSeries {DataSeries = _maHighSeries, StrokeStyle = new SolidPenStyle(0xFFE13219, 2f.ToDip(Activity))};
 
             _textView = new TextView(Activity);
             _textView.SetPadding(20, 20, 20, 20);

@@ -28,6 +28,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         {
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
 
+            var xAxis = new SCIDateTimeAxis { GrowBy = new SCIDoubleRange(0.0, 0.1) };
+            var yAxis = new SCINumericAxis { GrowBy = new SCIDoubleRange(0, 0.1) };
+
             var dataSeries = new XyzDataSeries<DateTime, double, double>();
             var tradeDataSource = DataManager.Instance.GetTradeticks().ToArray();
 
@@ -36,26 +39,21 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 tradeDataSource.Select(x => x.TradePrice).ToArray(),
                 tradeDataSource.Select(x => x.TradeSize).ToArray());
 
-            var xAxis = new SCIDateTimeAxis {GrowBy = new SCIDoubleRange(0.0, 0.1)};
-            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0, 0.1)};
-
             var lineSeries = new SCIFastLineRenderableSeries
             {
                 DataSeries = dataSeries,
                 Style = {LinePen = new SCISolidPenStyle(0xFFFF3333, 1f)}
             };
 
-            //var stops = new[] { 0, 0.95f, 1 };
-            //var colors = new int[] { Color.Transparent, Resources.GetColor(Resource.Color.color_primary), Color.Transparent };
-            //var gradientFill = new RadialGradientBrushStyle(0.5f, 0.5f, 0.5f, 0.5f, colors, stops, TileMode.Clamp);
             var bubbleSeries = new SCIBubbleRenderableSeries
             {
                 DataSeries = dataSeries,
-                ZScaleFactor = 1,
+                ZScaleFactor = 3,
                 AutoZRange = false,
                 Style =
                 {
-                    BubbleBrush = new SCILinearGradientBrushStyle(0x7f090048, 0x30090048, SCILinearGradientDirection.Vertical)
+                    BubbleBrush = new SCISolidBrushStyle(0x77CCCCCC),
+                    BorderPen = new SCISolidPenStyle(0xCCCCCC, 2f)
                 }
             };
 

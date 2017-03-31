@@ -28,7 +28,6 @@ namespace Xamarin.Examples.Demo.iOS
 
             example.AddSubview(exampleView);
 
-						
             View.AddSubview(example);
         }
     }

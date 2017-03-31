@@ -1,5 +1,4 @@
-﻿using Android.Graphics;
-using SciChart.Charting.Model;
+﻿using SciChart.Charting.Model;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Modifiers;
 using SciChart.Charting.Visuals;
@@ -9,6 +8,7 @@ using SciChart.Data.Model;
 using SciChart.Drawing.Common;
 using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
@@ -48,10 +48,10 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 Surface.YAxes.Add(yAxis);
                 Surface.RenderableSeries = new RenderableSeriesCollection
                 {
-                    new FastLineRenderableSeries {DataSeries = ds1, StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0x17, 0x7B, 0x17), true, 2)},
-                    new FastLineRenderableSeries {DataSeries = ds2, StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0xDD, 0x09, 0x09), true, 2)},
-                    new FastLineRenderableSeries {DataSeries = ds3, StrokeStyle = new SolidPenStyle(Activity, Color.Gray, true, 2)},
-                    new FastLineRenderableSeries {DataSeries = ds4, StrokeStyle = new SolidPenStyle(Activity, Color.Gold, true, 2), IsVisible = false},
+                    new FastLineRenderableSeries {DataSeries = ds1, StrokeStyle = new SolidPenStyle(0xFF177B17, 2.ToDip(Activity))},
+                    new FastLineRenderableSeries {DataSeries = ds2, StrokeStyle = new SolidPenStyle(0xFFDD0909, 2.ToDip(Activity))},
+                    new FastLineRenderableSeries {DataSeries = ds3, StrokeStyle = new SolidPenStyle(0xFF808080, 2.ToDip(Activity))},
+                    new FastLineRenderableSeries {DataSeries = ds4, StrokeStyle = new SolidPenStyle(0xFFFFD700, 2.ToDip(Activity)), IsVisible = false},
                 };
                 Surface.ChartModifiers.Add(new CursorModifier
                 {

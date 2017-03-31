@@ -5,6 +5,7 @@ using UIKit;
 using Xamarin.Examples.Demo.iOS.Helpers;
 using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
+using Xamarin.Examples.Demo.Utils;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
@@ -39,17 +40,31 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.YAxes.Add(rightAxis);
 
             var initialColor = UIColor.Blue;
+            var selectedStrokeStyle = new SCISolidPenStyle(ColorUtil.White, 4f);
+            var selectedPointMarker = new SCIEllipsePointMarker
+            {
+                Width = 10,
+                Height = 10,
+                FillBrush = new SCISolidBrushStyle(0xFFFF00DC),
+                BorderPen = new SCISolidPenStyle(ColorUtil.White, 1f)
+            };
 
             for (var i = 0; i < SeriesCount; i++)
             {
                 var alignment = i % 2 == 0 ? SCIAxisAlignment.Left : SCIAxisAlignment.Right;
                 var dataSeries = GenerateDataSeries(alignment, i);
-
+                 
                 var rs = new SCIFastLineRenderableSeries
                 {
                     DataSeries = dataSeries,
                     YAxisId = alignment.ToString(),
-                    Style = {LinePen = new SCISolidPenStyle(initialColor, 2f)}
+                    Style = {LinePen = new SCISolidPenStyle(initialColor, 2f)},
+                    SelectedSeriesStyle = new SCILineSeriesStyle
+                    {
+                        LinePen = selectedStrokeStyle,
+                        PointMarker = selectedPointMarker,
+                        DrawPointMarkers = true
+                    }
                 };
 
                 // Colors are incremented for visual purposes only
@@ -60,18 +75,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 Surface.RenderableSeries.Add(rs);
             }
 
-            //var selectedStrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.White).WithThickness(4f).Build();
-            //var selectedPointMarker = new EllipsePointMarker
-            //{
-            //    Width = (int)TypedValue.ApplyDimension(ComplexUnitType.Dip, 10, Context.Resources.DisplayMetrics),
-            //    Height = (int)TypedValue.ApplyDimension(ComplexUnitType.Dip, 10, Context.Resources.DisplayMetrics),
-            //    FillStyle = new SolidBrushStyle(Color.Argb(0xFF, 0xFF, 0x00, 0xDC)),
-            //    StrokeStyle = new PenStyle.Builder(Activity).WithColor(Color.White).WithThickness(1f).Build()
-            //};
-
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
             {
-                //new SeriesSelectionModifier {SelectedSeriesStyle = new SelectedSeriesStyle(selectedStrokeStyle, selectedPointMarker)}
+                new SCISeriesSelectionModifier(),
             });
 
             Surface.InvalidateElement();

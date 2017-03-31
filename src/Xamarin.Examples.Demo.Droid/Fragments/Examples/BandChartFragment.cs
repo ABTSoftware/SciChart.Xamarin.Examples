@@ -1,5 +1,4 @@
-﻿using Android.Graphics;
-using SciChart.Charting.Model;
+﻿using SciChart.Charting.Model;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Modifiers;
 using SciChart.Charting.Visuals;
@@ -9,6 +8,7 @@ using SciChart.Data.Model;
 using SciChart.Drawing.Common;
 using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
@@ -34,10 +34,10 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             var rs = new FastBandRenderableSeries
             {
                 DataSeries = dataSeries,
-                StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0xFF, 0x19, 0x19)),
-                StrokeY1Style = new SolidPenStyle(Activity, Color.Argb(0xFF, 0x27, 0x9B, 0x27)),
-                FillBrushStyle = new SolidBrushStyle(Color.Argb(0x33, 0x27, 0x9B, 0x27)),
-                FillY1BrushStyle = new SolidBrushStyle(Color.Argb(0x33, 0xFF, 0x19, 0x19))
+                StrokeStyle = new SolidPenStyle(0xFFFF1919, 1f.ToDip(Activity)),
+                StrokeY1Style = new SolidPenStyle(0xFF279B27, 1f.ToDip(Activity)),
+                FillBrushStyle = new SolidBrushStyle(0x33279B27),
+                FillY1BrushStyle = new SolidBrushStyle(0x33FF1919)
             };
 
             Surface.XAxes.Add(xAxis);

@@ -26,19 +26,14 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         {
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
 
-            var fourierSeries = DataManager.Instance.GetFourierSeries(1.0, 0.1);
+            var xAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1), VisibleRange = new SCIDoubleRange(1.1, 2.7)};
+            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
 
+            var fourierSeries = DataManager.Instance.GetFourierSeries(1.0, 0.1);
             var dataSeries = new XyDataSeries<double, double>();
             dataSeries.Append(fourierSeries.XData, fourierSeries.YData);
 
-            var xAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
-            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
-
-            var renderSeries = new SCIFastLineRenderableSeries
-            {
-                DataSeries = dataSeries,
-                Style = {LinePen = new SCISolidPenStyle(0xFF99EE99, 0.7f)}
-            };
+            var renderSeries = new SCIFastLineRenderableSeries {DataSeries = dataSeries, Style = {LinePen = new SCISolidPenStyle(0xFF99EE99, 0.7f)}};
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);

@@ -1,7 +1,6 @@
 ﻿using SciChart.Examples.Demo.Fragments.Base;
 using SciChart.iOS.Charting;
 using UIKit;
-using Xamarin.Examples.Demo.iOS.Helpers;
 using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
 
@@ -31,6 +30,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 AutoTicks = false,
                 MajorDelta = 1,
                 //MinorDelta = 0.5,
+                //TODO Add label provider
                 //LabelProvider = new YearsLabelProvider(),
                 Style = {DrawMajorBands = true}
             };
@@ -97,17 +97,17 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
             var columnsCollection = new SCIStackedHorizontalColumnGroupSeries();
 
-            columnsCollection.AddSeries(GetRenderableSeries(chinaDataSeries, UIColor.FromRGB(0x2D, 0x68, 0xBC), UIColor.FromRGB(0x33, 0x99, 0xff)));
-            columnsCollection.AddSeries(GetRenderableSeries(indiaDataSeries, UIColor.FromRGB(0x01, 0x35, 0x47), UIColor.FromRGB(0x01, 0x43, 0x58)));
-            columnsCollection.AddSeries(GetRenderableSeries(usaDataSeries, UIColor.FromRGB(0x1B, 0x5D, 0x46), UIColor.FromRGB(0x1f, 0x8a, 0x71)));
-            columnsCollection.AddSeries(GetRenderableSeries(indonesiaDataSeries, UIColor.FromRGB(0x7E, 0x95, 0x2B), UIColor.FromRGB(0xbd, 0xd6, 0x3b)));
-            columnsCollection.AddSeries(GetRenderableSeries(brazilDataSeries, UIColor.FromRGB(0xAA, 0x8F, 0x0B), UIColor.FromRGB(0xff, 0xe0, 0x0b)));
-            columnsCollection.AddSeries(GetRenderableSeries(pakistanDataSeries, UIColor.FromRGB(0xA9, 0x54, 0x19), UIColor.FromRGB(0xf2, 0x74, 0x21)));
-            columnsCollection.AddSeries(GetRenderableSeries(nigeriaDataSeries, UIColor.FromRGB(0x84, 0x00, 0x00), UIColor.FromRGB(0xbb, 0x00, 0x00)));
-            columnsCollection.AddSeries(GetRenderableSeries(bangladeshDataSeries, UIColor.FromRGB(0x37, 0x00, 0x18), UIColor.FromRGB(0x55, 0x00, 0x33)));
-            columnsCollection.AddSeries(GetRenderableSeries(russiaDataSeries, UIColor.FromRGB(0x2D, 0x73, 0x2D), UIColor.FromRGB(0x33, 0x99, 0x33)));
-            columnsCollection.AddSeries(GetRenderableSeries(japanDataSeries, UIColor.FromRGB(0x00, 0x6C, 0x6A), UIColor.FromRGB(0x00, 0xab, 0xa9)));
-            columnsCollection.AddSeries(GetRenderableSeries(restOfTheWorldDataSeries, UIColor.FromRGB(0x3D, 0x00, 0x49), UIColor.FromRGB(0x56, 0x00, 0x68)));
+            columnsCollection.AddSeries(GetRenderableSeries(chinaDataSeries, 0xff3399ff, 0xff2D68BC));
+            columnsCollection.AddSeries(GetRenderableSeries(indiaDataSeries, 0xff014358, 0xff013547));
+            columnsCollection.AddSeries(GetRenderableSeries(usaDataSeries, 0xff1f8a71, 0xff1B5D46));
+            columnsCollection.AddSeries(GetRenderableSeries(indonesiaDataSeries, 0xffbdd63b, 0xff7E952B));
+            columnsCollection.AddSeries(GetRenderableSeries(brazilDataSeries, 0xffffe00b, 0xffAA8F0B));
+            columnsCollection.AddSeries(GetRenderableSeries(pakistanDataSeries, 0xfff27421, 0xffA95419));
+            columnsCollection.AddSeries(GetRenderableSeries(nigeriaDataSeries, 0xffbb0000, 0xff840000));
+            columnsCollection.AddSeries(GetRenderableSeries(bangladeshDataSeries, 0xff550033, 0xff370018 ));
+            columnsCollection.AddSeries(GetRenderableSeries(russiaDataSeries, 0xff339933, 0xff2D732D));
+            columnsCollection.AddSeries(GetRenderableSeries(japanDataSeries, 0xff00aba9, 0xff006C6A));
+            columnsCollection.AddSeries(GetRenderableSeries(restOfTheWorldDataSeries, 0xff560068, 0xff3D0049));
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
@@ -118,7 +118,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.InvalidateElement();
         }
 
-        private SCIStackedColumnRenderableSeries GetRenderableSeries(IDataSeries dataSeries, UIColor strokeColor, UIColor fillColor)
+        private SCIStackedColumnRenderableSeries GetRenderableSeries(IDataSeries dataSeries, uint fillColor, uint strokeColor)
         {
             return new SCIStackedColumnRenderableSeries
             {

@@ -44,31 +44,14 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             ds3.Append(ds3Points.XData, ds3Points.YData);
             ds4.Append(ds4Points.XData, ds4Points.YData);
 
+            var legendModifier = new SCILegendCollectionModifier {SourceMode = SCISourceMode.AllSeries};
+
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
-            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
-            {
-                DataSeries = ds1,
-                Style = {LinePen = new SCISolidPenStyle(UIColor.FromRGB(0xFF, 0xFF, 0x00), 2f)}
-            });
-            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
-            {
-                DataSeries = ds2,
-                Style = {LinePen = new SCISolidPenStyle(UIColor.FromRGB(0x27, 0x9B, 0x27), 2f)}
-            });
-            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
-            {
-                DataSeries = ds3,
-                Style = {LinePen = new SCISolidPenStyle(UIColor.FromRGB(0xFF, 0x19, 0x19), 2f)}
-            });
-            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
-            {
-                DataSeries = ds4,
-                IsVisible = false,
-                Style = {LinePen = new SCISolidPenStyle(UIColor.FromRGB(0x19, 0x64, 0xFF), 2f)}
-            });
-
-            var legendModifier = new SCILegendCollectionModifier();
+            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds1, Style = {LinePen = new SCISolidPenStyle(0xFFFFFF00, 2f)}});
+            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds2, Style = {LinePen = new SCISolidPenStyle(0xFF279B27, 2f)}});
+            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds3, Style = {LinePen = new SCISolidPenStyle(0xFFFF1919, 2f)}});
+            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds4, IsVisible = false, Style = {LinePen = new SCISolidPenStyle(0xFF1964FF, 2f)}});
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[] {legendModifier});
 

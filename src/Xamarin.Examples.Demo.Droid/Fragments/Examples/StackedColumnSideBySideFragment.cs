@@ -1,4 +1,3 @@
-using Android.Graphics;
 using Android.Views;
 using Java.Lang;
 using SciChart.Charting.Model.DataSeries;
@@ -94,17 +93,17 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
             var columnsCollection = new HorizontallyStackedColumnsCollection();
 
-            columnsCollection.Add(GetRenderableSeries(chinaDataSeries, Color.Rgb(0x2D, 0x68, 0xBC), Color.Rgb(0x33, 0x99, 0xff)));
-            columnsCollection.Add(GetRenderableSeries(indiaDataSeries, Color.Rgb(0x01, 0x35, 0x47), Color.Rgb(0x01, 0x43, 0x58)));
-            columnsCollection.Add(GetRenderableSeries(usaDataSeries, Color.Rgb(0x1B, 0x5D, 0x46), Color.Rgb(0x1f, 0x8a, 0x71)));
-            columnsCollection.Add(GetRenderableSeries(indonesiaDataSeries, Color.Rgb(0x7E, 0x95, 0x2B), Color.Rgb(0xbd, 0xd6, 0x3b)));
-            columnsCollection.Add(GetRenderableSeries(brazilDataSeries, Color.Rgb(0xAA, 0x8F, 0x0B), Color.Rgb(0xff, 0xe0, 0x0b)));
-            columnsCollection.Add(GetRenderableSeries(pakistanDataSeries, Color.Rgb(0xA9, 0x54, 0x19), Color.Rgb(0xf2, 0x74, 0x21)));
-            columnsCollection.Add(GetRenderableSeries(nigeriaDataSeries, Color.Rgb(0x84, 0x00, 0x00), Color.Rgb(0xbb, 0x00, 0x00)));
-            columnsCollection.Add(GetRenderableSeries(bangladeshDataSeries, Color.Rgb(0x37, 0x00, 0x18), Color.Rgb(0x55, 0x00, 0x33)));
-            columnsCollection.Add(GetRenderableSeries(russiaDataSeries, Color.Rgb(0x2D, 0x73, 0x2D), Color.Rgb(0x33, 0x99, 0x33)));
-            columnsCollection.Add(GetRenderableSeries(japanDataSeries, Color.Rgb(0x00, 0x6C, 0x6A), Color.Rgb(0x00, 0xab, 0xa9)));
-            columnsCollection.Add(GetRenderableSeries(restOfTheWorldDataSeries, Color.Rgb(0x3D, 0x00, 0x49), Color.Rgb(0x56, 0x00, 0x68)));
+            columnsCollection.Add(GetRenderableSeries(chinaDataSeries, 0xff3399ff, 0xff2D68BC));
+            columnsCollection.Add(GetRenderableSeries(indiaDataSeries, 0xff014358, 0xff013547));
+            columnsCollection.Add(GetRenderableSeries(usaDataSeries, 0xff1f8a71, 0xff1B5D46));
+            columnsCollection.Add(GetRenderableSeries(indonesiaDataSeries, 0xffbdd63b, 0xff7E952B));
+            columnsCollection.Add(GetRenderableSeries(brazilDataSeries, 0xffffe00b, 0xffAA8F0B));
+            columnsCollection.Add(GetRenderableSeries(pakistanDataSeries, 0xfff27421, 0xffA95419));
+            columnsCollection.Add(GetRenderableSeries(nigeriaDataSeries, 0xffbb0000, 0xff840000));
+            columnsCollection.Add(GetRenderableSeries(bangladeshDataSeries, 0xff550033, 0xff370018));
+            columnsCollection.Add(GetRenderableSeries(russiaDataSeries, 0xff339933, 0xff2D732D));
+            columnsCollection.Add(GetRenderableSeries(japanDataSeries, 0xff00aba9, 0xff006C6A));
+            columnsCollection.Add(GetRenderableSeries(restOfTheWorldDataSeries, 0xff560068, 0xff3D0049));
 
             var legendModifier = new LegendModifier(Activity);
             legendModifier.SetLegendPosition(GravityFlags.Top | GravityFlags.Left, 10);
@@ -119,7 +118,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             }
         }
 
-        private StackedColumnRenderableSeries GetRenderableSeries(IDataSeries dataSeries, Color strokeColor, Color fillColor)
+        private StackedColumnRenderableSeries GetRenderableSeries(IDataSeries dataSeries, uint fillColor, uint strokeColor)
         {
             return new StackedColumnRenderableSeries
             {

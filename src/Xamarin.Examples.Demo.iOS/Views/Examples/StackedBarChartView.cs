@@ -43,10 +43,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 ds3.Append(i, yValues3[i]);
             }
 
-            //TODO finish after porting StackedSeries to Xamarin from iOS
-            var series1 = GetRenderableSeries(ds1, UIColor.FromRGB(0x56, 0x78, 0x93), UIColor.FromRGB(0x56, 0x78, 0x93), UIColor.FromRGB(0x3D, 0x55, 0x68));
-            var series2 = GetRenderableSeries(ds2, UIColor.FromRGB(0xAC, 0xBC, 0xCA), UIColor.FromRGB(0xAC, 0xBC, 0xCA), UIColor.FromRGB(0x43, 0x9A, 0xAF));
-            var series3 = GetRenderableSeries(ds3, UIColor.FromRGB(0xDB, 0xE0, 0xE1), UIColor.FromRGB(0xDB, 0xE0, 0xE1), UIColor.FromRGB(0xB6, 0xC1, 0xC3));
+            var series1 = GetRenderableSeries(ds1, 0xFF567893, 0xFF567893, 0xFF3D5568);
+            var series2 = GetRenderableSeries(ds2, 0xFFACBCCA, 0xFFACBCCA, 0xFF439AAF);
+            var series3 = GetRenderableSeries(ds3, 0xFFDBE0E1, 0xFFDBE0E1, 0xFFB6C1C3);
 
             var columnsCollection = new SCIStackedVerticalColumnGroupSeries();
             columnsCollection.AddSeries(series1);
@@ -66,7 +65,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.InvalidateElement();
         }
 
-        private SCIStackedColumnRenderableSeries GetRenderableSeries(IDataSeries dataSeries, UIColor strokeColor, UIColor fillColorStart, UIColor fillColorEnd)
+        private SCIStackedColumnRenderableSeries GetRenderableSeries(IDataSeries dataSeries, uint strokeColor, uint fillColorStart, uint fillColorEnd)
         {
             return new SCIStackedColumnRenderableSeries
             {

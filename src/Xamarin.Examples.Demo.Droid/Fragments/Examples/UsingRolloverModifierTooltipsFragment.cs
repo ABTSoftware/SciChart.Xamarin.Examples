@@ -1,6 +1,4 @@
 ﻿using System;
-using Android.Graphics;
-using SciChart.Android.Core.Additions.Utility;
 using SciChart.Charting.Model;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Modifiers;
@@ -11,7 +9,9 @@ using SciChart.Charting.Visuals.RenderableSeries;
 using SciChart.Data.Model;
 using SciChart.Drawing.Common;
 using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
+using Xamarin.Examples.Demo.Utils;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
@@ -53,29 +53,29 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     new FastLineRenderableSeries
                     {
                         DataSeries = ds1,
-                        StrokeStyle = new SolidPenStyle(Activity, Color.SteelBlue, true, 2f),
+                        StrokeStyle = new SolidPenStyle(ColorUtil.SteelBlue, 2f.ToDip(Activity)),
                         PointMarker = new EllipsePointMarker
                         {
                             Width = 7.ToDip(Context),
                             Height = 7.ToDip(Context),
-                            FillStyle = new SolidBrushStyle(Color.Lavender)
+                            FillStyle = new SolidBrushStyle(ColorUtil.Lavender)
                         }
                     },
                     new FastLineRenderableSeries
                     {
                         DataSeries = ds2,
-                        StrokeStyle = new SolidPenStyle(Activity, Color.DarkGreen, true, 2f),
+                        StrokeStyle = new SolidPenStyle(ColorUtil.DarkGreen, 2f.ToDip(Activity)),
                         PointMarker = new EllipsePointMarker
                         {
                             Width = 7.ToDip(Context),
                             Height = 7.ToDip(Context),
-                            FillStyle = new SolidBrushStyle(Color.Lavender)
+                            FillStyle = new SolidBrushStyle(ColorUtil.Lavender)
                         }
                     },
                     new FastLineRenderableSeries
                     {
                         DataSeries = ds3,
-                        StrokeStyle = new SolidPenStyle(Activity, Color.LightSteelBlue, true, 2f),
+                        StrokeStyle = new SolidPenStyle(ColorUtil.LightSteelBlue, 2f.ToDip(Activity)),
                     },
                 };
 

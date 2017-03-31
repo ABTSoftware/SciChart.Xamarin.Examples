@@ -27,28 +27,26 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         {
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
 
-            var priceData = DataManager.Instance.GetPriceDataIndu();
-
-            var dataSeries = new XyDataSeries<DateTime, double> {DataDistributionCalculator = new SCIUserDefinedDistributionCalculator()};
-            dataSeries.Append(priceData.TimeData, priceData.CloseData);
-
             var xAxis = new SCIDateTimeAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
             var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
+
+            var priceData = DataManager.Instance.GetPriceDataIndu();
+            var dataSeries = new XyDataSeries<DateTime, double> {DataDistributionCalculator = new SCIUserDefinedDistributionCalculator()};
+            dataSeries.Append(priceData.TimeData, priceData.CloseData);
 
             var renderSeries = new SCIFastMountainRenderableSeries
             {
                 DataSeries = dataSeries,
                 Style =
                 {
+                    BorderPen = new SCISolidPenStyle(0xAAFFC9A8, 2f),
                     AreaBrush = new SCILinearGradientBrushStyle(0xAAFF8D42, 0x88090E11, SCILinearGradientDirection.Vertical),
-                    BorderPen = new SCISolidPenStyle(0xaaffc9a8, 0.7f)
                 }
             };
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
             Surface.RenderableSeries.Add(renderSeries);
-
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
             {
                 new SCIZoomPanModifier(),

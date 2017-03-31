@@ -10,6 +10,7 @@ using SciChart.Data.Model;
 using SciChart.Drawing.Common;
 using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
@@ -33,8 +34,8 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             var renderableSeries = new FastMountainRenderableSeries
             {
                 DataSeries = dataSeries,
-                StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xAA, 0xFF, 0xC9, 0xA8), true, 2f),
-                AreaStyle = new LinearGradientBrushStyle(0, 0, 1, 1, Color.Argb(0xAA, 0xFF, 0x8D, 0x42), Color.Argb(0x88, 0x09, 0x0E, 0x11))
+                StrokeStyle = new SolidPenStyle(0xAAFFC9A8, 2f.ToDip(Activity)),
+                AreaStyle = new LinearGradientBrushStyle(0, 0, 1, 1, 0xAAFF8D42, 0x88090E11)
             };
 
             using (Surface.SuspendUpdates())

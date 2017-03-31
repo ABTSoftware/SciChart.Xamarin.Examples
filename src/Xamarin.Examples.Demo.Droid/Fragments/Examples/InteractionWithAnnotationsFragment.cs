@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Linq;
-using Android.Graphics;
-using Android.Util;
 using Android.Views;
 using SciChart.Charting.Model;
 using SciChart.Charting.Model.DataSeries;
@@ -13,7 +11,9 @@ using SciChart.Data.Model;
 using SciChart.Drawing.Common;
 using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
+using Xamarin.Examples.Demo.Utils;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
@@ -44,7 +44,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     CoordinateMode = AnnotationCoordinateMode.Relative,
                     HorizontalAnchorPoint = HorizontalAnchorPoint.Center,
                     Text = "EUR.USD",
-                    FontStyle = new FontStyle(Activity, 72, Color.Argb(0x77, 0xFF, 0xFF, 0xFF)),
+                    FontStyle = new FontStyle(72.ToDip(Activity), 0x77FFFFFF),
                     X1Value = 0.5,
                     Y1Value = 0.5
                 },
@@ -55,7 +55,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     X1Value = 10d,
                     Y1Value = 30.5d,
                     VerticalAnchorPoint = VerticalAnchorPoint.Bottom,
-                    FontStyle = new FontStyle(Activity, 20, Color.White),
+                    FontStyle = new FontStyle(20.ToDip(Activity), ColorUtil.White),
                 },
                 new TextAnnotation(Activity)
                 {
@@ -64,7 +64,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     Text = "Sell!",
                     X1Value = 50d,
                     Y1Value = 34d,
-                    FontStyle = new FontStyle(Activity, 20, Color.White),
+                    FontStyle = new FontStyle(20.ToDip(Activity), ColorUtil.White),
                 },
                 new BoxAnnotation(Activity)
                 {
@@ -78,7 +78,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 new LineAnnotation(Activity)
                 {
                     Editable = true,
-                    Stroke = new SolidPenStyle(Activity, Color.Argb(0xAA, 0xFF, 0x66, 0x00), true, 2f),
+                    Stroke = new SolidPenStyle(0xAAFF6600, 2f.ToDip(Activity)),
                     X1Value = 40,
                     Y1Value = 30.5,
                     X2Value = 60,
@@ -87,7 +87,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 new LineAnnotation(Activity)
                 {
                     Editable = true,
-                    Stroke = new SolidPenStyle(Activity, Color.Argb(0xAA, 0xFF, 0x66, 0x00), true, 2f),
+                    Stroke = new SolidPenStyle(0xAAFF6600, 2f.ToDip(Activity)),
                     X1Value = 120,
                     Y1Value = 30.5,
                     X2Value = 175,
@@ -119,7 +119,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 {
                     X1Value = 150,
                     Y1Value = 32.2,
-                    Stroke = new SolidPenStyle(Activity, Color.Red, true, 2f),
+                    Stroke = new SolidPenStyle(ColorUtil.Red, 2f.ToDip(Activity)),
                     HorizontalGravity = GravityFlags.Right,
                     Editable = true
                 },
@@ -128,7 +128,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     X1Value = 130,
                     X2Value = 160,
                     Y1Value = 33.9,
-                    Stroke = new SolidPenStyle(Activity, Color.Blue, true, 2f),
+                    Stroke = new SolidPenStyle(ColorUtil.Blue, 2f.ToDip(Activity)),
                     HorizontalGravity = GravityFlags.CenterHorizontal,
                     Editable = true
                 },
@@ -137,7 +137,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     X1Value = 20,
                     Y1Value = 35,
                     Y2Value = 33,
-                    Stroke = new SolidPenStyle(Activity, Color.DarkGreen, true, 2f),
+                    Stroke = new SolidPenStyle(ColorUtil.DarkGreen, 2f.ToDip(Activity)),
                     VerticalGravity = GravityFlags.CenterVertical,
                     Editable = true,
 
@@ -146,7 +146,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 {
                     X1Value = 40,
                     Y1Value = 34,
-                    Stroke = new SolidPenStyle(Activity, Color.Green, true, 2f),
+                    Stroke = new SolidPenStyle(ColorUtil.Green, 2f.ToDip(Activity)),
                     VerticalGravity = GravityFlags.Top,
                     Editable = true,
                 },
@@ -156,7 +156,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     Y1Value = 37,
                     Editable = true,
                     Text = "Rotated text",
-                    FontStyle = new FontStyle(Activity, 20, Color.White),
+                    FontStyle = new FontStyle(20.ToDip(Activity), ColorUtil.White),
                     RotationAngle = 30
                 }
             };

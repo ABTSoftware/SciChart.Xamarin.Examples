@@ -5,15 +5,13 @@ using SciChart.iOS.Charting;
 using UIKit;
 using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
+using Xamarin.Examples.Demo.Utils;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
     [ExampleDefinition("Using TooltipModifier Tooltips")]
     public class UsingTooltipModifierTooltipsView : ExampleBaseView
     {
-        private const uint SteelBlueColor = 4282811060U;
-        private const uint IndianRedColor = 4291648604U;
-
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();
 
         public SCIChartSurface Surface;
@@ -33,8 +31,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var xAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1), AutoRange = SCIAutoRange.Always};
             var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
 
-            var ds1 = new XyDataSeries<double, double> { SeriesName = "Lissajous Curve", AcceptUnsortedData = true };
-            var ds2 = new XyDataSeries<double, double> { SeriesName = "Sinewave", AcceptUnsortedData = true };
+            var ds1 = new XyDataSeries<double, double> {SeriesName = "Lissajous Curve", AcceptUnsortedData = true};
+            var ds2 = new XyDataSeries<double, double> {SeriesName = "Sinewave", AcceptUnsortedData = true};
 
             var ds1Points = DataManager.Instance.GetLissajousCurve(0.8, 0.2, 0.43, 500);
             var ds2Points = DataManager.Instance.GetSinewave(1.5, 1.0, 500);
@@ -52,13 +50,14 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 DataSeries = ds1,
                 Style =
                 {
-                    LinePen = new SCISolidPenStyle(SteelBlueColor, 2f),
+                    LinePen = new SCISolidPenStyle(ColorUtil.SteelBlue, 2f),
+                    DrawPointMarkers = true,
                     PointMarker = new SCIEllipsePointMarker
                     {
                         Width = 5,
                         Height = 5,
-                        BorderPen = new SCISolidPenStyle(SteelBlueColor, 2f),
-                        FillBrush = new SCISolidBrushStyle(SteelBlueColor)
+                        BorderPen = new SCISolidPenStyle(ColorUtil.SteelBlue, 2f),
+                        FillBrush = new SCISolidBrushStyle(ColorUtil.SteelBlue)
                     }
                 }
             });
@@ -67,13 +66,14 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 DataSeries = ds2,
                 Style =
                 {
-                    LinePen = new SCISolidPenStyle(IndianRedColor, 2f),
+                    LinePen = new SCISolidPenStyle(0xFFFF3333, 2f),
+                    DrawPointMarkers = true,
                     PointMarker = new SCIEllipsePointMarker
                     {
                         Width = 5,
                         Height = 5,
-                        BorderPen = new SCISolidPenStyle(IndianRedColor, 2f),
-                        FillBrush = new SCISolidBrushStyle(IndianRedColor)
+                        BorderPen = new SCISolidPenStyle(0xFFFF3333, 2f),
+                        FillBrush = new SCISolidBrushStyle(0xFFFF3333)
                     }
                 }
             });

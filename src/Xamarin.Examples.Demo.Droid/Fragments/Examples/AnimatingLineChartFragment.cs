@@ -1,7 +1,6 @@
 using System;
 using System.Timers;
 using Android.Animation;
-using Android.Graphics;
 using Android.Views.Animations;
 using Android.Widget;
 using SciChart.Charting.Model.DataSeries;
@@ -16,6 +15,7 @@ using SciChart.Data.Numerics;
 using SciChart.Data.Numerics.PointResamplers;
 using SciChart.Drawing.Common;
 using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
@@ -29,13 +29,13 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
         private const int FifoCapacity = 50;
         private const long TimerInterval = 1000;
-        private const double OneOverTimeInteval = 1.0 / TimerInterval;
-        private const double VisibleRangeMax = FifoCapacity * OneOverTimeInteval;
-        private const double GrowBy = VisibleRangeMax * 0.1;
+        private const double OneOverTimeInteval = 1.0/TimerInterval;
+        private const double VisibleRangeMax = FifoCapacity*OneOverTimeInteval;
+        private const double GrowBy = VisibleRangeMax*0.1;
 
         private readonly Random _random = new Random();
 
-        private readonly XyDataSeries<double, double> _dataSeries = new XyDataSeries<double, double> { FifoCapacityValue = FifoCapacity };
+        private readonly XyDataSeries<double, double> _dataSeries = new XyDataSeries<double, double> {FifoCapacityValue = FifoCapacity};
 
         private volatile bool _isRunning;
         private double _t;
@@ -52,14 +52,13 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
             using (Surface.SuspendUpdates())
             {
-                var xAxis = new NumericAxis(Activity) { VisibleRange = _xVisibleRange, AutoRange = AutoRange.Never };
-                var yAxis = new NumericAxis(Activity) { GrowBy = new DoubleRange(0.1, 0.1), AutoRange = AutoRange.Always };
+                var xAxis = new NumericAxis(Activity) {VisibleRange = _xVisibleRange, AutoRange = AutoRange.Never};
+                var yAxis = new NumericAxis(Activity) {GrowBy = new DoubleRange(0.1, 0.1), AutoRange = AutoRange.Always};
 
-                var color = Color.Argb(0xFF, 0x40, 0x83, 0xB7);
                 var rs = new AnimatingLineRenderableSeries
                 {
                     DataSeries = _dataSeries,
-                    StrokeStyle = new SolidPenStyle(Activity, color, true, 3)
+                    StrokeStyle = new SolidPenStyle(0xFF4083B7, 3.ToDip(Activity))
                 };
 
                 Surface.XAxes.Add(xAxis);

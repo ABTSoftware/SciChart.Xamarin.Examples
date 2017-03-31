@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Timers;
-using Android.Graphics;
 using Android.Widget;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Visuals;
@@ -9,6 +8,7 @@ using SciChart.Charting.Visuals.RenderableSeries;
 using SciChart.Data.Model;
 using SciChart.Drawing.Common;
 using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
@@ -46,10 +46,10 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
             var xAxis = new NumericAxis(Activity) {VisibleRange = _xVisibleRange, AutoRange = AutoRange.Never};
             var yAxis = new NumericAxis(Activity) {GrowBy = new DoubleRange(0.1, 0.1), AutoRange = AutoRange.Always};
-            
-            var rs1 = new FastLineRenderableSeries {DataSeries = _ds1, StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0x40, 0x83, 0xB7), true, 2f)};
-            var rs2 = new FastLineRenderableSeries {DataSeries = _ds2, StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0xFF, 0xA5, 0x00), true, 2f)};
-            var rs3 = new FastLineRenderableSeries {DataSeries = _ds3, StrokeStyle = new SolidPenStyle(Activity, Color.Argb(0xFF, 0xE1, 0x32, 0x19), true, 2f)};
+
+            var rs1 = new FastLineRenderableSeries {DataSeries = _ds1, StrokeStyle = new SolidPenStyle(0xFF4083B7, 2f.ToDip(Activity))};
+            var rs2 = new FastLineRenderableSeries {DataSeries = _ds2, StrokeStyle = new SolidPenStyle(0xFFFFA500, 2f.ToDip(Activity))};
+            var rs3 = new FastLineRenderableSeries {DataSeries = _ds3, StrokeStyle = new SolidPenStyle(0xFFE13219, 2f.ToDip(Activity))};
 
             using (Surface.SuspendUpdates())
             {
@@ -64,33 +64,33 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
         private void Start()
         {
-            if (_isRunning) return;
-
-            _isRunning = true;
-            _timer = new Timer(TimerInterval);
-            _timer.Elapsed += OnTick;
-            _timer.AutoReset = true;
-            _timer.Start();
-
-            Surface.InvalidateElement();
+            if (!_isRunning)
+            {
+                _isRunning = true;
+                _timer = new Timer(TimerInterval);
+                _timer.Elapsed += OnTick;
+                _timer.AutoReset = true;
+                _timer.Start();
+            }
         }
 
         private void Pause()
         {
-            if (!_isRunning) return;
-
-            _isRunning = false;
-            _timer.Stop();
-            _timer.Elapsed -= OnTick;
-            _timer = null;
-
-            Surface.InvalidateElement();
+            if (_isRunning)
+            {
+                _isRunning = false;
+                _timer.Stop();
+                _timer.Elapsed -= OnTick;
+                _timer = null;
+            }
         }
 
         private void Reset()
         {
             if (_isRunning)
+            {
                 Pause();
+            }
 
             using (Surface.SuspendUpdates())
             {
@@ -104,25 +104,25 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
         {
             lock (_timer)
             {
-                var y1 = 3.0 * Math.Sin(((2 * Math.PI) * 1.4) * _t) + _random.NextDouble() * 0.5;
-                var y2 = 2.0 * Math.Cos(((2 * Math.PI) * 0.8) * _t) + _random.NextDouble() * 0.5;
-                var y3 = 1.0 * Math.Sin(((2 * Math.PI) * 2.2) * _t) + _random.NextDouble() * 0.5;
+                var y1 = 3.0*Math.Sin(2*Math.PI*1.4*_t) + _random.NextDouble()*0.5;
+                var y2 = 2.0*Math.Cos(2*Math.PI*0.8*_t) + _random.NextDouble()*0.5;
+                var y3 = 1.0*Math.Sin(2*Math.PI*2.2*_t) + _random.NextDouble()*0.5;
 
                 _ds1.Append(_t, y1);
                 _ds2.Append(_t, y2);
                 _ds3.Append(_t, y3);
 
                 _t += OneOverTimeInteval;
-
                 if (_t > VisibleRangeMax)
+                {
                     _xVisibleRange.SetMinMax(_xVisibleRange.Min + OneOverTimeInteval, _xVisibleRange.Max + OneOverTimeInteval);
+                }
             }
         }
 
         public override void OnDestroyView()
         {
             base.OnDestroyView();
-
             Reset();
         }
     }

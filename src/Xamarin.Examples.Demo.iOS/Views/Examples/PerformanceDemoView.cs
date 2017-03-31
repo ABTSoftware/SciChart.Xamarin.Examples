@@ -55,24 +55,12 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             _exampleViewLayout.Pause.TouchUpInside += (sender, args) => Pause();
             _exampleViewLayout.Reset.TouchUpInside += (sender, args) => Reset();
 
-            var xAxis = new SCINumericAxis {AutoRange = SCIAutoRange.Always, AxisTitle = "X-Axis"};
-            var yAxis = new SCINumericAxis {AutoRange = SCIAutoRange.Always, AxisTitle = "Y-Axis"};
+            var xAxis = new SCINumericAxis {AutoRange = SCIAutoRange.Always};
+            var yAxis = new SCINumericAxis {AutoRange = SCIAutoRange.Always};
 
-            var rs1 = new SCIFastLineRenderableSeries
-            {
-                DataSeries = _mainSeries, 
-                Style = { LinePen = new SCISolidPenStyle(UIColor.FromRGB(0x40, 0x83, 0xB7), 2f) }
-            };
-            var rs2 = new SCIFastLineRenderableSeries
-            {
-                DataSeries = _maLowSeries, 
-                Style = { LinePen = new SCISolidPenStyle(UIColor.FromRGB(0xFF, 0xA5, 0x00), 2f) }
-            };
-            var rs3 = new SCIFastLineRenderableSeries
-            {
-                DataSeries = _maHighSeries, 
-                Style = { LinePen = new SCISolidPenStyle(UIColor.FromRGB(0xE1, 0x32, 0x19), 2f) }
-            };
+            var rs1 = new SCIFastLineRenderableSeries {DataSeries = _mainSeries, Style = {LinePen = new SCISolidPenStyle(0xFF4083B7, 2f)}};
+            var rs2 = new SCIFastLineRenderableSeries {DataSeries = _maLowSeries, Style = {LinePen = new SCISolidPenStyle(0xFFFFA500, 2f)}};
+            var rs3 = new SCIFastLineRenderableSeries {DataSeries = _maHighSeries, Style = {LinePen = new SCISolidPenStyle(0xFFE13219, 2f)}};
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);

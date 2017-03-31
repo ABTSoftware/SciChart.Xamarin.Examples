@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using Android.Graphics;
 using SciChart.Charting.Model;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Modifiers;
@@ -11,6 +10,7 @@ using SciChart.Data.Model;
 using SciChart.Drawing.Common;
 using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
@@ -24,8 +24,8 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
         protected override void InitExample()
         {
-            var xAxis = new DateAxis(Activity) { GrowBy = new DoubleRange(0, 0.1) };
-            var yAxis = new NumericAxis(Activity) { GrowBy = new DoubleRange(0, 0.1) };
+            var xAxis = new DateAxis(Activity) {GrowBy = new DoubleRange(0, 0.1)};
+            var yAxis = new NumericAxis(Activity) {GrowBy = new DoubleRange(0, 0.1)};
 
             var dataSeries = new XyzDataSeries<DateTime, double, double>();
             var tradeDataSource = DataManager.Instance.GetTradeticks().ToArray();
@@ -38,14 +38,14 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             var lineSeries = new FastLineRenderableSeries
             {
                 DataSeries = dataSeries,
-                StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0xFF, 0x33, 0x33))
+                StrokeStyle = new SolidPenStyle(0xFF3333, 1.ToDip(Activity))
             };
 
             var bubbleSeries = new FastBubbleRenderableSeries
             {
                 DataSeries = dataSeries,
                 BubbleBrushStyle = new SolidBrushStyle(0x77CCCCCC),
-                StrokeStyle = new SolidPenStyle(0xCCCCCC, true, 2f, null),
+                StrokeStyle = new SolidPenStyle(0xCCCCCC, 2f.ToDip(Activity)),
                 ZScaleFactor = 3,
                 AutoZRange = false,
             };

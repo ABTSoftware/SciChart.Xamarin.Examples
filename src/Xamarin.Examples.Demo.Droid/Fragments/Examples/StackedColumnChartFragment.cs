@@ -45,11 +45,11 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 ds5.Append(data + i, pepperData[i]);
             }
 
-            var porkSeries = GetRenderableSeries(ds1, Color.Rgb(0x22, 0x57, 0x9D), Color.Rgb(0x22, 0x6f, 0xb7));
-            var vealSeries = GetRenderableSeries(ds1, Color.Rgb(0xBE, 0x64, 0x2D), Color.Rgb(0xff, 0x9a, 0x2e));
-            var tomatoSeries = GetRenderableSeries(ds1, Color.Rgb(0xA3, 0x36, 0x31), Color.Rgb(0xdc, 0x44, 0x3f));
-            var cucumberSeries = GetRenderableSeries(ds1, Color.Rgb(0x73, 0x95, 0x3D), Color.Rgb(0xaa, 0xd3, 0x4f));
-            var pepperSeries = GetRenderableSeries(ds1, Color.Rgb(0x64, 0x45, 0x8A), Color.Rgb(0x85, 0x62, 0xb4));
+            var porkSeries = GetRenderableSeries(ds1, 0xFF22579D, 0xFF226FB7);
+            var vealSeries = GetRenderableSeries(ds2, 0xFFBE642D, 0xFFFF9A2E);
+            var tomatoSeries = GetRenderableSeries(ds3, 0xFFA33631, 0xFFDC443F);
+            var cucumberSeries = GetRenderableSeries(ds4, 0xFF73953D, 0xFFAAD34F);
+            var pepperSeries = GetRenderableSeries(ds5, 0xFF64458A, 0xFF8562B4);
 
             var verticalCollection1 = new VerticallyStackedColumnsCollection();
             verticalCollection1.Add(porkSeries);
@@ -77,7 +77,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             }
         }
 
-        private StackedColumnRenderableSeries GetRenderableSeries(IDataSeries dataSeries, Color strokeColor, Color fillColor)
+        private StackedColumnRenderableSeries GetRenderableSeries(IDataSeries dataSeries, uint strokeColor, uint fillColor)
         {
             return new StackedColumnRenderableSeries
             {

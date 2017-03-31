@@ -31,21 +31,21 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
         private static IValues<double> CreateValues(int index)
         {
-            var values = new DoubleValues(Width * Height);
+            var values = new DoubleValues(Width*Height);
 
             var random = new Random();
-            var angle = Math.PI * 2 * index / SeriesPerPeriod;
+            var angle = Math.PI*2*index/SeriesPerPeriod;
             var cx = 150;
             var cy = 100;
             for (int x = 0; x < Width; x++)
             {
                 for (int y = 0; y < Height; y++)
                 {
-                    var v = (1 + Math.Sin(x * 0.04 + angle)) * 50 + (1 + Math.Sin(y * 0.1 + angle)) * 50 * (1 + Math.Sin(angle * 2));
-                    var r = Math.Sqrt((x - cx) * (x - cx) + (y - cy) * (y - cy));
-                    var exp = Math.Max(0, 1 - r * 0.008);
+                    var v = (1 + Math.Sin(x*0.04 + angle))*50 + (1 + Math.Sin(y*0.1 + angle))*50*(1 + Math.Sin(angle*2));
+                    var r = Math.Sqrt((x - cx)*(x - cx) + (y - cy)*(y - cy));
+                    var exp = Math.Max(0, 1 - r*0.008);
 
-                    values.Add(v * exp + random.NextDouble() * 50);
+                    values.Add(v*exp + random.NextDouble()*50);
                 }
             }
 
@@ -62,7 +62,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 ColorMap = new ColorMap(new []{Color.DarkBlue, Color.CornflowerBlue, Color.DarkGreen, Color.Chartreuse, Color.Yellow, Color.Red}, new[] {0, 0.2f, 0.4f, 0.6f, 0.8f, 1}),
                 Minimum = 0,
                 Maximum = 200,
-                DataSeries = _dataSeries
+                DataSeries = _dataSeries,
             };
 
             Surface.XAxes.Add(xAxis);

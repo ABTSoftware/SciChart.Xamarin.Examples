@@ -10,7 +10,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
     [ExampleDefinition("Using CursorModifier Tooltips")]
     public class UsingCursorModifierTooltipsView : ExampleBaseView
     {
-        private const uint GoldColor = 4294956800U;
+        private const int PointsCount = 500;
 
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();
 
@@ -28,18 +28,18 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         {
             Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
 
-            var xAxis = new SCINumericAxis {VisibleRange = new SCIDoubleRange(3, 6), AutoRange = SCIAutoRange.Always};
-            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0, 0.1)};
+            var xAxis = new SCINumericAxis {VisibleRange = new SCIDoubleRange(3, 6)};
+            var yAxis = new SCINumericAxis {AutoRange = SCIAutoRange.Always, GrowBy = new SCIDoubleRange(0.05d, 0.05d) };
 
             var ds1 = new XyDataSeries<double, double> {SeriesName = "Green Series"};
             var ds2 = new XyDataSeries<double, double> {SeriesName = "Red Series"};
             var ds3 = new XyDataSeries<double, double> {SeriesName = "Gray Series"};
             var ds4 = new XyDataSeries<double, double> {SeriesName = "Gold Series"};
 
-            var data1 = DataManager.Instance.GetNoisySinewave(300, 1, 300, 0.25);
-            var data2 = DataManager.Instance.GetSinewave(100, 2, 300);
-            var data3 = DataManager.Instance.GetSinewave(200, 1.5, 300);
-            var data4 = DataManager.Instance.GetSinewave(50, 0.1, 300);
+            var data1 = DataManager.Instance.GetNoisySinewave(300, 1, PointsCount, 0.25);
+            var data2 = DataManager.Instance.GetSinewave(100, 2, PointsCount);
+            var data3 = DataManager.Instance.GetSinewave(200, 1.5, PointsCount);
+            var data4 = DataManager.Instance.GetSinewave(50, 0.1, PointsCount);
 
             ds1.Append(data1.XData, data1.YData);
             ds2.Append(data2.XData, data2.YData);
@@ -48,10 +48,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
-            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds1, Style = {LinePen = new SCISolidPenStyle(UIColor.Green, 2f)}});
-            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds2, Style = {LinePen = new SCISolidPenStyle(UIColor.Red, 2f)}});
-            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds3, Style = {LinePen = new SCISolidPenStyle(UIColor.Gray, 2f)}});
-            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds4, Style = {LinePen = new SCISolidPenStyle(GoldColor, 2f)}});
+            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds1, Style = {LinePen = new SCISolidPenStyle(0xFF177B17, 2f)}});
+            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds2, Style = {LinePen = new SCISolidPenStyle(0xFFDD0909, 2f)}});
+            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds3, Style = {LinePen = new SCISolidPenStyle(0xFF808080, 2f)}});
+            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds4, Style = {LinePen = new SCISolidPenStyle(0xFFFFD700, 2f)}, IsVisible = false});
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
             {

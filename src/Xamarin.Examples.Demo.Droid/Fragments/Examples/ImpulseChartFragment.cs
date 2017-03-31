@@ -1,7 +1,6 @@
 using Android.Graphics;
 using Android.Util;
 using Java.Lang;
-using SciChart.Android.Core.Additions.Utility;
 using SciChart.Charting.Model;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Modifiers;
@@ -13,6 +12,7 @@ using SciChart.Data.Model;
 using SciChart.Drawing.Common;
 using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
@@ -26,8 +26,8 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
         protected override void InitExample()
         {
-            var xAxis = new NumericAxis(Activity) { GrowBy = new DoubleRange(0.1, 0.1) };
-            var yAxis = new NumericAxis(Activity) { GrowBy = new DoubleRange(0.1, 0.1) };
+            var xAxis = new NumericAxis(Activity) {GrowBy = new DoubleRange(0.1, 0.1)};
+            var yAxis = new NumericAxis(Activity) {GrowBy = new DoubleRange(0.1, 0.1)};
 
             var ds1Points = DataManager.Instance.GetDampedSinewave(1.0, 0.05, 50, 5);
             var dataSeries = new XyDataSeries<double, double>();
@@ -36,13 +36,13 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             var renderableSeries = new FastImpulseRenderableSeries
             {
                 DataSeries = dataSeries,
-                StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0x00, 0x66, 0xFF), true, 2f),
+                StrokeStyle = new SolidPenStyle(0xFF0066FF, 2f.ToDip(Activity)),
                 PointMarker = new EllipsePointMarker
                 {
                     Width = 10.ToDip(Context),
                     Height = 10.ToDip(Context),
-                    StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0x00, 0x66, 0xFF), true, 2f),
-                    FillStyle = new SolidBrushStyle(Color.Rgb(0x00, 0x66, 0xFF))
+                    StrokeStyle = new SolidPenStyle(0xFF0066FF, 2f.ToDip(Activity)),
+                    FillStyle = new SolidBrushStyle(0xFF0066FF)
                 }
             };
 

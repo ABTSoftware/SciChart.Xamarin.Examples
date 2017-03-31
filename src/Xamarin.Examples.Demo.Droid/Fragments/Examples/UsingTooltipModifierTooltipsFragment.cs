@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using Android.Graphics;
-using SciChart.Android.Core.Additions.Utility;
 using SciChart.Charting.Model;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Modifiers;
@@ -12,7 +10,9 @@ using SciChart.Data.Model;
 using SciChart.Drawing.Common;
 using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
+using Xamarin.Examples.Demo.Utils;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
@@ -38,9 +38,6 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             ds1.Append(scaledXValues, ds1Points.YData);
             ds2.Append(ds2Points.XData, ds2Points.YData);
 
-            var rs1Color = Color.SteelBlue;
-            var rs2Color = Color.Argb(0xFF, 0xFF, 0x33, 0x33);
-
             using (Surface.SuspendUpdates())
             {
                 Surface.XAxes.Add(xAxis);
@@ -51,25 +48,25 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     new FastLineRenderableSeries
                     {
                         DataSeries = ds1,
-                        StrokeStyle = new SolidPenStyle(Activity, rs1Color, true, 2f),
+                        StrokeStyle = new SolidPenStyle(ColorUtil.SteelBlue, 2f.ToDip(Activity)),
                         PointMarker = new EllipsePointMarker
                         {
                             Width = 5.ToDip(Context),
                             Height = 5.ToDip(Context),
-                            StrokeStyle = new SolidPenStyle(Activity, rs1Color, true, 2f),
-                            FillStyle = new SolidBrushStyle(rs1Color)
+                            StrokeStyle = new SolidPenStyle(ColorUtil.SteelBlue, 2f.ToDip(Activity)),
+                            FillStyle = new SolidBrushStyle(ColorUtil.SteelBlue)
                         }
                     },
                     new FastLineRenderableSeries
                     {
                         DataSeries = ds2,
-                        StrokeStyle = new SolidPenStyle(Activity, rs2Color, true, 2f),
+                        StrokeStyle = new SolidPenStyle(0xFFFF3333, 2f.ToDip(Activity)),
                         PointMarker = new EllipsePointMarker
                         {
                             Width = 5.ToDip(Context),
                             Height = 5.ToDip(Context),
-                            StrokeStyle = new SolidPenStyle(Activity, rs2Color, true, 2f),
-                            FillStyle = new SolidBrushStyle(rs2Color)
+                            StrokeStyle = new SolidPenStyle(0xFFFF3333, 2f.ToDip(Activity)),
+                            FillStyle = new SolidBrushStyle(0xFFFF3333)
                         }
                     },
                 };

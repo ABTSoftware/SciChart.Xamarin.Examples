@@ -1,9 +1,6 @@
 ﻿using System;
 using Android.Content;
 using Android.Graphics;
-using Android.Util;
-using SciChart.Android.Charting.Additions.Utils;
-using SciChart.Android.Core.Additions.Utility;
 using SciChart.Charting.Model;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Modifiers;
@@ -14,6 +11,7 @@ using SciChart.Charting.Visuals.RenderableSeries;
 using SciChart.Data.Model;
 using SciChart.Drawing.Common;
 using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
 using static SciChart.Charting.Modifiers.AxisDragModifierBase;
 
@@ -33,10 +31,10 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             var xAxis = new NumericAxis(Activity) {GrowBy = new DoubleRange(0.1, 0.1)};
             var yAxis = new NumericAxis(Activity) {GrowBy = new DoubleRange(0.1, 0.1)};
 
-            var rSeries1 = GetScatterRenderableSeries(Context, new TrianglePointMarker(), Color.Argb(0xFF, 0xFF, 0xEB, 0x01), false);
-            var rSeries2 = GetScatterRenderableSeries(Context, new EllipsePointMarker(), Color.Argb(0xFF, 0xff, 0xA30, 0x0), false);
-            var rSeries3 = GetScatterRenderableSeries(Context, new TrianglePointMarker(), Color.Argb(0xFF, 0xff, 0x65, 0x01), true);
-            var rSeries4 = GetScatterRenderableSeries(Context, new EllipsePointMarker(), Color.Argb(0xFF, 0xff, 0xa3, 0x00), true);
+            var rSeries1 = GetScatterRenderableSeries(Context, new TrianglePointMarker(), 0xFFFFEB01, false);
+            var rSeries2 = GetScatterRenderableSeries(Context, new EllipsePointMarker(), 0xFFFFA300, false);
+            var rSeries3 = GetScatterRenderableSeries(Context, new TrianglePointMarker(), 0xFFFF6501, true);
+            var rSeries4 = GetScatterRenderableSeries(Context, new EllipsePointMarker(), 0xFFFFA300, true);
 
             using (Surface.SuspendUpdates())
             {
@@ -58,7 +56,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             }
         }
 
-        private XyScatterRenderableSeries GetScatterRenderableSeries(Context context, IPointMarker pointMarker, int color, bool negative)
+        private XyScatterRenderableSeries GetScatterRenderableSeries(Context context, IPointMarker pointMarker, uint color, bool negative)
         {
             var seriesName = pointMarker is EllipsePointMarker ?
                 negative ? "Negative Ellipse" : "Positive Ellipse" :
@@ -75,13 +73,13 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             }
 
             pointMarker.SetSize(6.ToDip(context), 6.ToDip(context));
-            pointMarker.StrokeStyle = new SolidPenStyle(Color.White, false, 0.1f.ToDip(context), null);
+            pointMarker.StrokeStyle = new SolidPenStyle(Color.White, 0.1f.ToDip(context));
             pointMarker.FillStyle = new SolidBrushStyle(color);
 
             return new XyScatterRenderableSeries
             {
                 DataSeries = dataSeries,
-                StrokeStyle = new SolidPenStyle(color, false, 2f.ToDip(context), null),
+                StrokeStyle = new SolidPenStyle(color, 2f.ToDip(context)),
                 PointMarker = pointMarker
             };
         }

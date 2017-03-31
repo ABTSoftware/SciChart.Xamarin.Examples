@@ -156,7 +156,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 var collection = new VerticallyStackedMountainsCollection {IsOneHundredPercent = isOneHundredPercent};
                 for (var i = 0; i < 5; i++)
                 {
-                    var dataSeries = new XyDataSeries<double, double> { SeriesName = "Series " + (i + 1) };
+                    var dataSeries = new XyDataSeries<double, double> {SeriesName = "Series " + (i + 1)};
                     dataSeries.Append(DashboardDataHelper.XValues, DashboardDataHelper.YValues[i]);
 
                     var rSeries = new StackedMountainRenderableSeries

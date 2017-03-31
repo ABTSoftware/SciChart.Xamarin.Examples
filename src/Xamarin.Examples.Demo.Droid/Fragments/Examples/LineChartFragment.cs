@@ -1,5 +1,4 @@
-﻿using Android.Graphics;
-using SciChart.Charting.Model;
+﻿using SciChart.Charting.Model;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Modifiers;
 using SciChart.Charting.Visuals;
@@ -9,6 +8,7 @@ using SciChart.Data.Model;
 using SciChart.Drawing.Common;
 using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
@@ -29,7 +29,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             var dataSeries = new XyDataSeries<double, double>();
             dataSeries.Append(fourierSeries.XData, fourierSeries.YData);
 
-            var renderableSeries = new FastLineRenderableSeries {DataSeries = dataSeries, StrokeStyle = new SolidPenStyle(Activity, Color.Rgb(0x27, 0x9B, 0x27), true, 2f)};
+            var renderableSeries = new FastLineRenderableSeries {DataSeries = dataSeries, StrokeStyle = new SolidPenStyle(0x279B27, 2f.ToDip(Activity))};
 
             using (Surface.SuspendUpdates())
             {
