@@ -26,6 +26,7 @@
             _filled = false;
             _current = double.NaN;
             _total = 0;
+			System.Array.Clear(_circularBuffer, 0, _length);
         }
 
         public MovingAverage Update(double value)

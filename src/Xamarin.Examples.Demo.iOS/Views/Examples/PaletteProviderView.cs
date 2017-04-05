@@ -7,7 +7,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Palette Provider")]
+    //[ExampleDefinition("Palette Provider")]
     public class PaletteProviderView : ExampleBaseView
     {
         class ZeroLinePaletteProvider : SCIPaletteProvider

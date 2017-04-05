@@ -57,7 +57,6 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             {
                 new SCICursorModifier
                 {
-                    Style = {HitTestMode = (int) SCIHitTestMode.Interpolate}
                     //ShowAxisLabels = true,
                     //ShowTooltip = true,
                 }
