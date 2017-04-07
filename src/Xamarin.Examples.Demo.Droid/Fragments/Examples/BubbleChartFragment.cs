@@ -38,14 +38,14 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             var lineSeries = new FastLineRenderableSeries
             {
                 DataSeries = dataSeries,
-                StrokeStyle = new SolidPenStyle(0xFF3333, 1.ToDip(Activity))
+                StrokeStyle = new SolidPenStyle(0xFFFF3333, 1.ToDip(Activity))
             };
 
             var bubbleSeries = new FastBubbleRenderableSeries
             {
                 DataSeries = dataSeries,
                 BubbleBrushStyle = new SolidBrushStyle(0x77CCCCCC),
-                StrokeStyle = new SolidPenStyle(0xCCCCCC, 2f.ToDip(Activity)),
+                StrokeStyle = new SolidPenStyle(0xFFCCCCCC, 2f.ToDip(Activity)),
                 ZScaleFactor = 3,
                 AutoZRange = false,
             };

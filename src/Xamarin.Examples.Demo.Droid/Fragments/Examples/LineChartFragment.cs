@@ -29,7 +29,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             var dataSeries = new XyDataSeries<double, double>();
             dataSeries.Append(fourierSeries.XData, fourierSeries.YData);
 
-            var renderableSeries = new FastLineRenderableSeries {DataSeries = dataSeries, StrokeStyle = new SolidPenStyle(0x279B27, 2f.ToDip(Activity))};
+            var renderableSeries = new FastLineRenderableSeries {DataSeries = dataSeries, StrokeStyle = new SolidPenStyle(0xFF279B27, 2f.ToDip(Activity))};
 
             using (Surface.SuspendUpdates())
             {
