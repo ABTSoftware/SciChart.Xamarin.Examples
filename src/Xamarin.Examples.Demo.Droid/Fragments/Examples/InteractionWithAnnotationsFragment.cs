@@ -37,6 +37,22 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             Surface.YAxes.Add(new NumericAxis(Activity) {VisibleRange = new DoubleRange(30, 37)});
             Surface.RenderableSeries.Add(new FastCandlestickRenderableSeries {DataSeries = dataSeries});
 
+            var horizontalLineAnnotation = new HorizontalLineAnnotation(Activity)
+            {
+                X1Value = 130,
+                X2Value = 160,
+                Y1Value = 33.9,
+                Stroke = new SolidPenStyle(ColorUtil.Blue, 2f.ToDip(Activity)),
+                HorizontalGravity = GravityFlags.CenterHorizontal,
+                IsEditable = true,
+                AnnotationLabels = new AnnotationCollection
+                {
+                    new LineAnnotationWithLabelsBase.AnnotationLabel(Activity)
+                    {
+                        LabelPlacement = LabelPlacement.Auto
+                    }
+                }
+            };
             Surface.Annotations = new AnnotationCollection
             {
                 new TextAnnotation(Activity)
@@ -50,7 +66,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 },
                 new TextAnnotation(Activity)
                 {
-                    Editable = true,
+                    IsEditable = true,
                     Text = "Buy",
                     X1Value = 10d,
                     Y1Value = 30.5d,
@@ -60,7 +76,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 new TextAnnotation(Activity)
                 {
                     Background = Activity.GetDrawable(Resource.Drawable.example_text_annotation_background),
-                    Editable = true,
+                    IsEditable = true,
                     Text = "Sell!",
                     X1Value = 50d,
                     Y1Value = 34d,
@@ -68,7 +84,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 },
                 new BoxAnnotation(Activity)
                 {
-                    Editable = true,
+                    IsEditable = true,
                     Background = Activity.GetDrawable(Resource.Drawable.example_box_annotation_background_4),
                     X1Value = 50,
                     Y1Value = 35.5,
@@ -77,7 +93,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 },
                 new LineAnnotation(Activity)
                 {
-                    Editable = true,
+                    IsEditable = true,
                     Stroke = new SolidPenStyle(0xAAFF6600, 2f.ToDip(Activity)),
                     X1Value = 40,
                     Y1Value = 30.5,
@@ -86,7 +102,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 },
                 new LineAnnotation(Activity)
                 {
-                    Editable = true,
+                    IsEditable = true,
                     Stroke = new SolidPenStyle(0xAAFF6600, 2f.ToDip(Activity)),
                     X1Value = 120,
                     Y1Value = 30.5,
@@ -95,7 +111,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 },
                 new LineArrowAnnotation(Activity)
                 {
-                    Editable = true,
+                    IsEditable = true,
                     HeadLength = 8,
                     HeadWidth = 16,
                     X1Value = 50,
@@ -105,14 +121,14 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 },
                 new AxisMarkerAnnotation(Activity)
                 {
-                    Editable = true,
+                    IsEditable = true,
                     Y1Value = 32.7
                 },
                 new AxisMarkerAnnotation(Activity)
                 {
                     AnnotationSurface = AnnotationSurfaceEnum.XAxis,
                     FormattedValue = "Horizontal",
-                    Editable = true,
+                    IsEditable = true,
                     X1Value = 100
                 },
                 new HorizontalLineAnnotation(Activity)
@@ -121,17 +137,9 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     Y1Value = 32.2,
                     Stroke = new SolidPenStyle(ColorUtil.Red, 2f.ToDip(Activity)),
                     HorizontalGravity = GravityFlags.Right,
-                    Editable = true
+                    IsEditable = true
                 },
-                new HorizontalLineAnnotation(Activity)
-                {
-                    X1Value = 130,
-                    X2Value = 160,
-                    Y1Value = 33.9,
-                    Stroke = new SolidPenStyle(ColorUtil.Blue, 2f.ToDip(Activity)),
-                    HorizontalGravity = GravityFlags.CenterHorizontal,
-                    Editable = true
-                },
+                horizontalLineAnnotation,
                 new VerticalLineAnnotation(Activity)
                 {
                     X1Value = 20,
@@ -139,8 +147,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     Y2Value = 33,
                     Stroke = new SolidPenStyle(ColorUtil.DarkGreen, 2f.ToDip(Activity)),
                     VerticalGravity = GravityFlags.CenterVertical,
-                    Editable = true,
-
+                    IsEditable = true,
                 },
                 new VerticalLineAnnotation(Activity)
                 {
@@ -148,13 +155,13 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     Y1Value = 34,
                     Stroke = new SolidPenStyle(ColorUtil.Green, 2f.ToDip(Activity)),
                     VerticalGravity = GravityFlags.Top,
-                    Editable = true,
+                    IsEditable = true,
                 },
                 new TextAnnotation(Activity)
                 {
                     X1Value = 50,
                     Y1Value = 37,
-                    Editable = true,
+                    IsEditable = true,
                     Text = "Rotated text",
                     FontStyle = new FontStyle(20.ToDip(Activity), ColorUtil.White),
                     RotationAngle = 30

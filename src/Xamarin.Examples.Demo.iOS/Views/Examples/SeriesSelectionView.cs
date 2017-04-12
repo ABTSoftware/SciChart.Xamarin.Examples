@@ -45,8 +45,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             {
                 Width = 10,
                 Height = 10,
-                FillBrush = new SCISolidBrushStyle(0xFFFF00DC),
-                BorderPen = new SCISolidPenStyle(ColorUtil.White, 1f)
+                FillStyle = new SCISolidBrushStyle(0xFFFF00DC),
+                StrokeStyle = new SCISolidPenStyle(ColorUtil.White, 1f)
             };
 
             for (var i = 0; i < SeriesCount; i++)

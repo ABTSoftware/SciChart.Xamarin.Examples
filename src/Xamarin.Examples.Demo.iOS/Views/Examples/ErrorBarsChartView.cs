@@ -66,11 +66,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     DrawPointMarkers = true,
                     PointMarker = new SCIEllipsePointMarker
                     {
-                        DrawBorder = true,
                         Width = 15,
                         Height = 15,
-                        BorderPen = new SCISolidPenStyle(new UIColor(176.0f/255.0f, 196.0f/255.0f, 222.0f/255.0f, 1.0f), 1.0f),
-                        FillBrush = new SCISolidBrushStyle(new UIColor( 70.0f/255.0f, 130.0f/255.0f, 180.0f/255.0f, 1.0f))
+                        StrokeStyle = new SCISolidPenStyle(new UIColor(176.0f/255.0f, 196.0f/255.0f, 222.0f/255.0f, 1.0f), 1.0f),
+                        FillStyle = new SCISolidBrushStyle(new UIColor( 70.0f/255.0f, 130.0f/255.0f, 180.0f/255.0f, 1.0f))
                     }
                 }
             };

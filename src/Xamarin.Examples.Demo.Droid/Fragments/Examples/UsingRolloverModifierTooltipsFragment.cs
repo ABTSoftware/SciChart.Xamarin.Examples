@@ -56,8 +56,8 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                         StrokeStyle = new SolidPenStyle(ColorUtil.SteelBlue, 2f.ToDip(Activity)),
                         PointMarker = new EllipsePointMarker
                         {
-                            Width = 7.ToDip(Context),
-                            Height = 7.ToDip(Context),
+                            Width = 7.ToDip(Activity),
+                            Height = 7.ToDip(Activity),
                             FillStyle = new SolidBrushStyle(ColorUtil.Lavender)
                         }
                     },
@@ -67,8 +67,8 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                         StrokeStyle = new SolidPenStyle(ColorUtil.DarkGreen, 2f.ToDip(Activity)),
                         PointMarker = new EllipsePointMarker
                         {
-                            Width = 7.ToDip(Context),
-                            Height = 7.ToDip(Context),
+                            Width = 7.ToDip(Activity),
+                            Height = 7.ToDip(Activity),
                             FillStyle = new SolidBrushStyle(ColorUtil.Lavender)
                         }
                     },

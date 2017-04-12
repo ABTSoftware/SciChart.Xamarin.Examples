@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using CoreGraphics;
 using Foundation;
 using SciChart.Examples.Demo.Data;
 using SciChart.iOS.Charting;
@@ -7,6 +8,7 @@ using UIKit;
 using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
 using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo.Utils;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
@@ -43,6 +45,24 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.YAxes.Add(yAxis);
             Surface.RenderableSeries.Add(new SCIFastCandlestickRenderableSeries {DataSeries = dataSeries});
 
+            var horizontalLineAnnotation = new SCIHorizontalLineAnnotation
+            {
+                X1Value = 130,
+                //X2Value = 160,
+                Y1Value = 33.9,
+                Style =
+                {
+                    LinePen = new SCISolidPenStyle(ColorUtil.Blue, 2f),
+                    HorizontalAlignment = SCIHorizontalLineAnnotationAlignment.Right
+                },
+                //HorizontalGravity = GravityFlags.CenterHorizontal,
+                IsEditable = true
+            };
+            horizontalLineAnnotation.AddLabel(new SCILineAnnotationLabel
+            {
+                Style = {LabelPlacement = SCIAnnotationLabelPlacementMode.TopCenter}
+            });
+
             Surface.Annotation = new SCIAnnotationCollection(new NSObject[]
             {
                 new SCITextAnnotation
@@ -50,81 +70,57 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     CoordinateMode = SCIAnnotationCoordinateMode.Relative,
                     //HorizontalAnchorPoint = HorizontalAnchorPoint.Center,
                     Text = "EUR.USD",
-                    X1 = 0.5,
-                    Y1 = 0.5,
-                    Style =
-                    {
-                        TextStyle = {FontSize = 72},
-                        TextColor = UIColor.FromRGB(0xFF, 0xFF, 0xFF)
-                    }
-                    //FontStyle = new FontStyle.Builder(Activity).WithTextSize(72).WithTextColor(Color.Argb(0x77, 0xFF, 0xFF, 0xFF)).Build(),
+                    X1Value = 0.5,
+                    Y1Value = 0.5,
+                    Style = {TextStyle = {FontSize = 72, ColorCode = 0x77FFFFFF}}
                 },
                 new SCITextAnnotation
                 {
-                    //Editable = true,
+                    IsEditable = true,
                     Text = "Buy",
-                    X1 = 10d,
-                    Y1 = 30.5d,
+                    X1Value = 10d,
+                    Y1Value = 30.5d,
                     //VerticalAnchorPoint = VerticalAnchorPoint.Bottom,
-                    Style =
-                    {
-                        TextStyle = {FontSize = 20},
-                        TextColor = UIColor.FromRGB(0xFF, 0xFF, 0xFF)
-                    }
-                    //FontStyle = new FontStyle.Builder(Activity).WithTextSize(20).WithTextColor(Color.White).Build()
+                    Style = {TextStyle = {FontSize = 20, ColorCode = ColorUtil.White}}
                 },
                 new SCITextAnnotation
                 {
-                    //Editable = true,
+                    IsEditable = true,
                     Text = "Sell!",
-                    X1 = 50d,
-                    Y1 = 34d,
+                    X1Value = 50d,
+                    Y1Value = 34d,
                     Style =
                     {
-                        BackgroundColor = UIColor.FromRGBA(0x02, 0x00, 0x5a, 0x7f),
-                        TextStyle = {FontSize = 20},
-                        TextColor = UIColor.FromRGB(0xFF, 0xFF, 0xFF)
-                    },
-                    //FontStyle = new FontStyle.Builder(Activity).WithTextSize(20).WithTextColor(Color.White).Build(),
+                        TextStyle = {FontSize = 20, ColorCode = ColorUtil.White},
+                        BackgroundColor = UIColor.FromRGBA(0x02, 0x00, 0x5A, 0x7F)
+                    }
                 },
                 new SCIBoxAnnotation
                 {
-                    //Editable = true,
-                    //Background = Activity.GetDrawable(Resource.Drawable.example_box_annotation_background_4),
-                    Style =
-                    {
-                        FillBrush = new SCISolidBrushStyle(UIColor.FromRGBA(0x02, 0x00, 0x59, 0x7f)),
-                    },
-                    X1 = 50,
-                    Y1 = 35.5,
-                    X2= 120,
-                    Y2= 32,
+                    IsEditable = true,
+                    Style = {FillBrush = new SCISolidBrushStyle(UIColor.FromRGBA(0x02, 0x00, 0x59, 0x7F))},
+                    X1Value = 50,
+                    Y1Value = 35.5,
+                    X2Value = 120,
+                    Y2Value = 32,
                 },
                 new SCILineAnnotation
                 {
-                    //Editable = true,
-                    Style =
-                    {
-                        LinePen = new SCISolidPenStyle(UIColor.FromRGBA(0xFF, 0x66, 0x00, 0xAA), 2f),
-                    },
-                    //Stroke = new PenStyle.Builder(Activity).WithThickness(2f).WithColor(Color.Argb(0xAA, 0xFF, 0x66, 0x00)).Build(),
-                    X1 = 40,
-                    Y1 = 30.5,
-                    X2 = 60,
-                    Y2 = 33.5,
+                    IsEditable = true,
+                    Style = {LinePen = new SCISolidPenStyle(0xAAFF6600, 2f)},
+                    X1Value = 40,
+                    Y1Value = 30.5,
+                    X2Value = 60,
+                    Y2Value = 33.5,
                 },
                 new SCILineAnnotation
                 {
-                    //Editable = true,
-                    Style =
-                    {
-                        LinePen = new SCISolidPenStyle(UIColor.FromRGBA(0xFF, 0x66, 0x00, 0xAA), 2f),
-                    },
-                    //Stroke = new PenStyle.Builder(Activity).WithThickness(2f).WithColor(Color.Argb(0xAA, 0xFF, 0x66, 0x00)).Build(),
-                    X1 = 120,
-                    Y1 = 30.5,
-                    X2 = 175,
-                    Y2 = 36,
+                    IsEditable = true,
+                    Style = {LinePen = new SCISolidPenStyle(0xAAFF6600, 2f)},
+                    X1Value = 120,
+                    Y1Value = 30.5,
+                    X2Value = 175,
+                    Y2Value = 36,
                 },
                 //new LineArrowAnnotation(Activity)
                 //{
@@ -138,67 +134,66 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 //},
                 new SCIAxisMarkerAnnotation
                 {
-                    //Editable = true,
+                    IsEditable = true,
                     Position = 32.7,
+                },
+                new SCIAxisMarkerAnnotation
+                {
+                    //AnnotationSurface = AnnotationSurfaceEnum.XAxis,
+                    FormattedValue = "Horizontal",
+                    IsEditable = true,
+                    Position = 100
+                },
+                new SCIHorizontalLineAnnotation
+                {
+                    X1Value = 150,
+                    Y1Value = 32.2,
                     Style =
                     {
-                        
-                    }
+                        LinePen = new SCISolidPenStyle(ColorUtil.Red, 2f),
+                        HorizontalAlignment = SCIHorizontalLineAnnotationAlignment.Right
+                    },
+                    IsEditable = true
                 },
-                //new SCIAxisMarkerAnnotation
-                //{
-                //    AnnotationSurface = AnnotationSurfaceEnum.XAxis,
-                //    FormattedValue = "Horizontal",
-                //    Editable = true,
-                //    X1Value = 100
-                //},
-                //new HorizontalLineAnnotation(Activity)
-                //{
-                //    X1Value = 150,
-                //    Y1Value = 32.2,
-                //    Stroke = new PenStyle.Builder(Activity).WithThickness(2f).WithColor(Color.Red).Build(),
-                //    HorizontalGravity = GravityFlags.Right,
-                //    Editable = true
-                //},
-                //new HorizontalLineAnnotation(Activity)
-                //{
-                //    X1Value = 130,
-                //    X2Value = 160,
-                //    Y1Value = 33.9,
-                //    Stroke = new PenStyle.Builder(Activity).WithThickness(2f).WithColor(Color.Blue).Build(),
-                //    HorizontalGravity = GravityFlags.CenterHorizontal,
-                //    Editable = true
-                //},
-                //new VerticalLineAnnotation(Activity)
-                //{
-                //    X1Value = 20,
-                //    Y1Value = 35,
-                //    Y2Value = 33,
-                //    Stroke = new PenStyle.Builder(Activity).WithThickness(2f).WithColor(Color.DarkGreen).Build(),
-                //    VerticalGravity = GravityFlags.CenterVertical,
-                //    Editable = true,
-
-                //},
-                //new VerticalLineAnnotation(Activity)
-                //{
-                //    X1Value = 40,
-                //    Y1Value = 34,
-                //    Stroke = new PenStyle.Builder(Activity).WithThickness(2f).WithColor(Color.Green).Build(),
-                //    VerticalGravity = GravityFlags.Top,
-                //    Editable = true,
-                //},
+                horizontalLineAnnotation,
+                new SCIVerticalLineAnnotation
+                {
+                    X1Value = 20,
+                    Y1Value = 35,
+                    //Y2Value = 33,
+                    Style =
+                    {
+                        LinePen = new SCISolidPenStyle(ColorUtil.DarkGreen, 2f),
+                        VerticalAlignment = SCIVerticalLineAnnotationAlignment.Stretch
+                    },
+                    //VerticalGravity = GravityFlags.CenterVertical,
+                    IsEditable = true,
+                },
+                new SCIVerticalLineAnnotation
+                {
+                    X1Value = 40,
+                    Y1Value = 34,
+                    Style =
+                    {
+                        LinePen = new SCISolidPenStyle(ColorUtil.Green, 2f),
+                        VerticalAlignment = SCIVerticalLineAnnotationAlignment.Top
+                    },
+                    IsEditable = true,
+                },
                 new SCITextAnnotation
                 {
-                    X1 = 50,
-                    Y1 = 37,
-                    //Editable = true,
+                    X1Value = 50,
+                    Y1Value = 37,
+                    IsEditable = true,
                     Text = "Rotated text",
-                    //FontStyle = new FontStyle.Builder(Activity).WithTextSize(20).WithTextColor(Color.White).Build(),
                     Style =
                     {
-                        TextStyle = {FontSize = 20},
-                        TextColor = UIColor.FromRGB(0xFF, 0xFF, 0xFF),
-                    },
+                        TextStyle =
+                        {
+                            FontSize = 20,
+                            ColorCode = ColorUtil.White,
+                        }
+                    }
                     //RotationAngle = 30
                 }
             });

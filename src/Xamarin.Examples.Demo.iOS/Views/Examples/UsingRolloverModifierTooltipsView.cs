@@ -59,7 +59,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     {
                         Width = 7,
                         Height = 7,
-                        FillBrush = new SCISolidBrushStyle(ColorUtil.Lavender)
+                        FillStyle = new SCISolidBrushStyle(ColorUtil.Lavender)
                     }
                 }
             });
@@ -74,7 +74,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     {
                         Width = 7,
                         Height = 7,
-                        FillBrush = new SCISolidBrushStyle(ColorUtil.Lavender)
+                        FillStyle = new SCISolidBrushStyle(ColorUtil.Lavender)
                     }
                 }
             });

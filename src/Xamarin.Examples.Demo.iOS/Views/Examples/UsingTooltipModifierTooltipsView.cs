@@ -56,8 +56,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     {
                         Width = 5,
                         Height = 5,
-                        BorderPen = new SCISolidPenStyle(ColorUtil.SteelBlue, 2f),
-                        FillBrush = new SCISolidBrushStyle(ColorUtil.SteelBlue)
+                        StrokeStyle = new SCISolidPenStyle(ColorUtil.SteelBlue, 2f),
+                        FillStyle = new SCISolidBrushStyle(ColorUtil.SteelBlue)
                     }
                 }
             });
@@ -72,8 +72,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     {
                         Width = 5,
                         Height = 5,
-                        BorderPen = new SCISolidPenStyle(0xFFFF3333, 2f),
-                        FillBrush = new SCISolidBrushStyle(0xFFFF3333)
+                        StrokeStyle = new SCISolidPenStyle(0xFFFF3333, 2f),
+                        FillStyle = new SCISolidBrushStyle(0xFFFF3333)
                     }
                 }
             });

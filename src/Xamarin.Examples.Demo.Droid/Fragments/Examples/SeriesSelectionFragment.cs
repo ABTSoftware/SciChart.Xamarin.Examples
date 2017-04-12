@@ -35,8 +35,8 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             var selectedStrokeStyle = new SolidPenStyle(ColorUtil.White, 4f.ToDip(Activity));
             var selectedPointMarker = new EllipsePointMarker
             {
-                Width = 10.ToDip(Context),
-                Height = 10.ToDip(Context),
+                Width = 10.ToDip(Activity),
+                Height = 10.ToDip(Activity),
                 FillStyle = new SolidBrushStyle(0xFFFF00DC),
                 StrokeStyle = new SolidPenStyle(ColorUtil.White, 1f.ToDip(Activity))
             };

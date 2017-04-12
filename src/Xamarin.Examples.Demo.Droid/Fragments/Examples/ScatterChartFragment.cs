@@ -31,10 +31,10 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             var xAxis = new NumericAxis(Activity) {GrowBy = new DoubleRange(0.1, 0.1)};
             var yAxis = new NumericAxis(Activity) {GrowBy = new DoubleRange(0.1, 0.1)};
 
-            var rSeries1 = GetScatterRenderableSeries(Context, new TrianglePointMarker(), 0xFFFFEB01, false);
-            var rSeries2 = GetScatterRenderableSeries(Context, new EllipsePointMarker(), 0xFFFFA300, false);
-            var rSeries3 = GetScatterRenderableSeries(Context, new TrianglePointMarker(), 0xFFFF6501, true);
-            var rSeries4 = GetScatterRenderableSeries(Context, new EllipsePointMarker(), 0xFFFFA300, true);
+            var rSeries1 = GetScatterRenderableSeries(Activity, new TrianglePointMarker(), 0xFFFFEB01, false);
+            var rSeries2 = GetScatterRenderableSeries(Activity, new EllipsePointMarker(), 0xFFFFA300, false);
+            var rSeries3 = GetScatterRenderableSeries(Activity, new TrianglePointMarker(), 0xFFFF6501, true);
+            var rSeries4 = GetScatterRenderableSeries(Activity, new EllipsePointMarker(), 0xFFFFA300, true);
 
             using (Surface.SuspendUpdates())
             {

@@ -73,9 +73,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
             pointMarker.Height = 6;
             pointMarker.Width = 6;
-            //TODO ISCIPointMarkerProtocol should have those properties 
-            //pointMarker.BorderPen = new SCISolidPenStyle(UIColor.White, 0.1f);
-            //pointMarker.FillBrush = new SCISolidBrushStyle(color);
+            pointMarker.StrokeStyle = new SCISolidPenStyle(UIColor.White, 0.1f);
+            pointMarker.FillStyle = new SCISolidBrushStyle(color);
 
             return new SCIXyScatterRenderableSeries
             {
