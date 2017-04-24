@@ -21,6 +21,7 @@ namespace Xamarin.Examples.Demo.iOS
 
             TableView.DataSource = this;
             TableView.Delegate = this;
+            TableView.BackgroundColor = null;
 
             _examples = ExampleManager.Instance.Examples;
         }

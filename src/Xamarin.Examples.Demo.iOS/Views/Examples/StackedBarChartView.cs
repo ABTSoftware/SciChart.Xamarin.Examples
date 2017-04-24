@@ -47,10 +47,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var series2 = GetRenderableSeries(ds2, 0xFFACBCCA, 0xFFACBCCA, 0xFF439AAF);
             var series3 = GetRenderableSeries(ds3, 0xFFDBE0E1, 0xFFDBE0E1, 0xFFB6C1C3);
 
-            var columnsCollection = new SCIStackedVerticalColumnGroupSeries();
-            columnsCollection.AddSeries(series1);
-            columnsCollection.AddSeries(series2);
-            columnsCollection.AddSeries(series3);
+            var columnsCollection = new SCIVerticallyStackedColumnsCollection();
+            columnsCollection.Add(series1);
+            columnsCollection.Add(series2);
+            columnsCollection.Add(series3);
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);

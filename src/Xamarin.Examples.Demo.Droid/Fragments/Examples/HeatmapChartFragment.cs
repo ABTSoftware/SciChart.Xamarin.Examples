@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Timers;
 using Android.Graphics;
 using SciChart.Charting.Model.DataSeries;
@@ -8,6 +10,7 @@ using SciChart.Charting.Visuals;
 using SciChart.Charting.Visuals.Axes;
 using SciChart.Charting.Visuals.RenderableSeries;
 using SciChart.Core.Model;
+using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
@@ -27,29 +30,26 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
         private readonly Timer _timer = new Timer(40) {AutoReset = true};
         private int _timerIndex = 0;
         private readonly UniformHeatmapDataSeries<int, int, double> _dataSeries = new UniformHeatmapDataSeries<int, int, double>(Width, Height);
-        private readonly List<IValues<double>> _valuesList = Enumerable.Range(0, SeriesPerPeriod).Select(CreateValues).ToList();
 
-        private static IValues<double> CreateValues(int index)
+        private static readonly List<IValues<double>> ValuesList = new List<IValues<double>>(SeriesPerPeriod);
+
+        static HeatmapChartFragment()
         {
-            var values = new DoubleValues(Width*Height);
-
-            var random = new Random();
-            var angle = Math.PI*2*index/SeriesPerPeriod;
-            var cx = 150;
-            var cy = 100;
-            for (int x = 0; x < Width; x++)
+            Task.Run(() =>
             {
-                for (int y = 0; y < Height; y++)
+                var array = new double[Width*Height];
+
+                for (var i = 0; i < SeriesPerPeriod; i++)
                 {
-                    var v = (1 + Math.Sin(x*0.04 + angle))*50 + (1 + Math.Sin(y*0.1 + angle))*50*(1 + Math.Sin(angle*2));
-                    var r = Math.Sqrt((x - cx)*(x - cx) + (y - cy)*(y - cy));
-                    var exp = Math.Max(0, 1 - r*0.008);
+                    DataManager.Instance.SetHeatmapValues(array, i, Width, Height, SeriesPerPeriod);
+                    var doubleValues = new DoubleValues(array);
 
-                    values.Add(v*exp + random.NextDouble()*50);
+                    lock (ValuesList)
+                    {
+                        ValuesList.Add(doubleValues);
+                    }
                 }
-            }
-
-            return values;
+            });
         }
 
         protected override void InitExample()
@@ -75,7 +75,11 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
         private void OnTick(object sender, ElapsedEventArgs e)
         {
-            var values = _valuesList[_timerIndex % SeriesPerPeriod];
+            IValues<double> values;
+            lock (ValuesList)
+            {
+                values = ValuesList[_timerIndex % ValuesList.Count];
+            }
             _dataSeries.UpdateZValues(values);
 
             _timerIndex++;

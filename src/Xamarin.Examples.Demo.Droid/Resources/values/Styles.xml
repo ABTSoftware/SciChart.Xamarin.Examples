@@ -8,4 +8,67 @@
     <item name="windowNoTitle">true</item>
   </style>
 
+
+
+  <style name="SciChart_BerryBlue">
+    <item name="tickTextSize">12sp</item>
+    <item name="titleTextSize">18sp</item>
+    <item name="axisTooltipTextSize">12sp</item>
+    <item name="defaultTextSize">10sp</item>
+
+    <item name="textAnnotationTextSize">12sp</item>
+    <item name="lineAnnotationLineThickness">2dp</item>
+
+    <item name="renderableSeriesAreaStrokeThickness">1dp</item>
+
+    <item name="majorTickLinesLength">8dp</item>
+    <item name="minorTickLinesLength">4dp</item>
+    
+    <!-- Background defaults -->
+    <item name="sciChartBackground">@drawable/example_sci_chart_berry_blue_background</item>
+    <item name="legendBackground">@drawable/example_sci_chart_berry_blue_legend_background</item>
+    <item name="axisTooltipBackground">@drawable/example_sci_chart_berry_blue_label_background</item>
+
+    <item name="renderableSeriesAreaBorderColor">#102A47</item>
+    <item name="renderableSeriesAreaFillColor">@android:color/transparent</item>
+
+    <item name="defaultTextColor">#EEEEEE</item>
+
+    <!-- Axis defaults -->
+    <item name="tickTextColor">#FF6495ED</item>
+    <item name="majorGridLinesColor">#102A47</item>
+    <item name="minorGridLinesColor">#0D223D</item>
+    <item name="axisBandsColor">#0E233A</item>
+
+    <!-- Modifier defaults -->
+    <item name="rolloverLineColor">#33FD9F25</item>
+    <item name="cursorLineColor">#996495ED</item>
+    <item name="rubberBandStrokeColor">#77999999</item>
+    <item name="rubberBandFillColor">#33999999</item>
+    <item name="axisTooltipTextColor">#EEEEEE</item>
+
+    <!-- MountainSeries defaults -->
+    <item name="mountainLineColor">#76BBD2</item>
+    <!-- TODO - this should be a gradient -->
+    <item name="mountainAreaColor">#094C9F</item>
+
+    <!-- LineSeries defaults -->
+    <item name="lineSeriesColor">#FFC6E6FF</item>
+
+    <!-- ColumnSeries defaults -->
+    <item name="columnLineColor">#FFFFFFFF</item>
+    <item name="columnFillColor">#FFFFFFFF</item>
+
+    <!-- CandlestickSeries defaults -->
+    <item name="candleStickStrokeUpColor">#FF6495ED</item>
+    <item name="candleStickStrokeDownColor">#FF00008B</item>
+    <item name="candleStickFillUpColor">#A06495ED</item>
+    <item name="candleStickFillDownColor">#A000008B</item>
+
+    <!-- BandSeries defaults -->
+    <item name="bandStrokeUpColor">#FF6495ED</item>
+    <item name="bandStrokeDownColor">#FF00008B</item>
+    <item name="bandFillUpColor">#A06495ED</item>
+    <item name="bandFillDownColor">#A000008B</item>
+  </style>
 </resources>

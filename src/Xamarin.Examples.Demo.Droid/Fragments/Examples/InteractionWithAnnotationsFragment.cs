@@ -75,7 +75,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 },
                 new TextAnnotation(Activity)
                 {
-                    Background = Activity.GetDrawable(Resource.Drawable.example_text_annotation_background),
+                    Background = Activity.GetDrawableCompat(Resource.Drawable.example_text_annotation_background),
                     IsEditable = true,
                     Text = "Sell!",
                     X1Value = 50d,
@@ -85,7 +85,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 new BoxAnnotation(Activity)
                 {
                     IsEditable = true,
-                    Background = Activity.GetDrawable(Resource.Drawable.example_box_annotation_background_4),
+                    Background = Activity.GetDrawableCompat(Resource.Drawable.example_box_annotation_background_4),
                     X1Value = 50,
                     Y1Value = 35.5,
                     X2Value = 120,

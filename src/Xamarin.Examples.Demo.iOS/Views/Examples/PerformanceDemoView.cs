@@ -113,10 +113,17 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         {
             lock (_timer)
             {
-                if (GetPointsCount() < MaxPointCount)
-                    DoAppendLoop();
-                else
-                    Pause();
+                InvokeOnMainThread(() =>
+                {
+                    if (GetPointsCount() < MaxPointCount)
+                    {
+                        DoAppendLoop();
+                    }
+                    else
+                    {
+                        Pause();
+                    }
+                });
             }
         }
 

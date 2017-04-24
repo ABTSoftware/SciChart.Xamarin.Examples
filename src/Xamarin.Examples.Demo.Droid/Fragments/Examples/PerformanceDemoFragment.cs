@@ -1,4 +1,5 @@
 ﻿using System.Timers;
+using Android.OS;
 using Android.Widget;
 using Java.Lang;
 using SciChart.Charting.Model.DataSeries;
@@ -45,6 +46,8 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
         private readonly XyDataSeries<int, float> _maHighSeries = new XyDataSeries<int, float>();
 
         private readonly Random _random = new Random();
+
+        private readonly Handler _uiThreadHandler = new Handler(Looper.MainLooper);
 
         private volatile bool _isRunning = false;
         private Timer _timer;
@@ -132,10 +135,14 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
         {
             lock (_timer)
             {
-                if(GetPointsCount() < MaxPointCount)
+                if (GetPointsCount() < MaxPointCount)
+                {
                     DoAppendLoop();
+                }
                 else
+                {
                     Pause();
+                }
             }
         }
 
@@ -171,7 +178,11 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 var count = _mainSeries.Count + _maLowSeries.Count + _maHighSeries.Count;
                 var text = "Amount of points: " + count;
 
-                _textView.SetText(text, TextView.BufferType.Normal);
+                // need to set text from UI thread to prevent exception
+                _uiThreadHandler.Post(() =>
+                {
+                    _textView.SetText(text, TextView.BufferType.Normal);
+                });
             }
         }
 

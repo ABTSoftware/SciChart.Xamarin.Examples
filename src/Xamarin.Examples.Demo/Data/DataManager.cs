@@ -257,5 +257,61 @@ namespace SciChart.Examples.Demo.Data
             }
             return dataSource;
         }
+
+        public IEnumerable<double> Offset(IList<double> inputList, double offset)
+        {
+            foreach (double value in inputList)
+            {
+                yield return value + offset;
+            }
+        }
+
+        public IList<double> ComputeMovingAverage(IList<double> prices, int length)
+        {
+            double[] result = new double[prices.Count];
+            for (int i = 0; i < prices.Count; i++)
+            {
+                if (i < length)
+                {
+                    result[i] = double.NaN;
+                    continue;
+                }
+
+                result[i] = AverageOf(prices, i - length, i);
+            }
+
+            return result;
+        }
+
+        private static double AverageOf(IList<double> prices, int from, int to)
+        {
+            double result = 0.0;
+            for (int i = from; i < to; i++)
+            {
+                result += prices[i];
+            }
+
+            return result / (to - from);
+        }
+
+        public void SetHeatmapValues(double[] heatmapValues, int heatmapIndex, int heatmapWidth, int heatmapHeight, int seriesPerPeriod)
+        {
+            var cx = heatmapWidth / 2;
+            var cy = heatmapHeight / 2;
+
+            var angle = Math.PI * 2 * heatmapIndex / seriesPerPeriod;
+
+            for (var x = 0; x < heatmapWidth; x++)
+            {
+                for (var y = 0; y < heatmapHeight; y++)
+                {
+                    var v = (1 + Math.Sin(x * 0.04 + angle)) * 50 + (1 + Math.Sin(y * 0.1 + angle)) * 50 * (1 + Math.Sin(angle * 2));
+                    var r = Math.Sqrt((x - cx) * (x - cx) + (y - cy) * (y - cy));
+                    var exp = Math.Max(0, 1 - r * 0.008);
+
+                    heatmapValues[x * heatmapHeight + y] = v * exp + _random.NextDouble() * 50;
+                }
+            }
+        }
     }
 }

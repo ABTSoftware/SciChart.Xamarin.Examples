@@ -56,18 +56,18 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var cucumberSeries = GetRenderableSeries(ds4, 0xFF73953D, 0xFFAAD34F);
             var pepperSeries = GetRenderableSeries(ds5, 0xFF64458A, 0xFF8562B4);
 
-            var verticalCollection1 = new SCIStackedVerticalColumnGroupSeries();
-            verticalCollection1.AddSeries(porkSeries);
-            verticalCollection1.AddSeries(vealSeries);
+            var verticalCollection1 = new SCIVerticallyStackedColumnsCollection();
+            verticalCollection1.Add(porkSeries);
+            verticalCollection1.Add(vealSeries);
 
-            var verticalCollection2 = new SCIStackedVerticalColumnGroupSeries();
-            verticalCollection2.AddSeries(tomatoSeries);
-            verticalCollection2.AddSeries(cucumberSeries);
-            verticalCollection2.AddSeries(pepperSeries);
+            var verticalCollection2 = new SCIVerticallyStackedColumnsCollection();
+            verticalCollection2.Add(tomatoSeries);
+            verticalCollection2.Add(cucumberSeries);
+            verticalCollection2.Add(pepperSeries);
 
-            var columnsCollection = new SCIStackedHorizontalColumnGroupSeries();
-            columnsCollection.AddSeries(verticalCollection1);
-            columnsCollection.AddSeries(verticalCollection2);
+            var columnsCollection = new SCIHorizontallyStackedColumnsCollection();
+            columnsCollection.Add(verticalCollection1);
+            columnsCollection.Add(verticalCollection2);
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);

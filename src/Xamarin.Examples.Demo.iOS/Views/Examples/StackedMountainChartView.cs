@@ -40,13 +40,13 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var series1 = GetRenderableSeries(ds1, 0xDDDBE0E1, 0x88B6C1C3);
             var series2 = GetRenderableSeries(ds2, 0xDDACBCCA, 0x88439AAF);
 
-            var stackedGroup = new SCIStackedGroupSeries();
-            stackedGroup.AddSeries(series1);
-            stackedGroup.AddSeries(series2);
+            var seriesCollection = new SCIVerticallyStackedMountainsCollection();
+            seriesCollection.Add(series1);
+            seriesCollection.Add(series2);
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
-            Surface.RenderableSeries.Add(stackedGroup);
+            Surface.RenderableSeries.Add(seriesCollection);
 
             Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
             {

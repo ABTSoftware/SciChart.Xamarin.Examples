@@ -95,19 +95,19 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 totalDataSeries.Append(xValue, china[i] + india[i] + usa[i] + indonesia[i] + brazil[i] + pakistan[i] + nigeria[i] + bangladesh[i] + russia[i] + japan[i] + restOfTheWorld[i]);
             }
 
-            var columnsCollection = new SCIStackedHorizontalColumnGroupSeries();
+            var columnsCollection = new SCIHorizontallyStackedColumnsCollection();
 
-            columnsCollection.AddSeries(GetRenderableSeries(chinaDataSeries, 0xff3399ff, 0xff2D68BC));
-            columnsCollection.AddSeries(GetRenderableSeries(indiaDataSeries, 0xff014358, 0xff013547));
-            columnsCollection.AddSeries(GetRenderableSeries(usaDataSeries, 0xff1f8a71, 0xff1B5D46));
-            columnsCollection.AddSeries(GetRenderableSeries(indonesiaDataSeries, 0xffbdd63b, 0xff7E952B));
-            columnsCollection.AddSeries(GetRenderableSeries(brazilDataSeries, 0xffffe00b, 0xffAA8F0B));
-            columnsCollection.AddSeries(GetRenderableSeries(pakistanDataSeries, 0xfff27421, 0xffA95419));
-            columnsCollection.AddSeries(GetRenderableSeries(nigeriaDataSeries, 0xffbb0000, 0xff840000));
-            columnsCollection.AddSeries(GetRenderableSeries(bangladeshDataSeries, 0xff550033, 0xff370018 ));
-            columnsCollection.AddSeries(GetRenderableSeries(russiaDataSeries, 0xff339933, 0xff2D732D));
-            columnsCollection.AddSeries(GetRenderableSeries(japanDataSeries, 0xff00aba9, 0xff006C6A));
-            columnsCollection.AddSeries(GetRenderableSeries(restOfTheWorldDataSeries, 0xff560068, 0xff3D0049));
+            columnsCollection.Add(GetRenderableSeries(chinaDataSeries, 0xff3399ff, 0xff2D68BC));
+            columnsCollection.Add(GetRenderableSeries(indiaDataSeries, 0xff014358, 0xff013547));
+            columnsCollection.Add(GetRenderableSeries(usaDataSeries, 0xff1f8a71, 0xff1B5D46));
+            columnsCollection.Add(GetRenderableSeries(indonesiaDataSeries, 0xffbdd63b, 0xff7E952B));
+            columnsCollection.Add(GetRenderableSeries(brazilDataSeries, 0xffffe00b, 0xffAA8F0B));
+            columnsCollection.Add(GetRenderableSeries(pakistanDataSeries, 0xfff27421, 0xffA95419));
+            columnsCollection.Add(GetRenderableSeries(nigeriaDataSeries, 0xffbb0000, 0xff840000));
+            columnsCollection.Add(GetRenderableSeries(bangladeshDataSeries, 0xff550033, 0xff370018 ));
+            columnsCollection.Add(GetRenderableSeries(russiaDataSeries, 0xff339933, 0xff2D732D));
+            columnsCollection.Add(GetRenderableSeries(japanDataSeries, 0xff00aba9, 0xff006C6A));
+            columnsCollection.Add(GetRenderableSeries(restOfTheWorldDataSeries, 0xff560068, 0xff3D0049));
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
