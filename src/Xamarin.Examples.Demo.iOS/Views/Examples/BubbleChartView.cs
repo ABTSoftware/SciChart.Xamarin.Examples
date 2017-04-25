@@ -9,7 +9,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Bubble Chart", description:"Generates a Line and Bubble series chart in code")]
+    [ExampleDefinition("Bubble Chart", description:"Generates a Line and Bubble series chart in code", icon: ExampleIcon.BubbleChart)]
     public class BubbleChartView : ExampleBaseView
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();

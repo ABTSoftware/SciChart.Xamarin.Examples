@@ -191,11 +191,87 @@
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Resources\Images.xcassets\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\Annotations.imageset\Annotations.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Annotations.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\BandChart.imageset\.DS_Store" />
+    <ImageAsset Include="Resources\Images.xcassets\BandChart.imageset\BandChart.png" />
+    <ImageAsset Include="Resources\Images.xcassets\BandChart.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\BubbleChart.imageset\.DS_Store" />
+    <ImageAsset Include="Resources\Images.xcassets\BubbleChart.imageset\BubbleChart.png" />
+    <ImageAsset Include="Resources\Images.xcassets\BubbleChart.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\CandlestickChart.imageset\.DS_Store" />
+    <ImageAsset Include="Resources\Images.xcassets\CandlestickChart.imageset\CandlestickChart.png" />
+    <ImageAsset Include="Resources\Images.xcassets\CandlestickChart.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\ColumnChart.imageset\.DS_Store" />
+    <ImageAsset Include="Resources\Images.xcassets\ColumnChart.imageset\ColumnChart.png" />
+    <ImageAsset Include="Resources\Images.xcassets\ColumnChart.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\CubeChart.imageset\.DS_Store" />
+    <ImageAsset Include="Resources\Images.xcassets\CubeChart.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\CubeChart.imageset\CubeChart.png" />
+    <ImageAsset Include="Resources\Images.xcassets\FeatureChart.imageset\.DS_Store" />
+    <ImageAsset Include="Resources\Images.xcassets\FeatureChart.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\FeatureChart.imageset\FeatureChart.png" />
+    <ImageAsset Include="Resources\Images.xcassets\HeatmapChart.imageset\.DS_Store" />
+    <ImageAsset Include="Resources\Images.xcassets\HeatmapChart.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\HeatmapChart.imageset\HeatmapChart.png" />
+    <ImageAsset Include="Resources\Images.xcassets\MountainChart.imageset\.DS_Store" />
+    <ImageAsset Include="Resources\Images.xcassets\MountainChart.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\MountainChart.imageset\MountainChart.png" />
+    <ImageAsset Include="Resources\Images.xcassets\RealTime.imageset\.DS_Store" />
+    <ImageAsset Include="Resources\Images.xcassets\RealTime.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\RealTime.imageset\RealTime.png" />
+    <ImageAsset Include="Resources\Images.xcassets\ScatterChart.imageset\.DS_Store" />
+    <ImageAsset Include="Resources\Images.xcassets\ScatterChart.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\ScatterChart.imageset\ScatterChart.png" />
+    <ImageAsset Include="Resources\Images.xcassets\StackedMountainChart.imageset\.DS_Store" />
+    <ImageAsset Include="Resources\Images.xcassets\StackedMountainChart.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\StackedMountainChart.imageset\StackedMountainChart.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LineChart.imageset\.DS_Store" />
+    <ImageAsset Include="Resources\Images.xcassets\LineChart.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\LineChart.imageset\linechart.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Axis.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\Axis.imageset\Axis.png" />
+    <ImageAsset Include="Resources\Images.xcassets\DigitalLine.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\DigitalLine.imageset\DigitalLine.png" />
+    <ImageAsset Include="Resources\Images.xcassets\ErrorBars.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\ErrorBars.imageset\ErrorBars.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Fan.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\Fan.imageset\Fan.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Impulse.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\Impulse.imageset\Impulse.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Ohlc.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\Ohlc.imageset\Ohlc.png" />
+    <ImageAsset Include="Resources\Images.xcassets\StackedBar.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\StackedBar.imageset\StackedBar.png" />
+    <ImageAsset Include="Resources\Images.xcassets\StackedColumn.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\StackedColumn.imageset\StackedColumn.png" />
+    <ImageAsset Include="Resources\Images.xcassets\StackedColumn100.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\StackedColumn100.imageset\StackedColumns100.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Themes.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\Themes.imageset\Themes.png" />
+    <ImageAsset Include="Resources\Images.xcassets\ZoomPan.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\ZoomPan.imageset\ZoomPan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Images.xcassets\Axis.imageset\" />
+    <Folder Include="Resources\Images.xcassets\DigitalLine.imageset\" />
+    <Folder Include="Resources\Images.xcassets\ErrorBars.imageset\" />
+    <Folder Include="Resources\Images.xcassets\Fan.imageset\" />
+    <Folder Include="Resources\Images.xcassets\Impulse.imageset\" />
+    <Folder Include="Resources\Images.xcassets\Ohlc.imageset\" />
+    <Folder Include="Resources\Images.xcassets\StackedBar.imageset\" />
+    <Folder Include="Resources\Images.xcassets\StackedColumn.imageset\" />
+    <Folder Include="Resources\Images.xcassets\StackedColumn100.imageset\" />
+    <Folder Include="Resources\Images.xcassets\Themes.imageset\" />
+    <Folder Include="Resources\Images.xcassets\ZoomPan.imageset\" />
+  </ItemGroup>
   <Import Project="..\Xamarin.Examples.Demo\Xamarin.Examples.Demo.projitems" Label="Shared" Condition="Exists('..\Xamarin.Examples.Demo\Xamarin.Examples.Demo.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <Reference Include="SciChart.iOS.Charting">
-      <HintPath>..\packages\SciChart.iOS.2.0.0.273\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
+      <HintPath>..\packages\SciChart.iOS.2.0.0.278\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

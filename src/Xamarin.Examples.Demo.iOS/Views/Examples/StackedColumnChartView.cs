@@ -6,7 +6,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Stacked Column Chart", description:"Demonstrates Stacked Columns Chart")]
+    [ExampleDefinition("Stacked Column Chart", description:"Demonstrates Stacked Columns Chart", icon: ExampleIcon.StackedColumn)]
     public class StackedColumnChartView : ExampleBaseView
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();

@@ -9,7 +9,7 @@ using Xamarin.Examples.Demo.Utils;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Using TooltipModifier Tooltips", description:"Demonstrates a simple tooltip")]
+    [ExampleDefinition("Using TooltipModifier Tooltips", description:"Demonstrates a simple tooltip", icon: ExampleIcon.Annotations)]
     public class UsingTooltipModifierTooltipsView : ExampleBaseView
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();

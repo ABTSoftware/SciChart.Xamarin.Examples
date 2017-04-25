@@ -7,7 +7,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("ErrorBars Chart", description:"Demonstrates Error Bars showing point uncertainty")]
+    [ExampleDefinition("ErrorBars Chart", description:"Demonstrates Error Bars showing point uncertainty", icon: ExampleIcon.ErrorBars)]
     public class ErrorBarsChartView : ExampleBaseView
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();

@@ -19,6 +19,10 @@ namespace Xamarin.Examples.Demo.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView ExampleImage { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel TitleLabel { get; set; }
 
         void ReleaseDesignerOutlets ()
@@ -26,6 +30,11 @@ namespace Xamarin.Examples.Demo.iOS
             if (DescriptionLabel != null) {
                 DescriptionLabel.Dispose ();
                 DescriptionLabel = null;
+            }
+
+            if (ExampleImage != null) {
+                ExampleImage.Dispose ();
+                ExampleImage = null;
             }
 
             if (TitleLabel != null) {

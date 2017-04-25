@@ -8,7 +8,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Candlestick Chart", description:"A simple candlestick chart with Up/Down bars")]
+    [ExampleDefinition("Candlestick Chart", description:"A simple candlestick chart with Up/Down bars", icon: ExampleIcon.CandlestickChart)]
     public class CandlestickChartView : ExampleBaseView
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();

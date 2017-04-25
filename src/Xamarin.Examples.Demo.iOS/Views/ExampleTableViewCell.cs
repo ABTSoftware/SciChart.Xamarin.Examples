@@ -2,6 +2,7 @@
 
 using Foundation;
 using UIKit;
+using SciChart.Examples.Demo.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.iOS
 {
@@ -20,10 +21,14 @@ namespace Xamarin.Examples.Demo.iOS
             // Note: this .ctor should not contain any initialization logic.
         }
 
-        public void UpdateCell(string title, string description)
+        public void UpdateCell(string title, string description, ExampleIcon? icon)
         {            
             this.TitleLabel.Text = title;
             this.DescriptionLabel.Text = description;
+            if (icon.HasValue)
+            {
+                this.ExampleImage.Image = UIImage.FromBundle(icon.Value.ToString());
+            }
         }
     }
 }

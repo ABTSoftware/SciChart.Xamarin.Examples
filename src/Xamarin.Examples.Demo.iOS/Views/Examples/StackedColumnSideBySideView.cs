@@ -6,7 +6,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Stacked Column Side By Side Chart",  description:"A Stacked Column chart with columns grouped side by side")]
+    [ExampleDefinition("Stacked Column Side By Side Chart",  description:"A Stacked Column chart with columns grouped side by side", icon: ExampleIcon.StackedColumn)]
     public class StackedColumnSideBySideView : ExampleBaseView
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();

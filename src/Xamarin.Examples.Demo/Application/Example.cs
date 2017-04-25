@@ -10,6 +10,7 @@ namespace SciChart.Examples.Demo.Application
         public Type ExampleType { get; }
         public string Title { get; }
         public string Description { get; }
+        public ExampleIcon? Icon { get; }
 
         public Example(Type exampleType)
         {
@@ -19,6 +20,7 @@ namespace SciChart.Examples.Demo.Application
 
             Title = attribute.Title;
             Description = attribute.Description;
+            Icon = attribute.Icon;
         }
     }
 }

@@ -7,7 +7,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Using CursorModifier Tooltips",  description:"Demonstrates Cursors on the Chart")]
+    [ExampleDefinition("Using CursorModifier Tooltips",  description:"Demonstrates Cursors on the Chart",icon: ExampleIcon.Annotations)]
     public class UsingCursorModifierTooltipsView : ExampleBaseView
     {
         private const int PointsCount = 500;

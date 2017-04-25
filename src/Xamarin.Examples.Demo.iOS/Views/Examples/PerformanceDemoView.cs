@@ -10,7 +10,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Performance Demo", description:"Draws up to 1 Million points in realtime!")]
+    [ExampleDefinition("Performance Demo", description:"Draws up to 1 Million points in realtime!", icon: ExampleIcon.RealTime)]
     public class PerformanceDemoView : ExampleBaseView
     {
         private readonly SingleRealtimeChartLayout _exampleViewLayout = SingleRealtimeChartLayout.Create();

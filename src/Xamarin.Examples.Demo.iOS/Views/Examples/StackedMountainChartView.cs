@@ -6,7 +6,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Stacked Mountain Chart", description:"Demonstrates a Stacked Mountain Chart")]
+    [ExampleDefinition("Stacked Mountain Chart", description:"Demonstrates a Stacked Mountain Chart", icon: ExampleIcon.StackedMountainChart)]
     public class StackedMountainChartView : ExampleBaseView
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();

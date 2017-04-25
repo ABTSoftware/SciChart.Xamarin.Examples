@@ -8,7 +8,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Mountain Chart", description:"Creates a simple Mountain/Area chart")]
+    [ExampleDefinition("Mountain Chart", description:"Creates a simple Mountain/Area chart", icon: ExampleIcon.MountainChart)]
     public class MountainChartView : ExampleBaseView
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();

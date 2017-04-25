@@ -6,7 +6,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Stacked Bar Chart", description:"Demonstrates a Stacked Bar Chart")]
+    [ExampleDefinition("Stacked Bar Chart", description:"Demonstrates a Stacked Bar Chart", icon: ExampleIcon.StackedBar)]
     public class StackedBarChartView :ExampleBaseView
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();

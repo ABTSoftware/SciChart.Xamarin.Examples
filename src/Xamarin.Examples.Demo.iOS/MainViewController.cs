@@ -47,7 +47,7 @@ namespace Xamarin.Examples.Demo.iOS
                 cell = ExampleTableViewCell.Nib.Instantiate(tableView, null)[0] as ExampleTableViewCell;
             }
 
-            cell.UpdateCell(example.Title, example.Description);
+            cell.UpdateCell(example.Title, example.Description, example.Icon);
 
             return cell;
         }

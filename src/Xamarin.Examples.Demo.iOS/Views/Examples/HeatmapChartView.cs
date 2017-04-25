@@ -11,7 +11,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Heatmap Chart", description:"A real-time 2D scientific heatmap")]
+    [ExampleDefinition("Heatmap Chart", description:"A real-time 2D scientific heatmap", icon: ExampleIcon.HeatmapChart)]
     public class HeatmapChartView : ExampleBaseView
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();
@@ -99,12 +99,13 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         private void OnTick(object sender, ElapsedEventArgs e)
         {
-            var values = _valuesList[_timerIndex % SeriesPerPeriod];
-            _dataSeries.UpdateZValues(values);
-
-            _timerIndex++;
-
-            Surface.InvalidateElement();
+            InvokeOnMainThread(() =>
+            {
+                var values = _valuesList[_timerIndex % SeriesPerPeriod];
+                _dataSeries.UpdateZValues(values);
+                _timerIndex++;
+                Surface.InvalidateElement();
+            });
         }
 
         public override void RemoveFromSuperview()
