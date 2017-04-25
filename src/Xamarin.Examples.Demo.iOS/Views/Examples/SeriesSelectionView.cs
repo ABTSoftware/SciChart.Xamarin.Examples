@@ -9,7 +9,7 @@ using Xamarin.Examples.Demo.Utils;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Series Selection")]
+    [ExampleDefinition("Series Selection", description:"Select series by touch or programmatically")]
     public class SeriesSelectionView : ExampleBaseView
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();

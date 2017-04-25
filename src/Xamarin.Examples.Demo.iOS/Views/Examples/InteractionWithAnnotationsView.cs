@@ -12,7 +12,7 @@ using Xamarin.Examples.Demo.Utils;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Interaction with Annotations")]
+    [ExampleDefinition("Interaction with Annotations", description: "Demonstrates touch-interaction with Annotations")]
     public class InteractionWithAnnotationsView : ExampleBaseView
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();

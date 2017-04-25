@@ -6,10 +6,12 @@ namespace SciChart.Examples.Demo.Fragments.Base
     public class ExampleDefinition : Attribute
     {
         public string Title { get; set; }
+        public string Description { get; set; }
 
-        public ExampleDefinition(string title)
+        public ExampleDefinition(string title, string description)
         {
-            Title = title;
+	        Title = title;
+            Description = description;
         }
     }
 }

@@ -8,7 +8,7 @@ using Xamarin.Examples.Demo.Utils;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Using RolloverModifier Tooltips")]
+    [ExampleDefinition("Using RolloverModifier Tooltips", "Demonstrates Rollover Tooltips")]
     public class UsingRolloverModifierTooltipsView : ExampleBaseView
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();

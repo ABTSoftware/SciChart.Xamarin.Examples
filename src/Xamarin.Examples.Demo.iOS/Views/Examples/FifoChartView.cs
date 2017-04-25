@@ -8,7 +8,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("FIFO Chart")]
+    [ExampleDefinition("FIFO Chart", description:"Demonstrates scrolling charts")]
     public class FifoChartView : ExampleBaseView
     {
         private readonly SingleRealtimeChartLayout _exampleViewLayout = SingleRealtimeChartLayout.Create();

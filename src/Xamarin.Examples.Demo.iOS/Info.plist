@@ -22,8 +22,6 @@
 	</array>
 	<key>MinimumOSVersion</key>
 	<string>10.3</string>
-	<key>CFBundleDisplayName</key>
-	<string>SciChart Xamarin.iOS Demo</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.scichart.Xamarin.iOS.Demo</string>
 	<key>CFBundleVersion</key>
@@ -44,11 +42,11 @@
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen.storyboard</string>
-	<key>CFBundleName</key>
-	<string>Xamarin.Examples.Demo</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>CFBundleShortVersionString</key>
 	<string></string>
+	<key>CFBundleName</key>
+	<string>Xamarin Demo</string>
 </dict>
 </plist>

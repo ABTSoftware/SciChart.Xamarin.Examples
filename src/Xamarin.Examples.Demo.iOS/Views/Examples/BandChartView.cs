@@ -7,7 +7,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Band Chart")]
+    [ExampleDefinition("Band Chart", "Generates a simple Band series chart in code")]
     public class BandChartView : ExampleBaseView
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();

@@ -15,7 +15,7 @@ using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
-    [ExampleDefinition("Bubble Chart")]
+    [ExampleDefinition("Bubble Chart", description:"Creates a Bubble Series and Line Chart")]
     public class BubbleChartFragment : ExampleBaseFragment
     {
         public SciChartSurface Surface => View.FindViewById<SciChartSurface>(Resource.Id.chart);

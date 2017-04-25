@@ -12,7 +12,7 @@ using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
-    [ExampleDefinition("Chart Legends API")]
+    [ExampleDefinition("Chart Legends API", description:"Demonstrates the SciChart Legend API")]
     public class LegendFragment : ExampleBaseFragment
     {
         public override int ExampleLayoutId => Resource.Layout.Example_Single_Chart_Fragment;

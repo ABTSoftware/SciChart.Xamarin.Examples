@@ -7,7 +7,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Chart Legends API")]
+    [ExampleDefinition("Chart Legends API", description:"Demonstrates the SciChart Legend API")]
     public class LegendView : ExampleBaseView
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();

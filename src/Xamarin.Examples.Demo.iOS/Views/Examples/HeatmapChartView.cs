@@ -11,7 +11,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Heatmap Chart")]
+    [ExampleDefinition("Heatmap Chart", description:"A real-time 2D scientific heatmap")]
     public class HeatmapChartView : ExampleBaseView
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();

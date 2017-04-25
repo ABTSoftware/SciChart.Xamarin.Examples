@@ -13,7 +13,7 @@ using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
-    [ExampleDefinition("FIFO Chart")]
+    [ExampleDefinition("FIFO Chart", description:"Demonstrates a scrolling FIFO chart")]
     public class FifoChartFragment : ExampleBaseFragment
     {
         private const int FifoCapacity = 50;

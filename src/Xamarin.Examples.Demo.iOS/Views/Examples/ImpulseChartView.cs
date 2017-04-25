@@ -7,7 +7,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Impulse Chart")]
+    [ExampleDefinition("Impulse Chart", description: "An Impulse or Stem Chart")]
     public class ImpulseChartView : ExampleBaseView
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();

@@ -16,7 +16,7 @@ using Xamarin.Examples.Demo.Utils;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
-    [ExampleDefinition("Using TooltipModifier Tooltips")]
+    [ExampleDefinition("Using TooltipModifier Tooltips", description: "Demonstrates a simple tooltip")]
     public class UsingTooltipModifierTooltipsFragment : ExampleBaseFragment
     {
         public override int ExampleLayoutId => Resource.Layout.Example_Single_Chart_Fragment;

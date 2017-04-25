@@ -8,7 +8,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    //[ExampleDefinition("Fan Chart")]
+    //[ExampleDefinition("Fan Chart", description:"Uses Band-Series to generate a Fan-Chart")]
     public class FanChartView : ExampleBaseView
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();

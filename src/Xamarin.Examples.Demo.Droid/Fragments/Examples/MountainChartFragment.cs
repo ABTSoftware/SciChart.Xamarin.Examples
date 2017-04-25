@@ -15,7 +15,7 @@ using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
-    [ExampleDefinition("Mountain Chart")]
+    [ExampleDefinition("Mountain Chart", description:"Create a simple Mountain / Area Chart")]
     public class MountainChartFragment : ExampleBaseFragment
     {
         private SciChartSurface Surface => View.FindViewById<SciChartSurface>(Resource.Id.chart);

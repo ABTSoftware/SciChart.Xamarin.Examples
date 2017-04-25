@@ -7,7 +7,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Scatter Chart")]
+    [ExampleDefinition("Scatter Chart", description:"Demonstrates a simple Scatter chart")]
     public class ScatterChartView : ExampleBaseView
     {
         private readonly Random _random = new Random();

@@ -10,7 +10,7 @@ using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
-    [ExampleDefinition("Stacked Mountain Chart")]
+    [ExampleDefinition("Stacked Mountain Chart", description: "Demonstrates a Stacked Mountain Chart")]
     public class StackedMountainChartFragment : ExampleBaseFragment
     {
         public SciChartSurface Surface => View.FindViewById<SciChartSurface>(Resource.Id.chart);

@@ -17,7 +17,7 @@ using Xamarin.Examples.Demo.Utils;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
-    [ExampleDefinition("Interaction with Annotations")]
+    [ExampleDefinition("Interaction with Annotations", description:"Demonstrates Interaction with Annotations via touch")]
     public class InteractionWithAnnotationsFragment : ExampleBaseFragment
     {
         public override int ExampleLayoutId => Resource.Layout.Example_Single_Chart_Fragment;

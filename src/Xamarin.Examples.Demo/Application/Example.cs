@@ -9,6 +9,7 @@ namespace SciChart.Examples.Demo.Application
     {
         public Type ExampleType { get; }
         public string Title { get; }
+        public string Description { get; }
 
         public Example(Type exampleType)
         {
@@ -17,6 +18,7 @@ namespace SciChart.Examples.Demo.Application
             var attribute = exampleType.GetCustomAttributes<ExampleDefinition>().Single();
 
             Title = attribute.Title;
+            Description = attribute.Description;
         }
     }
 }

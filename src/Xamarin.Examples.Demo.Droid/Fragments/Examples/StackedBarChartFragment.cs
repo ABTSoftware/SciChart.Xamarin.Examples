@@ -11,7 +11,7 @@ using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
-    [ExampleDefinition("Stacked Bar Chart")]
+[ExampleDefinition("Stacked Bar Chart", description: "Demonstrates a Stacked Bar Chart")]
     public class StackedBarChartFragment : ExampleBaseFragment
     {
         public SciChartSurface Surface => View.FindViewById<SciChartSurface>(Resource.Id.chart);

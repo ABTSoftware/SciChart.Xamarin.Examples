@@ -19,7 +19,7 @@ using Timer = System.Timers.Timer;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
-    [ExampleDefinition("Performance Demo")]
+    [ExampleDefinition("Performance Demo", description: "Draws up to 1 Million points in realtime!")]
     public class PerformanceDemoFragment : ExampleBaseFragment
     {
         private SciChartSurface Surface => View.FindViewById<SciChartSurface>(Resource.Id.chart);
