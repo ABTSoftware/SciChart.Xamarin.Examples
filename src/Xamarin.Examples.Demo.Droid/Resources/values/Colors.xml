@@ -1,8 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
+  <color name="gray_border_color">#FFC7C7C7</color>
+  <color name="background_color">#1C1C1D</color>
+  <color name="menu_list_header_background">#222326</color>
+  <color name="listView_item">#323436</color>
+  <color name="listView_item_clicked">#42B649</color>
+  <color name="search_item_selected">#7700FF00</color>
+  <color name="search_item_unselected">#AA323436</color>
+  <color name="listview_title">#FFFFFFFF</color>
+  <color name="listview_subtitle">#AAAAAA</color>
+  
   <color name="color_primary">#FF42B649</color>
   <color name="color_primary_dark">#43A047</color>
-
+  <color name="color_accent">#FF42B649</color>
+  <color name="color_primary_text">#FFF</color>
+  <color name="color_window_background">#FF2C3135</color>
+  
   <color name="dashboard_chart_blue_series_0">#ff226fb7</color>
   <color name="dashboard_chart_blue_series_1">#ff1b5790</color>
   <color name="dashboard_chart_orange_series_0">#ffff9a2e</color>

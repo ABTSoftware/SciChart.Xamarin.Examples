@@ -3,6 +3,7 @@ using Android.App;
 using Android.Views;
 using Android.Widget;
 using SciChart.Examples.Demo.Application;
+using SciChart.Examples.Demo.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Application
 {
@@ -33,7 +34,10 @@ namespace Xamarin.Examples.Demo.Droid.Application
             var view = _activity.LayoutInflater.Inflate(Resource.Layout.Example_List_Item, null);
 
             view.FindViewById<TextView>(Resource.Id.exampleName).Text = example.Title;
-
+            view.FindViewById<TextView>(Resource.Id.exampleDescription).Text = example.Description;
+            int iconResourceId = _activity.Resources.GetIdentifier(example.Icon.ToString().ToLower(), "drawable", _activity.PackageName);
+            view.FindViewById<ImageView>(Resource.Id.exampleIcon).SetImageResource(iconResourceId);
+            
             return view;
         }
     }

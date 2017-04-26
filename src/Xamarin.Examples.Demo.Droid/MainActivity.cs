@@ -1,7 +1,6 @@
 ﻿using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Views;
 using Android.Widget;
 using SciChart.Examples.Demo.Application;
 using Xamarin.Examples.Demo.Droid.Application;
@@ -9,22 +8,28 @@ using Xamarin.Examples.Demo.Droid.Application;
 namespace Xamarin.Examples.Demo.Droid
 {
     [Activity(Label = "Xamarin Demo", MainLauncher = true, Icon = "@drawable/icon")]
-    public class MainActivity : ListActivity
+    public class MainActivity : Activity
     {
-        protected override void OnCreate(Bundle bundle)
+        private ListView listView;
+
+        protected override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate(bundle);
+            base.OnCreate(savedInstanceState);
 
-            ListView.ChoiceMode = ChoiceMode.Single;
+            SetContentView(Resource.Layout.MainView);
 
-            ListView.Adapter = new ExampleAdapter(this);
-        }
+            listView = FindViewById<ListView>(Resource.Id.examplesList);
+            listView.ChoiceMode = ChoiceMode.Single;
+            listView.Adapter = new ExampleAdapter(this);
 
-        protected override void OnListItemClick(ListView l, View v, int position, long id)
-        {
-            base.OnListItemClick(l, v, position, id);
+            listView.ItemClick += (s, e) =>
+            {
+                OpenExample(e.Position);
+            };
 
-            OpenExample(position);
+           
+
+
         }
 
         private void OpenExample(int exampleIndex)
@@ -35,6 +40,7 @@ namespace Xamarin.Examples.Demo.Droid
             intent.PutExtra(DemoKeys.ExampleId, example.Title);
 
             StartActivityForResult(intent, 1);
+            OverridePendingTransition(Resource.Animation.abc_grow_fade_in_from_bottom, Resource.Animation.abc_shrink_fade_out_from_bottom);
         }
     }
 }

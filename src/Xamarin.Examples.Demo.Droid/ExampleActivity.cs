@@ -1,13 +1,16 @@
 using System;
 using Android.App;
 using Android.OS;
+using Android.Support.V7.App;
+using Android.Widget;
 using SciChart.Examples.Demo.Application;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
+using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace Xamarin.Examples.Demo.Droid
 {
     [Activity(Label = "ExampleActivity")]
-    public class ExampleActivity : Activity
+    public class ExampleActivity : AppCompatActivity
     {
         private Example _example;
         private ExampleBaseFragment _exampleFragment;
@@ -18,7 +21,19 @@ namespace Xamarin.Examples.Demo.Droid
 
             SetContentView(Resource.Layout.Example_Activity);
 
-            SetUpExample(savedInstanceState);
+            var toolbar = FindViewById<Toolbar>(Resource.Id.exampleToolbar);
+            if (toolbar != null)
+            {
+                SetSupportActionBar(toolbar);    
+                this.SupportActionBar.SetDisplayHomeAsUpEnabled(true);                    
+                this.SupportActionBar.SetDisplayShowHomeEnabled(true);
+
+                toolbar.NavigationClick += (s, e) =>
+                {
+                    this.OnBackPressed();
+                };
+            }
+            SetUpExample(savedInstanceState);            
         }
 
         private void SetUpExample(Bundle savedInstanceState)
@@ -27,6 +42,7 @@ namespace Xamarin.Examples.Demo.Droid
             _example = ExampleManager.Instance.GetExampleByTitle(exampleId);
 
             Title = _example.Title;
+            FindViewById<TextView>(Resource.Id.exampleTitle).Text = Title;
 
             if (savedInstanceState != null)
             {

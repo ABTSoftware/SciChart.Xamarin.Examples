@@ -13,7 +13,7 @@ using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
-    [ExampleDefinition("Line Chart", description:"Create a simple Line Chart")]
+    [ExampleDefinition("Line Chart", description:"Create a simple Line Chart", icon: ExampleIcon.LineChart)]
     public class LineChartFragment : ExampleBaseFragment
     {
         public SciChartSurface Surface => View.FindViewById<SciChartSurface>(Resource.Id.chart);

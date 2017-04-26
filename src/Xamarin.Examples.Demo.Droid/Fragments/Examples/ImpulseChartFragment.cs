@@ -17,7 +17,7 @@ using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
-    [ExampleDefinition("Impulse Chart", description:"Creates an Impulse or Stem Chart")]
+    [ExampleDefinition("Impulse Chart", description:"Creates an Impulse or Stem Chart", icon: ExampleIcon.Impulse)]
     public class ImpulseChartFragment : ExampleBaseFragment
     {
         public SciChartSurface Surface => View.FindViewById<SciChartSurface>(Resource.Id.chart);

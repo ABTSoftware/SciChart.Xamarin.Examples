@@ -14,7 +14,7 @@ using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
-    [ExampleDefinition("Dashboard Style Charts", description:"Beautiful stacked charts with dynamic switching between chart type")]
+    [ExampleDefinition("Dashboard Style Charts", description:"Beautiful stacked charts with dynamic switching between chart type", icon: ExampleIcon.StackedColumns100)]
     public class DashboardStyleChartsFragment : ExampleBaseFragment
     {
         public TabLayout TabLayout => View.FindViewById<TabLayout>(Resource.Id.tabLayout);

@@ -11,7 +11,7 @@ using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
-    [ExampleDefinition("Stacked Column Chart", description: "Demonstrates Stacked Columns Chart")]
+    [ExampleDefinition("Stacked Column Chart", description: "Demonstrates Stacked Columns Chart", icon: ExampleIcon.StackedColumn)]
     public class StackedColumnChartFragment : ExampleBaseFragment
     {
         public SciChartSurface Surface => View.FindViewById<SciChartSurface>(Resource.Id.chart);

@@ -13,7 +13,7 @@ using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
-    [ExampleDefinition("Using CursorModifier Tooltips", description: "Demonstrates Cursors on the Chart")]
+    [ExampleDefinition("Using CursorModifier Tooltips", description: "Demonstrates Cursors on the Chart", icon: ExampleIcon.Annotations)]
     public class UsingCursorModifierTooltipsFragment : ExampleBaseFragment
     {
         private const int PointsCount = 500;

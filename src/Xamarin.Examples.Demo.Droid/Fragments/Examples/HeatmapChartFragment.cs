@@ -16,7 +16,7 @@ using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
-    [ExampleDefinition("Heatmap Chart", description:"Demonstrates a Real-time scientific Heatmap")]
+    [ExampleDefinition("Heatmap Chart", description:"Demonstrates a Real-time scientific Heatmap", icon: ExampleIcon.HeatmapChart)]
     public class HeatmapChartFragment : ExampleBaseFragment
     {
         public override int ExampleLayoutId => Resource.Layout.Example_Single_Chart_Fragment;

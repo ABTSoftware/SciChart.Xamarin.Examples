@@ -14,7 +14,7 @@ using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
-    [ExampleDefinition("Candlestick Chart", description:"Creates a simple Candlestick Chart")]
+    [ExampleDefinition("Candlestick Chart", description:"Creates a simple Candlestick Chart", icon: ExampleIcon.CandlestickChart)]
     public class CandlestickChartFragment : ExampleBaseFragment
     {
         public override int ExampleLayoutId => Resource.Layout.Example_Single_Chart_Fragment;

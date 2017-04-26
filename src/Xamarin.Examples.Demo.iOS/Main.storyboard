@@ -65,5 +65,17 @@
         <image name="Icon-76.png" width="180" height="180"/>
         <image name="Icon-Small-40.png" width="40" height="40"/>
         <image name="Icon-Small.png" width="29" height="29"/>
+        <image name="Annotations" width="120" height="120"/>
+        <image name="Axis" width="120" height="120"/>
+        <image name="DigitalLine" width="120" height="120"/>
+        <image name="ErrorBars" width="120" height="120"/>
+        <image name="Fan" width="120" height="120"/>
+        <image name="Impulse" width="120" height="120"/>
+        <image name="Ohlc" width="120" height="120"/>
+        <image name="StackedBar" width="120" height="120"/>
+        <image name="StackedColumn" width="120" height="120"/>
+        <image name="StackedColumn100" width="120" height="120"/>
+        <image name="Themes" width="120" height="120"/>
+        <image name="ZoomPan" width="120" height="120"/>
     </resources>
 </document>

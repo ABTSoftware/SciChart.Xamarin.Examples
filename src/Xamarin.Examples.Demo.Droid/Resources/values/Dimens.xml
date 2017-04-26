@@ -1,4 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
-  <dimen name="example_list_item_margin">8dp</dimen>
+  <dimen name="example_list_item_margin">0dp</dimen>
+
+  <dimen name="toolbar_title_size">18sp</dimen>
 </resources>

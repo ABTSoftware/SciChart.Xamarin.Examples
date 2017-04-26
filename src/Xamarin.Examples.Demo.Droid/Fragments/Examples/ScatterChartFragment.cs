@@ -17,7 +17,7 @@ using static SciChart.Charting.Modifiers.AxisDragModifierBase;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
-    [ExampleDefinition("Scatter Chart", description:"Create a simple Scatter chart")]
+    [ExampleDefinition("Scatter Chart", description:"Create a simple Scatter chart", icon: ExampleIcon.ScatterChart)]
     public class ScatterChartFragment : ExampleBaseFragment
     {
         private readonly Random _random = new Random();

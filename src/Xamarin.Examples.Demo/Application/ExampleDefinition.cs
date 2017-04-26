@@ -24,7 +24,7 @@ namespace SciChart.Examples.Demo.Fragments.Base
         ScatterChart, 
         StackedBar,
         StackedColumn,
-        StackedColumn100,
+        StackedColumns100,
         StackedMountainChart,
         Themes, 
         ZoomPan

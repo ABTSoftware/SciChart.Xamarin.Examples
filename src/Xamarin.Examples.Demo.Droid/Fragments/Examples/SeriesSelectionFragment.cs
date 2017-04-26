@@ -16,7 +16,7 @@ using Object = Java.Lang.Object;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
-[ExampleDefinition("Series Selection", description: "Select series by touch or programmatically")]
+[ExampleDefinition("Series Selection", description: "Select series by touch or programmatically", icon: ExampleIcon.LineChart)]
     public class SeriesSelectionFragment : ExampleBaseFragment
     {
         public override int ExampleLayoutId => Resource.Layout.Example_Single_Chart_Fragment;

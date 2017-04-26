@@ -20,7 +20,7 @@ using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
-    [ExampleDefinition("Animating Line Chart", description:"Demonstrates animating the latest X,Y value on a line chart")]
+    [ExampleDefinition("Animating Line Chart", description:"Demonstrates animating the latest X,Y value on a line chart", icon:ExampleIcon.LineChart)]
     public class AnimatingLineChartFragment : ExampleBaseFragment
     {
         public override int ExampleLayoutId => Resource.Layout.Example_Single_Realtime_Chart_Fragment;

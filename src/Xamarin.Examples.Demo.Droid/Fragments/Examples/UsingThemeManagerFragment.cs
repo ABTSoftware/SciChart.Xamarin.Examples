@@ -15,7 +15,7 @@ using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
-    [ExampleDefinition("Using ThemeManager", description:"Change chart theme using the ThemeManager")]
+    [ExampleDefinition("Using ThemeManager", description:"Change chart theme using the ThemeManager", icon: ExampleIcon.Themes)]
     public class UsingThemeManagerFragment : ExampleBaseFragment
     {
         private const int BlackSteel = 0;
