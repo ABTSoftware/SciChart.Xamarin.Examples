@@ -48,7 +48,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var bubbleSeries = new SCIBubbleRenderableSeries
             {
                 DataSeries = dataSeries,
-                ZScaleFactor = 3,
+                ZScaleFactor = 1,
                 AutoZRange = false,
                 Style =
                 {

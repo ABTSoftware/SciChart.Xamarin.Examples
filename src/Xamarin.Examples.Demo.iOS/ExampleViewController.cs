@@ -15,15 +15,10 @@ namespace Xamarin.Examples.Demo.iOS
             var example = (ExampleBaseView)Activator.CreateInstance(exampleType);
             var exampleView = example.ExampleView;
 
-            example.Frame = new CoreGraphics.CGRect(0, 60,
-                                                    View.Frame.Width,
-                                                    View.Frame.Height - 60);
-
+            example.Frame = new CoreGraphics.CGRect(0, 60, View.Frame.Width, View.Frame.Height - 60);
             example.TranslatesAutoresizingMaskIntoConstraints = true;
 
-            exampleView.Frame = new CoreGraphics.CGRect(0, 0,
-                                                    example.Frame.Width,
-                                                    example.Frame.Height);
+            exampleView.Frame = new CoreGraphics.CGRect(0, 0, example.Frame.Width, example.Frame.Height);
             exampleView.TranslatesAutoresizingMaskIntoConstraints = true;
 
             example.AddSubview(exampleView);

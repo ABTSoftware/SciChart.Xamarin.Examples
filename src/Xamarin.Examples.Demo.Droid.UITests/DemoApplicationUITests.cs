@@ -1,12 +1,12 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using NUnit.Framework;
 using Xamarin.UITest;
-using Xamarin.UITest.Queries;
 using Xamarin.UITest.Android;
 
-namespace SciChart.Android.UITests
+namespace Xamarin.Examples.Demo.Droid.UITests
 {
     [TestFixture]
     public class DemoApplicationUiTests
@@ -20,7 +20,7 @@ namespace SciChart.Android.UITests
 
             app = ConfigureApp
                 .Android
-                .ApkFile(@"..\..\..\" + projectName + @"\bin\Release\" + projectName + ".apk")
+                .ApkFile($@"..\..\..\{projectName}\bin\Release\{projectName}.apk")
                 .EnableLocalScreenshots()
                 .StartApp();
         }
@@ -43,7 +43,7 @@ namespace SciChart.Android.UITests
             "Series Selection",
             "Stacked Bar Chart",
             "Stacked Column Chart",
-            "Stacked Column Side by Side Chart",
+            "Stacked Column Side By Side Chart",
             "Stacked Mountain Chart",
             "Using CursorModifier Tooltips",
             "Using RolloverModifier Tooltips",
@@ -54,18 +54,32 @@ namespace SciChart.Android.UITests
         [Test, TestCaseSource(nameof(Examples))]
         public void TakeAScreenshotOfExample(string exampleName)
         {
-            app.WaitForElement(c => c.Marked("list"));
+            app.WaitForElement(c => c.Marked("examplesList"));
 
-            app.ScrollDownTo( c=>c.Text(exampleName));
+            app.ScrollDownTo(c => c.Text(exampleName));
 
-            app.Tap(c=>c.Text(exampleName));
+            app.Tap(c => c.Text(exampleName));
 
             app.WaitForElement(c => c.Marked("fragment_container"));
 
-            var screenshot = app.Screenshot(exampleName);
-            var screenshotCopy = screenshot.CopyTo(Path.Combine(screenshot.Directory?.ToString() ?? @"C:\Screenshots", exampleName + ".png"), true);
+            var rect = app.Query(c => c.Marked("fragment_container")).FirstOrDefault()?.Rect;
+            if(rect == null) throw new InvalidOperationException("fragment_container has null rect");
 
-            Console.WriteLine("Saved screenshot to: {0}\\{1}", screenshotCopy.Directory, screenshotCopy.Name);
+            var actualScreenshotFileInfo = app.Screenshot(exampleName);
+            var actualBitmap = VisualTestHelpers.LoadFromPng(actualScreenshotFileInfo.FullName);
+
+            var fragmentRect = new Rectangle((int)rect.X, (int) rect.Y, (int)rect.Width, (int)rect.Height);
+            var fragmentBitmap = new Bitmap(fragmentRect.Width, fragmentRect.Height);
+
+            using (var graphics = Graphics.FromImage(fragmentBitmap))
+            {
+                graphics.DrawImage(actualBitmap, 0, 0, fragmentRect, GraphicsUnit.Pixel);
+            }
+
+            const string expectationsPath = @"..\..\Expectations";
+            var expectedBitmap = VisualTestHelpers.LoadFromPng(Path.Combine(expectationsPath, $"{exampleName}.png"));
+
+            VisualTestHelpers.CompareBitmaps(exampleName, fragmentBitmap, expectedBitmap);
         }
     }
 }
