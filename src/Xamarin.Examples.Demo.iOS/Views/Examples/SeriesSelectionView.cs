@@ -53,17 +53,15 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             {
                 var alignment = i % 2 == 0 ? SCIAxisAlignment.Left : SCIAxisAlignment.Right;
                 var dataSeries = GenerateDataSeries(alignment, i);
-                 
-                var rs = new SCIFastLineRenderableSeries
+                                 var rs = new SCIFastLineRenderableSeries
                 {
                     DataSeries = dataSeries,
                     YAxisId = alignment.ToString(),
-                    Style = {LinePen = new SCISolidPenStyle(initialColor, 2f)},
+                    StrokeStyle = new SCISolidPenStyle(initialColor, 2f),
                     SelectedSeriesStyle = new SCILineSeriesStyle
                     {
-                        LinePen = selectedStrokeStyle,
+                        StrokeStyle = selectedStrokeStyle,
                         PointMarker = selectedPointMarker,
-                        DrawPointMarkers = true
                     }
                 };
 
@@ -75,10 +73,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 Surface.RenderableSeries.Add(rs);
             }
 
-            Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
-            {
-                new SCISeriesSelectionModifier(),
-            });
+            Surface.ChartModifiers.Add(new SCISeriesSelectionModifier());
 
             Surface.InvalidateElement();
         }

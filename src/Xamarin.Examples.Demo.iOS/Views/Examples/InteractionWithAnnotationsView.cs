@@ -63,8 +63,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 Style = {LabelPlacement = SCIAnnotationLabelPlacementMode.TopCenter}
             });
 
-            Surface.Annotation = new SCIAnnotationCollection(new NSObject[]
-            {
+            Surface.AnnotationCollection = new SCIAnnotationCollection(
                 new SCITextAnnotation
                 {
                     CoordinateMode = SCIAnnotationCoordinateMode.Relative,
@@ -196,7 +195,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     }
                     //RotationAngle = 30
                 }
-            });
+            );
 
             Surface.InvalidateElement();
         }

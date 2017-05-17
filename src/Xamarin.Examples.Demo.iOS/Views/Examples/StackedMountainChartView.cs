@@ -48,11 +48,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.YAxes.Add(yAxis);
             Surface.RenderableSeries.Add(seriesCollection);
 
-            Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
-            {
+            Surface.ChartModifiers = new SCIChartModifierCollection(
                 new SCICursorModifier(), 
                 new SCIZoomExtentsModifier()
-            });
+            );
 
             Surface.InvalidateElement();
         }
@@ -62,10 +61,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             return new SCIStackedMountainRenderableSeries
             {
                 DataSeries = dataSeries,
-                Style =
-                {
-                    AreaBrush = new SCILinearGradientBrushStyle(fillColorStart, fillColorEbd, SCILinearGradientDirection.Vertical),
-                }
+                AreaStyle = new SCILinearGradientBrushStyle(fillColorStart, fillColorEbd, SCILinearGradientDirection.Vertical),
             };
         }
     }

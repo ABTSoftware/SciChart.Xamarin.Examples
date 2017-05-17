@@ -43,14 +43,13 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.RenderableSeries.Add(rSeries3);
             Surface.RenderableSeries.Add(rSeries4);
 
-            Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
-            {
+            Surface.ChartModifiers = new SCIChartModifierCollection(
                 new SCIZoomExtentsModifier(),
                 new SCIPinchZoomModifier(),
                 new SCICursorModifier(),
                 new SCIXAxisDragModifier(), 
-                new SCIYAxisDragModifier {DragMode = SCIAxisDragMode.Pan}, 
-            });
+                new SCIYAxisDragModifier {DragMode = SCIAxisDragMode.Pan} 
+            );
 
             Surface.InvalidateElement();
         }

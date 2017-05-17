@@ -2,7 +2,9 @@ using System;
 using Android.App;
 using Android.OS;
 using Android.Support.V7.App;
+using Android.Util;
 using Android.Widget;
+using Java.Interop;
 using SciChart.Examples.Demo.Application;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
@@ -58,6 +60,19 @@ namespace Xamarin.Examples.Demo.Droid
                 FragmentManager.BeginTransaction()
                     .Replace(Resource.Id.fragment_container, _exampleFragment, DemoKeys.FragmentTag)
                     .Commit();
+            }
+        }
+
+        [Export("InitExampleForUiTest")]
+        public void InitExampleForUiTest()
+        {
+            try
+            {
+                _exampleFragment?.InitExampleForUiTest();
+            }
+            catch (Exception e)
+            {
+                Log.Error("InitExampleForUiTest", e.Message, e);
             }
         }
     }

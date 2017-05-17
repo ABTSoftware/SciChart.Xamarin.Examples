@@ -72,24 +72,20 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var renderSeries = new SCIFastUniformHeatmapRenderableSeries
             {
                 DataSeries = _dataSeries,
-                Style =
-                {
-                    Minimum = 0,
-                    Maximum = 200,
-                    Palette = textureOpenGl
-                }
+                Minimum = 0,
+                Maximum = 200,
+                ColorMap = textureOpenGl
             };
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
             Surface.RenderableSeries.Add(renderSeries);
 
-            Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
-            {
-                new SCIZoomPanModifier(),
+            Surface.ChartModifiers = new SCIChartModifierCollection(
+				new SCIZoomPanModifier(),
                 new SCIPinchZoomModifier(),
                 new SCIZoomExtentsModifier()
-            });
+            );
 
             Surface.InvalidateElement();
 

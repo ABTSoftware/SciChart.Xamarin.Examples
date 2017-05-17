@@ -56,11 +56,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.YAxes.Add(yAxis);
             Surface.RenderableSeries.Add(columnsCollection);
 
-            Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
-            {
+            Surface.ChartModifiers = new SCIChartModifierCollection(
                 new SCICursorModifier(),
                 new SCIZoomExtentsModifier()
-            });
+            );
 
             Surface.InvalidateElement();
         }
@@ -70,12 +69,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             return new SCIStackedColumnRenderableSeries
             {
                 DataSeries = dataSeries,
-                Style = new SCIColumnSeriesStyle
-                {
-                    DataPointWidth = 0.8,
-                    BorderPen = new SCISolidPenStyle(strokeColor, 1f),
-                    FillBrush = new SCILinearGradientBrushStyle(fillColorStart, fillColorEnd, SCILinearGradientDirection.Vertical)
-                }
+                DataPointWidth = 0.8,
+                StrokeStyle = new SCISolidPenStyle(strokeColor, 1f),
+                FillBrushStyle = new SCILinearGradientBrushStyle(fillColorStart, fillColorEnd, SCILinearGradientDirection.Vertical)
             };
         }
     }

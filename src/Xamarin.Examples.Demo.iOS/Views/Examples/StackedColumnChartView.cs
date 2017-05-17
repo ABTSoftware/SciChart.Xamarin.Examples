@@ -74,11 +74,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.RenderableSeries.Add(verticalCollection1);
             Surface.RenderableSeries.Add(verticalCollection2);
 
-            Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
-            {
+            Surface.ChartModifiers = new SCIChartModifierCollection(
                 new SCIRolloverModifier(),
                 new SCIZoomExtentsModifier()
-            });
+            );
 
             Surface.InvalidateElement();
         }
@@ -88,11 +87,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             return new SCIStackedColumnRenderableSeries
             {
                 DataSeries = dataSeries,
-                Style = new SCIColumnSeriesStyle
-                {
-                    FillBrush = new SCISolidBrushStyle(fillColor),
-                    BorderPen = new SCISolidPenStyle(strokeColor, 1f)
-                }
+                FillBrushStyle = new SCISolidBrushStyle(fillColor),
+                StrokeStyle = new SCISolidPenStyle(strokeColor, 1f)
             };
         }
     }

@@ -33,18 +33,17 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var dataSeries = new XyDataSeries<double, double>();
             dataSeries.Append(fourierSeries.XData, fourierSeries.YData);
 
-            var renderSeries = new SCIFastLineRenderableSeries {DataSeries = dataSeries, Style = {LinePen = new SCISolidPenStyle(0xFF99EE99, 0.7f)}};
+            var renderSeries = new SCIFastLineRenderableSeries {DataSeries = dataSeries, StrokeStyle = new SCISolidPenStyle(0xFF99EE99, 0.7f)};
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
             Surface.RenderableSeries.Add(renderSeries);
 
-            Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
-            {
-                new SCIZoomPanModifier(),
+            Surface.ChartModifiers = new SCIChartModifierCollection(
+				new SCIZoomPanModifier(),
                 new SCIPinchZoomModifier(),
                 new SCIZoomExtentsModifier()
-            });
+            );
 
             Surface.InvalidateElement();
         }

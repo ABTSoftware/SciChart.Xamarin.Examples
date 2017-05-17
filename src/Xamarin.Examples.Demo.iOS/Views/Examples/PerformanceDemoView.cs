@@ -58,9 +58,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var xAxis = new SCINumericAxis {AutoRange = SCIAutoRange.Always};
             var yAxis = new SCINumericAxis {AutoRange = SCIAutoRange.Always};
 
-            var rs1 = new SCIFastLineRenderableSeries {DataSeries = _mainSeries, Style = {LinePen = new SCISolidPenStyle(0xFF4083B7, 2f)}};
-            var rs2 = new SCIFastLineRenderableSeries {DataSeries = _maLowSeries, Style = {LinePen = new SCISolidPenStyle(0xFFFFA500, 2f)}};
-            var rs3 = new SCIFastLineRenderableSeries {DataSeries = _maHighSeries, Style = {LinePen = new SCISolidPenStyle(0xFFE13219, 2f)}};
+            var rs1 = new SCIFastLineRenderableSeries {DataSeries = _mainSeries, StrokeStyle = new SCISolidPenStyle(0xFF4083B7, 2f)};
+            var rs2 = new SCIFastLineRenderableSeries {DataSeries = _maLowSeries, StrokeStyle = new SCISolidPenStyle(0xFFFFA500, 2f)};
+            var rs3 = new SCIFastLineRenderableSeries {DataSeries = _maHighSeries, StrokeStyle = new SCISolidPenStyle(0xFFE13219, 2f)};
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);

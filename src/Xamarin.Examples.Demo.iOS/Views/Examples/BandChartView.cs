@@ -35,28 +35,24 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var xAxis = new SCINumericAxis {VisibleRange = new SCIDoubleRange(1.1, 2.7)};
             var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
 
-            var renderSeries = new SCIBandRenderableSeries
+            var renderSeries = new SCIFastBandRenderableSeries
             {
                 DataSeries = dataSeries,
-                Style = new SCIBandSeriesStyle
-                {
-                    Pen1 = new SCISolidPenStyle(0xFFFF1919, 0.7f),
-                    Pen2 = new SCISolidPenStyle(0xFF279B27, 0.7f),
-                    Brush1 = new SCISolidBrushStyle(0x33279B27),
-                    Brush2 = new SCISolidBrushStyle(0x33FF1919)
-                }
+                StrokeStyle = new SCISolidPenStyle(0xFFFF1919, 0.7f),
+                StrokeY1Style = new SCISolidPenStyle(0xFF279B27, 0.7f),
+                FillBrushStyle = new SCISolidBrushStyle(0x33279B27),
+                FillY1BrushStyle = new SCISolidBrushStyle(0x33FF1919)
             };
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
             Surface.RenderableSeries.Add(renderSeries);
 
-            Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
-            {
+            Surface.ChartModifiers = new SCIChartModifierCollection(
                 new SCIZoomPanModifier(),
                 new SCIPinchZoomModifier(),
                 new SCIZoomExtentsModifier()
-            });
+            );
 
             Surface.InvalidateElement();
         }

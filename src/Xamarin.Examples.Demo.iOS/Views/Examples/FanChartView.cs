@@ -46,7 +46,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var dataRenderSeries = new SCIFastLineRenderableSeries
             {
                 DataSeries = dataSeries,
-                Style = { LinePen = new SCISolidPenStyle(UIColor.Red, 1.0f) }
+                StrokeStyle = new SCISolidPenStyle(UIColor.Red, 1.0f)
             };
 
             Surface.XAxes.Add(xAxis);
@@ -57,29 +57,24 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.RenderableSeries.Add(createRenderableSeriesWith(xyyDataSeries2));
             Surface.RenderableSeries.Add(dataRenderSeries);
 
-            Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
-            {
-                new SCIZoomPanModifier(),
+            Surface.ChartModifiers = new SCIChartModifierCollection(
+				new SCIZoomPanModifier(),
                 new SCIPinchZoomModifier(),
                 new SCIZoomExtentsModifier()
-            });
+            );
 
             Surface.InvalidateElement();
         }
 
-        SCIBandRenderableSeries createRenderableSeriesWith(SCIXyyDataSeries dataSeries)
+        SCIFastBandRenderableSeries createRenderableSeriesWith(SCIXyyDataSeries dataSeries)
         {
-            var renderebleDataSeries = new SCIBandRenderableSeries
+            var renderebleDataSeries = new SCIFastBandRenderableSeries
             {
-                Style =
-                {
-                    Brush1 = new SCISolidBrushStyle(new UIColor(1.0f, 0.4f, 0.4f, 0.5f)),
-                    Brush2 = new SCISolidBrushStyle(new UIColor(1.0f, 0.4f, 0.4f, 0.5f)),
-                    Pen1 = new SCISolidPenStyle(UIColor.Green, 0.5f),
-                    Pen2 = new SCISolidPenStyle(UIColor.Clear, 0.5f),
-                    DrawPointMarkers = false
-                },
-                DataSeries = dataSeries
+                DataSeries = dataSeries,
+                FillBrushStyle = new SCISolidBrushStyle(new UIColor(1.0f, 0.4f, 0.4f, 0.5f)),
+                FillY1BrushStyle = new SCISolidBrushStyle(new UIColor(1.0f, 0.4f, 0.4f, 0.5f)),
+                StrokeStyle = new SCISolidPenStyle(UIColor.Green, 0.5f),
+                StrokeY1Style = new SCISolidPenStyle(UIColor.Clear, 0.5f),
             };
 
             return renderebleDataSeries;

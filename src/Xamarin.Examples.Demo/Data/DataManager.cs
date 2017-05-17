@@ -20,7 +20,7 @@ namespace SciChart.Examples.Demo.Data
 
         public static readonly DataManager Instance = new DataManager();
 
-        private readonly Random _random = new Random();
+        private readonly Random _random = new Random(42);
 
         private DataManager()
         {

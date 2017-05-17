@@ -15,13 +15,16 @@
     <Compile Include="$(MSBuildThisFileDirectory)Application\ExampleManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\DataManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\DoubleSeries.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\MarketDataService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\MovingAverage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\PriceBar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\PriceSeries.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\RandomPricesDataSource.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\TradeData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\XyPoint.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\FanDataPoint.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\ColorUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ColorExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Data\EURUSD_Daily.csv" />
@@ -30,5 +33,8 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Data\waveform.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Extensions\" />
   </ItemGroup>
 </Project>

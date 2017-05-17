@@ -20,8 +20,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             {
                 _style = new SCILineSeriesStyle
                 {
-                    DrawPointMarkers = false,
-                    LinePen = new SCISolidPenStyle(UIColor.Blue, (float) 0.7)
+                    StrokeStyle = new SCISolidPenStyle(UIColor.Blue, (float) 0.7)
                 };
                 _zeroLine = 0;
                 _yCoordCalc = null;
@@ -73,19 +72,18 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var renderSeries = new SCIFastLineRenderableSeries
             {
                 DataSeries = dataSeries,
-                Style = {LinePen = new SCISolidPenStyle(0xFF99EE99, 0.7f)},
+                StrokeStyle = new SCISolidPenStyle(0xFF99EE99, 0.7f),
                 PaletteProvider = new ZeroLinePaletteProvider()
             };
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
             Surface.RenderableSeries.Add(renderSeries);
 
-            Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
-            {
-                new SCIZoomPanModifier(),
+            Surface.ChartModifiers = new SCIChartModifierCollection(
+				new SCIZoomPanModifier(),
                 new SCIPinchZoomModifier(),
                 new SCIZoomExtentsModifier()
-            });
+            );
 
             Surface.InvalidateElement();
         }

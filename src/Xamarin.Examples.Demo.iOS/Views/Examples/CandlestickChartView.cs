@@ -39,25 +39,21 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var renderSeries = new SCIFastCandlestickRenderableSeries
             {
                 DataSeries = dataSeries,
-                Style =
-                {
-                    StrokeUpStyle = new SCISolidPenStyle(0xFF00AA00, 1f),
-                    StrokeDownStyle = new SCISolidPenStyle(0xFFFF0000, 1f),
-                    FillUpBrushStyle = new SCISolidBrushStyle(0x8800AA00),
-                    FillDownBrushStyle= new SCISolidBrushStyle(0x88FF0000)
-                }
+                StrokeUpStyle = new SCISolidPenStyle(0xFF00AA00, 1f),
+                StrokeDownStyle = new SCISolidPenStyle(0xFFFF0000, 1f),
+                FillUpBrushStyle = new SCISolidBrushStyle(0x8800AA00),
+                FillDownBrushStyle = new SCISolidBrushStyle(0x88FF0000)
             };
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
             Surface.RenderableSeries.Add(renderSeries);
 
-            Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
-            {
-                new SCIZoomPanModifier(),
+            Surface.ChartModifiers = new SCIChartModifierCollection(
+				new SCIZoomPanModifier(),
                 new SCIPinchZoomModifier(),
                 new SCIZoomExtentsModifier()
-            });
+            );
 
             Surface.InvalidateElement();
         }

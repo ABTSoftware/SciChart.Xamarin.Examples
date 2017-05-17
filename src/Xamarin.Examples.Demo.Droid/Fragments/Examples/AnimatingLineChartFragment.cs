@@ -33,11 +33,12 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
         private const double VisibleRangeMax = FifoCapacity*OneOverTimeInteval;
         private const double GrowBy = VisibleRangeMax*0.1;
 
-        private readonly Random _random = new Random();
+        private readonly Random _random = new Random(42);
 
         private readonly XyDataSeries<double, double> _dataSeries = new XyDataSeries<double, double> {FifoCapacityValue = FifoCapacity};
 
         private volatile bool _isRunning;
+        private readonly object _syncRoot = new object();
         private double _t;
         private double _yValue;
         private Timer _timer;
@@ -111,15 +112,22 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
         {
             lock (_timer)
             {
-                _yValue += _random.NextDouble() - 0.5;
+                if(!_isRunning) return;
 
-                _dataSeries.Append(_t, _yValue);
-
-                _t += OneOverTimeInteval;
-
-                if (_t > VisibleRangeMax)
-                    _xVisibleRange.SetMinMax(_xVisibleRange.Min + OneOverTimeInteval, _xVisibleRange.Max + OneOverTimeInteval);
+                AppendData(_random);
             }
+        }
+
+        private void AppendData(Random random)
+        {
+            _yValue += random.NextDouble() - 0.5;
+
+            _dataSeries.Append(_t, _yValue);
+
+            _t += OneOverTimeInteval;
+
+            if (_t > VisibleRangeMax)
+                _xVisibleRange.SetMinMax(_xVisibleRange.Min + OneOverTimeInteval, _xVisibleRange.Max + OneOverTimeInteval);
         }
 
         public override void OnDestroyView()
@@ -127,6 +135,22 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             base.OnDestroyView();
 
             Reset();
+        }
+
+        public override void InitExampleForUiTest()
+        {
+            base.InitExampleForUiTest();
+
+            lock (_syncRoot)
+            {
+                Reset();
+
+                var random = new Random(42);
+                for (var i = 0; i < 20; i++)
+                {
+                    AppendData(random);
+                }
+            }
         }
     }
 

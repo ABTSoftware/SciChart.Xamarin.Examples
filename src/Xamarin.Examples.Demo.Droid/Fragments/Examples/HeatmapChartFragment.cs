@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Timers;
 using Android.Graphics;
@@ -27,7 +24,10 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
         private const int Height = 200;
         private const int SeriesPerPeriod = 30;
 
+        private volatile bool _isRunning = false;
+        private readonly object _syncRoot = new object();
         private readonly Timer _timer = new Timer(40) {AutoReset = true};
+
         private int _timerIndex = 0;
         private readonly UniformHeatmapDataSeries<int, int, double> _dataSeries = new UniformHeatmapDataSeries<int, int, double>(Width, Height);
 
@@ -75,22 +75,48 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
         private void OnTick(object sender, ElapsedEventArgs e)
         {
-            IValues<double> values;
-            lock (ValuesList)
+            lock (_syncRoot)
             {
-                values = ValuesList[_timerIndex % ValuesList.Count];
-            }
-            _dataSeries.UpdateZValues(values);
+                if(!_isRunning) return;
 
-            _timerIndex++;
+                UpdateDataSeries(_timerIndex);
+
+                _timerIndex++;
+            }
+        }
+
+        private void UpdateDataSeries(int index)
+        {
+            var values = ValuesList[index%ValuesList.Count];
+            _dataSeries.UpdateZValues(values);
         }
 
         public override void OnDestroyView()
         {
             base.OnDestroyView();
 
+            Stop();
+        }
+
+        private void Stop()
+        {
+            if(!_isRunning) return;
+
+            _isRunning = false;
             _timer.Stop();
             _timer.Elapsed -= OnTick;
+        }
+
+        public override void InitExampleForUiTest()
+        {
+            base.InitExampleForUiTest();
+
+            lock (_syncRoot)
+            {
+                Stop();
+
+                UpdateDataSeries(0);
+            }
         }
     }
 }

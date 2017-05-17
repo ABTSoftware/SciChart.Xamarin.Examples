@@ -10,7 +10,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Using ThemeManager")]
+    [ExampleDefinition("Using ThemeManager", description: "Change chart theme using the ThemeManager", icon: ExampleIcon.Themes)]
     public class UsingThemeManagerView : ExampleBaseView
     {
         private static readonly string[] ThemeNames =
@@ -99,12 +99,11 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.RenderableSeries.Add(columnRenderableSeries);
             Surface.RenderableSeries.Add(candlestickRenderableSeries);
 
-            Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
-            {
+            Surface.ChartModifiers = new SCIChartModifierCollection(
                 new SCILegendModifier {ShowCheckBoxes = false},
                 new SCICursorModifier(),
                 new SCIZoomExtentsModifier()
-            });
+            );
 
             Surface.InvalidateElement();
             ApplyTheme(SCIThemeKey.SCIChartV4Dark);

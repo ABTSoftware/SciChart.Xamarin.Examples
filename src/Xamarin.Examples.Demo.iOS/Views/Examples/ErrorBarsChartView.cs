@@ -40,37 +40,27 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 ErrorLow = 0.1,
                 ErrorHigh = 0.3,
                 ErrorType = SCIErrorBarType.SCIErrorBarTypeRelative,
-                Style = new SCIErrorBarsSeriesStyle
-                {
-                    LinePen = new SCISolidPenStyle( new UIColor( 70.0f / 255.0f, 130.0f / 255.0f, 180.0f / 255.0f, 1.0f), 0.7f)
-                }
+                StrokeStyle = new SCISolidPenStyle( new UIColor( 70.0f / 255.0f, 130.0f / 255.0f, 180.0f / 255.0f, 1.0f), 0.7f)
             };
 
             var horizontalRenderableSeries = new SCIFastFixedErrorBarsRenderableSeries
             {
                 DataSeries = dataSeries,
                 ErrorDirection = SCIErrorBarDirection.SCIErrorBarDirectionHorizontal,
-                ErrorDataPointWidth = 0.5,
-                Style = new SCIErrorBarsSeriesStyle
-                {
-                    LinePen = new SCISolidPenStyle(UIColor.Red, 0.7f)
-                }
+                DataPointWidth = 0.5,
+                StrokeStyle = new SCISolidPenStyle(UIColor.Red, 0.7f)
             };
 
             var renderSeries = new SCIFastLineRenderableSeries
             {
                 DataSeries = dataSeries,
-                Style =
-                { 
-                    LinePen = new SCISolidPenStyle(new UIColor( 176.0f/255.0f, 196.0f/255.0f, 222.0f/255.0f, 1.0f), 0.7f),
-                    DrawPointMarkers = true,
-                    PointMarker = new SCIEllipsePointMarker
-                    {
-                        Width = 15,
-                        Height = 15,
-                        StrokeStyle = new SCISolidPenStyle(new UIColor(176.0f/255.0f, 196.0f/255.0f, 222.0f/255.0f, 1.0f), 1.0f),
-                        FillStyle = new SCISolidBrushStyle(new UIColor( 70.0f/255.0f, 130.0f/255.0f, 180.0f/255.0f, 1.0f))
-                    }
+                StrokeStyle = new SCISolidPenStyle(new UIColor(176.0f / 255.0f, 196.0f / 255.0f, 222.0f / 255.0f, 1.0f), 0.7f),
+                PointMarker = new SCIEllipsePointMarker
+                {
+                    Width = 15,
+                    Height = 15,
+                    StrokeStyle = new SCISolidPenStyle(new UIColor(176.0f / 255.0f, 196.0f / 255.0f, 222.0f / 255.0f, 1.0f), 1.0f),
+                    FillStyle = new SCISolidBrushStyle(new UIColor(70.0f / 255.0f, 130.0f / 255.0f, 180.0f / 255.0f, 1.0f))
                 }
             };
 
@@ -80,12 +70,11 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.RenderableSeries.Add(horizontalRenderableSeries);
             Surface.RenderableSeries.Add(renderSeries);
 
-            Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
-            {
-                new SCIZoomPanModifier(),
+            Surface.ChartModifiers = new SCIChartModifierCollection(
+				new SCIZoomPanModifier(),
                 new SCIPinchZoomModifier(),
                 new SCIZoomExtentsModifier()
-            });
+            );
 
             Surface.InvalidateElement();
         }

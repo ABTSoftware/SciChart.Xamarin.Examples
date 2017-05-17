@@ -36,28 +36,24 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var renderSeries = new SCIFastImpulseRenderableSeries
             {
                 DataSeries = dataSeries,
-                Style =
+                StrokeStyle = new SCISolidPenStyle(0xFF0066FF, 2f),
+                PointMarker = new SCIEllipsePointMarker
                 {
-                    LinePen = new SCISolidPenStyle(0xFF0066FF, 2f),
-                    PointMarker = new SCIEllipsePointMarker
-                    {
-                        Width = 10,
-                        Height = 10,
-                        StrokeStyle = new SCISolidPenStyle(0xFF0066FF, 2f),
-                        FillStyle = new SCISolidBrushStyle(0xFF0066FF),
-                    }
+                    Width = 10,
+                    Height = 10,
+                    StrokeStyle = new SCISolidPenStyle(0xFF0066FF, 2f),
+                    FillStyle = new SCISolidBrushStyle(0xFF0066FF),
                 }
             };
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
             Surface.RenderableSeries.Add(renderSeries);
-            Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
-            {
-                new SCIZoomPanModifier(),
+            Surface.ChartModifiers = new SCIChartModifierCollection(
+				new SCIZoomPanModifier(),
                 new SCIPinchZoomModifier(),
                 new SCIZoomExtentsModifier()
-            });
+            );
 
             Surface.InvalidateElement();
         }

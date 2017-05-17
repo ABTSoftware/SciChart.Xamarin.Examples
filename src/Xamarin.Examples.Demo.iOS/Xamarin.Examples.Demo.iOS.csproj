@@ -23,14 +23,14 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <MtouchArch>i386</MtouchArch>
+    <MtouchArch>i386, x86_64</MtouchArch>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchDebug>True</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
     <CodesignProvision>
     </CodesignProvision>
     <MtouchSdkVersion>10.3</MtouchSdkVersion>
-    <MtouchProfiling>True</MtouchProfiling>
+    <MtouchProfiling>false</MtouchProfiling>
     <MtouchFastDev>False</MtouchFastDev>
     <MtouchNoSymbolStrip>False</MtouchNoSymbolStrip>
     <MtouchUseLlvm>False</MtouchUseLlvm>
@@ -90,8 +90,9 @@
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <BuildIpa>True</BuildIpa>
-    <CodesignProvision>Automatic:AdHoc</CodesignProvision>
-    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignProvision>
+    </CodesignProvision>
+    <CodesignKey>iPhone Developer: yaroslav pelyukh (ZNRWQJ2B92)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
@@ -163,6 +164,28 @@
     <Compile Include="Views\ExampleTableViewCell.designer.cs">
       <DependentUpon>ExampleTableViewCell.cs</DependentUpon>
     </Compile>
+    <InterfaceDefinition Include="Resources\Layout\MultiplePaneStockChartsLayout.xib" />
+    <Compile Include="Resources\Layout\MultiplePaneStockChartsLayout.cs" />
+    <Compile Include="Resources\Layout\MultiplePaneStockChartsLayout.designer.cs">
+      <DependentUpon>MultiplePaneStockChartsLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Examples\CreateMultiPaneStockChartsView.cs" />
+    <Compile Include="Extensions\ColorExtensions.cs" />
+    <Compile Include="Views\Examples\RealtimeTickingStockChartsView.cs" />
+    <InterfaceDefinition Include="Resources\Layout\RealtimeTickingStockChartsLayout.xib" />
+    <Compile Include="Resources\Layout\RealtimeTickingStockChartsLayout.cs" />
+    <Compile Include="Resources\Layout\RealtimeTickingStockChartsLayout.designer.cs">
+      <DependentUpon>RealtimeTickingStockChartsLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Examples\UsingThemeManagerView.cs" />
+    <Compile Include="Components\BillionsLabelProvider.cs" />
+    <Compile Include="Components\ThousandsLabelProvider.cs" />
+    <InterfaceDefinition Include="Resources\Layout\UsingThemeManagerLayout.xib" />
+    <Compile Include="Resources\Layout\UsingThemeManagerLayout.cs" />
+    <Compile Include="Resources\Layout\UsingThemeManagerLayout.designer.cs">
+      <DependentUpon>UsingThemeManagerLayout.cs</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -188,6 +211,17 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="Calabash">
+      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.20.3\lib\Xamarin.iOS10\Calabash.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="Xamarin.UITest">
+      <HintPath>..\packages\Xamarin.UITest.2.0.9\lib\Xamarin.UITest.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
@@ -388,12 +422,13 @@
     <Folder Include="Resources\Images.xcassets\StackedColumn100.imageset\" />
     <Folder Include="Resources\Images.xcassets\Themes.imageset\" />
     <Folder Include="Resources\Images.xcassets\ZoomPan.imageset\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <Import Project="..\Xamarin.Examples.Demo\Xamarin.Examples.Demo.projitems" Label="Shared" Condition="Exists('..\Xamarin.Examples.Demo\Xamarin.Examples.Demo.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <Reference Include="SciChart.iOS.Charting">
-      <HintPath>..\packages\SciChart.iOS.2.0.0.294\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
+      <HintPath>..\packages\SciChart.iOS.2.0.0.366\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

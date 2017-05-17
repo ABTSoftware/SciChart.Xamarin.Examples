@@ -2,12 +2,8 @@
 
 namespace SciChart.Examples.Demo.Data
 {
-    public class PriceBar
+    public struct PriceBar
     {
-        public PriceBar()
-        {
-        }
-
         public PriceBar(DateTime date, double open, double high, double low, double close, long volume)
         {
             DateTime = date;

@@ -26,7 +26,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
         private SciChartSurface Surface => View.FindViewById<SciChartSurface>(Resource.Id.chart);
 
-        private readonly Random _random = new Random();
+        private readonly Random _random = new Random(42);
 
         private readonly XyDataSeries<double, double> _ds1 = new XyDataSeries<double, double> {FifoCapacityValue = FifoCapacity};
         private readonly XyDataSeries<double, double> _ds2 = new XyDataSeries<double, double> {FifoCapacityValue = FifoCapacity};
@@ -36,6 +36,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
         private double _t = 0;
         private volatile bool _isRunning = false;
+        private readonly object _syncRoot = new object();
         private Timer _timer;
 
         protected override void InitExample()
@@ -94,6 +95,9 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
             using (Surface.SuspendUpdates())
             {
+                _t = 0;
+                _xVisibleRange.SetMinMaxDouble(-GrowBy, VisibleRangeMax + GrowBy);
+
                 _ds1.Clear();
                 _ds2.Clear();
                 _ds3.Clear();
@@ -102,28 +106,52 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
         private void OnTick(object sender, ElapsedEventArgs e)
         {
-            lock (_timer)
+            lock (_syncRoot)
             {
-                var y1 = 3.0*Math.Sin(2*Math.PI*1.4*_t) + _random.NextDouble()*0.5;
-                var y2 = 2.0*Math.Cos(2*Math.PI*0.8*_t) + _random.NextDouble()*0.5;
-                var y3 = 1.0*Math.Sin(2*Math.PI*2.2*_t) + _random.NextDouble()*0.5;
+                if(!_isRunning) return;
 
-                _ds1.Append(_t, y1);
-                _ds2.Append(_t, y2);
-                _ds3.Append(_t, y3);
+                AppendData(_random);
+            }
+        }
 
-                _t += OneOverTimeInteval;
-                if (_t > VisibleRangeMax)
-                {
-                    _xVisibleRange.SetMinMax(_xVisibleRange.Min + OneOverTimeInteval, _xVisibleRange.Max + OneOverTimeInteval);
-                }
+        private void AppendData(Random random)
+        {
+            var y1 = 3.0*Math.Sin(2*Math.PI*1.4*_t) + random.NextDouble()*0.5;
+            var y2 = 2.0*Math.Cos(2*Math.PI*0.8*_t) + random.NextDouble()*0.5;
+            var y3 = 1.0*Math.Sin(2*Math.PI*2.2*_t) + random.NextDouble()*0.5;
+
+            _ds1.Append(_t, y1);
+            _ds2.Append(_t, y2);
+            _ds3.Append(_t, y3);
+
+            _t += OneOverTimeInteval;
+            if (_t > VisibleRangeMax)
+            {
+                _xVisibleRange.SetMinMax(_xVisibleRange.Min + OneOverTimeInteval, _xVisibleRange.Max + OneOverTimeInteval);
             }
         }
 
         public override void OnDestroyView()
         {
             base.OnDestroyView();
+
             Reset();
+        }
+
+        public override void InitExampleForUiTest()
+        {
+            base.InitExampleForUiTest();
+
+            lock (_syncRoot)
+            {
+                Reset(); 
+
+                var random = new Random(42);
+                for (var i = 0; i < FifoCapacity; i++)
+                {
+                    AppendData(random);
+                }
+            }
         }
     }
 }

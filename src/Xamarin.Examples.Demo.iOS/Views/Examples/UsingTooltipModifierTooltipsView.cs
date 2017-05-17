@@ -48,45 +48,36 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
             {
                 DataSeries = ds1,
-                Style =
+                StrokeStyle = new SCISolidPenStyle(ColorUtil.SteelBlue, 2f),
+                PointMarker = new SCIEllipsePointMarker
                 {
-                    LinePen = new SCISolidPenStyle(ColorUtil.SteelBlue, 2f),
-                    DrawPointMarkers = true,
-                    PointMarker = new SCIEllipsePointMarker
-                    {
-                        Width = 5,
-                        Height = 5,
-                        StrokeStyle = new SCISolidPenStyle(ColorUtil.SteelBlue, 2f),
-                        FillStyle = new SCISolidBrushStyle(ColorUtil.SteelBlue)
-                    }
+                    Width = 5,
+                    Height = 5,
+                    StrokeStyle = new SCISolidPenStyle(ColorUtil.SteelBlue, 2f),
+                    FillStyle = new SCISolidBrushStyle(ColorUtil.SteelBlue)
                 }
             });
             Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
             {
                 DataSeries = ds2,
-                Style =
+                StrokeStyle = new SCISolidPenStyle(0xFFFF3333, 2f),
+                PointMarker = new SCIEllipsePointMarker
                 {
-                    LinePen = new SCISolidPenStyle(0xFFFF3333, 2f),
-                    DrawPointMarkers = true,
-                    PointMarker = new SCIEllipsePointMarker
-                    {
-                        Width = 5,
-                        Height = 5,
-                        StrokeStyle = new SCISolidPenStyle(0xFFFF3333, 2f),
-                        FillStyle = new SCISolidBrushStyle(0xFFFF3333)
-                    }
+                    Width = 5,
+                    Height = 5,
+                    StrokeStyle = new SCISolidPenStyle(0xFFFF3333, 2f),
+                    FillStyle = new SCISolidBrushStyle(0xFFFF3333)
                 }
             });
 
-            Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
-            {
+            Surface.ChartModifiers = new SCIChartModifierCollection(
                 new SCITooltipModifier
                 {
                     Style = {HitTestMode = (int) SCIHitTestMode.Interpolate}
                     //ShowAxisLabels = true,
                     //ShowTooltip = true,
                 }
-            });
+            );
 
             Surface.InvalidateElement();
         }

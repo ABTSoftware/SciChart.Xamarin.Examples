@@ -1,4 +1,5 @@
-﻿using System.Timers;
+﻿using System;
+using System.Timers;
 using Android.OS;
 using Android.Widget;
 using Java.Lang;
@@ -45,11 +46,12 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
         private readonly XyDataSeries<int, float> _maLowSeries = new XyDataSeries<int, float>();
         private readonly XyDataSeries<int, float> _maHighSeries = new XyDataSeries<int, float>();
 
-        private readonly Random _random = new Random();
+        private readonly Random _random = new Random(42);
 
         private readonly Handler _uiThreadHandler = new Handler(Looper.MainLooper);
 
         private volatile bool _isRunning = false;
+        private readonly object _syncRoot = new object();
         private Timer _timer;
 
         private TextView _textView;
@@ -127,17 +129,22 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 _maHighSeries.Clear();
             }
 
+            _xValue = 0;
+            _yValue = 10;
+
             _maLow.Clear();
             _maHigh.Clear();
         }
 
         private void OnTick(object sender, ElapsedEventArgs e)
         {
-            lock (_timer)
+            lock (_syncRoot)
             {
+                if (!_isRunning) return;
+
                 if (GetPointsCount() < MaxPointCount)
                 {
-                    DoAppendLoop();
+                    DoAppendLoop(_random);
                 }
                 else
                 {
@@ -151,7 +158,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             return _mainSeries.Count + _maLowSeries.Count + _maHighSeries.Count;
         }
 
-        private void DoAppendLoop()
+        private void DoAppendLoop(Random random)
         {
             using (Surface.SuspendUpdates())
             {
@@ -163,7 +170,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 for (var i = 0; i < BufferSize; i++)
                 {
                     _xValue++;
-                    _yValue += _random.NextDouble() - 0.5;
+                    _yValue += random.NextDouble() - 0.5;
 
                     _xValues.Add(_xValue);
                     _firstYValues.Add((float) _yValue);
@@ -205,6 +212,18 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             base.OnDestroyView();
 
             Reset();
+        }
+
+        public override void InitExampleForUiTest()
+        {
+            base.InitExampleForUiTest();
+
+            lock (_syncRoot)
+            {               
+                Reset();
+
+                DoAppendLoop(new Random(42));
+            }
         }
     }
 }

@@ -21,5 +21,10 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Base
         }
 
         protected abstract void InitExample();
+
+        public virtual void InitExampleForUiTest()
+        {
+            
+        }
     }
 }

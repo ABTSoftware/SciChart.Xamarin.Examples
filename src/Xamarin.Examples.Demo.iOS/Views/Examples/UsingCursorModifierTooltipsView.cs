@@ -48,19 +48,18 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
-            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds1, Style = {LinePen = new SCISolidPenStyle(0xFF177B17, 2f)}});
-            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds2, Style = {LinePen = new SCISolidPenStyle(0xFFDD0909, 2f)}});
-            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds3, Style = {LinePen = new SCISolidPenStyle(0xFF808080, 2f)}});
-            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds4, Style = {LinePen = new SCISolidPenStyle(0xFFFFD700, 2f)}, IsVisible = false});
+            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds1, StrokeStyle = new SCISolidPenStyle(0xFF177B17, 2f)});
+            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds2, StrokeStyle = new SCISolidPenStyle(0xFFDD0909, 2f)});
+            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds3, StrokeStyle = new SCISolidPenStyle(0xFF808080, 2f)});
+            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries {DataSeries = ds4, StrokeStyle = new SCISolidPenStyle(0xFFFFD700, 2f), IsVisible = false});
 
-            Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
-            {
+            Surface.ChartModifiers = new SCIChartModifierCollection(
                 new SCICursorModifier
                 {
                     //ShowAxisLabels = true,
                     //ShowTooltip = true,
                 }
-            });
+            );
 
             Surface.InvalidateElement();
         }

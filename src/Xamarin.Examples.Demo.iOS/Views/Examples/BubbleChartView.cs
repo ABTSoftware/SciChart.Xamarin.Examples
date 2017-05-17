@@ -42,7 +42,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var lineSeries = new SCIFastLineRenderableSeries
             {
                 DataSeries = dataSeries,
-                Style = {LinePen = new SCISolidPenStyle(0xFFFF3333, 1f)}
+                StrokeStyle = new SCISolidPenStyle(0xFFFF3333, 1f)
             };
 
             var bubbleSeries = new SCIBubbleRenderableSeries
@@ -50,11 +50,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 DataSeries = dataSeries,
                 ZScaleFactor = 1,
                 AutoZRange = false,
-                Style =
-                {
-                    BubbleBrush = new SCISolidBrushStyle(0x77CCCCCC),
-                    BorderPen = new SCISolidPenStyle(0xCCCCCC, 2f)
-                }
+                BubbleBrushStyle = new SCISolidBrushStyle(0x77CCCCCC),
+                StrokeStyle = new SCISolidPenStyle(0xCCCCCC, 2f)
             };
 
             Surface.XAxes.Add(xAxis);
@@ -62,12 +59,11 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.RenderableSeries.Add(lineSeries);
             Surface.RenderableSeries.Add(bubbleSeries);
 
-            Surface.ChartModifier = new SCIModifierGroup(new ISCIChartModifierProtocol[]
-            {
-                new SCIZoomPanModifier(),
+            Surface.ChartModifiers = new SCIChartModifierCollection(
+				new SCIZoomPanModifier(),
                 new SCIPinchZoomModifier(),
                 new SCIZoomExtentsModifier()
-            });
+            );
 
             Surface.InvalidateElement();
         }
