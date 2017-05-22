@@ -28,6 +28,10 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="nunit.core, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\nunit.core.dll</HintPath>
       <Private>False</Private>
@@ -72,7 +76,7 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Target Name="BeforeBuild">  
-	<MSBuild Projects="$(SolutionDir)\Xamarin.Examples.Demo.Droid\Xamarin.Examples.Demo.Droid.csproj" Targets="SignAndroidPackage" Condition="$(Configuration)=='Release'"/> 
+  <Target Name="BeforeBuild">
+    <MSBuild Projects="$(SolutionDir)\Xamarin.Examples.Demo.Droid\Xamarin.Examples.Demo.Droid.csproj" Targets="SignAndroidPackage" Condition="$(Configuration)=='Release'" />
   </Target>
 </Project>

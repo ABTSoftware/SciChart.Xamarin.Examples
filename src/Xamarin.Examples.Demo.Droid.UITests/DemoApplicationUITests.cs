@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
 using NUnit.Framework;
 using Xamarin.UITest;
 using Xamarin.UITest.Android;
@@ -61,7 +63,7 @@ namespace Xamarin.Examples.Demo.Droid.UITests
         {
             var fragmentBitmap = GetFragmentScreenshot(exampleName);
 
-            var expectedBitmap = VisualTestHelpers.LoadFromPng(Path.Combine(ExpectationsPath, _app.Device.DeviceIdentifier, $"{exampleName}.png"));
+            var expectedBitmap = VisualTestHelpers.LoadFromPng(Path.Combine(ExpectationsPath, GetDeviceId(_app), $"{exampleName}.png"));
 
             VisualTestHelpers.CompareBitmaps(exampleName, fragmentBitmap, expectedBitmap);
         }
@@ -107,7 +109,24 @@ namespace Xamarin.Examples.Demo.Droid.UITests
         {
             var fragmentBitmap = GetFragmentScreenshot(exampleName);
 
-            VisualTestHelpers.SaveToPng(Path.Combine(ExpectationsPath, _app.Device.DeviceIdentifier, $"{exampleName}.png"), fragmentBitmap);
+            VisualTestHelpers.SaveToPng(Path.Combine(ExpectationsPath, GetDeviceId(_app), $"{exampleName}.png"), fragmentBitmap);
+        }
+
+        private static string GetDeviceId(AndroidApp app)
+        {
+            var id = app.Device.DeviceIdentifier;
+
+            // get DisplayMetrics
+            var json = app.Query(x => x.Marked("content").Invoke("getContext").Invoke("getResources").Invoke("getDisplayMetrics")).First().ToString();
+            var displayMetrics = JsonConvert.DeserializeObject<Dictionary<string, double>>(json);
+
+            // get screen parameters
+            var width = displayMetrics["widthPixels"];
+            var height = displayMetrics["heightPixels"];
+            var xdpi = displayMetrics["xdpi"];
+            var ydpi = displayMetrics["ydpi"];
+
+            return $"{id}-{width}x{height}-{xdpi}x{ydpi}";
         }
 #endif
     }
