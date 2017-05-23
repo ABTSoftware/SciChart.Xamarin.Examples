@@ -11,7 +11,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
     [ExampleDefinition("Realtime Ticking Stock Charts", description: "Creates a realtime stock chart which ticks and updates, simulating live a market", icon: ExampleIcon.RealTime)]
-    public class RealtimeTickingStockChartsView : ExampleBaseView
+    public class RealtimeTickingStockChartsView : ExampleBaseView<RealtimeTickingStockChartsLayout>
     {
         private const int DefaultPointCount = 150;
         private const uint SmaSeriesColor = 0xFFFFA500;
@@ -31,11 +31,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         private PriceBar _lastPrice;
 
         private readonly RealtimeTickingStockChartsLayout _exampleViewLayout = RealtimeTickingStockChartsLayout.Create();
-        
-        public SCIChartSurface MainSurface;
-        public SCIChartSurface OverviewSurface;
-              
-        public override UIView ExampleView => _exampleViewLayout;
+        public override RealtimeTickingStockChartsLayout ExampleViewLayout => _exampleViewLayout;
+
+        public SCIChartSurface MainSurface => ExampleViewLayout.MainSurfaceView;
+        public SCIChartSurface OverviewSurface => ExampleViewLayout.OverviewSurfaceView;
 
         protected override void UpdateFrame()
         {
@@ -43,9 +42,6 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         protected override void InitExampleInternal()
         {
-            MainSurface = new SCIChartSurface(_exampleViewLayout.MainSurfaceView);
-            OverviewSurface = new SCIChartSurface(_exampleViewLayout.OverviewSurfaceView);
-
             var prices = _marketDataService.GetHistoricalData(DefaultPointCount);
 
             // Populate data series with some data
@@ -129,8 +125,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             MainSurface.RenderableSeries.Add(ohlcSeries);
             MainSurface.RenderableSeries.Add(movingAverage50Series);
             // TODO AnnotationCollection should be Annotations
-            MainSurface.AnnotationCollection.Add(_ohlcAxisMarker);
-            MainSurface.AnnotationCollection.Add(_smaAxisMarker);
+            MainSurface.Annotations.Add(_ohlcAxisMarker);
+            MainSurface.Annotations.Add(_smaAxisMarker);
 
             // Populate some pinch and touch interactions. Pinch to zoom, drag to pan and double-tap to zoom extents 
             MainSurface.ChartModifiers = new SCIChartModifierCollection(
@@ -181,8 +177,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             OverviewSurface.YAxes.Add(yAxis1);
             OverviewSurface.RenderableSeries.Add(mountainSeries);
 
-            OverviewSurface.AnnotationCollection.Add(leftAreaAnnotation);
-            OverviewSurface.AnnotationCollection.Add(rightAreaAnnotation);
+            OverviewSurface.Annotations.Add(leftAreaAnnotation);
+            OverviewSurface.Annotations.Add(rightAreaAnnotation);
         }
 
         private void OnNewPrice(PriceBar price)

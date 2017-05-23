@@ -1,10 +1,16 @@
 ﻿using UIKit;
+using SciChart.iOS.Charting;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Base
 {
-    public abstract class ExampleBaseView : UIView
+    public interface IExampleBaseView<out T> where T : UIView
     {
-        public abstract UIView ExampleView { get; }
+        T ExampleViewLayout { get; }
+    }
+
+    public abstract class ExampleBaseView<T> : UIView, IExampleBaseView<T> where T : UIView
+    {
+        public abstract T ExampleViewLayout { get; }
 
         protected ExampleBaseView()
         {

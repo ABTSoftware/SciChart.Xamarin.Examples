@@ -8,26 +8,23 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
     [ExampleDefinition("Using CursorModifier Tooltips",  description:"Demonstrates Cursors on the Chart",icon: ExampleIcon.Annotations)]
-    public class UsingCursorModifierTooltipsView : ExampleBaseView
+    public class UsingCursorModifierTooltipsView : ExampleBaseView<SingleChartViewLayout>
     {
         private const int PointsCount = 500;
 
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();
+        public override SingleChartViewLayout ExampleViewLayout => _exampleViewLayout;
 
-        public SCIChartSurface Surface;
-
-        public override UIView ExampleView => _exampleViewLayout;
+        public SCIChartSurface Surface => ExampleViewLayout.SciChartSurface;
 
         protected override void UpdateFrame()
         {
-            _exampleViewLayout.SciChartSurfaceView.Frame = _exampleViewLayout.Frame;
-            _exampleViewLayout.SciChartSurfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
+            ExampleViewLayout.SciChartSurface.Frame = ExampleViewLayout.Frame;
+            ExampleViewLayout.SciChartSurface.TranslatesAutoresizingMaskIntoConstraints = true;
         }
 
         protected override void InitExampleInternal()
         {
-            Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
-
             var xAxis = new SCINumericAxis {VisibleRange = new SCIDoubleRange(3, 6)};
             var yAxis = new SCINumericAxis {AutoRange = SCIAutoRange.Always, GrowBy = new SCIDoubleRange(0.05d, 0.05d) };
 

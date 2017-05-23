@@ -12,13 +12,12 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
     [ExampleDefinition("Heatmap Chart", description:"A real-time 2D scientific heatmap", icon: ExampleIcon.HeatmapChart)]
-    public class HeatmapChartView : ExampleBaseView
+    public class HeatmapChartView : ExampleBaseView<SingleChartViewLayout>
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();
+        public override SingleChartViewLayout ExampleViewLayout => _exampleViewLayout;
 
-        public SCIChartSurface Surface;
-
-        public override UIView ExampleView => _exampleViewLayout;
+        public SCIChartSurface Surface => ExampleViewLayout.SciChartSurface;
 
         private const int Width = 300;
         private const int Height = 200;
@@ -54,14 +53,12 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         protected override void UpdateFrame()
         {
-            _exampleViewLayout.SciChartSurfaceView.Frame = _exampleViewLayout.Frame;
-            _exampleViewLayout.SciChartSurfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
+            ExampleViewLayout.SciChartSurface.Frame = ExampleViewLayout.Frame;
+            ExampleViewLayout.SciChartSurface.TranslatesAutoresizingMaskIntoConstraints = true;
         }
 
         protected override void InitExampleInternal()
         {
-            Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
-
             var xAxis = new SCINumericAxis();
             var yAxis = new SCINumericAxis();
 

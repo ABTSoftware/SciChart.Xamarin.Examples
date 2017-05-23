@@ -8,26 +8,23 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
     [ExampleDefinition("Scatter Chart", description:"Demonstrates a simple Scatter chart", icon: ExampleIcon.ScatterChart)]
-    public class ScatterChartView : ExampleBaseView
+    public class ScatterChartView : ExampleBaseView<SingleChartViewLayout>
     {
         private readonly Random _random = new Random();
 
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();
+        public override SingleChartViewLayout ExampleViewLayout => _exampleViewLayout;
 
-        public SCIChartSurface Surface;
-
-        public override UIView ExampleView => _exampleViewLayout;
+        public SCIChartSurface Surface => ExampleViewLayout.SciChartSurface;
 
         protected override void UpdateFrame()
         {
-            _exampleViewLayout.SciChartSurfaceView.Frame = _exampleViewLayout.Frame;
-            _exampleViewLayout.SciChartSurfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
+            ExampleViewLayout.SciChartSurface.Frame = ExampleViewLayout.Frame;
+            ExampleViewLayout.SciChartSurface.TranslatesAutoresizingMaskIntoConstraints = true;
         }
 
         protected override void InitExampleInternal()
         {
-            Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
-
             var xAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
             var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
 

@@ -11,7 +11,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
     [ExampleDefinition("Using ThemeManager", description: "Change chart theme using the ThemeManager", icon: ExampleIcon.Themes)]
-    public class UsingThemeManagerView : ExampleBaseView
+    public class UsingThemeManagerView : ExampleBaseView<UsingThemeManagerLayout>
     {
         private static readonly string[] ThemeNames =
         {
@@ -26,10 +26,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         };
 
         private readonly UsingThemeManagerLayout _exampleViewLayout = UsingThemeManagerLayout.Create();
+        public override UsingThemeManagerLayout ExampleViewLayout => _exampleViewLayout;
 
-        public SCIChartSurface Surface;
-
-        public override UIView ExampleView => _exampleViewLayout;
+        public SCIChartSurface Surface => ExampleViewLayout.SciChartSurface;
 
         protected override void UpdateFrame()
         {
@@ -38,8 +37,6 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         protected override void InitExampleInternal()
         {
             InitializeUIHandlers();
-
-            Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
 
             var xAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1), VisibleRange = new SCIDoubleRange(150, 180)};
 
@@ -111,7 +108,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         private void InitializeUIHandlers()
         {
-            _exampleViewLayout.SelectThemeButton.TouchUpInside += (sender, args) =>
+            ExampleViewLayout.SelectThemeButton.TouchUpInside += (sender, args) =>
             {
                 var actionSheetAlert = UIAlertController.Create("Select Theme", null, UIAlertControllerStyle.ActionSheet);
 
@@ -128,11 +125,11 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
                 if (actionSheetAlert.PopoverPresentationController != null)
                 {
-                    actionSheetAlert.PopoverPresentationController.SourceView = _exampleViewLayout;
+                    actionSheetAlert.PopoverPresentationController.SourceView = ExampleViewLayout;
                     actionSheetAlert.PopoverPresentationController.SourceRect = ((UIButton)sender).Frame;
                 }
 
-                _exampleViewLayout.Window.RootViewController.PresentViewController(actionSheetAlert, true, null);
+                ExampleViewLayout.Window.RootViewController.PresentViewController(actionSheetAlert, true, null);
             };
         }
 
@@ -141,7 +138,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var themeProvider = new SCIThemeColorProvider(themeKey);
             Surface.ApplyThemeProvider(themeProvider);
 
-            _exampleViewLayout.SelectThemeButton.SetTitle(ThemeNames[(int) themeKey], UIControlState.Normal);
+            ExampleViewLayout.SelectThemeButton.SetTitle(ThemeNames[(int) themeKey], UIControlState.Normal);
         }
     }
 }

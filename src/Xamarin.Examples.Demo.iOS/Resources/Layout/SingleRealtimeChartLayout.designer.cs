@@ -27,7 +27,7 @@ namespace Xamarin.Examples.Demo.iOS.Resources.Layout
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        SciChart.iOS.Charting.SCIChartSurfaceView Surface { get; set; }
+        SciChart.iOS.Charting.SCIChartSurface Surface { get; set; }
 
         void ReleaseDesignerOutlets ()
         {

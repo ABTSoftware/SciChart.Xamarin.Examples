@@ -11,13 +11,12 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
     [ExampleDefinition("Performance Demo", description:"Draws up to 1 Million points in realtime!", icon: ExampleIcon.RealTime)]
-    public class PerformanceDemoView : ExampleBaseView
+    public class PerformanceDemoView : ExampleBaseView<SingleRealtimeChartLayout>
     {
         private readonly SingleRealtimeChartLayout _exampleViewLayout = SingleRealtimeChartLayout.Create();
+        public override SingleRealtimeChartLayout ExampleViewLayout => _exampleViewLayout;
 
-        public SCIChartSurface Surface;
-
-        public override UIView ExampleView => _exampleViewLayout;
+        public SCIChartSurface Surface => ExampleViewLayout.SciChartSurface;
 
         private static readonly int MaxPointCount = CalculateMaxPointCountToDisplay();
         private const int TimerInterval = 10;
@@ -49,11 +48,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         protected override void InitExampleInternal()
         {
-            Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
-
-            _exampleViewLayout.Start.TouchUpInside += (sender, args) => Start(); 
-            _exampleViewLayout.Pause.TouchUpInside += (sender, args) => Pause();
-            _exampleViewLayout.Reset.TouchUpInside += (sender, args) => Reset();
+            ExampleViewLayout.Start.TouchUpInside += (sender, args) => Start(); 
+            ExampleViewLayout.Pause.TouchUpInside += (sender, args) => Pause();
+            ExampleViewLayout.Reset.TouchUpInside += (sender, args) => Reset();
 
             var xAxis = new SCINumericAxis {AutoRange = SCIAutoRange.Always};
             var yAxis = new SCINumericAxis {AutoRange = SCIAutoRange.Always};

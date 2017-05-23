@@ -8,8 +8,8 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    //[ExampleDefinition("Multi-Pane Stock Charts", description: "Creates an example with static multi-pane stock chart with Indicator and Volume panes", icon: ExampleIcon.CandlestickChart)]
-    public class CreateMultiPaneStockChartsView : ExampleBaseView
+    [ExampleDefinition("Multi-Pane Stock Charts", description: "Creates an example with static multi-pane stock chart with Indicator and Volume panes", icon: ExampleIcon.CandlestickChart)]
+    public class CreateMultiPaneStockChartsView : ExampleBaseView<MultiplePaneStockChartsLayout>
     {
         private static readonly string VOLUME = "Volume";
         private static readonly string PRICES = "Prices";
@@ -17,16 +17,15 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         private static readonly string MACD = "MACD";
 
         private readonly MultiplePaneStockChartsLayout _exampleViewLayout = MultiplePaneStockChartsLayout.Create();
+        public override MultiplePaneStockChartsLayout ExampleViewLayout => _exampleViewLayout;
 
-        public SCIChartSurface PriceChart;
-        public SCIChartSurface MacdChart;
-        public SCIChartSurface RsiChart;
-        public SCIChartSurface VolumeChart;
+        public SCIChartSurface PriceChart => ExampleViewLayout.PriceSurfaceView;
+        public SCIChartSurface MacdChart => ExampleViewLayout.MacdSurfaceView;
+        public SCIChartSurface RsiChart => ExampleViewLayout.RsiSurfaceView;
+        public SCIChartSurface VolumeChart => ExampleViewLayout.VolumeChartView;
 
         //TODO Check bindings, probably should be Type of modifier not instance.
         //private readonly SCIMultiSurfaceModifier _multiSurfaceModifier = new SCIMultiSurfaceModifier(new SCIZoomExtentsModifier());
-
-        public override UIView ExampleView => _exampleViewLayout;
 
         protected override void UpdateFrame()
         {
@@ -34,11 +33,6 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         protected override void InitExampleInternal()
         {
-            PriceChart = new SCIChartSurface(_exampleViewLayout.PriceSurfaceView);
-            MacdChart = new SCIChartSurface(_exampleViewLayout.MacdSurfaceView);
-            RsiChart = new SCIChartSurface(_exampleViewLayout.RsiSurfaceView);
-            VolumeChart = new SCIChartSurface(_exampleViewLayout.VolumeChartView);
-
             var priceData = DataManager.Instance.GetPriceDataEurUsd();
 
             var pricePaneModel = new PricePaneModel(priceData);
@@ -59,7 +53,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             surface.XAxes.Add(xAxis);
             surface.YAxes.Add(model.YAxis);
             surface.RenderableSeries.Add(model.RenderableSeries.ItemAt(0));
-            surface.AnnotationCollection = model.Annotations;
+            surface.Annotations = model.Annotations;
 
             surface.ChartModifiers = new SCIChartModifierCollection(
                 new SCIXAxisDragModifier {DragMode = SCIAxisDragMode.Pan, ClipModeX = SCIClipMode.StretchAtExtents},

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
@@ -25,7 +25,7 @@
                         <constraint firstAttribute="height" constant="60" id="74"/>
                     </constraints>
                 </stackView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="46" customClass="SCIChartSurfaceView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="46" customClass="SCIChartSurface">
                     <rect key="frame" x="0.0" y="60" width="398" height="347"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -52,8 +52,20 @@
         <image name="Default-Portrait.png" width="768" height="1004"/>
         <image name="Default.png" width="320" height="480"/>
         <image name="Icon-60.png" width="60" height="60"/>
-        <image name="Icon-76.png" width="76" height="76"/>
+        <image name="Icon-76.png" width="180" height="180"/>
         <image name="Icon-Small-40.png" width="40" height="40"/>
         <image name="Icon-Small.png" width="29" height="29"/>
+        <image name="Annotations" width="120" height="120"/>
+        <image name="Axis" width="120" height="120"/>
+        <image name="DigitalLine" width="120" height="120"/>
+        <image name="ErrorBars" width="120" height="120"/>
+        <image name="Fan" width="120" height="120"/>
+        <image name="Impulse" width="120" height="120"/>
+        <image name="Ohlc" width="120" height="120"/>
+        <image name="StackedBar" width="120" height="120"/>
+        <image name="StackedColumn" width="120" height="120"/>
+        <image name="StackedColumn100" width="120" height="120"/>
+        <image name="Themes" width="120" height="120"/>
+        <image name="ZoomPan" width="120" height="120"/>
     </resources>
 </document>

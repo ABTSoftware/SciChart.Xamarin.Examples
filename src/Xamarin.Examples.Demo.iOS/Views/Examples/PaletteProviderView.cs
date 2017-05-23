@@ -8,7 +8,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
     //[ExampleDefinition("Palette Provider", description:"Per-point coloring with the PaletteProvider API", icon:ExampleIcon.Themes)]
-    public class PaletteProviderView : ExampleBaseView
+    public class PaletteProviderView : ExampleBaseView<SingleChartViewLayout>
     {
         class ZeroLinePaletteProvider : SCIPaletteProvider
         {
@@ -46,21 +46,18 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         }
 
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();
+        public override SingleChartViewLayout ExampleViewLayout => _exampleViewLayout;
 
-        public SCIChartSurface Surface;
-
-        public override UIView ExampleView => _exampleViewLayout;
+        public SCIChartSurface Surface => ExampleViewLayout.SciChartSurface;
 
         protected override void UpdateFrame()
         {
-            _exampleViewLayout.SciChartSurfaceView.Frame = _exampleViewLayout.Frame;
-            _exampleViewLayout.SciChartSurfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
+            ExampleViewLayout.SciChartSurface.Frame = ExampleViewLayout.Frame;
+            ExampleViewLayout.SciChartSurface.TranslatesAutoresizingMaskIntoConstraints = true;
         }
 
         protected override void InitExampleInternal()
         {
-            Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
-
             var fourierSeries = DataManager.Instance.GetFourierSeries(1.0, 0.1);
 
             var dataSeries = new XyDataSeries<double, double>();

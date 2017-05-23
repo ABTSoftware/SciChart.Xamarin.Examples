@@ -9,13 +9,12 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
     [ExampleDefinition("FIFO Chart", description:"Demonstrates scrolling charts", icon: ExampleIcon.RealTime)]
-    public class FifoChartView : ExampleBaseView
+    public class FifoChartView : ExampleBaseView<SingleRealtimeChartLayout>
     {
         private readonly SingleRealtimeChartLayout _exampleViewLayout = SingleRealtimeChartLayout.Create();
+        public override SingleRealtimeChartLayout ExampleViewLayout => _exampleViewLayout;
 
-        public SCIChartSurface Surface;
-
-        public override UIView ExampleView => _exampleViewLayout;
+        public SCIChartSurface Surface => ExampleViewLayout.SciChartSurface;
 
         private const int FifoCapacity = 50;
         private const long TimerInterval = 30;
@@ -41,11 +40,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         protected override void InitExampleInternal()
         {
-            Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
-
-            _exampleViewLayout.Start.TouchUpInside += (sender, args) => Start();
-            _exampleViewLayout.Pause.TouchUpInside += (sender, args) => Pause();
-            _exampleViewLayout.Reset.TouchUpInside += (sender, args) => Reset();
+            ExampleViewLayout.Start.TouchUpInside += (sender, args) => Start();
+            ExampleViewLayout.Pause.TouchUpInside += (sender, args) => Pause();
+            ExampleViewLayout.Reset.TouchUpInside += (sender, args) => Reset();
 
             var xAxis = new SCINumericAxis {VisibleRange = _xVisibleRange, AutoRange = SCIAutoRange.Never};
             var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1), AutoRange = SCIAutoRange.Always};

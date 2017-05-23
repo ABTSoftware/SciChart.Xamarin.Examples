@@ -15,19 +15,19 @@ namespace Xamarin.Examples.Demo.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        SciChart.iOS.Charting.SCIChartSurfaceView MacdSurface { get; set; }
+        SciChart.iOS.Charting.SCIChartSurface MacdSurface { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        SciChart.iOS.Charting.SCIChartSurfaceView PriceSurface { get; set; }
+        SciChart.iOS.Charting.SCIChartSurface PriceSurface { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        SciChart.iOS.Charting.SCIChartSurfaceView RsiSurface { get; set; }
+        SciChart.iOS.Charting.SCIChartSurface RsiSurface { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        SciChart.iOS.Charting.SCIChartSurfaceView VolumeSurface { get; set; }
+        SciChart.iOS.Charting.SCIChartSurface VolumeSurface { get; set; }
 
         void ReleaseDesignerOutlets ()
         {

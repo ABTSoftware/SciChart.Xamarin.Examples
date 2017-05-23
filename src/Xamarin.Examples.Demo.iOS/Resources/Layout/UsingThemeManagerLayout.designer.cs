@@ -1,4 +1,4 @@
-﻿// WARNING
+// WARNING
 //
 // This file has been generated automatically by Xamarin Studio from the outlets and
 // actions declared in your storyboard file.
@@ -16,7 +16,7 @@ namespace Xamarin.Examples.Demo.iOS.Resources.Layout
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        SciChart.iOS.Charting.SCIChartSurfaceView Surface { get; set; }
+        SciChart.iOS.Charting.SCIChartSurface Surface { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]

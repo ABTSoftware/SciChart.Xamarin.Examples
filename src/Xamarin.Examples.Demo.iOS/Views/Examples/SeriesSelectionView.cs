@@ -10,27 +10,24 @@ using Xamarin.Examples.Demo.Utils;
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
     [ExampleDefinition("Series Selection", description:"Select series by touch or programmatically", icon:ExampleIcon.LineChart)]
-    public class SeriesSelectionView : ExampleBaseView
+    public class SeriesSelectionView : ExampleBaseView<SingleChartViewLayout>
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();
+        public override SingleChartViewLayout ExampleViewLayout => _exampleViewLayout;
 
-        public SCIChartSurface Surface;
+        public SCIChartSurface Surface => ExampleViewLayout.SciChartSurface;
 
-        public override UIView ExampleView => _exampleViewLayout;
+        protected override void UpdateFrame()
+        {
+            ExampleViewLayout.SciChartSurface.Frame = ExampleViewLayout.Frame;
+            ExampleViewLayout.SciChartSurface.TranslatesAutoresizingMaskIntoConstraints = true;
+        }
 
         private const int SeriesPointCount = 50;
         private const int SeriesCount = 80;
 
-        protected override void UpdateFrame()
-        {
-            _exampleViewLayout.SciChartSurfaceView.Frame = _exampleViewLayout.Frame;
-            _exampleViewLayout.SciChartSurfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
-        }
-
         protected override void InitExampleInternal()
         {
-            Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
-
             var xAxis = new SCINumericAxis {AutoRange = SCIAutoRange.Always};
             var leftAxis = new SCINumericAxis {AxisAlignment = SCIAxisAlignment.Left, AxisId = SCIAxisAlignment.Left.ToString()};
             var rightAxis = new SCINumericAxis {AxisAlignment = SCIAxisAlignment.Right, AxisId = SCIAxisAlignment.Right.ToString()};

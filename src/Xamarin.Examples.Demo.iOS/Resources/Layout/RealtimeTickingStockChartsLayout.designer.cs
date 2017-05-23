@@ -16,11 +16,11 @@ namespace Xamarin.Examples.Demo.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        SciChart.iOS.Charting.SCIChartSurfaceView MainSurface { get; set; }
+        SciChart.iOS.Charting.SCIChartSurface MainSurface { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        SciChart.iOS.Charting.SCIChartSurfaceView OverviewSurface { get; set; }
+        SciChart.iOS.Charting.SCIChartSurface OverviewSurface { get; set; }
 
         void ReleaseDesignerOutlets ()
         {

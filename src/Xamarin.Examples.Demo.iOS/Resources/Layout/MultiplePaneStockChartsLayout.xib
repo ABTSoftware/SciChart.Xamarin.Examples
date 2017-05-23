@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="398" height="407"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="46" customClass="SCIChartSurfaceView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="46" customClass="SCIChartSurface">
                     <rect key="frame" x="0.0" y="0.0" width="398" height="107"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -19,7 +19,7 @@
                         <constraint firstAttribute="height" constant="107" id="106"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="82" customClass="SCIChartSurfaceView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="82" customClass="SCIChartSurface">
                     <rect key="frame" x="0.0" y="107" width="398" height="100"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -27,7 +27,7 @@
                         <constraint firstAttribute="height" constant="100" id="102"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="85" customClass="SCIChartSurfaceView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="85" customClass="SCIChartSurface">
                     <rect key="frame" x="0.0" y="207" width="398" height="100"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -35,7 +35,7 @@
                         <constraint firstAttribute="height" constant="100" id="98"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="88" customClass="SCIChartSurfaceView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="88" customClass="SCIChartSurface">
                     <rect key="frame" x="0.0" y="307" width="398" height="100"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>

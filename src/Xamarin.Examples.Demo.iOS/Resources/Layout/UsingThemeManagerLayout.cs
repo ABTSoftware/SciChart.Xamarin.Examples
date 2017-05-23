@@ -10,7 +10,7 @@ namespace Xamarin.Examples.Demo.iOS.Resources.Layout
     {
         public UIButton SelectThemeButton => ThemeButton;
 
-        public SCIChartSurfaceView SciChartSurfaceView => Surface;
+        public SCIChartSurface SciChartSurface => Surface;
 
         public UsingThemeManagerLayout (IntPtr handle) : base (handle)
         {

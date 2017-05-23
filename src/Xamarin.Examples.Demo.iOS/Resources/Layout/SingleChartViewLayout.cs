@@ -8,7 +8,7 @@ namespace Xamarin.Examples.Demo.iOS.Resources.Layout
 {
     public partial class SingleChartViewLayout : UIView
     {
-        public SCIChartSurfaceView SciChartSurfaceView => Surface;
+        public SCIChartSurface SciChartSurface => Surface;
 
         public SingleChartViewLayout (IntPtr handle) : base (handle)
         {

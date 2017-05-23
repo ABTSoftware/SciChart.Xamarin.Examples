@@ -126,28 +126,9 @@
     <Compile Include="Resources\Layout\SingleRealtimeChartLayout.designer.cs">
       <DependentUpon>SingleRealtimeChartLayout.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Examples\FifoChartView.cs" />
-    <Compile Include="Views\Examples\HeatmapChartView.cs" />
-    <Compile Include="Views\Examples\ImpulseChartView.cs" />
-    <Compile Include="Views\Examples\InteractionWithAnnotationsView.cs" />
-    <Compile Include="Views\Examples\MountainChartView.cs" />
-    <Compile Include="Views\Examples\PerformanceDemoView.cs" />
-    <Compile Include="Views\Examples\ScatterChartView.cs" />
-    <Compile Include="Views\Examples\SeriesSelectionView.cs" />
-    <Compile Include="Views\Examples\StackedBarChartView.cs" />
-    <Compile Include="Views\Examples\StackedColumnChartView.cs" />
-    <Compile Include="Views\Examples\StackedColumnSideBySideView.cs" />
-    <Compile Include="Views\Examples\StackedMountainChartView.cs" />
-    <Compile Include="Views\Examples\UsingCursorModifierTooltipsView.cs" />
-    <Compile Include="Views\Examples\UsingRolloverModifierTooltipsView.cs" />
-    <Compile Include="Views\Examples\UsingTooltipModifierTooltipsView.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\Examples\BandChartView.cs" />
-    <Compile Include="Views\Examples\BubbleChartView.cs" />
-    <Compile Include="Views\Examples\CandlestickChartView.cs" />
-    <Compile Include="Views\Examples\LegendView.cs" />
     <Compile Include="Views\Examples\LineChartView.cs" />
     <Compile Include="Views\Base\ExampleBaseView.cs" />
     <Compile Include="MainViewController.cs" />
@@ -156,9 +137,6 @@
     </Compile>
     <InterfaceDefinition Include="Resources\Layout\SingleChartViewLayout.xib" />
     <InterfaceDefinition Include="Resources\Layout\SingleRealtimeChartLayout.xib" />
-    <Compile Include="Views\Examples\ErrorBarsChartView.cs" />
-    <Compile Include="Views\Examples\FanChartView.cs" />
-    <Compile Include="Views\Examples\PaletteProviderView.cs" />
     <InterfaceDefinition Include="Views\ExampleTableViewCell.xib" />
     <Compile Include="Views\ExampleTableViewCell.cs" />
     <Compile Include="Views\ExampleTableViewCell.designer.cs">
@@ -169,15 +147,12 @@
     <Compile Include="Resources\Layout\MultiplePaneStockChartsLayout.designer.cs">
       <DependentUpon>MultiplePaneStockChartsLayout.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Examples\CreateMultiPaneStockChartsView.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
-    <Compile Include="Views\Examples\RealtimeTickingStockChartsView.cs" />
     <InterfaceDefinition Include="Resources\Layout\RealtimeTickingStockChartsLayout.xib" />
     <Compile Include="Resources\Layout\RealtimeTickingStockChartsLayout.cs" />
     <Compile Include="Resources\Layout\RealtimeTickingStockChartsLayout.designer.cs">
       <DependentUpon>RealtimeTickingStockChartsLayout.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Examples\UsingThemeManagerView.cs" />
     <Compile Include="Components\BillionsLabelProvider.cs" />
     <Compile Include="Components\ThousandsLabelProvider.cs" />
     <InterfaceDefinition Include="Resources\Layout\UsingThemeManagerLayout.xib" />
@@ -186,6 +161,31 @@
       <DependentUpon>UsingThemeManagerLayout.cs</DependentUpon>
     </Compile>
     <None Include="packages.config" />
+    <Compile Include="Views\Examples\BandChartView.cs" />
+    <Compile Include="Views\Examples\BubbleChartView.cs" />
+    <Compile Include="Views\Examples\CandlestickChartView.cs" />
+    <Compile Include="Views\Examples\CreateMultiPaneStockChartsView.cs" />
+    <Compile Include="Views\Examples\ErrorBarsChartView.cs" />
+    <Compile Include="Views\Examples\FanChartView.cs" />
+    <Compile Include="Views\Examples\FifoChartView.cs" />
+    <Compile Include="Views\Examples\HeatmapChartView.cs" />
+    <Compile Include="Views\Examples\ImpulseChartView.cs" />
+    <Compile Include="Views\Examples\InteractionWithAnnotationsView.cs" />
+    <Compile Include="Views\Examples\LegendView.cs" />
+    <Compile Include="Views\Examples\MountainChartView.cs" />
+    <Compile Include="Views\Examples\PaletteProviderView.cs" />
+    <Compile Include="Views\Examples\PerformanceDemoView.cs" />
+    <Compile Include="Views\Examples\ScatterChartView.cs" />
+    <Compile Include="Views\Examples\SeriesSelectionView.cs" />
+    <Compile Include="Views\Examples\StackedBarChartView.cs" />
+    <Compile Include="Views\Examples\StackedColumnChartView.cs" />
+    <Compile Include="Views\Examples\StackedColumnSideBySideView.cs" />
+    <Compile Include="Views\Examples\StackedMountainChartView.cs" />
+    <Compile Include="Views\Examples\UsingCursorModifierTooltipsView.cs" />
+    <Compile Include="Views\Examples\UsingRolloverModifierTooltipsView.cs" />
+    <Compile Include="Views\Examples\UsingTooltipModifierTooltipsView.cs" />
+    <Compile Include="Views\Examples\UsingThemeManagerView.cs" />
+    <Compile Include="Views\Examples\RealtimeTickingStockChartsView.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -428,7 +428,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <Reference Include="SciChart.iOS.Charting">
-      <HintPath>..\packages\SciChart.iOS.2.0.0.367\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
+      <HintPath>..\packages\SciChart.iOS.2.0.0.370\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

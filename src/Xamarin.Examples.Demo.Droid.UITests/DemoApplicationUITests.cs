@@ -59,16 +59,12 @@ namespace Xamarin.Examples.Demo.Droid.UITests
         };
 
         [Test, TestCaseSource(nameof(Examples))]
-        public void TakeAScreenshotOfExample(string exampleName)
+        public void ShouldTakeScreenshot(string exampleName)
         {
-            var fragmentBitmap = GetFragmentScreenshot(exampleName);
-
-            var expectedBitmap = VisualTestHelpers.LoadFromPng(Path.Combine(ExpectationsPath, GetDeviceId(_app), $"{exampleName}.png"));
-
-            VisualTestHelpers.CompareBitmaps(exampleName, fragmentBitmap, expectedBitmap);
+            TakeScreenshotOfExample(exampleName);
         }
 
-        private Bitmap GetFragmentScreenshot(string exampleName)
+        private FileInfo TakeScreenshotOfExample(string exampleName)
         {
             // need to ensure that we take screenshot with same orientation
             _app.SetOrientationPortrait();
@@ -83,10 +79,26 @@ namespace Xamarin.Examples.Demo.Droid.UITests
 
             _app.Invoke("InitExampleForUiTest");
 
+            return _app.Screenshot(exampleName);
+        }
+
+        [Ignore, Test, TestCaseSource(nameof(Examples))]
+        public void ShouldTakeAndCompareScreenshot(string exampleName)
+        {
+            var fragmentBitmap = GetFragmentScreenshot(exampleName);
+
+            var expectedBitmap = VisualTestHelpers.LoadFromPng(Path.Combine(ExpectationsPath, GetDeviceId(_app), $"{exampleName}.png"));
+
+            VisualTestHelpers.CompareBitmaps(exampleName, fragmentBitmap, expectedBitmap);
+        }      
+
+        private Bitmap GetFragmentScreenshot(string exampleName)
+        {
+            var actualScreenshotFileInfo = TakeScreenshotOfExample(exampleName);
+
             var rect = _app.Query(c => c.Marked("fragment_container")).FirstOrDefault()?.Rect;
             if (rect == null) throw new InvalidOperationException("fragment_container has null rect");
-
-            var actualScreenshotFileInfo = _app.Screenshot(exampleName);
+                        
             var actualBitmap = VisualTestHelpers.LoadFromPng(actualScreenshotFileInfo.FullName);
 
             var fragmentRect = new Rectangle((int) rect.X, (int) rect.Y, (int) rect.Width, (int) rect.Height);

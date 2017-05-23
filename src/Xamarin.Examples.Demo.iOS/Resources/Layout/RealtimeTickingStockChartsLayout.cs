@@ -12,8 +12,8 @@ namespace Xamarin.Examples.Demo.iOS
         {
         }
 
-        public SCIChartSurfaceView MainSurfaceView => MainSurface;
-        public SCIChartSurfaceView OverviewSurfaceView => OverviewSurface;
+        public SCIChartSurface MainSurfaceView => MainSurface;
+        public SCIChartSurface OverviewSurfaceView => OverviewSurface;
 
 
         public static RealtimeTickingStockChartsLayout Create()

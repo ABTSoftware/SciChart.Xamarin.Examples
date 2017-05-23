@@ -14,7 +14,7 @@ namespace Xamarin.Examples.Demo.iOS.Resources.Layout
 
         public UIButton Reset => ResetButton;
 
-        public SCIChartSurfaceView SciChartSurfaceView => Surface;
+        public SCIChartSurface SciChartSurface => Surface;
 
         public SingleRealtimeChartLayout(IntPtr handle) : base(handle)
         {

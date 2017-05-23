@@ -13,24 +13,21 @@ using Xamarin.Examples.Demo.Utils;
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
     [ExampleDefinition("Interaction with Annotations", description: "Demonstrates touch-interaction with Annotations", icon: ExampleIcon.Annotations)]
-    public class InteractionWithAnnotationsView : ExampleBaseView
+    public class InteractionWithAnnotationsView : ExampleBaseView<SingleChartViewLayout>
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();
+        public override SingleChartViewLayout ExampleViewLayout => _exampleViewLayout;
 
-        public SCIChartSurface Surface;
-
-        public override UIView ExampleView => _exampleViewLayout;
+        public SCIChartSurface Surface => ExampleViewLayout.SciChartSurface;
 
         protected override void UpdateFrame()
         {
-            _exampleViewLayout.SciChartSurfaceView.Frame = _exampleViewLayout.Frame;
-            _exampleViewLayout.SciChartSurfaceView.TranslatesAutoresizingMaskIntoConstraints = true;
+            ExampleViewLayout.SciChartSurface.Frame = ExampleViewLayout.Frame;
+            ExampleViewLayout.SciChartSurface.TranslatesAutoresizingMaskIntoConstraints = true;
         }
 
         protected override void InitExampleInternal()
         {
-            Surface = new SCIChartSurface(_exampleViewLayout.SciChartSurfaceView);
-
             var dataSeries = new OhlcDataSeries<DateTime, double>();
 
             foreach (var priceBar in DataManager.Instance.GetPriceDataIndu().Take(100))
@@ -63,7 +60,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 Style = {LabelPlacement = SCIAnnotationLabelPlacementMode.TopCenter}
             });
 
-            Surface.AnnotationCollection = new SCIAnnotationCollection(
+            Surface.Annotations = new SCIAnnotationCollection(
                 new SCITextAnnotation
                 {
                     CoordinateMode = SCIAnnotationCoordinateMode.Relative,

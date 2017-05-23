@@ -16,20 +16,20 @@
                     <rect key="frame" x="0.0" y="0.0" width="398" height="60"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="51" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                            <rect key="frame" x="0.0" y="14" width="127.5" height="32"/>
+                            <rect key="frame" x="0.0" y="14" width="127" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                             <state key="normal" title="Start"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="52" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                            <rect key="frame" x="135.5" y="15" width="127" height="30"/>
+                            <rect key="frame" x="135" y="15" width="128" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Pause">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="50" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                            <rect key="frame" x="270.5" y="15" width="127.5" height="30"/>
+                            <rect key="frame" x="271" y="15" width="127" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Reset">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -41,7 +41,7 @@
                         <constraint id="74" firstAttribute="height" constant="60"/>
                     </constraints>
                 </stackView>
-                <view contentMode="scaleToFill" id="46" translatesAutoresizingMaskIntoConstraints="NO" customClass="SCIChartSurfaceView">
+                <view contentMode="scaleToFill" id="46" translatesAutoresizingMaskIntoConstraints="NO" customClass="SCIChartSurface">
                     <rect key="frame" x="0.0" y="60" width="398" height="347"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -69,9 +69,21 @@
         <image name="Default-Portrait.png" width="768" height="1004"/>
         <image name="Default.png" width="320" height="480"/>
         <image name="Icon-60.png" width="60" height="60"/>
-        <image name="Icon-76.png" width="76" height="76"/>
+        <image name="Icon-76.png" width="180" height="180"/>
         <image name="Icon-Small-40.png" width="40" height="40"/>
         <image name="Icon-Small.png" width="29" height="29"/>
+        <image name="Annotations" width="120" height="120"/>
+        <image name="Axis" width="120" height="120"/>
+        <image name="DigitalLine" width="120" height="120"/>
+        <image name="ErrorBars" width="120" height="120"/>
+        <image name="Fan" width="120" height="120"/>
+        <image name="Impulse" width="120" height="120"/>
+        <image name="Ohlc" width="120" height="120"/>
+        <image name="StackedBar" width="120" height="120"/>
+        <image name="StackedColumn" width="120" height="120"/>
+        <image name="StackedColumn100" width="120" height="120"/>
+        <image name="Themes" width="120" height="120"/>
+        <image name="ZoomPan" width="120" height="120"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedScreenMetrics key="destination" type="retina4"/>

@@ -8,10 +8,10 @@ namespace Xamarin.Examples.Demo.iOS
 {
     public partial class MultiplePaneStockChartsLayout : UIStackView
     {
-        public SCIChartSurfaceView PriceSurfaceView => PriceSurface;
-        public SCIChartSurfaceView MacdSurfaceView => MacdSurface;
-        public SCIChartSurfaceView RsiSurfaceView => RsiSurface;
-        public SCIChartSurfaceView VolumeChartView => RsiSurface;
+        public SCIChartSurface PriceSurfaceView => PriceSurface;
+        public SCIChartSurface MacdSurfaceView => MacdSurface;
+        public SCIChartSurface RsiSurfaceView => RsiSurface;
+        public SCIChartSurface VolumeChartView => RsiSurface;
 
         public MultiplePaneStockChartsLayout(IntPtr handle) : base(handle)
         {
