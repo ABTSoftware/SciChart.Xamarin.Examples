@@ -32,11 +32,14 @@ namespace Xamarin.Examples.Demo.Droid.UITests
 
         private static readonly string[] Examples = {
             "Animating Line Chart",
+            "Annotations are Easy",
             "Band Chart",
             "Bubble Chart",
             "Candlestick Chart",
             "Chart Legends API",
             "Dashboard Style Charts",
+            "ECG Monitor Demo",
+            "ErrorBars Chart",
             "FIFO Chart",
             "Heatmap Chart",
             "Impulse Chart",

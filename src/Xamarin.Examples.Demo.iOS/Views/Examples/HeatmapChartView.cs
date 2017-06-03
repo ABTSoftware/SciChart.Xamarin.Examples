@@ -53,8 +53,17 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         protected override void UpdateFrame()
         {
-            ExampleViewLayout.SciChartSurface.Frame = ExampleViewLayout.Frame;
-            ExampleViewLayout.SciChartSurface.TranslatesAutoresizingMaskIntoConstraints = true;
+			Surface.TranslatesAutoresizingMaskIntoConstraints = false;
+
+			NSLayoutConstraint constraintRight = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Right, NSLayoutRelation.Equal, this, NSLayoutAttribute.Right, 1, 0);
+			NSLayoutConstraint constraintLeft = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Left, NSLayoutRelation.Equal, this, NSLayoutAttribute.Left, 1, 0);
+			NSLayoutConstraint constraintTop = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Top, NSLayoutRelation.Equal, this, NSLayoutAttribute.Top, 1, 0);
+			NSLayoutConstraint constraintBottom = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Bottom, NSLayoutRelation.Equal, this, NSLayoutAttribute.Bottom, 1, 0);
+
+			this.AddConstraint(constraintRight);
+			this.AddConstraint(constraintLeft);
+			this.AddConstraint(constraintTop);
+			this.AddConstraint(constraintBottom);
         }
 
         protected override void InitExampleInternal()
@@ -62,8 +71,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var xAxis = new SCINumericAxis();
             var yAxis = new SCINumericAxis();
 
-            float[] coords = {0.0f, 0.16f, 0.33f, 0.5f, 0.67f, 0.83f, 1.0f};
-            uint[] colors = {0xFFFF0080, 0xFFFF0000, 0xFFFFFF00, 0xFF00FF00, 0xFF00FFFF, 0xFF0070FF, 0xFF0000FF};
+            float[] coords = {0, 0.2f, 0.4f, 0.6f, 0.8f, 1};
+            uint[] colors = {0xFF0000FF, 0xFF6495ed, 0xFF006400, 0xFF7FFF00, 0xFFFFFF00, 0xFFFF0000 };
             var textureOpenGl = new SCITextureOpenGL(coords, colors, colors.Length);
 
             var renderSeries = new SCIFastUniformHeatmapRenderableSeries

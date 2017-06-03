@@ -3,14 +3,15 @@ using System.Linq;
 using Android.Views;
 using SciChart.Charting.Model;
 using SciChart.Charting.Model.DataSeries;
+using SciChart.Charting.Modifiers;
 using SciChart.Charting.Visuals;
 using SciChart.Charting.Visuals.Annotations;
 using SciChart.Charting.Visuals.Axes;
 using SciChart.Charting.Visuals.RenderableSeries;
 using SciChart.Data.Model;
 using SciChart.Drawing.Common;
-using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo.Data;
 using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
 using Xamarin.Examples.Demo.Utils;
@@ -28,31 +29,16 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
         {
             var dataSeries = new OhlcDataSeries<DateTime, double>();
 
-            foreach (var priceBar in DataManager.Instance.GetPriceDataIndu().Take(100))
-            {
-                dataSeries.Append(priceBar.DateTime, priceBar.Open, priceBar.High, priceBar.Low, priceBar.Close);
-            }
+            var marketDataService = new MarketDataService(new DateTime(2000, 08, 01, 12, 00, 00), 5, 5);
+            var data = marketDataService.GetHistoricalData(200);
 
-            Surface.XAxes.Add(new CategoryDateAxis(Activity) {VisibleRange = new DoubleRange(0, 199)});
+            dataSeries.Append(data.Select(x => x.DateTime), data.Select(x => x.Open), data.Select(x => x.High), data.Select(x => x.Low), data.Select(x => x.Close));
+
+            Surface.XAxes.Add(new CategoryDateAxis(Activity));
             Surface.YAxes.Add(new NumericAxis(Activity) {VisibleRange = new DoubleRange(30, 37)});
             Surface.RenderableSeries.Add(new FastCandlestickRenderableSeries {DataSeries = dataSeries});
+            Surface.ChartModifiers.Add(new ZoomPanModifier());
 
-            var horizontalLineAnnotation = new HorizontalLineAnnotation(Activity)
-            {
-                X1Value = 130,
-                X2Value = 160,
-                Y1Value = 33.9,
-                Stroke = new SolidPenStyle(ColorUtil.Blue, 2f.ToDip(Activity)),
-                HorizontalGravity = GravityFlags.CenterHorizontal,
-                IsEditable = true,
-                AnnotationLabels = new AnnotationCollection
-                {
-                    new LineAnnotationWithLabelsBase.AnnotationLabel(Activity)
-                    {
-                        LabelPlacement = LabelPlacement.Auto
-                    }
-                }
-            };
             Surface.Annotations = new AnnotationCollection
             {
                 new TextAnnotation(Activity)
@@ -137,9 +123,43 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     Y1Value = 32.2,
                     Stroke = new SolidPenStyle(ColorUtil.Red, 2f.ToDip(Activity)),
                     HorizontalGravity = GravityFlags.Right,
-                    IsEditable = true
+                    IsEditable = true,
+                    AnnotationLabels = new AnnotationLabelCollection()
+                    {
+                        new AnnotationLabel(Activity)
+                        {
+                            LabelPlacement = LabelPlacement.Axis
+                        }
+                    }
                 },
-                horizontalLineAnnotation,
+                new HorizontalLineAnnotation(Activity)
+                {
+                    X1Value = 130,
+                    X2Value = 160,
+                    Y1Value = 33.9,
+                    Stroke = new SolidPenStyle(ColorUtil.Blue, 2f.ToDip(Activity)),
+                    HorizontalGravity = GravityFlags.CenterHorizontal,
+                    IsEditable = true,
+                    AnnotationLabels = new AnnotationLabelCollection()
+                    {
+                        new AnnotationLabel(Activity)
+                        {
+                            LabelPlacement = LabelPlacement.Left,
+                            Text = "Left"
+                        },
+                        new AnnotationLabel(Activity)
+                        {
+                            LabelPlacement = LabelPlacement.Top,
+                            Text = "Top"
+                        },
+                        new AnnotationLabel(Activity)
+                        {
+                            LabelPlacement = LabelPlacement.Right,
+                            Text = "Rigth"
+                        }
+
+                    }
+                },
                 new VerticalLineAnnotation(Activity)
                 {
                     X1Value = 20,
@@ -147,7 +167,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     Y2Value = 33,
                     Stroke = new SolidPenStyle(ColorUtil.DarkGreen, 2f.ToDip(Activity)),
                     VerticalGravity = GravityFlags.CenterVertical,
-                    IsEditable = true,
+                    IsEditable = true
                 },
                 new VerticalLineAnnotation(Activity)
                 {
@@ -156,6 +176,15 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     Stroke = new SolidPenStyle(ColorUtil.Green, 2f.ToDip(Activity)),
                     VerticalGravity = GravityFlags.Top,
                     IsEditable = true,
+
+                    AnnotationLabels = new AnnotationLabelCollection()
+                    {
+                        new AnnotationLabel(Activity)
+                        {
+                            LabelPlacement = LabelPlacement.Top,
+                            RotationAngle = 90
+                        }
+                    }
                 },
                 new TextAnnotation(Activity)
                 {

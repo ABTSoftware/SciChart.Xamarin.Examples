@@ -25,9 +25,8 @@ namespace Xamarin.Examples.Demo.iOS
             TableView.SeparatorColor = new UIColor(red: 0.11f, green: 0.11f, blue: 0.11f, alpha: 1.0f); // #1B1B1B
             TableView.SeparatorStyle = UITableViewCellSeparatorStyle.SingleLine;
             TableView.RowHeight = 60;
-            this.NavigationController.NavigationBar.BarTintColor = new UIColor(red: 0.35f, green: 0.78f, blue: 0.36f, alpha: 1.0f); // #5AC65B
-            this.NavigationController.NavigationBar.Translucent = true;
-            this.NavigationController.NavigationBar.BarStyle = UIBarStyle.Black;
+            //this.NavigationController.NavigationBar.BarTintColor = new UIColor(red: 0.35f, green: 0.78f, blue: 0.36f, alpha: 1.0f); // #5AC65B
+            //this.NavigationController.NavigationBar.BarStyle = UIBarStyle.Default;
 
             _examples = ExampleManager.Instance.Examples;
         }

@@ -185,7 +185,7 @@
     <Compile Include="Views\Examples\UsingRolloverModifierTooltipsView.cs" />
     <Compile Include="Views\Examples\UsingTooltipModifierTooltipsView.cs" />
     <Compile Include="Views\Examples\UsingThemeManagerView.cs" />
-    <Compile Include="Views\Examples\RealtimeTickingStockChartsView.cs" />
+    <Compile Include="Views\Examples\CreateRealtimeTickingStockChartsView.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -222,8 +222,6 @@
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\Contents.json">
@@ -424,11 +422,13 @@
     <Folder Include="Resources\Images.xcassets\ZoomPan.imageset\" />
     <Folder Include="Extensions\" />
   </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
   <Import Project="..\Xamarin.Examples.Demo\Xamarin.Examples.Demo.projitems" Label="Shared" Condition="Exists('..\Xamarin.Examples.Demo\Xamarin.Examples.Demo.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <Reference Include="SciChart.iOS.Charting">
-      <HintPath>..\packages\SciChart.iOS.2.0.0.378\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
+      <HintPath>..\packages\SciChart.iOS.2.0.0.407\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

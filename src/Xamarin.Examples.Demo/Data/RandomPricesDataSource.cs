@@ -1,5 +1,5 @@
-﻿using SciChart.Examples.Demo.Data;
-using System;
+﻿using System;
+using SciChart.Examples.Demo.Data;
 
 
 namespace Xamarin.Examples.Demo.Data

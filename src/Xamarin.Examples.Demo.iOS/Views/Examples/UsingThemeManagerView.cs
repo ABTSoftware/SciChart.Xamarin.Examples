@@ -103,7 +103,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             );
 
             Surface.InvalidateElement();
-            ApplyTheme(SCIThemeKey.SCIChartV4Dark);
+            ApplyTheme(SCIThemeKey.ChartV4DarkTheme);
         }
 
         private void InitializeUIHandlers()

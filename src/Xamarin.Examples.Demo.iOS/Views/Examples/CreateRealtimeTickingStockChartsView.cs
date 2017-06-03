@@ -11,7 +11,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
     [ExampleDefinition("Realtime Ticking Stock Charts", description: "Creates a realtime stock chart which ticks and updates, simulating live a market", icon: ExampleIcon.RealTime)]
-    public class RealtimeTickingStockChartsView : ExampleBaseView<RealtimeTickingStockChartsLayout>
+    public class CreateRealtimeTickingStockChartsView : ExampleBaseView<RealtimeTickingStockChartsLayout>
     {
         private const int DefaultPointCount = 150;
         private const uint SmaSeriesColor = 0xFFFFA500;
@@ -19,8 +19,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         private const uint StrokeDownColor = 0xFFFF0000;
         private const float StrokeThickness = 1.5f;
 
-        private readonly OhlcDataSeries<DateTime, double> _ohlcDataSeries = new OhlcDataSeries<DateTime, double>(TypeOfSeries.XCategory) { SeriesName = "Price Series" };
-        private readonly XyDataSeries<DateTime, double> _xyDataSeries = new XyDataSeries<DateTime, double>(TypeOfSeries.XCategory) { SeriesName = "50-Period SMA" };
+        private readonly OhlcDataSeries<DateTime, double> _ohlcDataSeries = new OhlcDataSeries<DateTime, double>(SCITypeOfDataSeries.XCategory) { SeriesName = "Price Series" };
+        private readonly XyDataSeries<DateTime, double> _xyDataSeries = new XyDataSeries<DateTime, double>(SCITypeOfDataSeries.XCategory) { SeriesName = "50-Period SMA" };
 
         private SCIAxisMarkerAnnotation _smaAxisMarker;
         private SCIAxisMarkerAnnotation _ohlcAxisMarker;
@@ -65,7 +65,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
             //((SCIAxisBase)MainSurface.XAxes[0]).VisibleRangeChange += (s, e) =>
 
-            var axis = (SCIAxisBase)MainSurface.XAxes[0];
+            var axis0 = MainSurface.XAxes[0];
+            var axis = (SCIAxisBase)axis0;
 
             var callback = new SCIAxisVisibleRangeChanged((ISCIRangeProtocol arg0, ISCIRangeProtocol arg1, bool arg2, Foundation.NSObject arg3) =>
             {
@@ -124,7 +125,6 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             MainSurface.YAxes.Add(yAxis);
             MainSurface.RenderableSeries.Add(ohlcSeries);
             MainSurface.RenderableSeries.Add(movingAverage50Series);
-            // TODO AnnotationCollection should be Annotations
             MainSurface.Annotations.Add(_ohlcAxisMarker);
             MainSurface.Annotations.Add(_smaAxisMarker);
 
@@ -134,10 +134,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 // TODO XyDirection should be Direction; SCIXYDirection should be Direction2D
                 new SCIZoomPanModifier { XyDirection = SCIXYDirection.XDirection },
                 new SCIZoomExtentsModifier(),
-                // TODO SCILegendOrientation should be SCIOrientation
                 new SCILegendCollectionModifier { Orientation = SCIOrientation.Horizontal }
             );
-
         }
 
         private void CreateOverviewChart(out SCIBoxAnnotation leftAreaAnnotation, out SCIBoxAnnotation rightAreaAnnotation)
@@ -190,13 +188,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 double smaLastValue;
                 if (_lastPrice.DateTime == price.DateTime)
                 {
-                    // TODO Update method sholdn't take xValue, or we should expose something else then NSObject from XValues
-                    // _ohlcDataSeries.Update(_ohlcDataSeries.Count - 1, price.Open, price.High, price.Low, price.Close);
+                    _ohlcDataSeries.Update(_ohlcDataSeries.Count - 1, price.Open, price.High, price.Low, price.Close);
 
                     smaLastValue = _sma50.Update(price.Close).Current;
-
-                    // TODO Update method sholdn't take xValue, or we should expose something else then NSObject from XValues
-                    //_xyDataSeries.UpdateXyAt(_xyDataSeries.Count - 1, _xyDataSeries.XValues.ValueAt(_xyDataSeries.Count - 1), smaLastValue);
+                    _xyDataSeries.UpdateYAt(_xyDataSeries.Count - 1, smaLastValue);
                 }
                 else
                 {

@@ -44,7 +44,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         protected override void UpdateFrame()
         {
-        }
+		}
 
         protected override void InitExampleInternal()
         {

@@ -21,6 +21,10 @@ namespace Xamarin.Examples.Demo.iOS
             // Override point for customization after application launch.
             // If not required for your application you can safely delete this method
             Xamarin.Calabash.Start();
+            UINavigationBar.Appearance.Translucent = true;
+            UINavigationBar.Appearance.BackgroundColor = new UIColor(red: 0.35f, green: 0.78f, blue: 0.36f, alpha: 1.0f);
+            UINavigationBar.Appearance.BarStyle = UIBarStyle.Black;
+
             return true;
         }
 

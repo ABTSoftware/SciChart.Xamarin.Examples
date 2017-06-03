@@ -17,6 +17,7 @@ namespace SciChart.Examples.Demo.Data
         private const string PriceDataIndu = "Resources.Data.INDU_Daily.csv";
         private const string PriceDataEurUsd = "Resources.Data.EURUSD_Daily.csv";
         private const string TradeTicks = "Resources.Data.TradeTicks.csv";
+        private const string Waveform = "Resources.Data.waveform.txt";
 
         public static readonly DataManager Instance = new DataManager();
 
@@ -102,6 +103,24 @@ namespace SciChart.Examples.Demo.Data
         public DoubleSeries GetFourierSeries(double amplitude, double phaseShift, int count = 5000)
         {
             return GetDoubleSeries(count, series => SetFourierSeries(series, amplitude, phaseShift, count));
+        }
+
+        public DoubleSeries GetFourierSeries(double amplitude, double phaseShift, double xStart, double xEnd, int count = 5000)
+        {
+            var fourierSeries = GetFourierSeries(amplitude, phaseShift);
+
+            var startIndex = Array.FindLastIndex(fourierSeries.XData, x => x < xStart);
+            var endIndex = Array.FindIndex(fourierSeries.XData, x => x > xEnd);
+
+            var size = endIndex - startIndex;
+
+            var result = new DoubleSeries(size);
+            for (var i = startIndex; i < endIndex; i++)
+            {
+                result.Add(fourierSeries[i]);
+            }
+
+            return result;
         }
 
         public void SetFourierSeries(DoubleSeries series, double amplitude, double phaseShift, int count)
@@ -213,6 +232,25 @@ namespace SciChart.Examples.Demo.Data
                 }
             }
             return priceSeries;
+        }
+
+        public List<double> LoadWaveformData()
+        {
+            var data = new List<double>();
+
+            var assembly = typeof(DataManager).GetTypeInfo().Assembly;
+            var stream = assembly.GetManifestResourceStream(ResourcePrefix + Waveform);
+
+            using (var reader = new StreamReader(stream))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    data.Add(double.Parse(line));
+                }
+            }
+
+            return data;
         }
 
         public DoubleSeries GetLissajousCurve(double alpha, double beta, double delta, int count)

@@ -11,7 +11,7 @@ namespace Xamarin.Examples.Demo.iOS
         public SCIChartSurface PriceSurfaceView => PriceSurface;
         public SCIChartSurface MacdSurfaceView => MacdSurface;
         public SCIChartSurface RsiSurfaceView => RsiSurface;
-        public SCIChartSurface VolumeChartView => RsiSurface;
+        public SCIChartSurface VolumeChartView => VolumeSurface;
 
         public MultiplePaneStockChartsLayout(IntPtr handle) : base(handle)
         {

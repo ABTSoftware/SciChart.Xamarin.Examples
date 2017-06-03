@@ -4,6 +4,7 @@ using SciChart.iOS.Charting;
 using UIKit;
 using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
+using Foundation;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
@@ -17,8 +18,17 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         protected override void UpdateFrame()
         {
-            Surface.Frame = ExampleViewLayout.Frame;
-            Surface.TranslatesAutoresizingMaskIntoConstraints = true;
+			Surface.TranslatesAutoresizingMaskIntoConstraints = false;
+
+			NSLayoutConstraint constraintRight = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Right, NSLayoutRelation.Equal, this, NSLayoutAttribute.Right, 1, 0);
+			NSLayoutConstraint constraintLeft = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Left, NSLayoutRelation.Equal, this, NSLayoutAttribute.Left, 1, 0);
+			NSLayoutConstraint constraintTop = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Top, NSLayoutRelation.Equal, this, NSLayoutAttribute.Top, 1, 0);
+			NSLayoutConstraint constraintBottom = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Bottom, NSLayoutRelation.Equal, this, NSLayoutAttribute.Bottom, 1, 0);
+
+			this.AddConstraint(constraintRight);
+			this.AddConstraint(constraintLeft);
+			this.AddConstraint(constraintTop);
+			this.AddConstraint(constraintBottom);
         }
 
         protected override void InitExampleInternal()
