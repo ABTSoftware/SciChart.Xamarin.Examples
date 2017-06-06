@@ -44,7 +44,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             {
                 DataSeries = dataSeries,
                 StrokeStyle = new SCISolidPenStyle(0xAAFFC9A8, 2f),
-                AreaStyle = new SCILinearGradientBrushStyle(0xAAFF8D42, 0x88090E11, SCILinearGradientDirection.Vertical),
+                AreaStyle = new SCILinearGradientBrushStyle(0xAAFF8D42, 0x88090E11, SCILinearGradientDirection.Horizontal),
             };
 
             Surface.XAxes.Add(xAxis);

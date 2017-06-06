@@ -29,6 +29,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         protected override void UpdateFrame()
         {
+            
         }
 
         protected override void InitExampleInternal()
@@ -60,7 +61,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 new SCIPinchZoomModifier {XyDirection = SCIXYDirection.XDirection},
                 new SCIZoomPanModifier(),
                 new SCIZoomExtentsModifier(),
-                new SCILegendCollectionModifier {ShowCheckBoxes = false}
+                new SCILegendCollectionModifier {ShowCheckBoxes = false, StyleOfItemCell = new SCILegendCellStyle(){SeriesNameFont = UIFont.FromName("Helvetica", 10f) }}
                 //_multiSurfaceModifier
             );
 
@@ -100,11 +101,19 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             {
                 var stockPrices = new OhlcDataSeries<DateTime, double>(SCITypeOfDataSeries.XCategory) { SeriesName = "EUR/USD" };
                 stockPrices.Append(prices.TimeData, prices.OpenData, prices.HighData, prices.LowData, prices.CloseData);
-                AddRenderableSeries(new SCIFastCandlestickRenderableSeries { DataSeries = stockPrices, YAxisId = PRICES });
+                AddRenderableSeries(new SCIFastCandlestickRenderableSeries
+                {
+                    DataSeries = stockPrices,
+                    YAxisId = PRICES,
+                    StrokeUpStyle = new SCISolidPenStyle(0xff52cc54, 1f),
+                    FillUpBrushStyle = new SCISolidBrushStyle(0xa052cc54),
+                    StrokeDownStyle = new SCISolidPenStyle(0xffe26565, 1f),
+                    FillDownBrushStyle = new SCISolidBrushStyle(0xd0e26565)
+                });
 
                 var maLow = new XyDataSeries<DateTime, double>(SCITypeOfDataSeries.XCategory) { SeriesName = "Low Line" };
                 maLow.Append(prices.TimeData, prices.CloseData.MovingAverage(50));
-                AddRenderableSeries(new SCIFastLineRenderableSeries { DataSeries = maLow, StrokeStyle = new SCISolidPenStyle(0xFFFF3333, 2f), YAxisId = PRICES });
+                AddRenderableSeries(new SCIFastLineRenderableSeries { DataSeries = maLow, StrokeStyle = new SCISolidPenStyle(0xFFFF3333, 1f), YAxisId = PRICES });
 
                 var maHigh = new XyDataSeries<DateTime, double>(SCITypeOfDataSeries.XCategory) { SeriesName = "High Line" };
                 maHigh.Append(prices.TimeData, prices.CloseData.MovingAverage(200));
@@ -143,7 +152,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             {
                 var volumePrices = new XyDataSeries<DateTime, double>(SCITypeOfDataSeries.XCategory) { SeriesName = "Volume" };
                 volumePrices.Append(prices.TimeData, prices.VolumeData.Select(x => (double)x));
-                AddRenderableSeries(new SCIFastColumnRenderableSeries { DataSeries = volumePrices, YAxisId = VOLUME });
+                AddRenderableSeries(new SCIFastColumnRenderableSeries { DataSeries = volumePrices, YAxisId = VOLUME, FillBrushStyle = new SCISolidBrushStyle(UIColor.White), StrokeStyle = new SCISolidPenStyle(UIColor.White, 1f) });
 
                 //Annotations.AddItem(new SCIAxisMarkerAnnotation
                 //{
@@ -162,7 +171,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 var yData = prices.Rsi(14);
 
                 rsiSeries.Append(xData, yData);
-                AddRenderableSeries(new SCIFastLineRenderableSeries { DataSeries = rsiSeries, YAxisId = RSI });
+                AddRenderableSeries(new SCIFastLineRenderableSeries { DataSeries = rsiSeries, YAxisId = RSI, StrokeStyle = new SCISolidPenStyle(0xFFC6E6FF, 1f) });
 
                 //Annotations.AddItem(new SCIAxisMarkerAnnotation
                 //{
@@ -180,11 +189,18 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
                 var histogramSeries = new XyDataSeries<DateTime, double>(SCITypeOfDataSeries.XCategory) { SeriesName = "Histogram" };
                 histogramSeries.Append(prices.TimeData, macdPoints.Select(x => x.Divergence));
-                AddRenderableSeries(new SCIFastColumnRenderableSeries { DataSeries = histogramSeries, YAxisId = MACD });
+                AddRenderableSeries(new SCIFastColumnRenderableSeries { DataSeries = histogramSeries, YAxisId = MACD, StrokeStyle = new SCISolidPenStyle(UIColor.White, 1f) });
 
                 var macdSeries = new XyyDataSeries<DateTime, double>(SCITypeOfDataSeries.XCategory) { SeriesName = "MACD" };
                 macdSeries.Append(prices.TimeData, macdPoints.Select(x => x.Macd), macdPoints.Select(x => x.Signal));
-                AddRenderableSeries(new SCIFastBandRenderableSeries { DataSeries = macdSeries, YAxisId = MACD });
+                AddRenderableSeries(new SCIFastBandRenderableSeries
+                {
+                    DataSeries = macdSeries,
+                    YAxisId = MACD,
+                    FillBrushStyle = new SCISolidBrushStyle(UIColor.Clear),
+                    StrokeStyle = new SCISolidPenStyle(0xffe26565, 1f),
+                    FillY1BrushStyle = new SCISolidBrushStyle(UIColor.Clear),
+                    StrokeY1Style = new SCISolidPenStyle(0xff52cc54, 1f)});
 
                 //Annotations.AddItem(new SCIAxisMarkerAnnotation
                 //{

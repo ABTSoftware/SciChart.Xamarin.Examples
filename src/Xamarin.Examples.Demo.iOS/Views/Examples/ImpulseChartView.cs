@@ -45,8 +45,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 StrokeStyle = new SCISolidPenStyle(0xFF0066FF, 2f),
                 PointMarker = new SCIEllipsePointMarker
                 {
-                    Width = 10,
-                    Height = 10,
+                    Width = 7,
+                    Height = 7,
                     StrokeStyle = new SCISolidPenStyle(0xFF0066FF, 2f),
                     FillStyle = new SCISolidBrushStyle(0xFF0066FF),
                 }

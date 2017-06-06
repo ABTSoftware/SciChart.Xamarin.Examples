@@ -23,6 +23,7 @@ using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
 using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
+using Xamarin.Examples.Demo.Utils;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
@@ -81,7 +82,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 DataSeries = dataSeries1,
                 PointMarker = new EllipsePointMarker()
                 {
-                    FillStyle = new SolidBrushStyle(Color.Transparent),
+                    FillStyle = new SolidBrushStyle(ColorUtil.Transparent),
                     StrokeStyle = strokeStyle,
                     Width = 7.ToDip(Activity),
                     Height = 7.ToDip(Activity)

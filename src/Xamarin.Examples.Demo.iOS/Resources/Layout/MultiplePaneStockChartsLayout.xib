@@ -50,9 +50,9 @@
                 <constraint firstAttribute="trailing" secondItem="85" secondAttribute="trailing" id="95"/>
                 <constraint firstAttribute="bottom" secondItem="85" secondAttribute="bottom" constant="100" id="96"/>
                 <constraint firstAttribute="trailing" secondItem="82" secondAttribute="trailing" id="99"/>
-                <constraint firstItem="82" firstAttribute="top" secondItem="38" secondAttribute="top" constant="107" id="100"/>
                 <constraint firstAttribute="trailing" secondItem="46" secondAttribute="trailing" id="103"/>
                 <constraint firstItem="46" firstAttribute="top" secondItem="38" secondAttribute="top" id="104"/>
+                <constraint id="145" firstItem="82" firstAttribute="top" secondItem="46" secondAttribute="bottom"/>
             </constraints>
             <connections>
                 <outlet property="MacdSurface" destination="82" id="name-outlet-82"/>

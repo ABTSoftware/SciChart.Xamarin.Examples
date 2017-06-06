@@ -1,13 +1,15 @@
-﻿﻿using SciChart.Examples.Demo.Data;
+﻿using System;
+using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
 using SciChart.iOS.Charting;
 using UIKit;
 using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
+using Xamarin.Examples.Demo.Utils;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("ErrorBars Chart", description:"Demonstrates Error Bars showing point uncertainty", icon: ExampleIcon.ErrorBars)]
+    [ExampleDefinition("ErrorBars Chart", description: "Demonstrates Error Bars showing point uncertainty", icon: ExampleIcon.ErrorBars)]
     public class ErrorBarsChartView : ExampleBaseView<SingleChartViewLayout>
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();
@@ -17,63 +19,86 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         protected override void UpdateFrame()
         {
-			Surface.TranslatesAutoresizingMaskIntoConstraints = false;
+            Surface.TranslatesAutoresizingMaskIntoConstraints = false;
 
-			NSLayoutConstraint constraintRight = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Right, NSLayoutRelation.Equal, this, NSLayoutAttribute.Right, 1, 0);
-			NSLayoutConstraint constraintLeft = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Left, NSLayoutRelation.Equal, this, NSLayoutAttribute.Left, 1, 0);
-			NSLayoutConstraint constraintTop = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Top, NSLayoutRelation.Equal, this, NSLayoutAttribute.Top, 1, 0);
-			NSLayoutConstraint constraintBottom = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Bottom, NSLayoutRelation.Equal, this, NSLayoutAttribute.Bottom, 1, 0);
+            NSLayoutConstraint constraintRight = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Right, NSLayoutRelation.Equal, this, NSLayoutAttribute.Right, 1, 0);
+            NSLayoutConstraint constraintLeft = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Left, NSLayoutRelation.Equal, this, NSLayoutAttribute.Left, 1, 0);
+            NSLayoutConstraint constraintTop = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Top, NSLayoutRelation.Equal, this, NSLayoutAttribute.Top, 1, 0);
+            NSLayoutConstraint constraintBottom = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Bottom, NSLayoutRelation.Equal, this, NSLayoutAttribute.Bottom, 1, 0);
 
-			this.AddConstraint(constraintRight);
-			this.AddConstraint(constraintLeft);
-			this.AddConstraint(constraintTop);
-			this.AddConstraint(constraintBottom);
+            this.AddConstraint(constraintRight);
+            this.AddConstraint(constraintLeft);
+            this.AddConstraint(constraintTop);
+            this.AddConstraint(constraintBottom);
         }
 
         protected override void InitExampleInternal()
         {
-            var data0 = DataManager.Instance.GetFourierSeries(1.0, 0.1);
+            var xAxis = new SCINumericAxis();
+            var yAxis = new SCINumericAxis();
 
-            var dataSeries = new HlDataSeries<double, double>();
+            var fourierSeries = DataManager.Instance.GetFourierSeries(1.0, 0.1, 5.0, 5.15);
 
-            var xAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
-            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
+            var dataSeries0 = new HlDataSeries<double, double>();
+            var dataSeries1 = new HlDataSeries<double, double>();
 
-            var verticalRenderableSeries = new SCIFastErrorBarsRenderableSeries
+            FillDataSeries(dataSeries0, fourierSeries, 1.0);
+            FillDataSeries(dataSeries1, fourierSeries, 1.3);
+
+            const uint color = 0xFFC6E6FF;
+
+            var strokeStyle = new SCISolidPenStyle(0xFFC6E6FF.ToColor(), 1f);
+
+            var errorBars0 = new SCIFastErrorBarsRenderableSeries
             {
-                DataSeries = dataSeries,
-                StrokeStyle = new SCISolidPenStyle( new UIColor( 70.0f / 255.0f, 130.0f / 255.0f, 180.0f / 255.0f, 1.0f), 0.7f)
+                DataSeries = dataSeries0,
+                StrokeStyle = strokeStyle,
+                ErrorDirection = SCIErrorBarDirection.Vertical,
+                ErrorType = SCIErrorBarType.Absolute
             };
-
-            var horizontalRenderableSeries = new SCIFastFixedErrorBarsRenderableSeries
+            var lineSeries = new SCIFastLineRenderableSeries
             {
-                DataSeries = dataSeries,
-                ErrorDirection = SCIErrorBarDirection.Horizontal,
-                DataPointWidth = 0.5,
-                StrokeStyle = new SCISolidPenStyle(UIColor.Red, 0.7f)
-            };
-
-            var renderSeries = new SCIFastLineRenderableSeries
-            {
-                DataSeries = dataSeries,
-                StrokeStyle = new SCISolidPenStyle(new UIColor(176.0f / 255.0f, 196.0f / 255.0f, 222.0f / 255.0f, 1.0f), 0.7f),
+                DataSeries = dataSeries0,
+                StrokeStyle = strokeStyle,
                 PointMarker = new SCIEllipsePointMarker
                 {
-                    Width = 15,
-                    Height = 15,
-                    StrokeStyle = new SCISolidPenStyle(new UIColor(176.0f / 255.0f, 196.0f / 255.0f, 222.0f / 255.0f, 1.0f), 1.0f),
-                    FillStyle = new SCISolidBrushStyle(new UIColor(70.0f / 255.0f, 130.0f / 255.0f, 180.0f / 255.0f, 1.0f))
+                    FillStyle = new SCISolidBrushStyle(color),
+                    Width = 5,
+                    Height = 5
+                }
+            };
+
+            var errorBars1 = new SCIFastErrorBarsRenderableSeries
+            {
+                DataSeries = dataSeries1,
+                StrokeStyle = strokeStyle,
+                ErrorDirection = SCIErrorBarDirection.Vertical,
+                ErrorType = SCIErrorBarType.Absolute
+            };
+            var scatterSeries = new SCIXyScatterRenderableSeries
+            {
+                DataSeries = dataSeries1,
+                PointMarker = new SCIEllipsePointMarker
+                {
+                    FillStyle = new SCISolidBrushStyle(ColorUtil.Transparent),
+                    StrokeStyle = strokeStyle,
+                    Width = 7,
+                    Height = 7
                 }
             };
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
-            Surface.RenderableSeries.Add(verticalRenderableSeries);
-            Surface.RenderableSeries.Add(horizontalRenderableSeries);
-            Surface.RenderableSeries.Add(renderSeries);
+            Surface.RenderableSeries = new SCIRenderableSeriesCollection
+            {
+                //errorBars0,
+                lineSeries,
+                //errorBars1,
+                scatterSeries
+            };
 
             Surface.ChartModifiers = new SCIChartModifierCollection(
-				new SCIZoomPanModifier(),
+                new SCIZoomPanModifier(),
                 new SCIPinchZoomModifier(),
                 new SCIZoomExtentsModifier()
             );
@@ -81,9 +106,16 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.InvalidateElement();
         }
 
-        private void fillDataSeries(HlDataSeries<double, double> dataSeries, XyDataSeries<double, double> sourceData, double scale){
-            for (var i = 0; i < sourceData.Count; i++){
-                //double y = sourceData.YValues.ValueAt(i) * scale; // should be: sourceData[i] * scale
+        private static void FillDataSeries(HlDataSeries<double, double> dataSeries, DoubleSeries sourceData, double scale)
+        {
+            var random = new Random(42);
+
+            var xData = sourceData.XData;
+            var yData = sourceData.YData;
+
+            for (var i = 0; i < sourceData.Count; i++)
+            {
+                dataSeries.Append(xData[i], yData[i] + scale, random.NextDouble() * 0.2, random.NextDouble() * 0.2);
             }
         }
     }

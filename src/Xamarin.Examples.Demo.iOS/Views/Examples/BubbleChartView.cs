@@ -54,10 +54,11 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var bubbleSeries = new SCIBubbleRenderableSeries
             {
                 DataSeries = dataSeries,
+                //Style = new SCIBubbleSeriesStyle { Detalization = 40,  },
                 ZScaleFactor = 1,
                 AutoZRange = false,
-                BubbleBrushStyle = new SCISolidBrushStyle(0x77CCCCCC),
-                StrokeStyle = new SCISolidPenStyle(0xCCCCCC, 2f)
+                BubbleBrushStyle = new SCISolidBrushStyle(0x50CCCCCC),
+                StrokeStyle = new SCISolidPenStyle(0x90CCCCCC, 2f)
             };
 
             Surface.XAxes.Add(xAxis);

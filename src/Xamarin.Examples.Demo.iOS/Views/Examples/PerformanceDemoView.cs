@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Timers;
+using CoreGraphics;
 using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
 using SciChart.iOS.Charting;
@@ -42,6 +43,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         private volatile bool _isRunning = false;
         private Timer _timer;
 
+        private UILabel _countLabel;
+
         protected override void UpdateFrame()
         {
 		}
@@ -51,6 +54,11 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             ExampleViewLayout.Start.TouchUpInside += (sender, args) => Start(); 
             ExampleViewLayout.Pause.TouchUpInside += (sender, args) => Pause();
             ExampleViewLayout.Reset.TouchUpInside += (sender, args) => Reset();
+
+            _countLabel = new UILabel(new CGRect(0, 0, 220, 140));
+            _countLabel.TextColor = UIColor.White;
+            _countLabel.Font = UIFont.FromName("Helvetica", 14f);
+            ExampleViewLayout.Add(_countLabel);
 
             var xAxis = new SCINumericAxis {AutoRange = SCIAutoRange.Always};
             var yAxis = new SCINumericAxis {AutoRange = SCIAutoRange.Always};
@@ -152,6 +160,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             _maHighSeries.Append(_xValues, _thirdYValues);
 
             Surface.InvalidateElement();
+
+            _countLabel.Text = "Amount of Points: " + _mainSeries.Count;
         }
 
         private static int CalculateMaxPointCountToDisplay()

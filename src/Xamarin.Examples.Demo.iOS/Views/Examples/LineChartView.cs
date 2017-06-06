@@ -40,7 +40,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var dataSeries = new XyDataSeries<double, double>();
             dataSeries.Append(fourierSeries.XData, fourierSeries.YData);
 
-            var renderSeries = new SCIFastLineRenderableSeries {DataSeries = dataSeries, StrokeStyle = new SCISolidPenStyle(0xFF99EE99, 0.7f)};
+            var renderSeries = new SCIFastLineRenderableSeries {DataSeries = dataSeries, StrokeStyle = new SCISolidPenStyle(0xFF279B27, 2f)};
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
