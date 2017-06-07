@@ -2,7 +2,7 @@
 
 BETA! Xamarin Examples for [SciChart](https://www.scichart.com): High Performance Realtime [iOS Chart Library](https://www.scichart.com/ios-chart-features) and [Android Chart Library](https://www.scichart.com/ios-chart-features).
 
-[TODO IMAGE]
+![Tooltips in Xamarin Charts](https://www.scichart.com/wp-content/uploads/2017/06/Xamarin-RolloverModifier-Tooltips.png)
 
 Examples are provided for Xamarin.iOS, Xamarin.Android and support Xamarin Studio on OSX, Windows and Visual Studio 2015 or above on Windows. If you are looking for other platforms then please see here:
 
@@ -12,9 +12,13 @@ Examples are provided for Xamarin.iOS, Xamarin.Android and support Xamarin Studi
 
 _Please ensure you have the latest Stable versions of Xamarin as they can and do often release bug fixes for crashes, hangs and the like!_
 
-[TODO IMAGE]
+![Xamarin Stock Charts](https://www.scichart.com/wp-content/uploads/2017/06/Xamarin-Realtime-Ticking-Stock-Chart.png)
 
-[TODO IMAGE]
+![Xamarin Stacked Grouped Column Charts](https://www.scichart.com/wp-content/uploads/2017/06/Xamarin-Stacked-Column-Side-by-Side-Chart.png)
+
+![Xamarin Scatter Charts](https://www.scichart.com/wp-content/uploads/2017/06/Xamarin-Scatter-Chart-1.png)
+
+![Xamarin Heatmap Spectrogram Chart](https://www.scichart.com/wp-content/uploads/2017/06/Xamarin-Heatmap-Chart-.png)
 
 ### NOTE: NuGet Feed Setup 
 
@@ -35,7 +39,7 @@ After that, you can include SciChart packages in your application with the follo
 
 The SciChart iOS/Android Xamarin Examples contain developer example code in C# to help you get started as soon as possible with SciChart iOS & Android. 
 
-[TODO IMAGE]
+![Xamarin Chart Examples Code](https://www.scichart.com/wp-content/uploads/2017/06/SciChart-Xamarin-iOS-Simulator-Home.png)
 
 Chart Types include:
 
