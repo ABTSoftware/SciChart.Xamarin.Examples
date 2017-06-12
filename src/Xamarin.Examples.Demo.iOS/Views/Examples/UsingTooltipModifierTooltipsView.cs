@@ -9,7 +9,7 @@ using Xamarin.Examples.Demo.Utils;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Using TooltipModifier Tooltips", description:"Demonstrates a simple tooltip", icon: ExampleIcon.Annotations)]
+    [ExampleDefinition("Using TooltipModifier Tooltips", description: "Demonstrates a simple tooltip", icon: ExampleIcon.Annotations)]
     public class UsingTooltipModifierTooltipsView : ExampleBaseView<SingleChartViewLayout>
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();
@@ -19,26 +19,26 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         protected override void UpdateFrame()
         {
-			Surface.TranslatesAutoresizingMaskIntoConstraints = false;
+            Surface.TranslatesAutoresizingMaskIntoConstraints = false;
 
-			NSLayoutConstraint constraintRight = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Right, NSLayoutRelation.Equal, this, NSLayoutAttribute.Right, 1, 0);
-			NSLayoutConstraint constraintLeft = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Left, NSLayoutRelation.Equal, this, NSLayoutAttribute.Left, 1, 0);
-			NSLayoutConstraint constraintTop = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Top, NSLayoutRelation.Equal, this, NSLayoutAttribute.Top, 1, 0);
-			NSLayoutConstraint constraintBottom = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Bottom, NSLayoutRelation.Equal, this, NSLayoutAttribute.Bottom, 1, 0);
+            NSLayoutConstraint constraintRight = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Right, NSLayoutRelation.Equal, this, NSLayoutAttribute.Right, 1, 0);
+            NSLayoutConstraint constraintLeft = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Left, NSLayoutRelation.Equal, this, NSLayoutAttribute.Left, 1, 0);
+            NSLayoutConstraint constraintTop = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Top, NSLayoutRelation.Equal, this, NSLayoutAttribute.Top, 1, 0);
+            NSLayoutConstraint constraintBottom = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Bottom, NSLayoutRelation.Equal, this, NSLayoutAttribute.Bottom, 1, 0);
 
-			this.AddConstraint(constraintRight);
-			this.AddConstraint(constraintLeft);
-			this.AddConstraint(constraintTop);
-			this.AddConstraint(constraintBottom);
+            this.AddConstraint(constraintRight);
+            this.AddConstraint(constraintLeft);
+            this.AddConstraint(constraintTop);
+            this.AddConstraint(constraintBottom);
         }
 
         protected override void InitExampleInternal()
         {
-            var xAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1), AutoRange = SCIAutoRange.Always};
-            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
+            var xAxis = new SCINumericAxis { GrowBy = new SCIDoubleRange(0.1, 0.1), AutoRange = SCIAutoRange.Always };
+            var yAxis = new SCINumericAxis { GrowBy = new SCIDoubleRange(0.1, 0.1) };
 
-            var ds1 = new XyDataSeries<double, double> {SeriesName = "Lissajous Curve", AcceptUnsortedData = true};
-            var ds2 = new XyDataSeries<double, double> {SeriesName = "Sinewave", AcceptUnsortedData = true};
+            var ds1 = new XyDataSeries<double, double> { SeriesName = "Lissajous Curve", AcceptUnsortedData = true };
+            var ds2 = new XyDataSeries<double, double> { SeriesName = "Sinewave", AcceptUnsortedData = true };
 
             var ds1Points = DataManager.Instance.GetLissajousCurve(0.8, 0.2, 0.43, 500);
             var ds2Points = DataManager.Instance.GetSinewave(1.5, 1.0, 500);
@@ -79,13 +79,11 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.ChartModifiers = new SCIChartModifierCollection(
                 new SCITooltipModifier
                 {
-                    Style = {HitTestMode = (int) SCIHitTestMode.Interpolate}
+                    Style = { HitTestMode = (int)SCIHitTestMode.Interpolate }
                     //ShowAxisLabels = true,
                     //ShowTooltip = true,
                 }
             );
-
-            Surface.InvalidateElement();
         }
 
         private static IList<double> GetScaledValues(IList<double> values)

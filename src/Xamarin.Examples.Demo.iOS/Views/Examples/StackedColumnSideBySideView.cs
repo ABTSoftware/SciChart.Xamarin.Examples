@@ -6,7 +6,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Stacked Column Side By Side Chart", description:"A Stacked Column chart with columns grouped side by side", icon: ExampleIcon.StackedColumn)]
+    [ExampleDefinition("Stacked Column Side By Side Chart", description: "A Stacked Column chart with columns grouped side by side", icon: ExampleIcon.StackedColumn)]
     public class StackedColumnSideBySideView : ExampleBaseView<SingleChartViewLayout>
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();
@@ -16,17 +16,17 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         protected override void UpdateFrame()
         {
-			Surface.TranslatesAutoresizingMaskIntoConstraints = false;
+            Surface.TranslatesAutoresizingMaskIntoConstraints = false;
 
-			NSLayoutConstraint constraintRight = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Right, NSLayoutRelation.Equal, this, NSLayoutAttribute.Right, 1, 0);
-			NSLayoutConstraint constraintLeft = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Left, NSLayoutRelation.Equal, this, NSLayoutAttribute.Left, 1, 0);
-			NSLayoutConstraint constraintTop = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Top, NSLayoutRelation.Equal, this, NSLayoutAttribute.Top, 1, 0);
-			NSLayoutConstraint constraintBottom = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Bottom, NSLayoutRelation.Equal, this, NSLayoutAttribute.Bottom, 1, 0);
+            NSLayoutConstraint constraintRight = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Right, NSLayoutRelation.Equal, this, NSLayoutAttribute.Right, 1, 0);
+            NSLayoutConstraint constraintLeft = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Left, NSLayoutRelation.Equal, this, NSLayoutAttribute.Left, 1, 0);
+            NSLayoutConstraint constraintTop = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Top, NSLayoutRelation.Equal, this, NSLayoutAttribute.Top, 1, 0);
+            NSLayoutConstraint constraintBottom = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Bottom, NSLayoutRelation.Equal, this, NSLayoutAttribute.Bottom, 1, 0);
 
-			this.AddConstraint(constraintRight);
-			this.AddConstraint(constraintLeft);
-			this.AddConstraint(constraintTop);
-			this.AddConstraint(constraintBottom);
+            this.AddConstraint(constraintRight);
+            this.AddConstraint(constraintLeft);
+            this.AddConstraint(constraintTop);
+            this.AddConstraint(constraintBottom);
         }
 
         protected override void InitExampleInternal()
@@ -38,7 +38,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 //MinorDelta = 0.5,
                 //TODO Add label provider
                 //LabelProvider = new YearsLabelProvider(),
-                Style = {DrawMajorBands = true}
+                Style = { DrawMajorBands = true }
             };
 
             var yAxis = new SCINumericAxis
@@ -61,18 +61,18 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var japan = new[] { 0.126, 0.127, 0.127, 0.094 };
             var restOfTheWorld = new[] { 2.466, 2.829, 3.005, 4.306 };
 
-            var chinaDataSeries = new XyDataSeries<double, double> {SeriesName = "China"};
-            var indiaDataSeries = new XyDataSeries<double, double> {SeriesName = "India"};
-            var usaDataSeries = new XyDataSeries<double, double> {SeriesName = "USA"};
-            var indonesiaDataSeries = new XyDataSeries<double, double> {SeriesName = "Indonesia"};
-            var brazilDataSeries = new XyDataSeries<double, double> {SeriesName = "Brazil"};
-            var pakistanDataSeries = new XyDataSeries<double, double> {SeriesName = "Pakistan"};
-            var nigeriaDataSeries = new XyDataSeries<double, double> {SeriesName = "Nigeria"};
-            var bangladeshDataSeries = new XyDataSeries<double, double> {SeriesName = "Bangladesh"};
-            var russiaDataSeries = new XyDataSeries<double, double> {SeriesName = "Russia"};
-            var japanDataSeries = new XyDataSeries<double, double> {SeriesName = "Japan"};
-            var restOfTheWorldDataSeries = new XyDataSeries<double, double> {SeriesName = "Rest Of The World"};
-            var totalDataSeries = new XyDataSeries<double, double> {SeriesName = "Total"};
+            var chinaDataSeries = new XyDataSeries<double, double> { SeriesName = "China" };
+            var indiaDataSeries = new XyDataSeries<double, double> { SeriesName = "India" };
+            var usaDataSeries = new XyDataSeries<double, double> { SeriesName = "USA" };
+            var indonesiaDataSeries = new XyDataSeries<double, double> { SeriesName = "Indonesia" };
+            var brazilDataSeries = new XyDataSeries<double, double> { SeriesName = "Brazil" };
+            var pakistanDataSeries = new XyDataSeries<double, double> { SeriesName = "Pakistan" };
+            var nigeriaDataSeries = new XyDataSeries<double, double> { SeriesName = "Nigeria" };
+            var bangladeshDataSeries = new XyDataSeries<double, double> { SeriesName = "Bangladesh" };
+            var russiaDataSeries = new XyDataSeries<double, double> { SeriesName = "Russia" };
+            var japanDataSeries = new XyDataSeries<double, double> { SeriesName = "Japan" };
+            var restOfTheWorldDataSeries = new XyDataSeries<double, double> { SeriesName = "Rest Of The World" };
+            var totalDataSeries = new XyDataSeries<double, double> { SeriesName = "Total" };
 
             for (var i = 0; i < 4; i++)
             {
@@ -110,7 +110,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             columnsCollection.Add(GetRenderableSeries(brazilDataSeries, 0xffffe00b, 0xffAA8F0B));
             columnsCollection.Add(GetRenderableSeries(pakistanDataSeries, 0xfff27421, 0xffA95419));
             columnsCollection.Add(GetRenderableSeries(nigeriaDataSeries, 0xffbb0000, 0xff840000));
-            columnsCollection.Add(GetRenderableSeries(bangladeshDataSeries, 0xff550033, 0xff370018 ));
+            columnsCollection.Add(GetRenderableSeries(bangladeshDataSeries, 0xff550033, 0xff370018));
             columnsCollection.Add(GetRenderableSeries(russiaDataSeries, 0xff339933, 0xff2D732D));
             columnsCollection.Add(GetRenderableSeries(japanDataSeries, 0xff00aba9, 0xff006C6A));
             columnsCollection.Add(GetRenderableSeries(restOfTheWorldDataSeries, 0xff560068, 0xff3D0049));
@@ -119,9 +119,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.YAxes.Add(yAxis);
             Surface.RenderableSeries.Add(columnsCollection);
 
-            Surface.ChartModifiers.Add(new SCITooltipModifier());
-
-            Surface.InvalidateElement();
+            Surface.ChartModifiers = new SCIChartModifierCollection{
+                new SCITooltipModifier(),
+                new SCILegendModifier (){ShowCheckBoxes = false, StyleOfItemCell = new SCILegendCellStyle(){SeriesNameFont = UIFont.FromName("Helvetica", 10f), SeriesNameTextColor = UIColor.White }}
+            };
         }
 
         private SCIStackedColumnRenderableSeries GetRenderableSeries(IDataSeries dataSeries, uint fillColor, uint strokeColor)

@@ -11,7 +11,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Performance Demo", description:"Draws up to 1 Million points in realtime!", icon: ExampleIcon.RealTime)]
+    [ExampleDefinition("Performance Demo", description: "Draws up to 1 Million points in realtime!", icon: ExampleIcon.RealTime)]
     public class PerformanceDemoView : ExampleBaseView<SingleRealtimeChartLayout>
     {
         private readonly SingleRealtimeChartLayout _exampleViewLayout = SingleRealtimeChartLayout.Create();
@@ -47,11 +47,11 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         protected override void UpdateFrame()
         {
-		}
+        }
 
         protected override void InitExampleInternal()
         {
-            ExampleViewLayout.Start.TouchUpInside += (sender, args) => Start(); 
+            ExampleViewLayout.Start.TouchUpInside += (sender, args) => Start();
             ExampleViewLayout.Pause.TouchUpInside += (sender, args) => Pause();
             ExampleViewLayout.Reset.TouchUpInside += (sender, args) => Reset();
 
@@ -60,20 +60,18 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             _countLabel.Font = UIFont.FromName("Helvetica", 14f);
             ExampleViewLayout.Add(_countLabel);
 
-            var xAxis = new SCINumericAxis {AutoRange = SCIAutoRange.Always};
-            var yAxis = new SCINumericAxis {AutoRange = SCIAutoRange.Always};
+            var xAxis = new SCINumericAxis { AutoRange = SCIAutoRange.Always };
+            var yAxis = new SCINumericAxis { AutoRange = SCIAutoRange.Always };
 
-            var rs1 = new SCIFastLineRenderableSeries {DataSeries = _mainSeries, StrokeStyle = new SCISolidPenStyle(0xFF4083B7, 2f)};
-            var rs2 = new SCIFastLineRenderableSeries {DataSeries = _maLowSeries, StrokeStyle = new SCISolidPenStyle(0xFFFFA500, 2f)};
-            var rs3 = new SCIFastLineRenderableSeries {DataSeries = _maHighSeries, StrokeStyle = new SCISolidPenStyle(0xFFE13219, 2f)};
+            var rs1 = new SCIFastLineRenderableSeries { DataSeries = _mainSeries, StrokeStyle = new SCISolidPenStyle(0xFF4083B7, 2f) };
+            var rs2 = new SCIFastLineRenderableSeries { DataSeries = _maLowSeries, StrokeStyle = new SCISolidPenStyle(0xFFFFA500, 2f) };
+            var rs3 = new SCIFastLineRenderableSeries { DataSeries = _maHighSeries, StrokeStyle = new SCISolidPenStyle(0xFFE13219, 2f) };
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
             Surface.RenderableSeries.Add(rs1);
             Surface.RenderableSeries.Add(rs2);
             Surface.RenderableSeries.Add(rs3);
-
-            Surface.InvalidateElement();
         }
 
         private void Start()
@@ -111,6 +109,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             _maLow.Clear();
             _maHigh.Clear();
 
+            //TODO Get rid of this... should work without it
             Surface.InvalidateElement();
         }
 
@@ -150,15 +149,16 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 _yValue += _random.NextDouble() - 0.5;
 
                 _xValues.Add(_xValue);
-                _firstYValues.Add((float) _yValue);
-                _secondYValues.Add((float) _maLow.Push(_yValue).Current);
-                _thirdYValues.Add((float) _maHigh.Push(_yValue).Current);
+                _firstYValues.Add((float)_yValue);
+                _secondYValues.Add((float)_maLow.Push(_yValue).Current);
+                _thirdYValues.Add((float)_maHigh.Push(_yValue).Current);
             }
 
             _mainSeries.Append(_xValues, _firstYValues);
             _maLowSeries.Append(_xValues, _secondYValues);
             _maHighSeries.Append(_xValues, _thirdYValues);
 
+            //TODO Get rid of this... should work without it
             Surface.InvalidateElement();
 
             _countLabel.Text = "Amount of Points: " + _mainSeries.Count;

@@ -59,8 +59,6 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 new SCIPinchZoomModifier(),
                 new SCIZoomExtentsModifier()
             );
-
-            Surface.InvalidateElement();
         }
     }
 }

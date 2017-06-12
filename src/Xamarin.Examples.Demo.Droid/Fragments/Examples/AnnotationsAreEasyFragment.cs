@@ -63,7 +63,11 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     {
                         X1Value = 0.5,
                         Y1Value = 0.5,
-                        FontStyle = new FontStyle(Activity, Typeface.DefaultBold, 42, Color.Argb(0x22, 0xFF, 0xFF, 0xFF))
+                        FontStyle = new FontStyle(Activity, Typeface.DefaultBold, 42, Color.Argb(0x22, 0xFF, 0xFF, 0xFF)),
+                        Text = "Create \n Watermarks",
+                        CoordinateMode = AnnotationCoordinateMode.Relative,
+                        HorizontalAnchorPoint = HorizontalAnchorPoint.Center,
+                        VerticalAnchorPoint = VerticalAnchorPoint.Center
                     },
 
                     // Text annotations

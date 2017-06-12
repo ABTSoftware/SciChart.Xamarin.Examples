@@ -1,11 +1,12 @@
 ﻿using System;
+using Foundation;
 using System.Linq;
+using ObjCRuntime;
 using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
 using SciChart.iOS.Charting;
 using UIKit;
 using Xamarin.Examples.Demo.Data;
-using Xamarin.Examples.Demo.iOS.Resources.Layout;
 using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
@@ -19,8 +20,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         private const uint StrokeDownColor = 0xFFFF0000;
         private const float StrokeThickness = 1.5f;
 
-        private readonly OhlcDataSeries<DateTime, double> _ohlcDataSeries = new OhlcDataSeries<DateTime, double>(SCITypeOfDataSeries.XCategory) { SeriesName = "Price Series" };
-        private readonly XyDataSeries<DateTime, double> _xyDataSeries = new XyDataSeries<DateTime, double>(SCITypeOfDataSeries.XCategory) { SeriesName = "50-Period SMA" };
+        private readonly OhlcDataSeries<DateTime, double> _ohlcDataSeries = new OhlcDataSeries<DateTime, double> { SeriesName = "Price Series" };
+        private readonly XyDataSeries<DateTime, double> _xyDataSeries = new XyDataSeries<DateTime, double> { SeriesName = "50-Period SMA" };
 
         private SCIAxisMarkerAnnotation _smaAxisMarker;
         private SCIAxisMarkerAnnotation _ohlcAxisMarker;
@@ -42,18 +43,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         protected override void InitExampleInternal()
         {
-            var prices = _marketDataService.GetHistoricalData(DefaultPointCount);
-
-            // Populate data series with some data
-            _ohlcDataSeries.Append(prices.Select(x => x.DateTime),
-                prices.Select(x => x.Open),
-                prices.Select(x => x.High),
-                prices.Select(x => x.Low),
-                prices.Select(x => x.Close));
-            _xyDataSeries.Append(prices.Select(x => x.DateTime), prices.Select(y => _sma50.Push(y.Close).Current));
+            InitData(_marketDataService);
 
             CreateMainPriceChart();
-            // CREATE THE SECONDARY OVERVIEW CHART 
             SCIBoxAnnotation overviewAnnotation0;
             SCIBoxAnnotation overviewAnnotation1;
             CreateOverviewChart(out overviewAnnotation0, out overviewAnnotation1);
@@ -62,35 +54,33 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             // On zoom and pan of the main price chart, we want to update
             // the position of annotations on the second chart so that you can 
             // see the area of the data zoomed in (called an 'overview')
-
-            //((SCIAxisBase)MainSurface.XAxes[0]).VisibleRangeChange += (s, e) =>
-
-            var axis0 = MainSurface.XAxes[0];
-            var axis = (SCIAxisBase)axis0;
-
-            var callback = new SCIAxisVisibleRangeChanged((ISCIRangeProtocol arg0, ISCIRangeProtocol arg1, bool arg2, Foundation.NSObject arg3) =>
+            //TODO implement ((SCIAxisBase)MainSurface.XAxes[0]).VisibleRangeChange += (s, e) =>
+            var axis = Runtime.GetNSObject<SCIAxisBase>(MainSurface.XAxes[0].Handle);
+            axis.RegisterVisibleRangeChangedCallback(new SCIAxisVisibleRangeChanged((ISCIRangeProtocol arg0, ISCIRangeProtocol arg1, bool arg2, NSObject arg3) =>
             {
-                // Left annotation starts on the left edge of the chart and ends on the right edge 
-                // of the visible area 
-                var overviewXAxis = OverviewSurface.XAxes.ItemAt(0);
-                var mainXAxis = MainSurface.XAxes.ItemAt(0);
-                var overviewVisibleRange = overviewXAxis.VisibleRange;
-                var dOverviewVisibleRange = overviewVisibleRange.AsDoubleRange();
+                // Left annotation starts on the left edge of the chart and ends on the right edge of the visible area 
+                overviewAnnotation0.X1Value = OverviewSurface.XAxes.ItemAt(0).VisibleRange.AsDoubleRange().Min;
+                overviewAnnotation0.X2Value = MainSurface.XAxes.ItemAt(0).VisibleRange.AsDoubleRange().Min;
 
-                double min0X1 = dOverviewVisibleRange.Min;
-                double min0X2 = mainXAxis.VisibleRange.AsDoubleRange().Min;
-                overviewAnnotation0.X1Value = min0X1;
-                overviewAnnotation0.X2Value = min0X2;
+                // Right annotation starts on the right edge of visible area and ends on the right edge of all the data 
+                overviewAnnotation1.X1Value = MainSurface.XAxes.ItemAt(0).VisibleRange.AsDoubleRange().Max;
+                overviewAnnotation1.X2Value = OverviewSurface.XAxes.ItemAt(0).VisibleRange.AsDoubleRange().Max;
+            }));
 
-                // Right annotation starts on the right edge of visible area and ends on the right
-                // edge of all the data 
-                double min1X1 = mainXAxis.VisibleRange.AsDoubleRange().Max;
-                double min1X2 = overviewXAxis.VisibleRange.AsDoubleRange().Max;
-                overviewAnnotation1.X1Value = min1X1;
-                overviewAnnotation1.X2Value = min1X2;
-            });
+            _marketDataService.SubscribePriceUpdate(OnNewPrice);
+        }
 
-            axis.RegisterVisibleRangeChangedCallback(callback);
+        private void InitData(IMarketDataService marketDataService)
+        {
+            var prices = marketDataService.GetHistoricalData(DefaultPointCount);
+
+            // Populate data series with some data
+            _ohlcDataSeries.Append(prices.Select(x => x.DateTime),
+                prices.Select(x => x.Open),
+                prices.Select(x => x.High),
+                prices.Select(x => x.Low),
+                prices.Select(x => x.Close));
+            _xyDataSeries.Append(prices.Select(x => x.DateTime), prices.Select(y => _sma50.Push(y.Close).Current));
         }
 
         private void CreateMainPriceChart()
@@ -115,10 +105,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
             // Create axis markers annotations to show the last values on real-time chart
             //TODO Position -> Y1Value, color property should be on annotation itself
-            _smaAxisMarker = new SCIAxisMarkerAnnotation { Position = 0d };
+            _smaAxisMarker = new SCIAxisMarkerAnnotation { Position = 0d, YAxisId = yAxis.AxisId };
             _smaAxisMarker.Style.BackgroundColor = SmaSeriesColor.ToColor();
 
-            _ohlcAxisMarker = new SCIAxisMarkerAnnotation { Position = 0d };
+            _ohlcAxisMarker = new SCIAxisMarkerAnnotation { Position = 0d, YAxisId = yAxis.AxisId };
             _ohlcAxisMarker.Style.BackgroundColor = StrokeUpColor.ToColor();
 
             MainSurface.XAxes.Add(xAxis);
@@ -134,7 +124,12 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 // TODO XyDirection should be Direction; SCIXYDirection should be Direction2D
                 new SCIZoomPanModifier { XyDirection = SCIXYDirection.XDirection },
                 new SCIZoomExtentsModifier(),
-                new SCILegendCollectionModifier { Orientation = SCIOrientation.Horizontal }
+                new SCILegendModifier
+                {
+                    Orientation = SCIOrientation.Horizontal,
+                    Position = SCILegendPosition.Bottom,
+                    StyleOfItemCell = new SCILegendCellStyle() { SeriesNameFont = UIFont.FromName("Helvetica", 10f) }
+                }
             );
         }
 
@@ -145,7 +140,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var yAxis1 = new SCINumericAxis { GrowBy = new SCIDoubleRange(0.1, 0.1), AutoRange = SCIAutoRange.Always };
 
             // Create the mountain chart for the overview , using the same price data but zoomed out 
-            var mountainSeries = new SCIFastMountainRenderableSeries { DataSeries = _ohlcDataSeries };
+            var mountainSeries = new SCIFastMountainRenderableSeries { DataSeries = _ohlcDataSeries, AreaStyle = new SCILinearGradientBrushStyle(0x883a668f, 0xff20384f, SCILinearGradientDirection.Vertical) };
 
             // Create some annotations to visualize the selected area on the main price chart 
             leftAreaAnnotation = new SCIBoxAnnotation
@@ -202,14 +197,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
                     // If the latest appending point is inside the viewport (i.e. not off the edge of the screen)
                     // then scroll the viewport 1 bar, to keep the latest bar at the same place
-                    // TODO Collections should have indexers
-                    var visibleRange = MainSurface.XAxes.ItemAt(0).VisibleRange;
-                    if (visibleRange.AsDoubleRange().Max > _ohlcDataSeries.Count)
+                    var visibleRange = Runtime.GetNSObject<SCIDoubleRange>(MainSurface.XAxes.ItemAt(0).VisibleRange.Handle);
+                    if (visibleRange.Max > _ohlcDataSeries.Count)
                     {
-                        // TODO Should have set minmax double method on it, to avoid the following code
-                        //visibleRange.SetMinMaxDouble(visibleRange.AsDoubleRange().Min + 1, visibleRange.AsDoubleRange().Max + 1);
-                        var dateRange = ((SCIDateRange)visibleRange);
-                        var tempRange = new SCIDateRange(new DateTime(dateRange.Min.Millisecond + 1), new DateTime(dateRange.Max.Millisecond + 1));
+                        MainSurface.XAxes.ItemAt(0).VisibleRange = new SCIDoubleRange(visibleRange.Min + 1, visibleRange.Max + 1);
                     }
                 }
 
@@ -219,6 +210,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 _smaAxisMarker.Position = smaLastValue;
 
                 _lastPrice = price;
+
+                //TODO Get rid of this... should work without it
+                MainSurface.InvalidateElement();
+                OverviewSurface.InvalidateElement();
             }
         }
     }

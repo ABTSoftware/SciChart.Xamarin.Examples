@@ -7,7 +7,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Scatter Chart", description:"Demonstrates a simple Scatter chart", icon: ExampleIcon.ScatterChart)]
+    [ExampleDefinition("Scatter Chart", description: "Demonstrates a simple Scatter chart", icon: ExampleIcon.ScatterChart)]
     public class ScatterChartView : ExampleBaseView<SingleChartViewLayout>
     {
         private readonly Random _random = new Random();
@@ -19,23 +19,23 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         protected override void UpdateFrame()
         {
-			Surface.TranslatesAutoresizingMaskIntoConstraints = false;
+            Surface.TranslatesAutoresizingMaskIntoConstraints = false;
 
-			NSLayoutConstraint constraintRight = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Right, NSLayoutRelation.Equal, this, NSLayoutAttribute.Right, 1, 0);
-			NSLayoutConstraint constraintLeft = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Left, NSLayoutRelation.Equal, this, NSLayoutAttribute.Left, 1, 0);
-			NSLayoutConstraint constraintTop = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Top, NSLayoutRelation.Equal, this, NSLayoutAttribute.Top, 1, 0);
-			NSLayoutConstraint constraintBottom = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Bottom, NSLayoutRelation.Equal, this, NSLayoutAttribute.Bottom, 1, 0);
+            NSLayoutConstraint constraintRight = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Right, NSLayoutRelation.Equal, this, NSLayoutAttribute.Right, 1, 0);
+            NSLayoutConstraint constraintLeft = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Left, NSLayoutRelation.Equal, this, NSLayoutAttribute.Left, 1, 0);
+            NSLayoutConstraint constraintTop = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Top, NSLayoutRelation.Equal, this, NSLayoutAttribute.Top, 1, 0);
+            NSLayoutConstraint constraintBottom = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Bottom, NSLayoutRelation.Equal, this, NSLayoutAttribute.Bottom, 1, 0);
 
-			this.AddConstraint(constraintRight);
-			this.AddConstraint(constraintLeft);
-			this.AddConstraint(constraintTop);
-			this.AddConstraint(constraintBottom);
+            this.AddConstraint(constraintRight);
+            this.AddConstraint(constraintLeft);
+            this.AddConstraint(constraintTop);
+            this.AddConstraint(constraintBottom);
         }
 
         protected override void InitExampleInternal()
         {
-            var xAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
-            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
+            var xAxis = new SCINumericAxis { GrowBy = new SCIDoubleRange(0.1, 0.1) };
+            var yAxis = new SCINumericAxis { GrowBy = new SCIDoubleRange(0.1, 0.1) };
 
             var rSeries1 = GetScatterRenderableSeries(new SCITrianglePointMarker(), 0xFFFFEB01, false);
             var rSeries2 = GetScatterRenderableSeries(new SCIEllipsePointMarker(), 0xFFFFA300, false);
@@ -53,11 +53,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 new SCIZoomExtentsModifier(),
                 new SCIPinchZoomModifier(),
                 new SCICursorModifier(),
-                new SCIXAxisDragModifier(), 
-                new SCIYAxisDragModifier {DragMode = SCIAxisDragMode.Pan} 
+                new SCIXAxisDragModifier(),
+                new SCIYAxisDragModifier { DragMode = SCIAxisDragMode.Pan }
             );
-
-            Surface.InvalidateElement();
         }
 
         private SCIXyScatterRenderableSeries GetScatterRenderableSeries(ISCIPointMarkerProtocol pointMarker, uint color, bool negative)
@@ -84,7 +82,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             return new SCIXyScatterRenderableSeries
             {
                 DataSeries = dataSeries,
-                Style = {PointMarker = pointMarker},
+                Style = { PointMarker = pointMarker },
             };
         }
 

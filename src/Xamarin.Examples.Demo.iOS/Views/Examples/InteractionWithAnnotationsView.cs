@@ -46,7 +46,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 i += 1;
             }
 
-            var xAxis = new SCINumericAxis { VisibleRange = new SCIDoubleRange(0, 199) };
+            var xAxis = new SCINumericAxis { VisibleRange = new SCIDoubleRange(0, 190) };
             var yAxis = new SCINumericAxis { VisibleRange = new SCIDoubleRange(30, 37), AxisId = "yaxis" };
 
             Surface.XAxes.Add(xAxis);
@@ -61,7 +61,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 Style =
                 {
                     LinePen = new SCISolidPenStyle(ColorUtil.Blue, 2f),
-                    HorizontalAlignment = SCIHorizontalLineAnnotationAlignment.Right
+                    HorizontalAlignment = SCIHorizontalLineAnnotationAlignment.Center
                 },
                 //HorizontalGravity = GravityFlags.CenterHorizontal,
                 IsEditable = true,
@@ -71,8 +71,50 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             };
             horizontalLineAnnotation.AddLabel(new SCILineAnnotationLabel
             {
-                Style = { LabelPlacement = SCILabelPlacement.Top }
+                Style = { LabelPlacement = SCILabelPlacement.Top, BackgroundColor = UIColor.Clear },
+                Text = "Top",
+                TextColor = UIColor.Blue
             });
+            horizontalLineAnnotation.AddLabel(new SCILineAnnotationLabel
+            {
+                Style = { LabelPlacement = SCILabelPlacement.Left, BackgroundColor = UIColor.Clear },
+                Text = "Left",
+                TextColor = UIColor.Blue
+            });
+            horizontalLineAnnotation.AddLabel(new SCILineAnnotationLabel
+            {
+                Style = { LabelPlacement = SCILabelPlacement.Bottom, BackgroundColor = UIColor.Clear },
+                Text = "Bottom",
+                TextColor = UIColor.Blue
+            });
+            horizontalLineAnnotation.AddLabel(new SCILineAnnotationLabel
+            {
+                Style = { LabelPlacement = SCILabelPlacement.Right, BackgroundColor = UIColor.Clear },
+                Text = "Right",
+                TextColor = UIColor.Blue
+            });
+
+            var verticalLineAnnotaion = new SCIVerticalLineAnnotation
+            {
+                XValue = 40,
+                Y1Value = 34,
+                Style =
+                    {
+                        LinePen = new SCISolidPenStyle(ColorUtil.Green, 2f),
+                        VerticalAlignment = SCIVerticalLineAnnotationAlignment.Top
+
+                    },
+                IsEditable = true,
+                XAxisId = xAxis.AxisId,
+                YAxisId = yAxis.AxisId
+            };
+
+			verticalLineAnnotaion.AddLabel(new SCILineAnnotationLabel
+			{
+                Style = { LabelPlacement = SCILabelPlacement.Top, BackgroundColor = UIColor.Clear },
+				Text = "40",
+				TextColor = UIColor.Blue
+			});
 
             Surface.Annotations = new SCIAnnotationCollection(
                 new SCITextAnnotation
@@ -84,8 +126,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     X1Value = 0.5,
                     Y1Value = 0.5,
                     Style = { TextStyle = { FontSize = 72, ColorCode = 0x77FFFFFF }, BackgroundColor = UIColor.Clear },
-					XAxisId = xAxis.AxisId,
-					YAxisId = yAxis.AxisId
+                    XAxisId = xAxis.AxisId,
+                    YAxisId = yAxis.AxisId
                 },
                 new SCITextAnnotation
                 {
@@ -97,8 +139,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     VerticalAnchorPoint = SCIVerticalAnchorPoint.Bottom,
                     HorizontalAnchorPoint = SCIHorizontalAnchorPoint.Left,
                     Style = { TextStyle = { FontSize = 20, ColorCode = 0xFFFFFFFF }, BackgroundColor = UIColor.Clear },
-					XAxisId = xAxis.AxisId,
-					YAxisId = yAxis.AxisId
+                    XAxisId = xAxis.AxisId,
+                    YAxisId = yAxis.AxisId
                 },
                 new SCITextAnnotation
                 {
@@ -108,8 +150,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     X1Value = 50d,
                     Y1Value = 34d,
                     Style = { TextStyle = { FontSize = 20, ColorCode = ColorUtil.White }, BackgroundColor = UIColor.Clear },
-					XAxisId = xAxis.AxisId,
-					YAxisId = yAxis.AxisId
+                    XAxisId = xAxis.AxisId,
+                    YAxisId = yAxis.AxisId
                 },
                 new SCIBoxAnnotation
                 {
@@ -120,8 +162,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     Y1Value = 35.5,
                     X2Value = 120,
                     Y2Value = 32,
-					XAxisId = xAxis.AxisId,
-					YAxisId = yAxis.AxisId
+                    XAxisId = xAxis.AxisId,
+                    YAxisId = yAxis.AxisId
                 },
                 new SCILineAnnotation
                 {
@@ -131,8 +173,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     Y1Value = 30.5,
                     X2Value = 60,
                     Y2Value = 33.5,
-					XAxisId = xAxis.AxisId,
-					YAxisId = yAxis.AxisId
+                    XAxisId = xAxis.AxisId,
+                    YAxisId = yAxis.AxisId
                 },
                 new SCILineAnnotation
                 {
@@ -142,8 +184,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     Y1Value = 30.5,
                     X2Value = 175,
                     Y2Value = 36,
-					XAxisId = xAxis.AxisId,
-					YAxisId = yAxis.AxisId
+                    XAxisId = xAxis.AxisId,
+                    YAxisId = yAxis.AxisId
                 },
                 //new LineArrowAnnotation(Activity)
                 //{
@@ -157,8 +199,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 //},
                 new SCIAxisMarkerAnnotation
                 {
+                    CoordinateMode = SCIAnnotationCoordinateMode.Absolute,
                     IsEditable = true,
-					YAxisId = yAxis.AxisId,
+                    YAxisId = yAxis.AxisId,
                     Position = 32.7,
                 },
                 new SCIAxisMarkerAnnotation
@@ -166,14 +209,14 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     FormattedValue = "Horizontal",
                     IsEditable = true,
                     Position = 100,
-					XAxisId = xAxis.AxisId
+                    XAxisId = xAxis.AxisId
                 },
                 new SCIHorizontalLineAnnotation
                 {
                     X1Value = 150,
                     YValue = 32.2,
-					XAxisId = xAxis.AxisId,
-					YAxisId = yAxis.AxisId,
+                    XAxisId = xAxis.AxisId,
+                    YAxisId = yAxis.AxisId,
                     Style =
                     {
                         LinePen = new SCISolidPenStyle(ColorUtil.Red, 2f),
@@ -193,23 +236,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     VerticalAlignment = SCIVerticalLineAnnotationAlignment.Center
                     },
                     IsEditable = true,
-					XAxisId = xAxis.AxisId,
-					YAxisId = yAxis.AxisId
+                    XAxisId = xAxis.AxisId,
+                    YAxisId = yAxis.AxisId
                 },
-                new SCIVerticalLineAnnotation
-                {
-                    XValue = 40,
-                    Y1Value = 34,
-                    Style =
-                    {
-                        LinePen = new SCISolidPenStyle(ColorUtil.Green, 2f),
-                        VerticalAlignment = SCIVerticalLineAnnotationAlignment.Top
-
-                    },
-                    IsEditable = true,
-					XAxisId = xAxis.AxisId,
-					YAxisId = yAxis.AxisId
-                },
+                verticalLineAnnotaion,
                 new SCITextAnnotation
                 {
                     X1Value = 50,
@@ -224,13 +254,11 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                             ColorCode = ColorUtil.White,
                         }
                     },
-					XAxisId = xAxis.AxisId,
-					YAxisId = yAxis.AxisId
+                    XAxisId = xAxis.AxisId,
+                    YAxisId = yAxis.AxisId
                     //RotationAngle = 30
                 }
             );
-
-            Surface.InvalidateElement();
         }
     }
 }

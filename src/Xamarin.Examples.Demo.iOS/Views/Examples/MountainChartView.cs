@@ -8,7 +8,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Mountain Chart", description:"Creates a simple Mountain/Area chart", icon: ExampleIcon.MountainChart)]
+    [ExampleDefinition("Mountain Chart", description: "Creates a simple Mountain/Area chart", icon: ExampleIcon.MountainChart)]
     public class MountainChartView : ExampleBaseView<SingleChartViewLayout>
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();
@@ -18,26 +18,26 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         protected override void UpdateFrame()
         {
-			Surface.TranslatesAutoresizingMaskIntoConstraints = false;
+            Surface.TranslatesAutoresizingMaskIntoConstraints = false;
 
-			NSLayoutConstraint constraintRight = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Right, NSLayoutRelation.Equal, this, NSLayoutAttribute.Right, 1, 0);
-			NSLayoutConstraint constraintLeft = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Left, NSLayoutRelation.Equal, this, NSLayoutAttribute.Left, 1, 0);
-			NSLayoutConstraint constraintTop = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Top, NSLayoutRelation.Equal, this, NSLayoutAttribute.Top, 1, 0);
-			NSLayoutConstraint constraintBottom = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Bottom, NSLayoutRelation.Equal, this, NSLayoutAttribute.Bottom, 1, 0);
+            NSLayoutConstraint constraintRight = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Right, NSLayoutRelation.Equal, this, NSLayoutAttribute.Right, 1, 0);
+            NSLayoutConstraint constraintLeft = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Left, NSLayoutRelation.Equal, this, NSLayoutAttribute.Left, 1, 0);
+            NSLayoutConstraint constraintTop = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Top, NSLayoutRelation.Equal, this, NSLayoutAttribute.Top, 1, 0);
+            NSLayoutConstraint constraintBottom = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Bottom, NSLayoutRelation.Equal, this, NSLayoutAttribute.Bottom, 1, 0);
 
-			this.AddConstraint(constraintRight);
-			this.AddConstraint(constraintLeft);
-			this.AddConstraint(constraintTop);
-			this.AddConstraint(constraintBottom);
+            this.AddConstraint(constraintRight);
+            this.AddConstraint(constraintLeft);
+            this.AddConstraint(constraintTop);
+            this.AddConstraint(constraintBottom);
         }
 
         protected override void InitExampleInternal()
         {
-            var xAxis = new SCIDateTimeAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
-            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
+            var xAxis = new SCIDateTimeAxis { GrowBy = new SCIDoubleRange(0.1, 0.1) };
+            var yAxis = new SCINumericAxis { GrowBy = new SCIDoubleRange(0.1, 0.1) };
 
             var priceData = DataManager.Instance.GetPriceDataIndu();
-            var dataSeries = new XyDataSeries<DateTime, double> {DataDistributionCalculator = new SCIUserDefinedDistributionCalculator()};
+            var dataSeries = new XyDataSeries<DateTime, double> { DataDistributionCalculator = new SCIUserDefinedDistributionCalculator() };
             dataSeries.Append(priceData.TimeData, priceData.CloseData);
 
             var renderSeries = new SCIFastMountainRenderableSeries
@@ -51,12 +51,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.YAxes.Add(yAxis);
             Surface.RenderableSeries.Add(renderSeries);
             Surface.ChartModifiers = new SCIChartModifierCollection(
-				new SCIZoomPanModifier(),
+                new SCIZoomPanModifier(),
                 new SCIPinchZoomModifier(),
                 new SCIZoomExtentsModifier()
             );
-
-            Surface.InvalidateElement();
         }
     }
 }

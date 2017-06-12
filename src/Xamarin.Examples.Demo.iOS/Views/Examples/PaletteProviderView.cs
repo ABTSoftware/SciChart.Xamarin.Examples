@@ -20,7 +20,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             {
                 _style = new SCILineSeriesStyle
                 {
-                    StrokeStyle = new SCISolidPenStyle(UIColor.Blue, (float) 0.7)
+                    StrokeStyle = new SCISolidPenStyle(UIColor.Blue, (float)0.7)
                 };
                 _zeroLine = 0;
                 _yCoordCalc = null;
@@ -52,17 +52,17 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         protected override void UpdateFrame()
         {
-			Surface.TranslatesAutoresizingMaskIntoConstraints = false;
+            Surface.TranslatesAutoresizingMaskIntoConstraints = false;
 
-			NSLayoutConstraint constraintRight = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Right, NSLayoutRelation.Equal, this, NSLayoutAttribute.Right, 1, 0);
-			NSLayoutConstraint constraintLeft = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Left, NSLayoutRelation.Equal, this, NSLayoutAttribute.Left, 1, 0);
-			NSLayoutConstraint constraintTop = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Top, NSLayoutRelation.Equal, this, NSLayoutAttribute.Top, 1, 0);
-			NSLayoutConstraint constraintBottom = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Bottom, NSLayoutRelation.Equal, this, NSLayoutAttribute.Bottom, 1, 0);
+            NSLayoutConstraint constraintRight = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Right, NSLayoutRelation.Equal, this, NSLayoutAttribute.Right, 1, 0);
+            NSLayoutConstraint constraintLeft = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Left, NSLayoutRelation.Equal, this, NSLayoutAttribute.Left, 1, 0);
+            NSLayoutConstraint constraintTop = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Top, NSLayoutRelation.Equal, this, NSLayoutAttribute.Top, 1, 0);
+            NSLayoutConstraint constraintBottom = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Bottom, NSLayoutRelation.Equal, this, NSLayoutAttribute.Bottom, 1, 0);
 
-			this.AddConstraint(constraintRight);
-			this.AddConstraint(constraintLeft);
-			this.AddConstraint(constraintTop);
-			this.AddConstraint(constraintBottom);
+            this.AddConstraint(constraintRight);
+            this.AddConstraint(constraintLeft);
+            this.AddConstraint(constraintTop);
+            this.AddConstraint(constraintBottom);
         }
 
         protected override void InitExampleInternal()
@@ -72,8 +72,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var dataSeries = new XyDataSeries<double, double>();
             dataSeries.Append(fourierSeries.XData, fourierSeries.YData);
 
-            var xAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
-            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1)};
+            var xAxis = new SCINumericAxis { GrowBy = new SCIDoubleRange(0.1, 0.1) };
+            var yAxis = new SCINumericAxis { GrowBy = new SCIDoubleRange(0.1, 0.1) };
 
             var renderSeries = new SCIFastLineRenderableSeries
             {
@@ -86,12 +86,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.RenderableSeries.Add(renderSeries);
 
             Surface.ChartModifiers = new SCIChartModifierCollection(
-				new SCIZoomPanModifier(),
+                new SCIZoomPanModifier(),
                 new SCIPinchZoomModifier(),
                 new SCIZoomExtentsModifier()
             );
-
-            Surface.InvalidateElement();
         }
     }
 }

@@ -61,13 +61,11 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             // see the area of the data zoomed in (called an 'overview')
             ((AxisBase)MainSurface.XAxes[0]).VisibleRangeChange += (s, e) =>
             {
-                // Left annotation starts on the left edge of the chart and ends on the right edge 
-                // of the visible area 
+                // Left annotation starts on the left edge of the chart and ends on the right edge of the visible area 
                 overviewAnnotation0.X1Value = OverviewSurface.XAxes[0].VisibleRange.MinAsDouble;
                 overviewAnnotation0.X2Value = MainSurface.XAxes[0].VisibleRange.MinAsDouble;
 
-                // Right annotation starts on the right edge of visible area and ends on the right
-                // edge of all the data 
+                // Right annotation starts on the right edge of visible area and ends on the right edge of all the data 
                 overviewAnnotation1.X1Value = MainSurface.XAxes[0].VisibleRange.MaxAsDouble;
                 overviewAnnotation1.X2Value = OverviewSurface.XAxes[0].VisibleRange.MaxAsDouble;
             };

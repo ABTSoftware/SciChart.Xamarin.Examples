@@ -8,7 +8,7 @@ using Xamarin.Examples.Demo.iOS.Views.Base;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Candlestick Chart", description:"A simple candlestick chart with Up/Down bars", icon: ExampleIcon.CandlestickChart)]
+    [ExampleDefinition("Candlestick Chart", description: "A simple candlestick chart with Up/Down bars", icon: ExampleIcon.CandlestickChart)]
     public class CandlestickChartView : ExampleBaseView<SingleChartViewLayout>
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();
@@ -18,29 +18,29 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         protected override void UpdateFrame()
         {
-			Surface.TranslatesAutoresizingMaskIntoConstraints = false;
+            Surface.TranslatesAutoresizingMaskIntoConstraints = false;
 
-			NSLayoutConstraint constraintRight = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Right, NSLayoutRelation.Equal, this, NSLayoutAttribute.Right, 1, 0);
-			NSLayoutConstraint constraintLeft = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Left, NSLayoutRelation.Equal, this, NSLayoutAttribute.Left, 1, 0);
-			NSLayoutConstraint constraintTop = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Top, NSLayoutRelation.Equal, this, NSLayoutAttribute.Top, 1, 0);
-			NSLayoutConstraint constraintBottom = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Bottom, NSLayoutRelation.Equal, this, NSLayoutAttribute.Bottom, 1, 0);
+            NSLayoutConstraint constraintRight = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Right, NSLayoutRelation.Equal, this, NSLayoutAttribute.Right, 1, 0);
+            NSLayoutConstraint constraintLeft = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Left, NSLayoutRelation.Equal, this, NSLayoutAttribute.Left, 1, 0);
+            NSLayoutConstraint constraintTop = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Top, NSLayoutRelation.Equal, this, NSLayoutAttribute.Top, 1, 0);
+            NSLayoutConstraint constraintBottom = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Bottom, NSLayoutRelation.Equal, this, NSLayoutAttribute.Bottom, 1, 0);
 
-			this.AddConstraint(constraintRight);
-			this.AddConstraint(constraintLeft);
-			this.AddConstraint(constraintTop);
-			this.AddConstraint(constraintBottom);
+            this.AddConstraint(constraintRight);
+            this.AddConstraint(constraintLeft);
+            this.AddConstraint(constraintTop);
+            this.AddConstraint(constraintBottom);
         }
 
         protected override void InitExampleInternal()
         {
             var priceSeries = DataManager.Instance.GetPriceDataIndu();
 
-            var dataSeries = new OhlcDataSeries<DateTime, double>(SCITypeOfDataSeries.XCategory);
+            var dataSeries = new OhlcDataSeries<DateTime, double>();
             dataSeries.Append(priceSeries.TimeData, priceSeries.OpenData, priceSeries.HighData, priceSeries.LowData, priceSeries.CloseData);
 
             var size = priceSeries.Count;
-            var xAxis = new SCICategoryDateTimeAxis {VisibleRange = new SCIDoubleRange(size - 30, size), GrowBy = new SCIDoubleRange(0, 0.1)};
-            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0, 0.1), AutoRange = SCIAutoRange.Always};
+            var xAxis = new SCICategoryDateTimeAxis { VisibleRange = new SCIDoubleRange(size - 30, size), GrowBy = new SCIDoubleRange(0, 0.1) };
+            var yAxis = new SCINumericAxis { GrowBy = new SCIDoubleRange(0, 0.1), AutoRange = SCIAutoRange.Always };
 
             var renderSeries = new SCIFastCandlestickRenderableSeries
             {
@@ -56,12 +56,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.RenderableSeries.Add(renderSeries);
 
             Surface.ChartModifiers = new SCIChartModifierCollection(
-				new SCIZoomPanModifier(),
+                new SCIZoomPanModifier(),
                 new SCIPinchZoomModifier(),
                 new SCIZoomExtentsModifier()
             );
-
-            Surface.InvalidateElement();
         }
     }
 }

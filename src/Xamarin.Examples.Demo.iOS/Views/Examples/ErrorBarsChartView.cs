@@ -72,6 +72,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             {
                 DataSeries = dataSeries1,
                 StrokeStyle = strokeStyle,
+                DataPointWidth = 0.7f,
                 ErrorDirection = SCIErrorBarDirection.Vertical,
                 ErrorType = SCIErrorBarType.Absolute
             };
@@ -89,11 +90,12 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
+
             Surface.RenderableSeries = new SCIRenderableSeriesCollection
             {
-                //errorBars0,
+                errorBars0,
                 lineSeries,
-                //errorBars1,
+                errorBars1,
                 scatterSeries
             };
 
@@ -102,8 +104,6 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 new SCIPinchZoomModifier(),
                 new SCIZoomExtentsModifier()
             );
-
-            Surface.InvalidateElement();
         }
 
         private static void FillDataSeries(HlDataSeries<double, double> dataSeries, DoubleSeries sourceData, double scale)

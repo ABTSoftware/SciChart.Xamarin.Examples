@@ -18,38 +18,38 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         protected override void UpdateFrame()
         {
-			Surface.TranslatesAutoresizingMaskIntoConstraints = false;
+            Surface.TranslatesAutoresizingMaskIntoConstraints = false;
 
-			NSLayoutConstraint constraintRight = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Right, NSLayoutRelation.Equal, this, NSLayoutAttribute.Right, 1, 0);
-			NSLayoutConstraint constraintLeft = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Left, NSLayoutRelation.Equal, this, NSLayoutAttribute.Left, 1, 0);
-			NSLayoutConstraint constraintTop = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Top, NSLayoutRelation.Equal, this, NSLayoutAttribute.Top, 1, 0);
-			NSLayoutConstraint constraintBottom = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Bottom, NSLayoutRelation.Equal, this, NSLayoutAttribute.Bottom, 1, 0);
+            NSLayoutConstraint constraintRight = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Right, NSLayoutRelation.Equal, this, NSLayoutAttribute.Right, 1, 0);
+            NSLayoutConstraint constraintLeft = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Left, NSLayoutRelation.Equal, this, NSLayoutAttribute.Left, 1, 0);
+            NSLayoutConstraint constraintTop = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Top, NSLayoutRelation.Equal, this, NSLayoutAttribute.Top, 1, 0);
+            NSLayoutConstraint constraintBottom = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Bottom, NSLayoutRelation.Equal, this, NSLayoutAttribute.Bottom, 1, 0);
 
-			this.AddConstraint(constraintRight);
-			this.AddConstraint(constraintLeft);
-			this.AddConstraint(constraintTop);
-			this.AddConstraint(constraintBottom);
+            this.AddConstraint(constraintRight);
+            this.AddConstraint(constraintLeft);
+            this.AddConstraint(constraintTop);
+            this.AddConstraint(constraintBottom);
         }
 
         protected override void InitExampleInternal()
         {
             var xAxis = new SCINumericAxis();
-            var yAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.2, 0.2)};
+            var yAxis = new SCINumericAxis { GrowBy = new SCIDoubleRange(0.2, 0.2) };
 
-            var ds1 = new XyDataSeries<double, double> {SeriesName = "Sinewave A"};
-            var ds2 = new XyDataSeries<double, double> {SeriesName = "Sinewave B"};
-            var ds3 = new XyDataSeries<double, double> {SeriesName = "Sinewave C"};
+            var ds1 = new XyDataSeries<double, double> { SeriesName = "Sinewave A" };
+            var ds2 = new XyDataSeries<double, double> { SeriesName = "Sinewave B" };
+            var ds3 = new XyDataSeries<double, double> { SeriesName = "Sinewave C" };
 
             const double count = 100;
-            const double k = 2*Math.PI/30;
+            const double k = 2 * Math.PI / 30;
             for (var i = 0; i < count; i++)
             {
-                var phi = k*i;
+                var phi = k * i;
                 var sin = Math.Sin(phi);
 
-                ds1.Append(i, (1.0 + i/count)*sin);
-                ds2.Append(i, (0.5 + i/count)*sin);
-                ds3.Append(i, (i/count)*sin);
+                ds1.Append(i, (1.0 + i / count) * sin);
+                ds2.Append(i, (0.5 + i / count) * sin);
+                ds3.Append(i, (i / count) * sin);
             }
 
             Surface.XAxes.Add(xAxis);
@@ -90,8 +90,6 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     //DrawVerticalLine = true
                 }
             );
-
-            Surface.InvalidateElement();
         }
     }
 }

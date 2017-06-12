@@ -24,7 +24,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>i386, x86_64</MtouchArch>
-    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchLink>Full</MtouchLink>
     <MtouchDebug>True</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
     <CodesignProvision>
@@ -42,6 +42,7 @@
     <MtouchFloat32>False</MtouchFloat32>
     <IOSDebugOverWiFi>False</IOSDebugOverWiFi>
     <IOSDebuggerPort>10000</IOSDebuggerPort>
+    <MtouchExtraArgs>-v -v -v -v</MtouchExtraArgs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -187,6 +188,12 @@
     <Compile Include="Views\Examples\UsingThemeManagerView.cs" />
     <Compile Include="Views\Examples\CreateRealtimeTickingStockChartsView.cs" />
     <Compile Include="Views\Examples\ECGMonitorView.cs" />
+    <InterfaceDefinition Include="Resources\Layout\DashboardStyleChartsLayout.xib" />
+    <Compile Include="Views\Examples\DashboardStyleChartsView.cs" />
+    <Compile Include="Resources\Layout\DashboardStyleChartsLayout.cs" />
+    <Compile Include="Resources\Layout\DashboardStyleChartsLayout.designer.cs">
+      <DependentUpon>DashboardStyleChartsLayout.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -390,12 +397,6 @@
     <ImageAsset Include="Resources\Images.xcassets\StackedColumn.imageset\StackedColumn.png">
       <InProject>false</InProject>
     </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\StackedColumn100.imageset\Contents.json">
-      <InProject>false</InProject>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\StackedColumn100.imageset\StackedColumns100.png">
-      <InProject>false</InProject>
-    </ImageAsset>
     <ImageAsset Include="Resources\Images.xcassets\Themes.imageset\Contents.json">
       <InProject>false</InProject>
     </ImageAsset>
@@ -408,6 +409,12 @@
     <ImageAsset Include="Resources\Images.xcassets\ZoomPan.imageset\ZoomPan.png">
       <InProject>false</InProject>
     </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\StackedColumns100.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\StackedColumns100.imageset\StackedColumns100.png">
+      <InProject>false</InProject>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Images.xcassets\Axis.imageset\" />
@@ -418,10 +425,10 @@
     <Folder Include="Resources\Images.xcassets\Ohlc.imageset\" />
     <Folder Include="Resources\Images.xcassets\StackedBar.imageset\" />
     <Folder Include="Resources\Images.xcassets\StackedColumn.imageset\" />
-    <Folder Include="Resources\Images.xcassets\StackedColumn100.imageset\" />
     <Folder Include="Resources\Images.xcassets\Themes.imageset\" />
     <Folder Include="Resources\Images.xcassets\ZoomPan.imageset\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Resources\Images.xcassets\StackedColumns100.imageset\" />
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
@@ -429,7 +436,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <Reference Include="SciChart.iOS.Charting">
-      <HintPath>..\packages\SciChart.iOS.2.0.0.416\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
+      <HintPath>..\packages\SciChart.iOS.2.0.0.430\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

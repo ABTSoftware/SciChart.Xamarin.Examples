@@ -102,7 +102,6 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 new SCIZoomExtentsModifier()
             );
 
-            Surface.InvalidateElement();
             ApplyTheme(SCIThemeKey.ChartV4DarkTheme);
         }
 

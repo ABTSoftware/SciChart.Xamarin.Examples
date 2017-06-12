@@ -69,6 +69,14 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             Surface.YAxes.Add(yAxis);
             Surface.RenderableSeries.Add(rs);
 
+            Start();
+        }
+
+        private void Start()
+        {
+            if (_isRunning) return;
+
+            _isRunning = true;
             _timer.Elapsed += OnTick;
             _timer.Start();
         }
