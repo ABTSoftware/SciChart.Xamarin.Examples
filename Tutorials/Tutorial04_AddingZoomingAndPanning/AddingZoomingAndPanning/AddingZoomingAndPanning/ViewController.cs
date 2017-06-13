@@ -40,16 +40,16 @@ namespace AddingZoomingAndPanning
         {
             // Init line data series
             _lineDataSeries = new XyDataSeries<Double, Double>();
-            for (var i = 0; i < 10; i++)
+            for (var i = 0; i < 500; i++)
             {
-                _lineDataSeries.Append(i, Math.Sin(i));
+                _lineDataSeries.Append(i, Math.Sin(i * 0.1));
             }
 
             // Init scatter data series
             _scatterDataSeries = new XyDataSeries<Double, Double>();
-            for (var i = 0; i < 10; i++)
+            for (var i = 0; i < 500; i++)
             {
-                _scatterDataSeries.Append(i, Math.Sin(i));
+                _scatterDataSeries.Append(i, Math.Cos(i * 0.1));
             }
         }
 

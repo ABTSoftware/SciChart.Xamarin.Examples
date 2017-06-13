@@ -1,8 +1,9 @@
 ﻿using System;
 using UIKit;
 using SciChart.iOS.Charting;
+using Foundation;
 
-namespace AddingToolTipsAndLegendModifier
+namespace UpdatingDataSeries
 {
     public partial class ViewController : UIViewController
     {
@@ -13,6 +14,11 @@ namespace AddingToolTipsAndLegendModifier
 
         private SCIFastLineRenderableSeries _lineRenderableSeries;
         private SCIXyScatterRenderableSeries _scatterRenderableSeries;
+
+        // timer, used for updating data
+        private NSTimer _timer;
+        // phase variable used for data slipping
+        private double _phase = 0.0;
 
         public ViewController(IntPtr handle) : base(handle)
         {
@@ -34,6 +40,34 @@ namespace AddingToolTipsAndLegendModifier
             CreateDataSeries();
             CreateRenderableSeries();
             AddModifiers();
+        }
+
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
+
+            if(_timer == null)
+            {
+                _timer = NSTimer.CreateRepeatingScheduledTimer(0.01, (timer) => 
+                {
+                    for(var i=0; i<500; i++)
+                    {
+                        _lineDataSeries.UpdateYAt(i, Math.Sin(i * 0.1 + _phase));
+                        _scatterDataSeries.UpdateYAt(i, Math.Cos(i * 0.1 + _phase));
+                    }
+                    _phase += 0.01;
+
+                    _surface.InvalidateElement();
+                });
+            }
+        }
+
+        public override void ViewWillDisappear(bool animated)
+        {
+            base.ViewWillDisappear(animated);
+
+            _timer.Invalidate();
+            _timer = null;
         }
 
         void CreateDataSeries()
