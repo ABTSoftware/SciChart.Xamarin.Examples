@@ -97,6 +97,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             _timer.Start();
         }
 
+
+
         private void OnTick(object sender, ElapsedEventArgs e)
         {
             InvokeOnMainThread(() =>

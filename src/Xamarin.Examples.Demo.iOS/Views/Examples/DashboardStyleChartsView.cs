@@ -50,8 +50,6 @@ namespace Xamarin.Examples.Demo.iOS
 
             Chart.RenderableSeries.Clear();
             Chart.RenderableSeries.Add(model.SeriesCollection);
-
-            Chart.ChartTitle = model.TypeName;
         }
 
         static class ChartTypeFactory

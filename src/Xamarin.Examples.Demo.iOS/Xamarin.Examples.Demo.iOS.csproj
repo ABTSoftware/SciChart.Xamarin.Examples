@@ -194,6 +194,7 @@
     <Compile Include="Resources\Layout\DashboardStyleChartsLayout.designer.cs">
       <DependentUpon>DashboardStyleChartsLayout.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Examples\AnnotationsAreEasyView.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -436,7 +437,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <Reference Include="SciChart.iOS.Charting">
-      <HintPath>..\packages\SciChart.iOS.2.0.0.430\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
+      <HintPath>..\packages\SciChart.iOS.2.0.0.438\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
