@@ -1,7 +1,7 @@
 # SciChartXamarin
 SciChart Xamarin, source code for our High Performance Scientific &amp; Financial Charting on Xamarin
 
-## Branch SciChart_Xamarin_v2_Release 
+## Branch master
 
 Contains BETA v2.x of SciChart for Xamarin.iOS and Xamarin.Android 
  the SciChart.Framework library source code
