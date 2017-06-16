@@ -24,8 +24,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         public SCIChartSurface RsiChart => ExampleViewLayout.RsiSurfaceView;
         public SCIChartSurface VolumeChart => ExampleViewLayout.VolumeChartView;
 
-        //TODO Check bindings, probably should be Type of modifier not instance.
-        //private readonly SCIMultiSurfaceModifier _multiSurfaceModifier = new SCIMultiSurfaceModifier(new SCIZoomExtentsModifier());
+        private readonly SCIAxisRangeSynchronization _axisRangeSync = new SCIAxisRangeSynchronization();
+        private readonly SCIAxisAreaSizeSynchronization _axisAreaSizeSync = new SCIAxisAreaSizeSynchronization();
 
         protected override void UpdateFrame()
         {
@@ -33,6 +33,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         protected override void InitExampleInternal()
         {
+            _axisAreaSizeSync.SyncMode = SCIAxisSizeSyncMode.Right;
+
             var priceData = DataManager.Instance.GetPriceDataEurUsd();
 
             var pricePaneModel = new PricePaneModel(priceData);
@@ -48,7 +50,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         private void InitChart(SCIChartSurface surface, BasePaneModel model, bool isMainPain)
         {
+            _axisAreaSizeSync.AttachSurface(surface);
+
             var xAxis = new SCICategoryDateTimeAxis { IsVisible = isMainPain, GrowBy = new SCIDoubleRange(0, 0.05) };
+            _axisRangeSync.AttachAxis(xAxis);
 
             surface.XAxes.Add(xAxis);
             surface.YAxes.Add(model.YAxis);
@@ -56,12 +61,11 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             surface.Annotations = model.Annotations;
 
             surface.ChartModifiers = new SCIChartModifierCollection(
-                new SCIXAxisDragModifier {DragMode = SCIAxisDragMode.Pan, ClipModeX = SCIClipMode.StretchAtExtents},
-                new SCIPinchZoomModifier {XyDirection = SCIXYDirection.XDirection},
+                new SCIXAxisDragModifier { DragMode = SCIAxisDragMode.Pan, ClipModeX = SCIClipMode.StretchAtExtents },
+                new SCIPinchZoomModifier { XyDirection = SCIXYDirection.XDirection },
                 new SCIZoomPanModifier(),
                 new SCIZoomExtentsModifier(),
-                new SCILegendModifier {ShowCheckBoxes = false, StyleOfItemCell = new SCILegendCellStyle(){SeriesNameFont = UIFont.FromName("Helvetica", 10f) }}
-                //_multiSurfaceModifier
+                new SCILegendModifier { ShowCheckBoxes = false, StyleOfItemCell = new SCILegendCellStyle() { SeriesNameFont = UIFont.FromName("Helvetica", 10f) } }
             );
 
             surface.InvalidateElement();
@@ -199,7 +203,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     FillBrushStyle = new SCISolidBrushStyle(UIColor.Clear),
                     StrokeStyle = new SCISolidPenStyle(0xffe26565, 1f),
                     FillY1BrushStyle = new SCISolidBrushStyle(UIColor.Clear),
-                    StrokeY1Style = new SCISolidPenStyle(0xff52cc54, 1f)});
+                    StrokeY1Style = new SCISolidPenStyle(0xff52cc54, 1f)
+                });
 
                 //Annotations.AddItem(new SCIAxisMarkerAnnotation
                 //{

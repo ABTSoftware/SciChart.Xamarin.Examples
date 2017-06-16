@@ -59,12 +59,12 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             axis.RegisterVisibleRangeChangedCallback(new SCIAxisVisibleRangeChanged((ISCIRangeProtocol arg0, ISCIRangeProtocol arg1, bool arg2, NSObject arg3) =>
             {
                 // Left annotation starts on the left edge of the chart and ends on the right edge of the visible area 
-                overviewAnnotation0.X1Value = OverviewSurface.XAxes.ItemAt(0).VisibleRange.AsDoubleRange().Min;
-                overviewAnnotation0.X2Value = MainSurface.XAxes.ItemAt(0).VisibleRange.AsDoubleRange().Min;
+                overviewAnnotation0.X1Value = OverviewSurface.XAxes[0].VisibleRange.AsDoubleRange().Min;
+                overviewAnnotation0.X2Value = MainSurface.XAxes[0].VisibleRange.AsDoubleRange().Min;
 
                 // Right annotation starts on the right edge of visible area and ends on the right edge of all the data 
-                overviewAnnotation1.X1Value = MainSurface.XAxes.ItemAt(0).VisibleRange.AsDoubleRange().Max;
-                overviewAnnotation1.X2Value = OverviewSurface.XAxes.ItemAt(0).VisibleRange.AsDoubleRange().Max;
+                overviewAnnotation1.X1Value = MainSurface.XAxes[0].VisibleRange.AsDoubleRange().Max;
+                overviewAnnotation1.X2Value = OverviewSurface.XAxes[0].VisibleRange.AsDoubleRange().Max;
             }));
 
             _marketDataService.SubscribePriceUpdate(OnNewPrice);
@@ -197,10 +197,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
                     // If the latest appending point is inside the viewport (i.e. not off the edge of the screen)
                     // then scroll the viewport 1 bar, to keep the latest bar at the same place
-                    var visibleRange = Runtime.GetNSObject<SCIDoubleRange>(MainSurface.XAxes.ItemAt(0).VisibleRange.Handle);
+                    var visibleRange = Runtime.GetNSObject<SCIDoubleRange>(MainSurface.XAxes[0].VisibleRange.Handle);
                     if (visibleRange.Max > _ohlcDataSeries.Count)
                     {
-                        MainSurface.XAxes.ItemAt(0).VisibleRange = new SCIDoubleRange(visibleRange.Min + 1, visibleRange.Max + 1);
+                        MainSurface.XAxes[0].VisibleRange = new SCIDoubleRange(visibleRange.Min + 1, visibleRange.Max + 1);
                     }
                 }
 
