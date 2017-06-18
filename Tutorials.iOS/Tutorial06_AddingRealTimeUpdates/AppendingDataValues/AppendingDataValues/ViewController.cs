@@ -3,7 +3,7 @@ using UIKit;
 using SciChart.iOS.Charting;
 using Foundation;
 
-namespace UpdatingDataSeries
+namespace AppendingDataValues
 {
     public partial class ViewController : UIViewController
     {
@@ -47,18 +47,18 @@ namespace UpdatingDataSeries
         {
             base.ViewWillAppear(animated);
 
-            if(_timer == null)
+            if (_timer == null)
             {
-                _timer = NSTimer.CreateRepeatingScheduledTimer(0.01, (timer) => 
+                _timer = NSTimer.CreateRepeatingScheduledTimer(0.01, (timer) =>
                 {
-                    for(var i=0; i<500; i++)
-                    {
-                        _lineDataSeries.UpdateYAt(i, Math.Sin(i * 0.1 + _phase));
-                        _scatterDataSeries.UpdateYAt(i, Math.Cos(i * 0.1 + _phase));
-                    }
+                    var i = _lineDataSeries.Count;
+
+                    _lineDataSeries.Append(i, Math.Sin(i * 0.1 + _phase));
+                    _scatterDataSeries.Append(i, Math.Cos(i * 0.1 + _phase));
+                    
                     _phase += 0.01;
 
-                    _surface.InvalidateElement();
+                    _surface.ZoomExtents();
                 });
             }
         }

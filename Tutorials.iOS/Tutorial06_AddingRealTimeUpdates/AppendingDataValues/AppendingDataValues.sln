@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppendingDataValues", "AppendingDataValues\AppendingDataValues.csproj", "{879D6145-7897-4E60-8F91-29830C21C375}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Ad-Hoc|iPhone = Ad-Hoc|iPhone
+		Ad-Hoc|iPhoneSimulator = Ad-Hoc|iPhoneSimulator
+		AppStore|iPhone = AppStore|iPhone
+		AppStore|iPhoneSimulator = AppStore|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhone = Release|iPhone
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{879D6145-7897-4E60-8F91-29830C21C375}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{879D6145-7897-4E60-8F91-29830C21C375}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{879D6145-7897-4E60-8F91-29830C21C375}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Ad-Hoc|iPhoneSimulator
+		{879D6145-7897-4E60-8F91-29830C21C375}.Ad-Hoc|iPhoneSimulator.Build.0 = Ad-Hoc|iPhoneSimulator
+		{879D6145-7897-4E60-8F91-29830C21C375}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{879D6145-7897-4E60-8F91-29830C21C375}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{879D6145-7897-4E60-8F91-29830C21C375}.AppStore|iPhoneSimulator.ActiveCfg = AppStore|iPhoneSimulator
+		{879D6145-7897-4E60-8F91-29830C21C375}.AppStore|iPhoneSimulator.Build.0 = AppStore|iPhoneSimulator
+		{879D6145-7897-4E60-8F91-29830C21C375}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{879D6145-7897-4E60-8F91-29830C21C375}.Debug|iPhone.Build.0 = Debug|iPhone
+		{879D6145-7897-4E60-8F91-29830C21C375}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{879D6145-7897-4E60-8F91-29830C21C375}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{879D6145-7897-4E60-8F91-29830C21C375}.Release|iPhone.ActiveCfg = Release|iPhone
+		{879D6145-7897-4E60-8F91-29830C21C375}.Release|iPhone.Build.0 = Release|iPhone
+		{879D6145-7897-4E60-8F91-29830C21C375}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{879D6145-7897-4E60-8F91-29830C21C375}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

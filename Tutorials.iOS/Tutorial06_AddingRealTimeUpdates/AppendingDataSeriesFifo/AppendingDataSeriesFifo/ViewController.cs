@@ -3,7 +3,7 @@ using UIKit;
 using SciChart.iOS.Charting;
 using Foundation;
 
-namespace UpdatingDataSeries
+namespace AppendingDataSeriesFifo
 {
     public partial class ViewController : UIViewController
     {
@@ -19,6 +19,8 @@ namespace UpdatingDataSeries
         private NSTimer _timer;
         // phase variable used for data slipping
         private double _phase = 0.0;
+        // instance variable for counting the data points in data series
+        private int _i = 0;
 
         public ViewController(IntPtr handle) : base(handle)
         {
@@ -47,18 +49,18 @@ namespace UpdatingDataSeries
         {
             base.ViewWillAppear(animated);
 
-            if(_timer == null)
+            if (_timer == null)
             {
-                _timer = NSTimer.CreateRepeatingScheduledTimer(0.01, (timer) => 
+                _timer = NSTimer.CreateRepeatingScheduledTimer(0.01, (timer) =>
                 {
-                    for(var i=0; i<500; i++)
-                    {
-                        _lineDataSeries.UpdateYAt(i, Math.Sin(i * 0.1 + _phase));
-                        _scatterDataSeries.UpdateYAt(i, Math.Cos(i * 0.1 + _phase));
-                    }
+                    _i++;
+
+                    _lineDataSeries.Append(_i, Math.Sin(_i * 0.1 + _phase));
+                    _scatterDataSeries.Append(_i, Math.Cos(_i * 0.1 + _phase));
+
                     _phase += 0.01;
 
-                    _surface.InvalidateElement();
+                    _surface.ZoomExtents();
                 });
             }
         }
@@ -75,6 +77,8 @@ namespace UpdatingDataSeries
         {
             // Init line data series
             _lineDataSeries = new XyDataSeries<Double, Double>();
+            // Setting fifo capacity, once new data values will be added, the old one will be removed
+            _lineDataSeries.FifoCapacity = 500;
             // Naming data series, so its name will be shown in LegendModifier
             _lineDataSeries.SeriesName = "LineSeries";
             for (var i = 0; i < 500; i++)
@@ -84,12 +88,16 @@ namespace UpdatingDataSeries
 
             // Init scatter data series
             _scatterDataSeries = new XyDataSeries<Double, Double>();
+            // Setting fifo capacity, once new data values will be added, the old one will be removed
+            _scatterDataSeries.FifoCapacity = 500;
             // Naming data series, so its name will be shown in LegendModifier
             _scatterDataSeries.SeriesName = "ScatterSeries";
             for (var i = 0; i < 500; i++)
             {
                 _scatterDataSeries.Append(i, Math.Cos(i * 0.1));
             }
+
+            _i = _lineDataSeries.Count;
         }
 
         void CreateRenderableSeries()
