@@ -246,7 +246,7 @@ namespace SciChart.Examples.Demo.Data
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    data.Add(double.Parse(line));
+                    data.Add(double.Parse(line, NumberFormatInfo.InvariantInfo));
                 }
             }
 

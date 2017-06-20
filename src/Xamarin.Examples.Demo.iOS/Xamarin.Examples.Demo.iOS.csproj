@@ -416,6 +416,10 @@
     <ImageAsset Include="Resources\Images.xcassets\StackedColumns100.imageset\StackedColumns100.png">
       <InProject>false</InProject>
     </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\RedArrow.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\GreenArrow.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\GreenArrow.imageset\method-draw-image.png" />
+    <ImageAsset Include="Resources\Images.xcassets\RedArrow.imageset\method-draw-image %282%29.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Images.xcassets\Axis.imageset\" />
@@ -430,6 +434,8 @@
     <Folder Include="Resources\Images.xcassets\ZoomPan.imageset\" />
     <Folder Include="Extensions\" />
     <Folder Include="Resources\Images.xcassets\StackedColumns100.imageset\" />
+    <Folder Include="Resources\Images.xcassets\RedArrow.imageset\" />
+    <Folder Include="Resources\Images.xcassets\GreenArrow.imageset\" />
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
@@ -437,7 +443,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <Reference Include="SciChart.iOS.Charting">
-      <HintPath>..\packages\SciChart.iOS.2.0.0.440\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
+      <HintPath>..\packages\SciChart.iOS.2.0.0.447\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

@@ -374,22 +374,22 @@
   -->
   <ItemGroup>
     <Reference Include="SciChart.Android.Core">
-      <HintPath>..\packages\SciChart.Android.2.0.0.440\lib\xamarin-android\SciChart.Android.Core.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.2.0.0.447\lib\xamarin-android\SciChart.Android.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SciChart.Android.Data">
-      <HintPath>..\packages\SciChart.Android.2.0.0.440\lib\xamarin-android\SciChart.Android.Data.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.2.0.0.447\lib\xamarin-android\SciChart.Android.Data.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SciChart.Android.Drawing">
-      <HintPath>..\packages\SciChart.Android.2.0.0.440\lib\xamarin-android\SciChart.Android.Drawing.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.2.0.0.447\lib\xamarin-android\SciChart.Android.Drawing.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SciChart.Android.Charting">
-      <HintPath>..\packages\SciChart.Android.2.0.0.440\lib\xamarin-android\SciChart.Android.Charting.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.2.0.0.447\lib\xamarin-android\SciChart.Android.Charting.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
