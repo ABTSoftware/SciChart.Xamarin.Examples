@@ -65,33 +65,29 @@ namespace AddingAnnotations
 
                     _phase += 0.01;
 
-                    //if (_i % 100 == 0)
-                    //{
-                    //    var customAnnotation = new SCICustomAnnotation();
-                    //    var customAnnotationContentView = new UILabel(frame: CGRect.init(x: 0, y: 0, width: 10, height: 10));
-                    //    customAnnotationContentView.text = "Y";
-                    //    customAnnotationContentView.backgroundColor = UIColor.lightGray;
+                    
+                    if (_i % 100 == 0)
+                    {
+                        var customAnnotation = new SCICustomAnnotation();
+                        customAnnotation.ContentView = new UIImageView(new CoreGraphics.CGRect(0, 0, 10, 10)) { Text = "Y", BackgroundColor = UIColor.LightGray };
+                        customAnnotation.X1Value = _i;
+                        customAnnotation.Y1Value = 0.5;
+                        customAnnotation.CoordinateMode = SCIAnnotationCoordinateMode.RelativeY;
 
+                        // adding new custom annotation into the annotationGroup property
+                        _annotationCollection.Add(customAnnotation);
 
-                    //    customAnnotation.contentView = customAnnotationContentView;
-                    //    customAnnotation.x1 = SCIGeneric(i);
-                    //    customAnnotation.y1 = SCIGeneric(0.5);
-                    //    customAnnotation.coordinateMode = .relativeY;
+                        // removing annotations that are out of visible range
+                        var customAn = _annotationCollection[0] as SCICustomAnnotation;
 
-                    //    // adding new custom annotation into the annotationGroup property
-                    //    _annotationCollection.addItem(customAnnotation);
-
-                    //    // removing annotations that are out of visible range
-                    //    let customAn = _annotationCollection.item(at: 0) as!SCICustomAnnotation;
-
-                    //    if (customAn.x1 < Double(i) - totalCapacity)
-                    //    {
-                    //        // since the contentView is UIView element - we have to call removeFromSuperView method to remove it from screen
-                    //        customAn.contentView.removeFromSuperview();
-                    //        annotationGroup.removeItem(customAn)
-                    //    }
-                    //}
-
+                        if ((double)customAn.X1Value < (_i - 500))
+                        {
+                            // since the contentView is UIView element - we have to call removeFromSuperView method to remove it from screen
+                            customAn.ContentView.RemoveFromSuperview();
+                            _annotationCollection.Remove(customAn);
+                        }
+                    }
+                    
                     _surface.ZoomExtents();
                 });
             }
