@@ -39,7 +39,7 @@ namespace Xamarin.Examples.Demo.iOS
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
 
-            Surface.Annotations = new SCIAnnotationCollection()
+			Surface.Annotations = new SCIAnnotationCollection()
             {
                 // Watermark
                 new SCITextAnnotation()
@@ -49,11 +49,11 @@ namespace Xamarin.Examples.Demo.iOS
                     Text = "Create \n Watermarks",
                     Style = new SCITextAnnotationStyle()
                     {
+                        TextColor = UIColor.FromRGBA(1.0f,1.0f,1.0f,0.22f),
                         TextStyle = new SCITextFormattingStyle()
                         {
-                            FontSize = 42,
-                            ColorCode = 0x22FFFFFF
-                        },
+                            FontSize = 42
+                        }
                     },
                     CoordinateMode = SCIAnnotationCoordinateMode.Relative,
                     HorizontalAnchorPoint = SCIHorizontalAnchorPoint.Center,
@@ -68,12 +68,14 @@ namespace Xamarin.Examples.Demo.iOS
                     Text = "Annotations are Easy!",
                     Style = new SCITextAnnotationStyle()
                     {
+                        TextColor = UIColor.White,
                         TextStyle = new SCITextFormattingStyle()
                         {
-                            FontSize = 42,
-                            Color = UIColor.White
+                            FontSize = 24
                         },
-                    }
+                    },
+                    HorizontalAnchorPoint = SCIHorizontalAnchorPoint.Left,
+                    VerticalAnchorPoint = SCIVerticalAnchorPoint.Top
                 },
                 new SCITextAnnotation()
                 {
@@ -82,10 +84,10 @@ namespace Xamarin.Examples.Demo.iOS
                     Text = "You can create text",
                     Style = new SCITextAnnotationStyle()
                     {
+                        TextColor = UIColor.White,
                         TextStyle = new SCITextFormattingStyle()
                         {
-                            FontSize = 42,
-                            Color = UIColor.White
+                            FontSize = 10
                         },
                     }
                 },
@@ -96,6 +98,10 @@ namespace Xamarin.Examples.Demo.iOS
                     X1Value = 5,
                     Y1Value = 8,
                     Text = "Anchor Center (X1, Y1)",
+                    Style = new SCITextAnnotationStyle()
+                    {
+                        TextColor = UIColor.White  
+                    },
                     HorizontalAnchorPoint = SCIHorizontalAnchorPoint.Center,
                     VerticalAnchorPoint = SCIVerticalAnchorPoint.Bottom
                 },
@@ -103,7 +109,11 @@ namespace Xamarin.Examples.Demo.iOS
                 {
                     X1Value = 5,
                     Y1Value = 8,
-                    Text = "Anchor Right",
+					Text = "Anchor Right",
+					Style = new SCITextAnnotationStyle()
+					{
+						TextColor = UIColor.White
+					},
                     HorizontalAnchorPoint = SCIHorizontalAnchorPoint.Right,
                     VerticalAnchorPoint = SCIVerticalAnchorPoint.Top
                 },
@@ -111,7 +121,11 @@ namespace Xamarin.Examples.Demo.iOS
                 {
                     X1Value = 5,
                     Y1Value = 8,
-                    Text = "or Anchor Left",
+					Text = "or Anchor Left",
+					Style = new SCITextAnnotationStyle()
+					{
+						TextColor = UIColor.White
+					},
                     HorizontalAnchorPoint = SCIHorizontalAnchorPoint.Left,
                     VerticalAnchorPoint = SCIVerticalAnchorPoint.Top
                 },
@@ -120,7 +134,11 @@ namespace Xamarin.Examples.Demo.iOS
                 new SCITextAnnotation()
                 {
                     X1Value = 0.3,
-                    Y1Value = 6.1,
+					Y1Value = 6.1,
+					Style = new SCITextAnnotationStyle()
+					{
+						TextColor = UIColor.White
+					},
                     Text = "Draw Lines with \nor without arrows",
                     VerticalAnchorPoint = SCIVerticalAnchorPoint.Bottom
                 },
@@ -151,7 +169,11 @@ namespace Xamarin.Examples.Demo.iOS
                 new SCITextAnnotation()
                 {
                     X1Value = 3.5,
-                    Y1Value = 6.1,
+					Y1Value = 6.1,
+					Style = new SCITextAnnotationStyle()
+					{
+						TextColor = UIColor.White
+					},
                     Text = "Draw Boxes",
                     VerticalAnchorPoint = SCIVerticalAnchorPoint.Bottom
                 },
@@ -192,14 +214,30 @@ namespace Xamarin.Examples.Demo.iOS
                     }
                 },
 
-                // TODO Custom Shapes
+                // Custom chapes
                 new SCITextAnnotation()
                 {
                     X1Value = 7.0,
                     Y1Value = 6.1,
+                    Style = new SCITextAnnotationStyle()
+                    {
+                        TextColor = UIColor.White
+                    },
                     VerticalAnchorPoint = SCIVerticalAnchorPoint.Bottom,
                     Text = "Or Custom Shapes"
                 },
+                new SCICustomAnnotation()
+                {
+                    ContentView = new UIImageView(UIImage.FromBundle("GreenArrow")),
+                    X1Value = 8,
+                    Y1Value = 5.5
+                },
+				new SCICustomAnnotation()
+				{
+					ContentView = new UIImageView(UIImage.FromBundle("RedArrow")),
+					X1Value = 7.5,
+					Y1Value = 5
+				},
 
                 // Horizontal Lines
                 new SCIHorizontalLineAnnotation()
