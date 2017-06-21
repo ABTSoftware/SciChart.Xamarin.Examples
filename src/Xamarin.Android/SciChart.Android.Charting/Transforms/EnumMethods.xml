@@ -1,0 +1,36 @@
+﻿<enum-method-mappings>
+  
+  <!-- Map Orientation to enum -->
+  <mapping jni-interface="com/scichart/charting/visuals/axes/IAxis">
+    <method jni-name="getOrientation" parameter="return" clr-enum-type="SciChart.Core.Framework.Orientation" />
+    <method jni-name="setOrientation" parameter="orientation" clr-enum-type="SciChart.Core.Framework.Orientation" />
+  </mapping>
+  <mapping jni-class="com/scichart/charting/visuals/axes/AxisBase">
+    <method jni-name="getOrientation" parameter="return" clr-enum-type="SciChart.Core.Framework.Orientation" />
+    <method jni-name="setOrientation" parameter="orientation" clr-enum-type="SciChart.Core.Framework.Orientation" />
+  </mapping>
+  <mapping jni-class="com/scichart/charting/modifiers/LegendModifier">
+    <method jni-name="setOrientation" parameter="orientation" clr-enum-type="SciChart.Core.Framework.Orientation" />
+  </mapping>
+  <mapping jni-class="com/scichart/charting/visuals/SciChartHeatmapColourMap">
+    <method jni-name="setOrientation" parameter="orientation" clr-enum-type="SciChart.Core.Framework.Orientation" />
+  </mapping>
+  <mapping jni-class="com/scichart/charting/visuals/legend/SciChartLegend">
+    <method jni-name="getLegendOrientation" parameter="return" clr-enum-type="SciChart.Core.Framework.Orientation" />
+    <method jni-name="setLegendOrientation" parameter="orientation" clr-enum-type="SciChart.Core.Framework.Orientation" />
+  </mapping>
+
+  <!-- Map Gravity to enum -->
+  <mapping jni-class="com/scichart/charting/visuals/annotations/HorizontalLineAnnotation">
+    <method jni-name="getHorizontalGravity" parameter="return" clr-enum-type="Android.Views.GravityFlags" />
+    <method jni-name="setHorizontalGravity" parameter="horizontalGravity" clr-enum-type="Android.Views.GravityFlags" />
+  </mapping>
+  <mapping jni-class="com/scichart/charting/visuals/annotations/VerticalLineAnnotation">
+    <method jni-name="getVerticalGravity" parameter="return" clr-enum-type="Android.Views.GravityFlags" />
+    <method jni-name="setVerticalGravity" parameter="verticalGravity" clr-enum-type="Android.Views.GravityFlags" />
+  </mapping>
+  <mapping jni-class="com/scichart/charting/modifiers/LegendModifier">
+    <method jni-name="setLegendPosition" parameter="gravity" clr-enum-type="Android.Views.GravityFlags" />
+  </mapping>
+
+</enum-method-mappings>

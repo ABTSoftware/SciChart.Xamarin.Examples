@@ -1,0 +1,36 @@
+Build Instructions:
+
+1. Download and install Android Studio and the Android SDK Manager 
+
+	- Dev setup instructions at https://www.scichart.com/documentation/android/v1.x/webframe.html#Setup%20an%20Android%20Development%20Environment%20on%20Windows.html
+	- Get the JDK v1.8 and set environment variable 
+	- Get Nougat v7 SDK
+	- Get the Intel image for Nougat v7 
+	- Get the NDK 
+
+
+2. Run Deploy.00.CreateAar.ForXamarin.bat
+
+	- Should be able to compile the Android libraries. If not ... something is wrong with the setup in 1. Try to compile android in Android studio
+
+3. Download Microsoft tools
+	
+	- Either Visual Studio 2015 + Xamarin 
+	OR 
+	- Xamarin Studio
+
+	- Ensure that the SDK Path is set to the same path as Android Studio e.g. C:\Users\Andrew\AppData\Local\Android\sdk
+	- Ensure that the JDK path is set to the JDK 1.8
+	- Ensure the NDK path is set e.g. C:\Users\Andrew\AppData\Local\Android\sdk\ndk-bundle
+
+4. Open SciChart.Android.Xamarin.sln and rebuild all in VS2015
+
+5. May need to create an emulator to run it. 
+
+	- Run Intel HAXM installer from %CurrentUser%\AppData\Local\Android\sdk\extras\intel\Hardware_Accelerated_Execution_Manager
+	- Disable Hyper V in "Turn Windows Features on or off"
+	- Visual Studio > Tools > Android > Emulator Manager > Create > with Nougat 7 > with use Host GPU > with Intel x86 Image 
+
+	OR 
+
+	- Run on connected android device 

@@ -1,0 +1,8 @@
+﻿<enum-field-mappings>
+
+  <mapping jni-class="com/scichart/core/annotations/Orientation" clr-enum-type="SciChart.Core.Framework.Orientation">
+    <field jni-name="HORIZONTAL" clr-name="Horizontal" value="0"/>
+    <field jni-name="VERTICAL" clr-name="Vertical" value="1"/>
+  </mapping>
+  
+</enum-field-mappings>
