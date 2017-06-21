@@ -1,6 +1,0 @@
-framework module SciChart {
-  umbrella header "SciChart.h"
-
-  export *
-  module * { export * }
-}

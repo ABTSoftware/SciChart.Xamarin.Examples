@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProjectGuid>{03A34AC6-7793-4E23-A270-357AC1331CCE}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>SciChart.iOS.Tests</RootNamespace>
+    <AssemblyName>SciChart.iOS.Tests</AssemblyName>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <DeviceSpecificBuild>true</DeviceSpecificBuild>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchFastDev>false</MtouchFastDev>
+    <IOSDebuggerPort>64032</IOSDebuggerPort>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>i386, x86_64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <MtouchSdkVersion></MtouchSdkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <DefineConstants></DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchFloat32>true</MtouchFloat32>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <DefineConstants></DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <DeviceSpecificBuild>true</DeviceSpecificBuild>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>i386, x86_64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <DeviceSpecificBuild>true</DeviceSpecificBuild>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchFastDev>true</MtouchFastDev>
+    <MtouchFloat32>true</MtouchFloat32>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="MonoTouch.NUnitLite" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="LaunchScreen.storyboard" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.plist" />
+    <None Include="Entitlements.plist" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="UnitTestAppDelegate.cs" />
+    <Compile Include="ApiDefinition\Charting\Model\SCIModifierGroupTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Model\SCIRenderableSeriesCollection.cs" />
+    <Compile Include="ApiDefinition\Charting\Model\SCIAxisCollectionTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Model\SCIAnnotationGroupTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Model\DataSeries\SCIDataSeriesTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Model\DataSeries\SCIDataSeriesProtocolTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Model\DataSeries\SCIOhlcDataSeriesTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Model\DataSeries\SCIOhlcDataSeriesProtocolTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Model\DataSeries\SCIOhlcSeriesDataViewTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Model\DataSeries\SCIUniformHeatmapDataSeriesTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Model\DataSeries\SCIUniformHeatmapDataSeriesProtocolTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Model\DataSeries\SCIXyDataSeriesTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Model\DataSeries\SCIXyDataSeriesProtocolTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Model\DataSeries\SCIXySeriesDataViewTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Model\DataSeries\SCIXyyDataSeriesProtocolTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Model\DataSeries\SCIXyyDataSeriesTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Model\DataSeries\SCIXyySeriesDataViewTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Model\DataSeries\SCIXyzDataSeriesTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Model\DataSeries\SCIXyzDataSeriesProtocolTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Model\DataSeries\SCIXyzDataSeriesViewTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Model\DataDistributionCalculators\SCIDataDistributionCalculatorBaseTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Model\DataDistributionCalculators\SCIDataDistributionCalculatorProtocolTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Model\DataDistributionCalculators\SCIUserDefinedDataDistributionCalculatorTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCIAxisDragModifierBaseTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCIAxisPinchZoomModifierTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCIChartModifierBaseTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCIChartModifierProtocolTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCICursorModifierTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCICursorModifierStyleTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCIGestureEventsHandlerProtocolTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCIGestureModifierTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCILegendCellTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCILegendCellProtocolTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCILegendCellStyleTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCILegendModifierTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCILegendItemTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCILegendModifierBaseTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCIMultiSurfaceModifierTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCIPinchZoomModifierTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCIRelativeZoomModifierBaseTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCIRolloverModifierTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCIRolloverModifierStyleTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCISeriesSelectionModifierTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCITooltipDataViewTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCITooltipModifierTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCITooltipModifierStyleTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCITooltipModifierStyleProtocolTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCITooltipViewTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCIXAxisDragModifierTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCIYAxisDragModifierTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCIZoomExtentsModifierTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCIZoomPanModifierTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Modifiers\SCIZoomPanModifierBaseTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\CoordinateCalculators\SCICoordinateCalculatorBaseTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\CoordinateCalculators\SCICoordinateCalculatorFactoryTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\CoordinateCalculators\SCICoordinateCalculatorProtocolTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\CoordinateCalculators\SCIDoubleCoordinateCalculatorTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\CoordinateCalculators\SCIFlippedDoubleCoordinateCalculatorTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\CoordinateCalculators\SCICategoryCoordinateCalculatorProtocolTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\CoordinateCalculators\SCILogarithmicCoordinateCalculatorProtocolTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\CoordinateCalculators\SCILogarithmicDoubleCoordinateCalculatorTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCIAxisDeltaProtocolTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCIDateDeltaCalculatorProtocolTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCIDateTimeDeltaCalculatorTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCIDeltaCalculatorProtocolTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCIDoubleAxisDeltaTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCILogarithmicDeltaCalculatorTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCINiceDoubleScaleTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCINiceLogScaleTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCINiceScaleProtocolTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCINiceTimeSpanScaleTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCINumericDeltaCalculatorTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCINumericDeltaCalculatorBaseTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCITimeSpanDeltaTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCITimeSpanDeltaCalculatorBaseTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\LabelProviders\SCICategoryDateTimeLabelProviderTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\LabelProviders\SCICategoryNumericLabelProviderTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\LabelProviders\SCIDateTimeLabelProviderTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\LabelProviders\SCILabelProviderBaseTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\LabelProviders\SCILabelProviderProtocolTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\LabelProviders\SCILogarithmicNumericLabelProviderTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\LabelProviders\SCINumericLabelProviderTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\TickCoordinatesProviders\SCITickCoordinatesTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\TickCoordinatesProviders\SCITickCoordinatesProviderDefaultTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\TickCoordinatesProviders\SCITickCoordinatesProviderProtocolTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\TickProviders\SCIDateTimeTickProviderTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\TickProviders\SCILogarithmicNumericTickProviderTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\TickProviders\SCINumericTickProviderTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\TickProviders\SCITickProviderProtocolTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Numerics\TickProviders\SCITimeSpanTickProviderBaseTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Themes\SCIThemeableProtocolTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Themes\SCIThemeColorProviderTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Themes\SCIThemeProviderProtocolTests.cs" />
+    <Compile Include="ApiDefinition\Charting\ViewportManagers\SCIViewportManagerTests.cs" />
+    <Compile Include="ApiDefinition\Charting\ViewportManagers\SCIViewportManagerProtocolTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Visuals\Annotations\SCIAnnotationBaseTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Visuals\Annotations\SCIAnnotationLabelStyleTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Visuals\Annotations\SCIAnnotationProtocolTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Visuals\Annotations\SCIAxisMarkerAnnotationTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Visuals\Annotations\SCIAxisMarkerAnnotationStyleTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Visuals\Annotations\SCIBoxAnnotationTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Visuals\Annotations\SCIBoxAnnotationStyleTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Visuals\Annotations\SCIHorizontalLineAnnotationTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Visuals\Annotations\SCIHorizontalLineAnnotationStyleTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Visuals\Annotations\SCILineAnnotationTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Visuals\Annotations\SCILineAnnotationLabelTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Visuals\Annotations\SCILineAnnotationStyleTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Visuals\Annotations\SCITextAnnotationTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Visuals\Annotations\SCITextAnnotationStyleTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Visuals\Annotations\SCIVerticalLineAnnotationTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Visuals\Annotations\SCIVerticalLineAnnotationStyleTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Visuals\SCIChartSurfaceTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Visuals\SCIChartSurfaceProtocolTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Visuals\SCIChartSurfaceViewTests.cs" />
+    <Compile Include="ApiDefinition\Charting\Visuals\SCIChartSurfaceViewBaseTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ApiDefinition\" />
+    <Folder Include="ApiDefinition\Charting\" />
+    <Folder Include="ApiDefinition\Charting\Model\" />
+    <Folder Include="ApiDefinition\Charting\Model\DataSeries\" />
+    <Folder Include="ApiDefinition\Charting\Model\DataDistributionCalculators\" />
+    <Folder Include="ApiDefinition\Charting\Modifiers\" />
+    <Folder Include="ApiDefinition\Charting\Numerics\" />
+    <Folder Include="ApiDefinition\Charting\Numerics\CoordinateCalculators\" />
+    <Folder Include="ApiDefinition\Charting\Numerics\DeltaCalculators\" />
+    <Folder Include="ApiDefinition\Charting\Numerics\LabelProviders\" />
+    <Folder Include="ApiDefinition\Charting\Numerics\TickCoordinatesProviders\" />
+    <Folder Include="ApiDefinition\Charting\Numerics\TickProviders\" />
+    <Folder Include="ApiDefinition\Charting\Themes\" />
+    <Folder Include="ApiDefinition\Charting\ViewportManagers\" />
+    <Folder Include="ApiDefinition\Charting\Visuals\" />
+    <Folder Include="ApiDefinition\Charting\Visuals\Annotations\" />
+    <Folder Include="ApiDefinition\Charting\Visuals\Axes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SciChart.iOS.Charting\SciChart.iOS.Charting.csproj">
+      <Project>{6492122C-A917-45EC-AE40-A290ACAF274E}</Project>
+      <Name>SciChart.iOS.Charting</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+</Project>
