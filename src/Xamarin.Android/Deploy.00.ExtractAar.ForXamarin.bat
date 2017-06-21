@@ -37,4 +37,4 @@ popd
 
 pause(0)
 echo SUCCESS!
-exit /b
+exit 0
