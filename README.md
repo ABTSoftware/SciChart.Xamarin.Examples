@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # SciChartXamarin
 SciChart Xamarin, source code for our High Performance Scientific &amp; Financial Charting on Xamarin
 
@@ -10,7 +10,7 @@ Contains BETA v2.x of SciChart for Xamarin.iOS and Xamarin.Android
  the Xamarin.iOS Bindings source code
  the Xamarin.Android Bindings source code
  the Xamarin.iOS & Android Example code 
-=======
+
 # SciChart.Xamarin.Examples
 
 BETA! Xamarin Examples for [SciChart](https://www.scichart.com): High Performance Realtime [iOS Chart Library](https://www.scichart.com/ios-chart-features) and [Android Chart Library](https://www.scichart.com/ios-chart-features).
@@ -102,6 +102,4 @@ SciChart iOS & Android is a commercial chart control with world-class tech suppo
 *Enjoy! - @SciChart Team*
 
 ![SciChart iOS Chart Library Collage](https://www.scichart.com/wp-content/uploads/2017/04/ios-chart-examples-collage-perspective.jpg)
-
->>>>>>> c03ea59c298078e2247ee8bf488529dfb75c6ab5
 
