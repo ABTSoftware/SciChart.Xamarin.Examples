@@ -3,24 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-  
-  <com.scichart.charting.visuals.SciChartSurface
+    <com.scichart.charting.visuals.SciChartSurface
         android:id="@+id/priceChart"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
-
-  <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:orientation="vertical"
-    android:layout_weight="1">
-
+        android:layout_weight="3" />
     <com.scichart.charting.visuals.SciChartSurface
         android:id="@+id/macdChart"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_height="0dp" 
+        android:layout_weight="1"/>
     <com.scichart.charting.visuals.SciChartSurface
         android:id="@+id/rsiChart"
         android:layout_width="match_parent"
@@ -31,5 +23,4 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
-  </LinearLayout>
 </LinearLayout>

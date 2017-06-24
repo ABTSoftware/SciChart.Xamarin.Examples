@@ -121,7 +121,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             // Populate some pinch and touch interactions. Pinch to zoom, drag to pan and double-tap to zoom extents 
             MainSurface.ChartModifiers = new SCIChartModifierCollection(
                 new SCIXAxisDragModifier(),
-                new SCIZoomPanModifier { Direction = SCIDirection2D.XDirection },
+                // TODO XyDirection should be Direction; SCIXYDirection should be Direction2D
+                new SCIZoomPanModifier { XyDirection = SCIXYDirection.XDirection },
                 new SCIZoomExtentsModifier(),
                 new SCILegendModifier
                 {
@@ -209,6 +210,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 _smaAxisMarker.Position = smaLastValue;
 
                 _lastPrice = price;
+
+                //TODO Get rid of this... should work without it
+                MainSurface.InvalidateElement();
+                OverviewSurface.InvalidateElement();
             }
         }
     }

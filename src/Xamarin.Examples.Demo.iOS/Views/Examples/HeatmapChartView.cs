@@ -106,6 +106,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 var values = _valuesList[_timerIndex % SeriesPerPeriod];
                 _dataSeries.UpdateZValues(values);
                 _timerIndex++;
+                Surface.InvalidateElement();
             });
         }
 

@@ -45,10 +45,8 @@
         <image name="Ohlc" width="120" height="120"/>
         <image name="StackedBar" width="120" height="120"/>
         <image name="StackedColumn" width="120" height="120"/>
+        <image name="StackedColumn100" width="120" height="120"/>
         <image name="Themes" width="120" height="120"/>
         <image name="ZoomPan" width="120" height="120"/>
-        <image name="StackedColumns100" width="120" height="120"/>
-        <image name="GreenArrow" width="32" height="32"/>
-        <image name="RedArrow" width="32" height="32"/>
     </resources>
 </document>

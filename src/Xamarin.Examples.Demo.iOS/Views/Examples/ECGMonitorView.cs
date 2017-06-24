@@ -62,6 +62,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.RenderableSeries.Add(rs0);
             Surface.RenderableSeries.Add(rs1);
 
+            Surface.InvalidateElement();
+
             Start();
         }
 
@@ -74,6 +76,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             _timer.Elapsed += OnTick;
             _timer.AutoReset = true;
             _timer.Start();
+
+            Surface.InvalidateElement();
         }
 
         private void OnTick(object sender, ElapsedEventArgs e)
@@ -86,6 +90,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 {
                     AppendPoint(400);
                 }
+
+                Surface.InvalidateElement();
             }
         }
 
@@ -135,6 +141,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             _timer.Stop();
             _timer.Elapsed -= OnTick;
             _timer = null;
+
+            Surface.InvalidateElement();
         }
     }
 }

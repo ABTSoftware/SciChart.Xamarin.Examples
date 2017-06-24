@@ -93,6 +93,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             _timer.Stop();
             _timer.Elapsed -= OnTick;
             _timer = null;
+
+            Surface.InvalidateElement();
         }
 
         private void Reset()
@@ -106,6 +108,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
             _maLow.Clear();
             _maHigh.Clear();
+
+            //TODO Get rid of this... should work without it
+            Surface.InvalidateElement();
         }
 
         private void OnTick(object sender, ElapsedEventArgs e)
@@ -152,6 +157,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             _mainSeries.Append(_xValues, _firstYValues);
             _maLowSeries.Append(_xValues, _secondYValues);
             _maHighSeries.Append(_xValues, _thirdYValues);
+
+            //TODO Get rid of this... should work without it
+            Surface.InvalidateElement();
 
             _countLabel.Text = "Amount of Points: " + _mainSeries.Count;
         }
