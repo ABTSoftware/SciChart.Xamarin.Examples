@@ -80,8 +80,6 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             }
 
             Surface.ChartModifiers.Add(new SCISeriesSelectionModifier());
-
-            //Surface.InvalidateElement();
         }
 
         private static IDataSeries GenerateDataSeries(SCIAxisAlignment alignment, int index)

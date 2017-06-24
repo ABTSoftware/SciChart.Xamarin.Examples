@@ -68,8 +68,6 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 _timer.Elapsed += OnTick;
                 _timer.AutoReset = true;
                 _timer.Start();
-
-                Surface.InvalidateElement();
             }
         }
 
@@ -81,8 +79,6 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 _timer.Stop();
                 _timer.Elapsed -= OnTick;
                 _timer = null;
-
-                Surface.InvalidateElement();
             }
         }
 
@@ -96,9 +92,6 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             _ds1.Clear();
             _ds2.Clear();
             _ds3.Clear();
-
-            //TODO Get rid of this... should work without it
-            Surface.InvalidateElement();
         }
 
         private void OnTick(object sender, ElapsedEventArgs e)
@@ -118,9 +111,6 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 {
                     _xVisibleRange.SetMinMax(_xVisibleRange.Min + OneOverTimeInteval, _xVisibleRange.Max + OneOverTimeInteval);
                 }
-
-                //TODO Get rid of this... should work without it
-                Surface.InvalidateElement();
             }
         }
 

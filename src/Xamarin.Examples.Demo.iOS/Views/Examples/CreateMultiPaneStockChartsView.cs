@@ -62,13 +62,11 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
             surface.ChartModifiers = new SCIChartModifierCollection(
                 new SCIXAxisDragModifier { DragMode = SCIAxisDragMode.Pan, ClipModeX = SCIClipMode.StretchAtExtents },
-                new SCIPinchZoomModifier { XyDirection = SCIXYDirection.XDirection },
+                new SCIPinchZoomModifier { Direction = SCIDirection2D.XDirection },
                 new SCIZoomPanModifier(),
                 new SCIZoomExtentsModifier(),
                 new SCILegendModifier { ShowCheckBoxes = false, StyleOfItemCell = new SCILegendCellStyle() { SeriesNameFont = UIFont.FromName("Helvetica", 10f) } }
             );
-
-            surface.InvalidateElement();
         }
 
         private abstract class BasePaneModel
