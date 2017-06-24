@@ -40,8 +40,8 @@ namespace AddingAnnotations
 
             this.View.AddSubview(_surface);
 
-            _surface.XAxes.Add(new SCINumericAxis() { GrowBy = new SCIDoubleRange(0.1, 0.1) });
-            _surface.YAxes.Add(new SCINumericAxis() { GrowBy = new SCIDoubleRange(0.1, 0.1) });
+            _surface.XAxes.Add(new SCINumericAxis() { GrowBy = new SCIDoubleRange(0.1, 0.1), Style = new SCIAxisStyle { GridBandBrush = new SCISolidBrushStyle(UIColor.Clear)} });
+            _surface.YAxes.Add(new SCINumericAxis() { GrowBy = new SCIDoubleRange(0.1, 0.1), Style = new SCIAxisStyle { GridBandBrush = new SCISolidBrushStyle(UIColor.Clear) } });
 
             CreateDataSeries();
             CreateRenderableSeries();
@@ -66,10 +66,10 @@ namespace AddingAnnotations
                     _phase += 0.01;
 
                     
-                    if (_i % 100 == 0)
+                    if (_i % 10 == 0)
                     {
                         var customAnnotation = new SCICustomAnnotation();
-                        customAnnotation.ContentView = new UIImageView(new CoreGraphics.CGRect(0, 0, 10, 10)) { Text = "Y", BackgroundColor = UIColor.LightGray };
+                        customAnnotation.CustomView = new UILabel(new CoreGraphics.CGRect(0, 0, 10, 10)) { Text = "Y", BackgroundColor = UIColor.LightGray };
                         customAnnotation.X1Value = _i;
                         customAnnotation.Y1Value = 0.5;
                         customAnnotation.CoordinateMode = SCIAnnotationCoordinateMode.RelativeY;
@@ -83,7 +83,7 @@ namespace AddingAnnotations
                         if ((double)customAn.X1Value < (_i - 500))
                         {
                             // since the contentView is UIView element - we have to call removeFromSuperView method to remove it from screen
-                            customAn.ContentView.RemoveFromSuperview();
+                            customAn.CustomView.RemoveFromSuperview();
                             _annotationCollection.Remove(customAn);
                         }
                     }
