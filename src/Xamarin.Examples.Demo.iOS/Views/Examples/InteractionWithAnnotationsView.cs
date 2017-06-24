@@ -240,6 +240,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     //RotationAngle = 30
                 }
             );
+            Surface.InvalidateElement();
         }
     }
 }
