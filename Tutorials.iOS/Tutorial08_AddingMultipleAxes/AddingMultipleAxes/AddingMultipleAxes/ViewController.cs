@@ -22,6 +22,8 @@ namespace AddingMultipleAxes
         // instance variable for counting the data points in data series
         private int _i = 0;
 
+        private SCIAnnotationCollection _annotationCollection = new SCIAnnotationCollection();
+
         public ViewController(IntPtr handle) : base(handle)
         {
         }
@@ -52,6 +54,8 @@ namespace AddingMultipleAxes
 
             _surface.XAxes.Add(new SCINumericAxis() { GrowBy = new SCIDoubleRange(0.1, 0.1) });
 
+            _surface.Annotations = _annotationCollection;
+
             CreateDataSeries();
             CreateRenderableSeries();
             AddModifiers();
@@ -71,6 +75,33 @@ namespace AddingMultipleAxes
                     _scatterDataSeries.Append(_i, Math.Cos(_i * 0.1 + _phase));
 
                     _phase += 0.01;
+
+                    var customAnnotation = new SCICustomAnnotation();
+                    if (_i % 100 == 0)
+                    {
+                        customAnnotation.CustomView = new UILabel(new CoreGraphics.CGRect(0, 0, 10, 10)) { Text = "Y", BackgroundColor = UIColor.LightGray };
+                        customAnnotation.X1Value = _i;
+                        customAnnotation.Y1Value = 0.5;
+                        customAnnotation.CoordinateMode = SCIAnnotationCoordinateMode.Absolute;
+                        customAnnotation.YAxisId = "firstYAxis";
+                        // adding new custom annotation into the annotationGroup property
+                        _annotationCollection.Add(customAnnotation);
+
+                        // removing annotations that are out of visible range
+                        var customAn = _annotationCollection[0] as SCICustomAnnotation;
+
+                        if (customAn != null && (double)customAn.X1Value < (_i - 500))
+                        {
+                            // since the contentView is UIView element - we have to call removeFromSuperView method to remove it from screen
+                            customAn.CustomView.RemoveFromSuperview();
+                            _annotationCollection.Remove(customAn);
+                        }
+                    }
+                    if (_i % 200 == 0)
+                    {
+                        customAnnotation.YAxisId = "secondaryYAxis";
+                    }
+
 
                     _surface.ZoomExtentsX();
                 });
