@@ -66,7 +66,7 @@ namespace AddingAnnotations
                     _phase += 0.01;
 
                     
-                    if (_i % 10 == 0)
+                    if (_i % 100 == 0)
                     {
                         var customAnnotation = new SCICustomAnnotation();
                         customAnnotation.CustomView = new UILabel(new CoreGraphics.CGRect(0, 0, 10, 10)) { Text = "Y", BackgroundColor = UIColor.LightGray };
@@ -80,7 +80,7 @@ namespace AddingAnnotations
                         // removing annotations that are out of visible range
                         var customAn = _annotationCollection[0] as SCICustomAnnotation;
 
-                        if ((double)customAn.X1Value < (_i - 500))
+                        if (customAn !=null && (double)customAn.X1Value < (_i - 500))
                         {
                             // since the contentView is UIView element - we have to call removeFromSuperView method to remove it from screen
                             customAn.CustomView.RemoveFromSuperview();
