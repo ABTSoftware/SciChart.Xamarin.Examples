@@ -125,11 +125,14 @@ namespace AddingMultipleSurfaces
                         // removing annotations that are out of visible range
                         var customAn = _annotationCollection[0] as SCICustomAnnotation;
 
-                        if (customAn != null && (double)customAn.X1Value < (_i - 500))
+                        if (customAn != null)
                         {
-                            // since the contentView is UIView element - we have to call removeFromSuperView method to remove it from screen
-                            customAn.CustomView.RemoveFromSuperview();
-                            _annotationCollection.Remove(customAn);
+                            if (customAn.X1Value.CompareTo(_i - 500) == 0)
+                            {
+                                // since the contentView is UIView element - we have to call removeFromSuperView method to remove it from screen
+                                customAn.CustomView.RemoveFromSuperview();
+                                _annotationCollection.Remove(customAn);
+                            }
                         }
                     }
                     if (_i % 200 == 0)
@@ -139,7 +142,7 @@ namespace AddingMultipleSurfaces
 
                     _surfaceTop.ZoomExtentsX();
                     // Extents bottom chart 
-                    _surfaceBottom.ZoomExtents();
+                    _surfaceBottom.ZoomExtentsX();
                 });
             }
         }
@@ -205,24 +208,24 @@ namespace AddingMultipleSurfaces
             var pinchZoomModifierSync = new SCIMultiSurfaceModifier(GetClassForType(typeof(SCIPinchZoomModifier)));
             var panZoomModifierSync = new SCIMultiSurfaceModifier(GetClassForType(typeof(SCIZoomPanModifier)));
 
-            var xAxisDragmodifier = xDragModifierSync.ModifierForSurface(_surfaceTop) as SCIXAxisDragModifier;
+            // retreiving XAxisDragModifier for customization
+            var xAxisDragmodifier = ObjCRuntime.Runtime.GetNSObject<SCIXAxisDragModifier>(xDragModifierSync.ModifierForSurface(_surfaceTop).Handle);
             if (xAxisDragmodifier != null)
             {
                 xAxisDragmodifier.DragMode = SCIAxisDragMode.Pan;
                 xAxisDragmodifier.ClipModeX = SCIClipMode.None;
             }
 
-            var pinchZoomModifier = pinchZoomModifierSync.ModifierForSurface(_surfaceTop);
             var legendCollectionModifier = new SCILegendModifier();
 
             var groupModifier = new SCIChartModifierCollection();
-            if (xAxisDragmodifier != null) groupModifier.Add(xAxisDragmodifier);
-            if (pinchZoomModifier != null) groupModifier.Add(pinchZoomModifier);
+            groupModifier.Add(xDragModifierSync);
+            groupModifier.Add(pinchZoomModifierSync);
             groupModifier.Add(legendCollectionModifier);
 
             _surfaceTop.ChartModifiers = groupModifier;
 
-            var xAxisDragmodifierBottom = xDragModifierSync.ModifierForSurface(_surfaceBottom) as SCIXAxisDragModifier;
+            var xAxisDragmodifierBottom = ObjCRuntime.Runtime.GetNSObject<SCIXAxisDragModifier>(xDragModifierSync.ModifierForSurface(_surfaceBottom).Handle);
             if (xAxisDragmodifierBottom != null)
             {
                 xAxisDragmodifierBottom.DragMode = SCIAxisDragMode.Pan;
@@ -232,8 +235,8 @@ namespace AddingMultipleSurfaces
             var pinchZoomModifierBottom = pinchZoomModifierSync.ModifierForSurface(_surfaceBottom);
 
             var groupModifierBottom = new SCIChartModifierCollection();
-            if (xAxisDragmodifierBottom != null) groupModifierBottom.Add(xAxisDragmodifierBottom);
-            if (pinchZoomModifierBottom != null) groupModifierBottom.Add(pinchZoomModifierBottom);
+            if (xAxisDragmodifierBottom != null) groupModifierBottom.Add(xDragModifierSync);
+            if (pinchZoomModifierBottom != null) groupModifierBottom.Add(pinchZoomModifierSync);
 
             _surfaceBottom.ChartModifiers = groupModifierBottom;
         }
