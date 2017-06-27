@@ -10,9 +10,9 @@ using SciChart.Charting.Visuals.Axes;
 using SciChart.Charting.Visuals.PointMarkers;
 using SciChart.Charting.Visuals.RenderableSeries;
 using SciChart.Core.Framework;
-using SciChart.Core.Model;
 using SciChart.Data.Model;
 using SciChart.Drawing.Common;
+using Tutorial06_AddNewRealtimeValues;
 using Math = System.Math;
 
 namespace Tutorial06_AddRealtimeUpdates
@@ -51,37 +51,20 @@ namespace Tutorial06_AddRealtimeUpdates
             var scatterData = new XyDataSeries<double, double>() { SeriesName = "Cos(x)" };
 
             // Append data which should be drawn
-            for (var i = 0; i < 1000; i++)
-            {
-                lineData.Append(i, Math.Sin(i * 0.1));
-                scatterData.Append(i, Math.Cos(i * 0.1));
-            }
-
-            double phase = 0;
-
             var timer = new Timer(30) { AutoReset = true };
-            var lineBuffer = new DoubleValues(1000);
-            var scatterBuffer = new DoubleValues(1000);
 
             // Update on each tick of timer
             timer.Elapsed += (s, e) =>
             {
-                lineBuffer.Clear();
-                scatterBuffer.Clear();
-
-                for (int i = 0; i < 1000; i++)
-                {
-                    lineBuffer.Add(Math.Sin(i * 0.1 + phase));
-                    scatterBuffer.Add(Math.Cos(i * 0.1 + phase));
-                }
-
                 using (chart.SuspendUpdates())
                 {
-                    lineData.UpdateRangeYAt(0, lineBuffer);
-                    scatterData.UpdateRangeYAt(0, scatterBuffer);
-                }
+                    var x = lineData.Count;
+                    lineData.Append(x, Math.Sin(x * 0.1));
+                    scatterData.Append(x, Math.Cos(x * 0.1));
 
-                phase += 0.01;
+                    // zoom series to fit viewport size into XAxis direction
+                    chart.ZoomExtentsX();
+                }
             };
 
             timer.Start();

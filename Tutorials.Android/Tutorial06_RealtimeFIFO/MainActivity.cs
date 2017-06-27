@@ -3,6 +3,7 @@ using Android.App;
 using Android.Graphics;
 using Android.OS;
 using Android.Views;
+using Java.Lang;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Modifiers;
 using SciChart.Charting.Visuals;
@@ -10,9 +11,9 @@ using SciChart.Charting.Visuals.Axes;
 using SciChart.Charting.Visuals.PointMarkers;
 using SciChart.Charting.Visuals.RenderableSeries;
 using SciChart.Core.Framework;
-using SciChart.Core.Model;
 using SciChart.Data.Model;
 using SciChart.Drawing.Common;
+using Tutorial06_RealtimeFIFO;
 using Math = System.Math;
 
 namespace Tutorial06_AddRealtimeUpdates
@@ -47,41 +48,31 @@ namespace Tutorial06_AddRealtimeUpdates
             chart.YAxes.Add(yAxis);
 
             // Create XyDataSeries to host data for our chart
-            var lineData = new XyDataSeries<double, double>() { SeriesName = "Sin(x)" };
-            var scatterData = new XyDataSeries<double, double>() { SeriesName = "Cos(x)" };
+            const int fifoCapacity = 500;
+
+            // Create XyDataSeries to host data for our chart
+            var lineData = new XyDataSeries<double, double>() { SeriesName = "Sin(x)", FifoCapacity = new Integer(fifoCapacity) };
+            var scatterData = new XyDataSeries<double, double>() { SeriesName = "Cos(x)", FifoCapacity = new Integer(fifoCapacity) };
 
             // Append data which should be drawn
-            for (var i = 0; i < 1000; i++)
-            {
-                lineData.Append(i, Math.Sin(i * 0.1));
-                scatterData.Append(i, Math.Cos(i * 0.1));
-            }
-
-            double phase = 0;
-
             var timer = new Timer(30) { AutoReset = true };
-            var lineBuffer = new DoubleValues(1000);
-            var scatterBuffer = new DoubleValues(1000);
+
+            var x = 0d;
 
             // Update on each tick of timer
             timer.Elapsed += (s, e) =>
             {
-                lineBuffer.Clear();
-                scatterBuffer.Clear();
-
-                for (int i = 0; i < 1000; i++)
-                {
-                    lineBuffer.Add(Math.Sin(i * 0.1 + phase));
-                    scatterBuffer.Add(Math.Cos(i * 0.1 + phase));
-                }
-
                 using (chart.SuspendUpdates())
                 {
-                    lineData.UpdateRangeYAt(0, lineBuffer);
-                    scatterData.UpdateRangeYAt(0, scatterBuffer);
-                }
+                    lineData.Append(x, Math.Sin(x * 0.1));
+                    scatterData.Append(x, Math.Cos(x * 0.1));
 
-                phase += 0.01;
+                    // zoom series to fit viewport size into XAxis direction
+                    chart.ZoomExtentsX();
+
+                    // increment X value
+                    x++;
+                }
             };
 
             timer.Start();

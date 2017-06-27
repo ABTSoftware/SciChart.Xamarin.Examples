@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("Tutorial02_CreateChart.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("Tutorial06_RealtimeFIFO.Resource", IsApplication=true)]
 
-namespace Tutorial02_CreateChart
+namespace Tutorial06_RealtimeFIFO
 {
 	
 	
