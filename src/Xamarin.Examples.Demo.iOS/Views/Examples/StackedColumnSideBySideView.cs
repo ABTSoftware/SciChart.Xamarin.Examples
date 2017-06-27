@@ -34,7 +34,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var xAxis = new SCINumericAxis
             {
                 AutoTicks = false,
-                MajorDelta = 1,
+                MajorDelta = new SCIGenericType(1),
                 //MinorDelta = 0.5,
                 //TODO Add label provider
                 //LabelProvider = new YearsLabelProvider(),

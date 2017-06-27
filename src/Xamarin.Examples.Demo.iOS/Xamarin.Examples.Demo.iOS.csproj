@@ -162,14 +162,23 @@
       <DependentUpon>UsingThemeManagerLayout.cs</DependentUpon>
     </Compile>
     <None Include="packages.config" />
+    <InterfaceDefinition Include="Resources\Layout\DashboardStyleChartsLayout.xib" />
+    <Compile Include="Resources\Layout\DashboardStyleChartsLayout.cs" />
+    <Compile Include="Resources\Layout\DashboardStyleChartsLayout.designer.cs">
+      <DependentUpon>DashboardStyleChartsLayout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Examples\BandChartView.cs" />
     <Compile Include="Views\Examples\BubbleChartView.cs" />
-    <Compile Include="Views\Examples\CandlestickChartView.cs" />
-    <Compile Include="Views\Examples\CreateMultiPaneStockChartsView.cs" />
     <Compile Include="Views\Examples\ErrorBarsChartView.cs" />
+    <Compile Include="Views\Examples\CandlestickChartView.cs" />
+    <Compile Include="Views\Examples\HeatmapChartView.cs" />
+    <Compile Include="Views\Examples\AnnotationsAreEasyView.cs" />
+    <Compile Include="Views\Examples\CreateMultiPaneStockChartsView.cs" />
+    <Compile Include="Views\Examples\CreateRealtimeTickingStockChartsView.cs" />
+    <Compile Include="Views\Examples\DashboardStyleChartsView.cs" />
+    <Compile Include="Views\Examples\ECGMonitorView.cs" />
     <Compile Include="Views\Examples\FanChartView.cs" />
     <Compile Include="Views\Examples\FifoChartView.cs" />
-    <Compile Include="Views\Examples\HeatmapChartView.cs" />
     <Compile Include="Views\Examples\ImpulseChartView.cs" />
     <Compile Include="Views\Examples\InteractionWithAnnotationsView.cs" />
     <Compile Include="Views\Examples\LegendView.cs" />
@@ -184,17 +193,8 @@
     <Compile Include="Views\Examples\StackedMountainChartView.cs" />
     <Compile Include="Views\Examples\UsingCursorModifierTooltipsView.cs" />
     <Compile Include="Views\Examples\UsingRolloverModifierTooltipsView.cs" />
-    <Compile Include="Views\Examples\UsingTooltipModifierTooltipsView.cs" />
     <Compile Include="Views\Examples\UsingThemeManagerView.cs" />
-    <Compile Include="Views\Examples\CreateRealtimeTickingStockChartsView.cs" />
-    <Compile Include="Views\Examples\ECGMonitorView.cs" />
-    <InterfaceDefinition Include="Resources\Layout\DashboardStyleChartsLayout.xib" />
-    <Compile Include="Views\Examples\DashboardStyleChartsView.cs" />
-    <Compile Include="Resources\Layout\DashboardStyleChartsLayout.cs" />
-    <Compile Include="Resources\Layout\DashboardStyleChartsLayout.designer.cs">
-      <DependentUpon>DashboardStyleChartsLayout.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Examples\AnnotationsAreEasyView.cs" />
+    <Compile Include="Views\Examples\UsingTooltipModifierTooltipsView.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -416,10 +416,18 @@
     <ImageAsset Include="Resources\Images.xcassets\StackedColumns100.imageset\StackedColumns100.png">
       <InProject>false</InProject>
     </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\RedArrow.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\GreenArrow.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\GreenArrow.imageset\method-draw-image.png" />
-    <ImageAsset Include="Resources\Images.xcassets\RedArrow.imageset\method-draw-image %282%29.png" />
+    <ImageAsset Include="Resources\Images.xcassets\RedArrow.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\GreenArrow.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\GreenArrow.imageset\method-draw-image.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\RedArrow.imageset\method-draw-image %282%29.png">
+      <InProject>false</InProject>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Images.xcassets\Axis.imageset\" />
@@ -443,7 +451,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <Reference Include="SciChart.iOS.Charting">
-      <HintPath>..\packages\SciChart.iOS.2.0.0.478\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
+      <HintPath>..\packages\SciChart.iOS.2.0.0.486\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

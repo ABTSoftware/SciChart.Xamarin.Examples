@@ -51,6 +51,12 @@ namespace Tutorial06_AddRealtimeUpdates
             var scatterData = new XyDataSeries<double, double>() { SeriesName = "Cos(x)" };
 
             // Append data which should be drawn
+            for (var i = 0; i < 1000; i++)
+            {
+                lineData.Append(i, Math.Sin(i * 0.1));
+                scatterData.Append(i, Math.Cos(i * 0.1));
+            }
+
             double phase = 0;
 
             var timer = new Timer(30) { AutoReset = true };
