@@ -90,11 +90,14 @@ namespace AddingMultipleAxes
                         // removing annotations that are out of visible range
                         var customAn = _annotationCollection[0] as SCICustomAnnotation;
 
-                        if (customAn != null && (double)customAn.X1Value < (_i - 500))
+                        if (customAn != null)
                         {
-                            // since the contentView is UIView element - we have to call removeFromSuperView method to remove it from screen
-                            customAn.CustomView.RemoveFromSuperview();
-                            _annotationCollection.Remove(customAn);
+                            if (customAn.X1Value.CompareTo(_i - 500) == 0)
+                            {
+                                // since the contentView is UIView element - we have to call removeFromSuperView method to remove it from screen
+                                customAn.CustomView.RemoveFromSuperview();
+                                _annotationCollection.Remove(customAn);
+                            }
                         }
                     }
                     if (_i % 200 == 0)
