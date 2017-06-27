@@ -5,9 +5,9 @@ namespace Xamarin.Examples.Demo.iOS.Components
 {
     public class BillionsLabelProvider : SCINumericLabelProvider
     {
-        public override string FormatLabel(IComparable dataValue)
+        public override string FormatLabel(SCIGenericType dataValue)
         {
-            return base.FormatLabel(ComparableUtil.ToDouble(dataValue) / Math.Pow(10, 9)) + "B";
+            return base.FormatLabel(new SCIGenericType(dataValue.doubleData / Math.Pow(10, 9))) + "B";
         }
     }
 }

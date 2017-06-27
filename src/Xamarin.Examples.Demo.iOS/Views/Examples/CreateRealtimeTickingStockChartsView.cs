@@ -127,7 +127,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 {
                     Orientation = SCIOrientation.Horizontal,
                     Position = SCILegendPosition.Bottom,
-                    StyleOfItemCell = new SCILegendCellStyle() { SeriesNameFont = UIFont.FromName("Helvetica", 10f) }
+                    StyleOfItemCell = new SCILegendCellStyle { SeriesNameFont = UIFont.FromName("Helvetica", 10f) }
                 }
             );
         }

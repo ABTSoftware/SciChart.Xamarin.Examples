@@ -79,7 +79,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.ChartModifiers = new SCIChartModifierCollection(
                 new SCITooltipModifier
                 {
-                    Style = { HitTestMode = (int)SCIHitTestMode.Interpolate }
+                    Style = { HitTestMode = SCIHitTestMode.Interpolate },
                     //ShowAxisLabels = true,
                     //ShowTooltip = true,
                 }
