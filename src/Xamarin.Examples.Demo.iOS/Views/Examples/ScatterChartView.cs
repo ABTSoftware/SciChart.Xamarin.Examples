@@ -42,20 +42,24 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var rSeries3 = GetScatterRenderableSeries(new SCITrianglePointMarker(), 0xFFFF6501, true);
             var rSeries4 = GetScatterRenderableSeries(new SCIEllipsePointMarker(), 0xFFFFA300, true);
 
-            Surface.XAxes.Add(xAxis);
-            Surface.YAxes.Add(yAxis);
-            Surface.RenderableSeries.Add(rSeries1);
-            Surface.RenderableSeries.Add(rSeries2);
-            Surface.RenderableSeries.Add(rSeries3);
-            Surface.RenderableSeries.Add(rSeries4);
+            using (Surface.SuspendUpdates())
+            {
+                Surface.XAxes.Add(xAxis);
+                Surface.YAxes.Add(yAxis);
+                Surface.RenderableSeries.Add(rSeries1);
+                Surface.RenderableSeries.Add(rSeries2);
+                Surface.RenderableSeries.Add(rSeries3);
+                Surface.RenderableSeries.Add(rSeries4);
 
-            Surface.ChartModifiers = new SCIChartModifierCollection(
-                new SCIZoomExtentsModifier(),
-                new SCIPinchZoomModifier(),
-                new SCICursorModifier(),
-                new SCIXAxisDragModifier(),
-                new SCIYAxisDragModifier { DragMode = SCIAxisDragMode.Pan }
-            );
+                Surface.ChartModifiers = new SCIChartModifierCollection
+                {
+                    new SCIZoomExtentsModifier(),
+                    new SCIPinchZoomModifier(),
+                    new SCICursorModifier(),
+                    new SCIXAxisDragModifier(),
+                    new SCIYAxisDragModifier { DragMode = SCIAxisDragMode.Pan }
+                };
+            }
         }
 
         private SCIXyScatterRenderableSeries GetScatterRenderableSeries(ISCIPointMarkerProtocol pointMarker, uint color, bool negative)

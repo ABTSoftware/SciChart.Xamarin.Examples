@@ -39,7 +39,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var dataSeries = new XyDataSeries<double, double>();
             dataSeries.Append(ds1Points.XData, ds1Points.YData);
 
-            var renderSeries = new SCIFastImpulseRenderableSeries
+            var renderableSeries = new SCIFastImpulseRenderableSeries
             {
                 DataSeries = dataSeries,
                 StrokeStyle = new SCISolidPenStyle(0xFF0066FF, 2f),
@@ -52,14 +52,18 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 }
             };
 
-            Surface.XAxes.Add(xAxis);
-            Surface.YAxes.Add(yAxis);
-            Surface.RenderableSeries.Add(renderSeries);
-            Surface.ChartModifiers = new SCIChartModifierCollection(
-                new SCIZoomPanModifier(),
-                new SCIPinchZoomModifier(),
-                new SCIZoomExtentsModifier()
-            );
+            using (Surface.SuspendUpdates())
+            {
+                Surface.XAxes.Add(xAxis);
+                Surface.YAxes.Add(yAxis);
+                Surface.RenderableSeries.Add(renderableSeries);
+                Surface.ChartModifiers = new SCIChartModifierCollection
+                {
+                    new SCIZoomPanModifier(),
+                    new SCIPinchZoomModifier(),
+                    new SCIZoomExtentsModifier()
+                };
+            }
         }
     }
 }

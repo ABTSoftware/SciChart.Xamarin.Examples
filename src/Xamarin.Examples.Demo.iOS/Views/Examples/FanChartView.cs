@@ -54,19 +54,23 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 StrokeStyle = new SCISolidPenStyle(UIColor.Red, 1.0f)
             };
 
-            Surface.XAxes.Add(xAxis);
-            Surface.YAxes.Add(yAxis);
+            using (Surface.SuspendUpdates())
+            {
+                Surface.XAxes.Add(xAxis);
+                Surface.YAxes.Add(yAxis);
 
-            Surface.RenderableSeries.Add(createRenderableSeriesWith(xyyDataSeries));
-            Surface.RenderableSeries.Add(createRenderableSeriesWith(xyyDataSeries1));
-            Surface.RenderableSeries.Add(createRenderableSeriesWith(xyyDataSeries2));
-            Surface.RenderableSeries.Add(dataRenderSeries);
+                Surface.RenderableSeries.Add(createRenderableSeriesWith(xyyDataSeries));
+                Surface.RenderableSeries.Add(createRenderableSeriesWith(xyyDataSeries1));
+                Surface.RenderableSeries.Add(createRenderableSeriesWith(xyyDataSeries2));
+                Surface.RenderableSeries.Add(dataRenderSeries);
 
-            Surface.ChartModifiers = new SCIChartModifierCollection(
-                new SCIZoomPanModifier(),
-                new SCIPinchZoomModifier(),
-                new SCIZoomExtentsModifier()
-            );
+                Surface.ChartModifiers = new SCIChartModifierCollection
+                {
+                    new SCIZoomPanModifier(),
+                    new SCIPinchZoomModifier(),
+                    new SCIZoomExtentsModifier()
+                };
+            }
         }
 
         SCIFastBandRenderableSeries createRenderableSeriesWith(SCIXyyDataSeries dataSeries)

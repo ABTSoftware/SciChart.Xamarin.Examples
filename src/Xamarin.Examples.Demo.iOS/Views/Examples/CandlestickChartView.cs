@@ -51,15 +51,19 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 FillDownBrushStyle = new SCISolidBrushStyle(0x88FF0000)
             };
 
-            Surface.XAxes.Add(xAxis);
-            Surface.YAxes.Add(yAxis);
-            Surface.RenderableSeries.Add(renderSeries);
+            using (Surface.SuspendUpdates())
+            {
+                Surface.XAxes.Add(xAxis);
+                Surface.YAxes.Add(yAxis);
+                Surface.RenderableSeries.Add(renderSeries);
 
-            Surface.ChartModifiers = new SCIChartModifierCollection(
-                new SCIZoomPanModifier(),
-                new SCIPinchZoomModifier(),
-                new SCIZoomExtentsModifier()
-            );
+                Surface.ChartModifiers = new SCIChartModifierCollection
+                {
+                    new SCIZoomPanModifier(),
+                    new SCIPinchZoomModifier(),
+                    new SCIZoomExtentsModifier()
+                };
+            }
         }
     }
 }

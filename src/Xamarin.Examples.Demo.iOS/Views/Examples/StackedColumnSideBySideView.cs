@@ -115,14 +115,16 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             columnsCollection.Add(GetRenderableSeries(japanDataSeries, 0xff00aba9, 0xff006C6A));
             columnsCollection.Add(GetRenderableSeries(restOfTheWorldDataSeries, 0xff560068, 0xff3D0049));
 
-            Surface.XAxes.Add(xAxis);
-            Surface.YAxes.Add(yAxis);
-            Surface.RenderableSeries.Add(columnsCollection);
+            var legendModifier = new SCILegendModifier { ShowCheckBoxes = false, StyleOfItemCell = new SCILegendCellStyle { SeriesNameFont = UIFont.FromName("Helvetica", 10f), SeriesNameTextColor = UIColor.White } };
 
-            Surface.ChartModifiers = new SCIChartModifierCollection{
-                new SCITooltipModifier(),
-                new SCILegendModifier (){ShowCheckBoxes = false, StyleOfItemCell = new SCILegendCellStyle(){SeriesNameFont = UIFont.FromName("Helvetica", 10f), SeriesNameTextColor = UIColor.White }}
-            };
+            using (Surface.SuspendUpdates())
+            {
+                Surface.XAxes.Add(xAxis);
+                Surface.YAxes.Add(yAxis);
+                Surface.RenderableSeries.Add(columnsCollection);
+                Surface.ChartModifiers.Add(legendModifier);
+                Surface.ChartModifiers.Add(new SCITooltipModifier());
+            }
         }
 
         private SCIStackedColumnRenderableSeries GetRenderableSeries(IDataSeries dataSeries, uint fillColor, uint strokeColor)

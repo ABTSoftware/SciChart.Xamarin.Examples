@@ -67,11 +67,14 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var rs2 = new SCIFastLineRenderableSeries { DataSeries = _maLowSeries, StrokeStyle = new SCISolidPenStyle(0xFFFFA500, 2f) };
             var rs3 = new SCIFastLineRenderableSeries { DataSeries = _maHighSeries, StrokeStyle = new SCISolidPenStyle(0xFFE13219, 2f) };
 
-            Surface.XAxes.Add(xAxis);
-            Surface.YAxes.Add(yAxis);
-            Surface.RenderableSeries.Add(rs1);
-            Surface.RenderableSeries.Add(rs2);
-            Surface.RenderableSeries.Add(rs3);
+            using (Surface.SuspendUpdates())
+            {
+                Surface.XAxes.Add(xAxis);
+                Surface.YAxes.Add(yAxis);
+                Surface.RenderableSeries.Add(rs1);
+                Surface.RenderableSeries.Add(rs2);
+                Surface.RenderableSeries.Add(rs3);
+            }
         }
 
         private void Start()
@@ -100,9 +103,12 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             if (_isRunning)
                 Pause();
 
-            _mainSeries.Clear();
-            _maLowSeries.Clear();
-            _maHighSeries.Clear();
+            using (Surface.SuspendUpdates())
+            {
+                _mainSeries.Clear();
+                _maLowSeries.Clear();
+                _maHighSeries.Clear();
+            }
 
             _maLow.Clear();
             _maHigh.Clear();
@@ -133,27 +139,30 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         private void DoAppendLoop()
         {
-            _xValues.Clear();
-            _firstYValues.Clear();
-            _secondYValues.Clear();
-            _thirdYValues.Clear();
-
-            for (var i = 0; i < BufferSize; i++)
+            using (Surface.SuspendUpdates())
             {
-                _xValue++;
-                _yValue += _random.NextDouble() - 0.5;
+                _xValues.Clear();
+                _firstYValues.Clear();
+                _secondYValues.Clear();
+                _thirdYValues.Clear();
 
-                _xValues.Add(_xValue);
-                _firstYValues.Add((float)_yValue);
-                _secondYValues.Add((float)_maLow.Push(_yValue).Current);
-                _thirdYValues.Add((float)_maHigh.Push(_yValue).Current);
+                for (var i = 0; i < BufferSize; i++)
+                {
+                    _xValue++;
+                    _yValue += _random.NextDouble() - 0.5;
+
+                    _xValues.Add(_xValue);
+                    _firstYValues.Add((float)_yValue);
+                    _secondYValues.Add((float)_maLow.Push(_yValue).Current);
+                    _thirdYValues.Add((float)_maHigh.Push(_yValue).Current);
+                }
+
+                _mainSeries.Append(_xValues, _firstYValues);
+                _maLowSeries.Append(_xValues, _secondYValues);
+                _maHighSeries.Append(_xValues, _thirdYValues);
+
+                _countLabel.Text = "Amount of Points: " + _mainSeries.Count;
             }
-
-            _mainSeries.Append(_xValues, _firstYValues);
-            _maLowSeries.Append(_xValues, _secondYValues);
-            _maHighSeries.Append(_xValues, _thirdYValues);
-
-            _countLabel.Text = "Amount of Points: " + _mainSeries.Count;
         }
 
         private static int CalculateMaxPointCountToDisplay()

@@ -1,5 +1,4 @@
 ﻿using System;
-using Android.Graphics;
 using SciChart.Charting.Model;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Modifiers;

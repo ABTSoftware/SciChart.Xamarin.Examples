@@ -40,21 +40,25 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var dataSeries = new XyDataSeries<DateTime, double> { DataDistributionCalculator = new SCIUserDefinedDistributionCalculator() };
             dataSeries.Append(priceData.TimeData, priceData.CloseData);
 
-            var renderSeries = new SCIFastMountainRenderableSeries
+            var renderableSeries = new SCIFastMountainRenderableSeries
             {
                 DataSeries = dataSeries,
                 StrokeStyle = new SCISolidPenStyle(0xAAFFC9A8, 2f),
                 AreaStyle = new SCILinearGradientBrushStyle(0xAAFF8D42, 0x88090E11, SCILinearGradientDirection.Horizontal),
             };
 
-            Surface.XAxes.Add(xAxis);
-            Surface.YAxes.Add(yAxis);
-            Surface.RenderableSeries.Add(renderSeries);
-            Surface.ChartModifiers = new SCIChartModifierCollection(
-                new SCIZoomPanModifier(),
-                new SCIPinchZoomModifier(),
-                new SCIZoomExtentsModifier()
-            );
+            using (Surface.SuspendUpdates())
+            {
+                Surface.XAxes.Add(xAxis);
+                Surface.YAxes.Add(yAxis);
+                Surface.RenderableSeries.Add(renderableSeries);
+                Surface.ChartModifiers = new SCIChartModifierCollection
+                {
+                    new SCIZoomPanModifier(),
+                    new SCIPinchZoomModifier(),
+                    new SCIZoomExtentsModifier()
+                };
+            }
         }
     }
 }

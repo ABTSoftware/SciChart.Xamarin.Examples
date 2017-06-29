@@ -101,8 +101,6 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             _timer.Elapsed += OnTick;
             _timer.AutoReset = true;
             _timer.Start();
-
-            Surface.InvalidateElement();
         }
 
         private void Pause()
@@ -113,8 +111,6 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             _timer.Stop();
             _timer.Elapsed -= OnTick;
             _timer = null;
-
-            Surface.InvalidateElement();
         }
 
         private void Reset()

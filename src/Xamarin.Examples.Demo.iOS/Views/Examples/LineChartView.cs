@@ -41,15 +41,19 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
             var renderSeries = new SCIFastLineRenderableSeries { DataSeries = dataSeries, StrokeStyle = new SCISolidPenStyle(0xFF279B27, 2f) };
 
-            Surface.XAxes.Add(xAxis);
-            Surface.YAxes.Add(yAxis);
-            Surface.RenderableSeries.Add(renderSeries);
+            using (Surface.SuspendUpdates())
+            {
+                Surface.XAxes.Add(xAxis);
+                Surface.YAxes.Add(yAxis);
+                Surface.RenderableSeries.Add(renderSeries);
 
-            Surface.ChartModifiers = new SCIChartModifierCollection(
-                new SCIZoomPanModifier(),
-                new SCIPinchZoomModifier(),
-                new SCIZoomExtentsModifier()
-            );
+                Surface.ChartModifiers = new SCIChartModifierCollection
+                {
+                    new SCIZoomPanModifier(),
+                    new SCIPinchZoomModifier(),
+                    new SCIZoomExtentsModifier()
+                };
+            }
         }
     }
 }

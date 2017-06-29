@@ -23,9 +23,13 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         private const int Height = 200;
         private const int SeriesPerPeriod = 30;
 
+        private volatile bool _isRunning = false;
+        private readonly object _syncRoot = new object();
         private readonly Timer _timer = new Timer(40) { AutoReset = true };
+
         private int _timerIndex = 0;
         private readonly UniformHeatmapDataSeries<int, int, double> _dataSeries = new UniformHeatmapDataSeries<int, int, double>(new double[Width, Height], 0, 1, 0, 1);
+
         private readonly List<double[]> _valuesList = Enumerable.Range(0, SeriesPerPeriod).Select(CreateValues).ToList();
 
         private static double[] CreateValues(int index)
@@ -87,25 +91,43 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             Surface.YAxes.Add(yAxis);
             Surface.RenderableSeries.Add(renderSeries);
 
-            Surface.ChartModifiers = new SCIChartModifierCollection(
+            Surface.ChartModifiers = new SCIChartModifierCollection
+            {
                 new SCIZoomPanModifier(),
                 new SCIPinchZoomModifier(),
                 new SCIZoomExtentsModifier()
-            );
+            };
 
+            Start();
+        }
+
+        private void Start()
+        {
+            if (_isRunning) return;
+
+            _isRunning = true;
             _timer.Elapsed += OnTick;
             _timer.Start();
         }
 
-
-
         private void OnTick(object sender, ElapsedEventArgs e)
+        {
+            lock (_syncRoot)
+            {
+                if (!_isRunning) return;
+
+                UpdateDataSeries(_timerIndex);
+
+                _timerIndex++;
+            }
+        }
+
+        private void UpdateDataSeries(int index)
         {
             InvokeOnMainThread(() =>
             {
                 var values = _valuesList[_timerIndex % SeriesPerPeriod];
                 _dataSeries.UpdateZValues(values);
-                _timerIndex++;
             });
         }
 
@@ -113,6 +135,14 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         {
             base.RemoveFromSuperview();
 
+            Stop();
+        }
+
+        private void Stop()
+        {
+            if (!_isRunning) return;
+
+            _isRunning = false;
             _timer.Stop();
             _timer.Elapsed -= OnTick;
         }

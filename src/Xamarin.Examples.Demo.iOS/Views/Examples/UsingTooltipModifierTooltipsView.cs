@@ -48,42 +48,41 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             ds1.Append(scaledXValues, ds1Points.YData);
             ds2.Append(ds2Points.XData, ds2Points.YData);
 
-            Surface.XAxes.Add(xAxis);
-            Surface.YAxes.Add(yAxis);
-
-            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
+            using (Surface.SuspendUpdates())
             {
-                DataSeries = ds1,
-                StrokeStyle = new SCISolidPenStyle(ColorUtil.SteelBlue, 2f),
-                PointMarker = new SCIEllipsePointMarker
-                {
-                    Width = 5,
-                    Height = 5,
-                    StrokeStyle = new SCISolidPenStyle(ColorUtil.SteelBlue, 2f),
-                    FillStyle = new SCISolidBrushStyle(ColorUtil.SteelBlue)
-                }
-            });
-            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries
-            {
-                DataSeries = ds2,
-                StrokeStyle = new SCISolidPenStyle(0xFFFF3333, 2f),
-                PointMarker = new SCIEllipsePointMarker
-                {
-                    Width = 5,
-                    Height = 5,
-                    StrokeStyle = new SCISolidPenStyle(0xFFFF3333, 2f),
-                    FillStyle = new SCISolidBrushStyle(0xFFFF3333)
-                }
-            });
+                Surface.XAxes.Add(xAxis);
+                Surface.YAxes.Add(yAxis);
 
-            Surface.ChartModifiers = new SCIChartModifierCollection(
-                new SCITooltipModifier
+                Surface.RenderableSeries = new SCIRenderableSeriesCollection
                 {
-                    Style = { HitTestMode = SCIHitTestMode.Interpolate },
-                    //ShowAxisLabels = true,
-                    //ShowTooltip = true,
-                }
-            );
+                    new SCIFastLineRenderableSeries
+                    {
+                        DataSeries = ds1,
+                        StrokeStyle = new SCISolidPenStyle(ColorUtil.SteelBlue, 2f),
+                        PointMarker = new SCIEllipsePointMarker
+                        {
+                            Width = 5,
+                            Height = 5,
+                            StrokeStyle = new SCISolidPenStyle(ColorUtil.SteelBlue, 2f),
+                            FillStyle = new SCISolidBrushStyle(ColorUtil.SteelBlue)
+                        }
+                    },
+                    new SCIFastLineRenderableSeries
+                    {
+                        DataSeries = ds2,
+                        StrokeStyle = new SCISolidPenStyle(0xFFFF3333, 2f),
+                        PointMarker = new SCIEllipsePointMarker
+                        {
+                            Width = 5,
+                            Height = 5,
+                            StrokeStyle = new SCISolidPenStyle(0xFFFF3333, 2f),
+                            FillStyle = new SCISolidBrushStyle(0xFFFF3333)
+                        }
+                    }
+                };
+         
+                Surface.ChartModifiers.Add(new SCITooltipModifier { Style = { HitTestMode = SCIHitTestMode.Interpolate } });
+            }
         }
 
         private static IList<double> GetScaledValues(IList<double> values)

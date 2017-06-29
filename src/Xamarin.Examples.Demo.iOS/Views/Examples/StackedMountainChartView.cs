@@ -50,14 +50,17 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             seriesCollection.Add(series1);
             seriesCollection.Add(series2);
 
-            Surface.XAxes.Add(xAxis);
-            Surface.YAxes.Add(yAxis);
-            Surface.RenderableSeries.Add(seriesCollection);
-
-            Surface.ChartModifiers = new SCIChartModifierCollection(
+            using (Surface.SuspendUpdates())
+            {
+                Surface.XAxes.Add(xAxis);
+                Surface.YAxes.Add(yAxis);
+                Surface.RenderableSeries.Add(seriesCollection);
+                Surface.ChartModifiers = new SCIChartModifierCollection
+                {
                 new SCICursorModifier(),
                 new SCIZoomExtentsModifier()
-            );
+                };
+            }
         }
 
         private SCIStackedMountainRenderableSeries GetRenderableSeries(IDataSeries dataSeries, uint fillColorStart, uint fillColorEbd)

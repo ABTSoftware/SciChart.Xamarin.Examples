@@ -15,7 +15,7 @@ namespace Xamarin.Examples.Demo.iOS
 
         public SCIChartSurface Chart => _dashboardLayout.ChartView;
 
-        private readonly List<ChartTypeModel> _examples = new List<ChartTypeModel>()
+        private readonly List<ChartTypeModel> _examples = new List<ChartTypeModel>
         {
             ChartTypeFactory.NewHorizontallyStackedColumns(),
             ChartTypeFactory.NewVerticallyStackedColumns(false),
@@ -35,8 +35,8 @@ namespace Xamarin.Examples.Demo.iOS
                 InitChart((sender as UISegmentedControl).SelectedSegment);
             };
 
-            var xAxis = new SCINumericAxis() { AutoRange = SCIAutoRange.Always };
-            var yAxis = new SCINumericAxis() { AutoRange = SCIAutoRange.Always };
+            var xAxis = new SCINumericAxis { AutoRange = SCIAutoRange.Always };
+            var yAxis = new SCINumericAxis { AutoRange = SCIAutoRange.Always };
 
             Chart.XAxes.Add(xAxis);
             Chart.YAxes.Add(yAxis);
@@ -48,8 +48,11 @@ namespace Xamarin.Examples.Demo.iOS
         {
             var model = _examples[(int)selectedSegment];
 
-            Chart.RenderableSeries.Clear();
-            Chart.RenderableSeries.Add(model.SeriesCollection);
+            using (Chart.SuspendUpdates())
+            {
+                Chart.RenderableSeries.Clear();
+                Chart.RenderableSeries.Add(model.SeriesCollection);
+            }
         }
 
         static class ChartTypeFactory

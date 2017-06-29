@@ -1,6 +1,3 @@
-using Android.Graphics;
-using Android.Util;
-using Java.Lang;
 using SciChart.Charting.Model;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Modifiers;

@@ -52,20 +52,22 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             ds3.Append(data3.XData, data3.YData);
             ds4.Append(data4.XData, data4.YData);
 
-            Surface.XAxes.Add(xAxis);
-            Surface.YAxes.Add(yAxis);
-            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries { DataSeries = ds1, StrokeStyle = new SCISolidPenStyle(0xFF177B17, 2f) });
-            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries { DataSeries = ds2, StrokeStyle = new SCISolidPenStyle(0xFFDD0909, 2f) });
-            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries { DataSeries = ds3, StrokeStyle = new SCISolidPenStyle(0xFF808080, 2f) });
-            Surface.RenderableSeries.Add(new SCIFastLineRenderableSeries { DataSeries = ds4, StrokeStyle = new SCISolidPenStyle(0xFFFFD700, 2f), IsVisible = false });
-
-            Surface.ChartModifiers = new SCIChartModifierCollection(
-                new SCICursorModifier
+            using (Surface.SuspendUpdates())
+            {
+                Surface.XAxes.Add(xAxis);
+                Surface.YAxes.Add(yAxis);
+                Surface.RenderableSeries = new SCIRenderableSeriesCollection
                 {
-                    //ShowAxisLabels = true,
-                    //ShowTooltip = true,
-                }
-            );
+                    new SCIFastLineRenderableSeries { DataSeries = ds1, StrokeStyle = new SCISolidPenStyle(0xFF177B17, 2f) },
+                    new SCIFastLineRenderableSeries { DataSeries = ds2, StrokeStyle = new SCISolidPenStyle(0xFFDD0909, 2f) },
+                    new SCIFastLineRenderableSeries { DataSeries = ds3, StrokeStyle = new SCISolidPenStyle(0xFF808080, 2f) },
+                    new SCIFastLineRenderableSeries { DataSeries = ds4, StrokeStyle = new SCISolidPenStyle(0xFFFFD700, 2f), IsVisible = false },
+                };
+                Surface.ChartModifiers.Add(new SCICursorModifier
+                {
+                    Style = { ShowAxisLabels = true, ShowTooltip = true, HitTestMode = SCIHitTestMode.Interpolate }
+                });
+            }
         }
     }
 }

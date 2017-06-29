@@ -50,12 +50,14 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var rs2 = new SCIFastLineRenderableSeries { DataSeries = _ds2, StrokeStyle = new SCISolidPenStyle(0xFFFFA500, 2f) };
             var rs3 = new SCIFastLineRenderableSeries { DataSeries = _ds3, StrokeStyle = new SCISolidPenStyle(0xFFE13219, 2f) };
 
-            Surface.XAxes.Add(xAxis);
-            Surface.YAxes.Add(yAxis);
-            Surface.RenderableSeries.Add(rs1);
-            Surface.RenderableSeries.Add(rs2);
-            Surface.RenderableSeries.Add(rs3);
-
+            using (Surface.SuspendUpdates())
+            {
+                Surface.XAxes.Add(xAxis);
+                Surface.YAxes.Add(yAxis);
+                Surface.RenderableSeries.Add(rs1);
+                Surface.RenderableSeries.Add(rs2);
+                Surface.RenderableSeries.Add(rs3);
+            }
             Start();
         }
 
@@ -117,6 +119,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         public override void RemoveFromSuperview()
         {
             base.RemoveFromSuperview();
+
             Reset();
         }
     }

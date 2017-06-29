@@ -57,10 +57,13 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var rs0 = new SCIFastLineRenderableSeries { DataSeries = _series0, StrokeStyle = new SCISolidPenStyle(0xFFC6E6FF, 2f) };
             var rs1 = new SCIFastLineRenderableSeries { DataSeries = _series1, StrokeStyle = new SCISolidPenStyle(0xFFC6E6FF, 2f) };
 
-            Surface.XAxes.Add(xAxis);
-            Surface.YAxes.Add(yAxis);
-            Surface.RenderableSeries.Add(rs0);
-            Surface.RenderableSeries.Add(rs1);
+            using (Surface.SuspendUpdates())
+            {
+                Surface.XAxes.Add(xAxis);
+                Surface.YAxes.Add(yAxis);
+                Surface.RenderableSeries.Add(rs0);
+                Surface.RenderableSeries.Add(rs1);
+            }
 
             Start();
         }

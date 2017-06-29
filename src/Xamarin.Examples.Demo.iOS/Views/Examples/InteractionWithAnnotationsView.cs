@@ -42,12 +42,12 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 i += 1;
             }
 
-            var xAxis = new SCINumericAxis { VisibleRange = new SCIDoubleRange(0, 190) };
+            var xAxis = new SCINumericAxis { VisibleRange = new SCIDoubleRange(0, 190), AxisId = "XAxisID" };
             var yAxis = new SCINumericAxis { VisibleRange = new SCIDoubleRange(30, 37), AxisId = "yaxis" };
 
             Surface.XAxes.Add(xAxis);
             Surface.YAxes.Add(yAxis);
-            Surface.RenderableSeries.Add(new SCIFastCandlestickRenderableSeries { DataSeries = dataSeries, YAxisId = "yaxis" });
+            Surface.RenderableSeries.Add(new SCIFastCandlestickRenderableSeries { DataSeries = dataSeries, YAxisId = "yaxis", XAxisId = "XAxisID" });
 
             var horizontalLineAnnotation = new SCIHorizontalLineAnnotation
             {

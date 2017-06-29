@@ -88,22 +88,24 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 }
             };
 
-            Surface.XAxes.Add(xAxis);
-            Surface.YAxes.Add(yAxis);
-
-            Surface.RenderableSeries = new SCIRenderableSeriesCollection
+            using (Surface.SuspendUpdates())
             {
-                errorBars0,
-                lineSeries,
-                errorBars1,
-                scatterSeries
-            };
-
-            Surface.ChartModifiers = new SCIChartModifierCollection(
-                new SCIZoomPanModifier(),
-                new SCIPinchZoomModifier(),
-                new SCIZoomExtentsModifier()
-            );
+                Surface.XAxes.Add(xAxis);
+                Surface.YAxes.Add(yAxis);
+                Surface.RenderableSeries = new SCIRenderableSeriesCollection
+                {
+                    errorBars0,
+                    lineSeries,
+                    errorBars1,
+                    scatterSeries
+                };
+                Surface.ChartModifiers = new SCIChartModifierCollection
+                {
+                    new SCIZoomPanModifier(),
+                    new SCIPinchZoomModifier(),
+                    new SCIZoomExtentsModifier()
+                };
+            }
         }
 
         private static void FillDataSeries(HlDataSeries<double, double> dataSeries, DoubleSeries sourceData, double scale)

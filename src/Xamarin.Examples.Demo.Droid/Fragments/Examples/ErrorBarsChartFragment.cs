@@ -1,15 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.Graphics;
-using Android.OS;
-using Android.Runtime;
 using Android.Views;
-using Android.Widget;
 using SciChart.Charting.Model;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Modifiers;
@@ -17,7 +7,6 @@ using SciChart.Charting.Visuals;
 using SciChart.Charting.Visuals.Axes;
 using SciChart.Charting.Visuals.PointMarkers;
 using SciChart.Charting.Visuals.RenderableSeries;
-using SciChart.Data.Model;
 using SciChart.Drawing.Common;
 using SciChart.Examples.Demo.Data;
 using SciChart.Examples.Demo.Fragments.Base;
@@ -93,7 +82,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             {
                 Surface.XAxes.Add(xAxis);
                 Surface.YAxes.Add(yAxis);
-                Surface.RenderableSeries = new RenderableSeriesCollection()
+                Surface.RenderableSeries = new RenderableSeriesCollection
                 {
                     errorBars0,
                     lineSeries,

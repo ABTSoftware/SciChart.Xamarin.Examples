@@ -13,7 +13,7 @@ using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
-    [ExampleDefinition("Band Chart", description:"Creates a Band Series Chart", icon: ExampleIcon.BandChart)]
+    [ExampleDefinition("Band Chart", description: "Creates a Band Series Chart", icon: ExampleIcon.BandChart)]
     public class BandChartFragment : ExampleBaseFragment
     {
         public override int ExampleLayoutId => Resource.Layout.Example_Single_Chart_Fragment;
@@ -22,8 +22,8 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
         protected override void InitExample()
         {
-            var xAxis = new NumericAxis(Activity) {VisibleRange = new DoubleRange(1.1, 2.7)};
-            var yAxis = new NumericAxis(Activity) {GrowBy = new DoubleRange(0.1, 0.1)};
+            var xAxis = new NumericAxis(Activity) { VisibleRange = new DoubleRange(1.1, 2.7) };
+            var yAxis = new NumericAxis(Activity) { GrowBy = new DoubleRange(0.1, 0.1) };
 
             var data = DataManager.Instance.GetDampedSinewave(1.0, 0.01, 1000);
             var moreData = DataManager.Instance.GetDampedSinewave(1.0, 0.005, 1000, 12);
@@ -40,16 +40,19 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 FillY1BrushStyle = new SolidBrushStyle(0x33FF1919)
             };
 
-            Surface.XAxes.Add(xAxis);
-            Surface.YAxes.Add(yAxis);
-            Surface.RenderableSeries.Add(rs);
-
-            Surface.ChartModifiers = new ChartModifierCollection
+            using (Surface.SuspendUpdates())
             {
-                new ZoomPanModifier(),
-                new PinchZoomModifier(),
-                new ZoomExtentsModifier(),
-            };
+                Surface.XAxes.Add(xAxis);
+                Surface.YAxes.Add(yAxis);
+                Surface.RenderableSeries.Add(rs);
+
+                Surface.ChartModifiers = new ChartModifierCollection
+                {
+                    new ZoomPanModifier(),
+                    new PinchZoomModifier(),
+                    new ZoomExtentsModifier(),
+                };
+            }
         }
     }
 }

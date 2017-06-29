@@ -33,36 +33,18 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
         private volatile bool _isRunning = false;
         private Timer _timer;
 
-
         private volatile bool _isFirstTrace = false;
 
         protected override void InitExample()
         {
+            var xBottomAxis = new NumericAxis(Activity) { VisibleRange = new DoubleRange(0, 10), AutoRange = AutoRange.Never, AxisTitle = "Time (seconds)" };
+            var yRightAxis = new NumericAxis(Activity) { VisibleRange = new DoubleRange(-0.5, 1.5), AxisTitle = "Voltage (mV)" };
+
+            var rs1 = new FastLineRenderableSeries { DataSeries = _series0 };
+            var rs2 = new FastLineRenderableSeries { DataSeries = _series1 };
+
             using (Surface.SuspendUpdates())
             {
-                var xBottomAxis = new NumericAxis(Activity)
-                {
-                    VisibleRange = new DoubleRange(0, 10),
-                    AutoRange = AutoRange.Never,
-                    AxisTitle = "Time (seconds)"
-                }; 
-
-                var yRightAxis = new NumericAxis(Activity)
-                {
-                    VisibleRange = new DoubleRange(-0.5, 1.5),
-                    AxisTitle = "Voltage (mV)"
-                };
-
-                var rs1 = new FastLineRenderableSeries()
-                {
-                    DataSeries = _series0
-                };
-
-                var rs2 = new FastLineRenderableSeries()
-                {
-                    DataSeries = _series1
-                };
-
                 Surface.XAxes.Add(xBottomAxis);
                 Surface.YAxes.Add(yRightAxis);
                 Surface.RenderableSeries.Add(rs1);
@@ -86,8 +68,6 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             _timer.Elapsed += OnTick;
             _timer.AutoReset = true;
             _timer.Start();
-
-            Surface.InvalidateElement();
         }
 
 
@@ -135,7 +115,6 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             }
         }
 
-
         public override void OnPause()
         {
             base.OnPause();
@@ -151,8 +130,6 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             _timer.Stop();
             _timer.Elapsed -= OnTick;
             _timer = null;
-
-            Surface.InvalidateElement();
         }
 
         public override void InitExampleForUiTest()

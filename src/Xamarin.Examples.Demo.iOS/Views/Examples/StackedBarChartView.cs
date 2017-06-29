@@ -58,14 +58,17 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             columnsCollection.Add(series2);
             columnsCollection.Add(series3);
 
-            Surface.XAxes.Add(xAxis);
-            Surface.YAxes.Add(yAxis);
-            Surface.RenderableSeries.Add(columnsCollection);
-
-            Surface.ChartModifiers = new SCIChartModifierCollection(
-                new SCICursorModifier(),
-                new SCIZoomExtentsModifier()
-            );
+            using (Surface.SuspendUpdates())
+            {
+                Surface.XAxes.Add(xAxis);
+                Surface.YAxes.Add(yAxis);
+                Surface.RenderableSeries.Add(columnsCollection);
+                Surface.ChartModifiers = new SCIChartModifierCollection
+                {
+                    new SCICursorModifier(),
+                    new SCIZoomExtentsModifier()
+                };
+            }
         }
 
         private SCIStackedColumnRenderableSeries GetRenderableSeries(IDataSeries dataSeries, uint strokeColor, uint fillColorStart, uint fillColorEnd)

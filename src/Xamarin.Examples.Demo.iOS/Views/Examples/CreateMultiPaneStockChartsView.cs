@@ -55,18 +55,22 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var xAxis = new SCICategoryDateTimeAxis { IsVisible = isMainPain, GrowBy = new SCIDoubleRange(0, 0.05) };
             _axisRangeSync.AttachAxis(xAxis);
 
-            surface.XAxes.Add(xAxis);
-            surface.YAxes.Add(model.YAxis);
-            surface.RenderableSeries = model.RenderableSeries;
-            surface.Annotations = model.Annotations;
+            using (surface.SuspendUpdates())
+            {
+                surface.XAxes.Add(xAxis);
+                surface.YAxes.Add(model.YAxis);
+                surface.RenderableSeries = model.RenderableSeries;
+                surface.Annotations = model.Annotations;
 
-            surface.ChartModifiers = new SCIChartModifierCollection(
-                new SCIXAxisDragModifier { DragMode = SCIAxisDragMode.Pan, ClipModeX = SCIClipMode.StretchAtExtents },
-                new SCIPinchZoomModifier { Direction = SCIDirection2D.XDirection },
-                new SCIZoomPanModifier(),
-                new SCIZoomExtentsModifier(),
-                new SCILegendModifier { ShowCheckBoxes = false, StyleOfItemCell = new SCILegendCellStyle() { SeriesNameFont = UIFont.FromName("Helvetica", 10f) } }
-            );
+                surface.ChartModifiers = new SCIChartModifierCollection
+                {
+                    new SCIXAxisDragModifier { DragMode = SCIAxisDragMode.Pan, ClipModeX = SCIClipMode.StretchAtExtents },
+                    new SCIPinchZoomModifier { Direction = SCIDirection2D.XDirection },
+                    new SCIZoomPanModifier(),
+                    new SCIZoomExtentsModifier(),
+                    new SCILegendModifier { ShowCheckBoxes = false, StyleOfItemCell = new SCILegendCellStyle() { SeriesNameFont = UIFont.FromName("Helvetica", 10f) } }
+                };
+            }
         }
 
         private abstract class BasePaneModel
@@ -120,30 +124,30 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 maHigh.Append(prices.TimeData, prices.CloseData.MovingAverage(200));
                 AddRenderableSeries(new SCIFastLineRenderableSeries { DataSeries = maHigh, StrokeStyle = new SCISolidPenStyle(0xFF33DD33, 1f), YAxisId = PRICES });
 
-                //var priceMarker = new SCIAxisMarkerAnnotation
-                //{
-                //    Position = (IComparable)stockPrices.YValues.ValueAt(stockPrices.Count - 1),
-                //    Style = { BackgroundColor = 0xFFFF3333.ToColor() },
-                //    YAxisId = PRICES
-                //};
+                var priceMarker = new SCIAxisMarkerAnnotation
+                {
+                    Position = stockPrices.YValues.ValueAt(stockPrices.Count - 1).ToComparable(),
+                    Style = { BackgroundColor = 0xFFFF3333.ToColor() },
+                    YAxisId = PRICES
+                };
 
-                //var maLowMarker = new SCIAxisMarkerAnnotation
-                //{
-                //    Position = (IComparable)maLow.YValues.ValueAt(maLow.Count - 1),
-                //    Style = { BackgroundColor = 0xFFFF3333.ToColor() },
-                //    YAxisId = PRICES
-                //};
+                var maLowMarker = new SCIAxisMarkerAnnotation
+                {
+                    Position = maLow.YValues.ValueAt(maLow.Count - 1).ToComparable(),
+                    Style = { BackgroundColor = 0xFFFF3333.ToColor() },
+                    YAxisId = PRICES
+                };
 
-                //var maHighMarker = new SCIAxisMarkerAnnotation
-                //{
-                //    Position = (IComparable)maHigh.YValues.ValueAt(maHigh.Count - 1),
-                //    Style = { BackgroundColor = 0xFF33DD33.ToColor() },
-                //    YAxisId = PRICES
-                //};
+                var maHighMarker = new SCIAxisMarkerAnnotation
+                {
+                    Position = maHigh.YValues.ValueAt(maHigh.Count - 1).ToComparable(),
+                    Style = { BackgroundColor = 0xFF33DD33.ToColor() },
+                    YAxisId = PRICES
+                };
 
-                //Annotations.AddItem(priceMarker);
-                //Annotations.AddItem(maLowMarker);
-                //Annotations.AddItem(maHighMarker);
+                Annotations.Add(priceMarker);
+                Annotations.Add(maLowMarker);
+                Annotations.Add(maHighMarker);
             }
         }
 
@@ -153,13 +157,19 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             {
                 var volumePrices = new XyDataSeries<DateTime, double> { SeriesName = "Volume" };
                 volumePrices.Append(prices.TimeData, prices.VolumeData.Select(x => (double)x));
-                AddRenderableSeries(new SCIFastColumnRenderableSeries { DataSeries = volumePrices, YAxisId = VOLUME, FillBrushStyle = new SCISolidBrushStyle(UIColor.White), StrokeStyle = new SCISolidPenStyle(UIColor.White, 1f) });
+                AddRenderableSeries(new SCIFastColumnRenderableSeries
+                {
+                    DataSeries = volumePrices,
+                    YAxisId = VOLUME,
+                    FillBrushStyle = new SCISolidBrushStyle(UIColor.White),
+                    StrokeStyle = new SCISolidPenStyle(UIColor.White, 1f)
+                });
 
-                //Annotations.AddItem(new SCIAxisMarkerAnnotation
-                //{
-                //    Position = (IComparable)volumePrices.YValues.ValueAt(volumePrices.Count - 1),
-                //    YAxisId = VOLUME
-                //});
+                Annotations.Add(new SCIAxisMarkerAnnotation
+                {
+                    Position = volumePrices.YValues.ValueAt(volumePrices.Count - 1).ToComparable(),
+                    YAxisId = VOLUME
+                });
             }
         }
 
@@ -174,11 +184,11 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 rsiSeries.Append(xData, yData);
                 AddRenderableSeries(new SCIFastLineRenderableSeries { DataSeries = rsiSeries, YAxisId = RSI, StrokeStyle = new SCISolidPenStyle(0xFFC6E6FF, 1f) });
 
-                //Annotations.AddItem(new SCIAxisMarkerAnnotation
-                //{
-                //    Position = (IComparable)rsiSeries.YValues.ValueAt(rsiSeries.Count - 1),
-                //    YAxisId = RSI
-                //});
+                Annotations.Add(new SCIAxisMarkerAnnotation
+                {
+                    Position = rsiSeries.YValues.ValueAt(rsiSeries.Count - 1).ToComparable(),
+                    YAxisId = RSI
+                });
             }
         }
 
@@ -204,16 +214,16 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     StrokeY1Style = new SCISolidPenStyle(0xff52cc54, 1f)
                 });
 
-                //Annotations.AddItem(new SCIAxisMarkerAnnotation
-                //{
-                //    Position = (IComparable)histogramSeries.YValues.ValueAt(histogramSeries.Count - 1),
-                //    YAxisId = MACD
-                //});
-                //Annotations.AddItem(new SCIAxisMarkerAnnotation
-                //{
-                //    Position = (IComparable)macdSeries.YValues.ValueAt(macdSeries.Count - 1),
-                //    YAxisId = MACD
-                //});
+                Annotations.Add(new SCIAxisMarkerAnnotation
+                {
+                    Position = histogramSeries.YValues.ValueAt(histogramSeries.Count - 1).ToComparable(),
+                    YAxisId = MACD
+                });
+                Annotations.Add(new SCIAxisMarkerAnnotation
+                {
+                    Position = macdSeries.YValues.ValueAt(macdSeries.Count - 1).ToComparable(),
+                    YAxisId = MACD
+                });
             }
         }
     }

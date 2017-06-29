@@ -76,7 +76,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     {
                         DataSeries = ds3,
                         StrokeStyle = new SolidPenStyle(ColorUtil.LightSteelBlue, 2f.ToDip(Activity)),
-                    },
+                    }
                 };
 
                 Surface.ChartModifiers.Add(new RolloverModifier

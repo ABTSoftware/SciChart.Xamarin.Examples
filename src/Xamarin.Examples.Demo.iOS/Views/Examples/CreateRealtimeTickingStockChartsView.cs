@@ -111,25 +111,29 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             _ohlcAxisMarker = new SCIAxisMarkerAnnotation { Position = 0d, YAxisId = yAxis.AxisId };
             _ohlcAxisMarker.Style.BackgroundColor = StrokeUpColor.ToColor();
 
-            MainSurface.XAxes.Add(xAxis);
-            MainSurface.YAxes.Add(yAxis);
-            MainSurface.RenderableSeries.Add(ohlcSeries);
-            MainSurface.RenderableSeries.Add(movingAverage50Series);
-            MainSurface.Annotations.Add(_ohlcAxisMarker);
-            MainSurface.Annotations.Add(_smaAxisMarker);
+            using (MainSurface.SuspendUpdates())
+            {
+                MainSurface.XAxes.Add(xAxis);
+                MainSurface.YAxes.Add(yAxis);
+                MainSurface.RenderableSeries.Add(ohlcSeries);
+                MainSurface.RenderableSeries.Add(movingAverage50Series);
+                MainSurface.Annotations.Add(_ohlcAxisMarker);
+                MainSurface.Annotations.Add(_smaAxisMarker);
 
-            // Populate some pinch and touch interactions. Pinch to zoom, drag to pan and double-tap to zoom extents 
-            MainSurface.ChartModifiers = new SCIChartModifierCollection(
-                new SCIXAxisDragModifier(),
-                new SCIZoomPanModifier { Direction = SCIDirection2D.XDirection },
-                new SCIZoomExtentsModifier(),
-                new SCILegendModifier
+                // Populate some pinch and touch interactions. Pinch to zoom, drag to pan and double-tap to zoom extents 
+                MainSurface.ChartModifiers = new SCIChartModifierCollection
                 {
-                    Orientation = SCIOrientation.Horizontal,
-                    Position = SCILegendPosition.Bottom,
-                    StyleOfItemCell = new SCILegendCellStyle { SeriesNameFont = UIFont.FromName("Helvetica", 10f) }
-                }
-            );
+                    new SCIXAxisDragModifier(),
+                    new SCIZoomPanModifier { Direction = SCIDirection2D.XDirection },
+                    new SCIZoomExtentsModifier(),
+                    new SCILegendModifier
+                    {
+                        Orientation = SCIOrientation.Horizontal,
+                        Position = SCILegendPosition.Bottom,
+                        StyleOfItemCell = new SCILegendCellStyle { SeriesNameFont = UIFont.FromName("Helvetica", 10f) }
+                    }
+                };
+            }
         }
 
         private void CreateOverviewChart(out SCIBoxAnnotation leftAreaAnnotation, out SCIBoxAnnotation rightAreaAnnotation)
@@ -165,12 +169,15 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             };
 
             // Populate the chart with Axis, RenderableSeries. The chart automatically updates when any property changes 
-            OverviewSurface.XAxes.Add(xAxis1);
-            OverviewSurface.YAxes.Add(yAxis1);
-            OverviewSurface.RenderableSeries.Add(mountainSeries);
+            using (OverviewSurface.SuspendUpdates())
+            {
+                OverviewSurface.XAxes.Add(xAxis1);
+                OverviewSurface.YAxes.Add(yAxis1);
+                OverviewSurface.RenderableSeries.Add(mountainSeries);
 
-            OverviewSurface.Annotations.Add(leftAreaAnnotation);
-            OverviewSurface.Annotations.Add(rightAreaAnnotation);
+                OverviewSurface.Annotations.Add(leftAreaAnnotation);
+                OverviewSurface.Annotations.Add(rightAreaAnnotation);
+            }
         }
 
         private void OnNewPrice(PriceBar price)
@@ -210,6 +217,13 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
                 _lastPrice = price;
             }
+        }
+
+        public override void RemoveFromSuperview()
+        {
+            base.RemoveFromSuperview();
+
+            _marketDataService.ClearSubscriptions();
         }
     }
 }

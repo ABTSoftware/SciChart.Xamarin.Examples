@@ -38,7 +38,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
         {
             InitializeUIHandlers();
 
-            var xAxis = new SCINumericAxis {GrowBy = new SCIDoubleRange(0.1, 0.1), VisibleRange = new SCIDoubleRange(150, 180)};
+            var xAxis = new SCINumericAxis { GrowBy = new SCIDoubleRange(0.1, 0.1), VisibleRange = new SCIDoubleRange(150, 180) };
 
             var yRightAxis = new SCINumericAxis
             {
@@ -71,10 +71,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var dataManager = DataManager.Instance;
             var priceBars = dataManager.GetPriceDataIndu();
 
-            var mountainDataSeries = new XyDataSeries<double, double> {SeriesName = "Mountain Series"};
-            var lineDataSeries = new XyDataSeries<double, double> {SeriesName = "Line Series"};
-            var columnDataSeries = new XyDataSeries<double, long> {SeriesName = "Column Series"};
-            var candlestickDataSeries = new OhlcDataSeries<double, double> {SeriesName = "Candlestick Series"};
+            var mountainDataSeries = new XyDataSeries<double, double> { SeriesName = "Mountain Series" };
+            var lineDataSeries = new XyDataSeries<double, double> { SeriesName = "Line Series" };
+            var columnDataSeries = new XyDataSeries<double, long> { SeriesName = "Column Series" };
+            var candlestickDataSeries = new OhlcDataSeries<double, double> { SeriesName = "Candlestick Series" };
 
             var xValues = Enumerable.Range(0, priceBars.Count).Select(x => (double)x).ToArray();
 
@@ -83,24 +83,27 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             columnDataSeries.Append(xValues, priceBars.VolumeData);
             candlestickDataSeries.Append(xValues, priceBars.OpenData, priceBars.HighData, priceBars.LowData, priceBars.CloseData);
 
-            var mountainRenderableSeries = new SCIFastMountainRenderableSeries {DataSeries = mountainDataSeries, YAxisId = "PrimaryAxisId"};
-            var lineRenderableSeries = new SCIFastLineRenderableSeries {DataSeries = lineDataSeries, YAxisId = "PrimaryAxisId"};
-            var columnRenderableSeries = new SCIFastColumnRenderableSeries {DataSeries = columnDataSeries, YAxisId = "SecondaryAxisId"};
-            var candlestickRenderableSeries = new SCIFastCandlestickRenderableSeries {DataSeries = candlestickDataSeries, YAxisId = "PrimaryAxisId"};
+            var mountainRenderableSeries = new SCIFastMountainRenderableSeries { DataSeries = mountainDataSeries, YAxisId = "PrimaryAxisId" };
+            var lineRenderableSeries = new SCIFastLineRenderableSeries { DataSeries = lineDataSeries, YAxisId = "PrimaryAxisId" };
+            var columnRenderableSeries = new SCIFastColumnRenderableSeries { DataSeries = columnDataSeries, YAxisId = "SecondaryAxisId" };
+            var candlestickRenderableSeries = new SCIFastCandlestickRenderableSeries { DataSeries = candlestickDataSeries, YAxisId = "PrimaryAxisId" };
 
-            Surface.XAxes.Add(xAxis);
-            Surface.YAxes.Add(yRightAxis);
-            Surface.YAxes.Add(yLeftAxis);
-            Surface.RenderableSeries.Add(mountainRenderableSeries);
-            Surface.RenderableSeries.Add(lineRenderableSeries);
-            Surface.RenderableSeries.Add(columnRenderableSeries);
-            Surface.RenderableSeries.Add(candlestickRenderableSeries);
-
-            Surface.ChartModifiers = new SCIChartModifierCollection(
-                new SCILegendModifier {ShowCheckBoxes = false},
-                new SCICursorModifier(),
-                new SCIZoomExtentsModifier()
-            );
+            using (Surface.SuspendUpdates())
+            {
+                Surface.XAxes.Add(xAxis);
+                Surface.YAxes.Add(yRightAxis);
+                Surface.YAxes.Add(yLeftAxis);
+                Surface.RenderableSeries.Add(mountainRenderableSeries);
+                Surface.RenderableSeries.Add(lineRenderableSeries);
+                Surface.RenderableSeries.Add(columnRenderableSeries);
+                Surface.RenderableSeries.Add(candlestickRenderableSeries);
+                Surface.ChartModifiers = new SCIChartModifierCollection
+                {
+                    new SCILegendModifier {ShowCheckBoxes = false},
+                    new SCICursorModifier(),
+                    new SCIZoomExtentsModifier()
+                };
+            }
 
             ApplyTheme(SCIThemeKey.ChartV4DarkTheme);
         }
@@ -115,7 +118,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 {
                     var themeAction = UIAlertAction.Create(themeName, UIAlertActionStyle.Default, action =>
                     {
-                        ApplyTheme((SCIThemeKey) Array.IndexOf(ThemeNames, themeName));
+                        ApplyTheme((SCIThemeKey)Array.IndexOf(ThemeNames, themeName));
                     });
                     actionSheetAlert.AddAction(themeAction);
                 }
@@ -137,7 +140,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var themeProvider = new SCIThemeColorProvider(themeKey);
             Surface.ApplyThemeProvider(themeProvider);
 
-            ExampleViewLayout.SelectThemeButton.SetTitle(ThemeNames[(int) themeKey], UIControlState.Normal);
+            ExampleViewLayout.SelectThemeButton.SetTitle(ThemeNames[(int)themeKey], UIControlState.Normal);
         }
     }
 }

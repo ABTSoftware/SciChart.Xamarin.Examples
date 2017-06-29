@@ -9,7 +9,7 @@ using Xamarin.Examples.Demo.Utils;
 
 namespace Xamarin.Examples.Demo.iOS.Views.Examples
 {
-    [ExampleDefinition("Series Selection", description:"Select series by touch or programmatically", icon:ExampleIcon.LineChart)]
+    [ExampleDefinition("Series Selection", description: "Select series by touch or programmatically", icon: ExampleIcon.LineChart)]
     public class SeriesSelectionView : ExampleBaseView<SingleChartViewLayout>
     {
         private readonly SingleChartViewLayout _exampleViewLayout = SingleChartViewLayout.Create();
@@ -19,17 +19,17 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         protected override void UpdateFrame()
         {
-			Surface.TranslatesAutoresizingMaskIntoConstraints = false;
+            Surface.TranslatesAutoresizingMaskIntoConstraints = false;
 
-			NSLayoutConstraint constraintRight = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Right, NSLayoutRelation.Equal, this, NSLayoutAttribute.Right, 1, 0);
-			NSLayoutConstraint constraintLeft = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Left, NSLayoutRelation.Equal, this, NSLayoutAttribute.Left, 1, 0);
-			NSLayoutConstraint constraintTop = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Top, NSLayoutRelation.Equal, this, NSLayoutAttribute.Top, 1, 0);
-			NSLayoutConstraint constraintBottom = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Bottom, NSLayoutRelation.Equal, this, NSLayoutAttribute.Bottom, 1, 0);
+            NSLayoutConstraint constraintRight = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Right, NSLayoutRelation.Equal, this, NSLayoutAttribute.Right, 1, 0);
+            NSLayoutConstraint constraintLeft = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Left, NSLayoutRelation.Equal, this, NSLayoutAttribute.Left, 1, 0);
+            NSLayoutConstraint constraintTop = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Top, NSLayoutRelation.Equal, this, NSLayoutAttribute.Top, 1, 0);
+            NSLayoutConstraint constraintBottom = NSLayoutConstraint.Create(Surface, NSLayoutAttribute.Bottom, NSLayoutRelation.Equal, this, NSLayoutAttribute.Bottom, 1, 0);
 
-			this.AddConstraint(constraintRight);
-			this.AddConstraint(constraintLeft);
-			this.AddConstraint(constraintTop);
-			this.AddConstraint(constraintBottom);
+            this.AddConstraint(constraintRight);
+            this.AddConstraint(constraintLeft);
+            this.AddConstraint(constraintTop);
+            this.AddConstraint(constraintBottom);
         }
 
         private const int SeriesPointCount = 50;
@@ -37,13 +37,9 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         protected override void InitExampleInternal()
         {
-            var xAxis = new SCINumericAxis {AutoRange = SCIAutoRange.Always};
-            var leftAxis = new SCINumericAxis {AxisAlignment = SCIAxisAlignment.Left, AxisId = SCIAxisAlignment.Left.ToString()};
-            var rightAxis = new SCINumericAxis {AxisAlignment = SCIAxisAlignment.Right, AxisId = SCIAxisAlignment.Right.ToString()};
-
-            Surface.XAxes.Add(xAxis);
-            Surface.YAxes.Add(leftAxis);
-            Surface.YAxes.Add(rightAxis);
+            var xAxis = new SCINumericAxis { AutoRange = SCIAutoRange.Always };
+            var leftAxis = new SCINumericAxis { AxisAlignment = SCIAxisAlignment.Left, AxisId = SCIAxisAlignment.Left.ToString() };
+            var rightAxis = new SCINumericAxis { AxisAlignment = SCIAxisAlignment.Right, AxisId = SCIAxisAlignment.Right.ToString() };
 
             var initialColor = UIColor.Blue;
             var selectedStrokeStyle = new SCISolidPenStyle(ColorUtil.White, 4f);
@@ -55,31 +51,39 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                 StrokeStyle = new SCISolidPenStyle(ColorUtil.White, 1f)
             };
 
-            for (var i = 0; i < SeriesCount; i++)
+            using (Surface.SuspendUpdates())
             {
-                var alignment = i % 2 == 0 ? SCIAxisAlignment.Left : SCIAxisAlignment.Right;
-                var dataSeries = GenerateDataSeries(alignment, i);
-                                 var rs = new SCIFastLineRenderableSeries
+                Surface.XAxes.Add(xAxis);
+                Surface.YAxes.Add(leftAxis);
+                Surface.YAxes.Add(rightAxis);
+
+                for (var i = 0; i < SeriesCount; i++)
                 {
-                    DataSeries = dataSeries,
-                    YAxisId = alignment.ToString(),
-                    StrokeStyle = new SCISolidPenStyle(initialColor, 2f),
-                    SelectedSeriesStyle = new SCILineSeriesStyle
+                    var alignment = i % 2 == 0 ? SCIAxisAlignment.Left : SCIAxisAlignment.Right;
+                    var dataSeries = GenerateDataSeries(alignment, i);
+
+                    var rs = new SCIFastLineRenderableSeries
                     {
-                        StrokeStyle = selectedStrokeStyle,
-                        PointMarker = selectedPointMarker,
-                    }
-                };
+                        DataSeries = dataSeries,
+                        YAxisId = alignment.ToString(),
+                        StrokeStyle = new SCISolidPenStyle(initialColor, 2f),
+                        SelectedSeriesStyle = new SCILineSeriesStyle
+                        {
+                            StrokeStyle = selectedStrokeStyle,
+                            PointMarker = selectedPointMarker,
+                        }
+                    };
 
-                // Colors are incremented for visual purposes only
-                var newR = initialColor.R() == 255 ? 255 : initialColor.R() + 5;
-                var newB = initialColor.B() == 0 ? 0 : initialColor.B() - 2;
-                initialColor = UIColor.FromRGB((byte)newR, initialColor.G(), (byte)newB);
+                    // Colors are incremented for visual purposes only
+                    var newR = initialColor.R() == 255 ? 255 : initialColor.R() + 5;
+                    var newB = initialColor.B() == 0 ? 0 : initialColor.B() - 2;
+                    initialColor = UIColor.FromRGB((byte)newR, initialColor.G(), (byte)newB);
 
-                Surface.RenderableSeries.Add(rs);
+                    Surface.RenderableSeries.Add(rs);
+                }
+
+                Surface.ChartModifiers.Add(new SCISeriesSelectionModifier());
             }
-
-            Surface.ChartModifiers.Add(new SCISeriesSelectionModifier());
         }
 
         private static IDataSeries GenerateDataSeries(SCIAxisAlignment alignment, int index)
