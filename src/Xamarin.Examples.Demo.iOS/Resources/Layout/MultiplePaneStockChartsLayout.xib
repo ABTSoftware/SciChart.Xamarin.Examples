@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" id="38" customClass="MultiplePaneStockChartsLayout">
+            <rect key="frame" x="0.0" y="0.0" width="398" height="407"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="46" customClass="SCIChartSurface">
+                    <rect key="frame" x="0.0" y="0.0" width="398" height="107"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="398" id="105"/>
+                        <constraint firstAttribute="height" constant="107" id="106"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="82" customClass="SCIChartSurface">
+                    <rect key="frame" x="0.0" y="107" width="398" height="100"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="398" id="101"/>
+                        <constraint firstAttribute="height" constant="100" id="102"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="85" customClass="SCIChartSurface">
+                    <rect key="frame" x="0.0" y="207" width="398" height="100"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="398" id="97"/>
+                        <constraint firstAttribute="height" constant="100" id="98"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="88" customClass="SCIChartSurface">
+                    <rect key="frame" x="0.0" y="307" width="398" height="100"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="398" id="93"/>
+                        <constraint firstAttribute="height" constant="100" id="94"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="88" secondAttribute="trailing" id="91"/>
+                <constraint firstAttribute="bottom" secondItem="88" secondAttribute="bottom" id="92"/>
+                <constraint firstAttribute="trailing" secondItem="85" secondAttribute="trailing" id="95"/>
+                <constraint firstAttribute="bottom" secondItem="85" secondAttribute="bottom" constant="100" id="96"/>
+                <constraint firstAttribute="trailing" secondItem="82" secondAttribute="trailing" id="99"/>
+                <constraint firstAttribute="trailing" secondItem="46" secondAttribute="trailing" id="103"/>
+                <constraint firstItem="46" firstAttribute="top" secondItem="38" secondAttribute="top" id="104"/>
+                <constraint id="145" firstItem="82" firstAttribute="top" secondItem="46" secondAttribute="bottom"/>
+            </constraints>
+            <connections>
+                <outlet property="MacdSurface" destination="82" id="name-outlet-82"/>
+                <outlet property="PriceSurface" destination="46" id="name-outlet-46"/>
+                <outlet property="RsiSurface" destination="85" id="name-outlet-85"/>
+                <outlet property="VolumeSurface" destination="88" id="name-outlet-88"/>
+            </connections>
+            <point key="canvasLocation" x="-206" y="-287"/>
+        </stackView>
+    </objects>
+    <resources>
+        <image name="Default-568h.png" width="320" height="568"/>
+        <image name="Default-Portrait.png" width="768" height="1004"/>
+        <image name="Default.png" width="320" height="480"/>
+        <image name="Icon-60.png" width="60" height="60"/>
+        <image name="Icon-76.png" width="180" height="180"/>
+        <image name="Icon-Small-40.png" width="40" height="40"/>
+        <image name="Icon-Small.png" width="29" height="29"/>
+        <image name="Annotations" width="120" height="120"/>
+        <image name="Axis" width="120" height="120"/>
+        <image name="DigitalLine" width="120" height="120"/>
+        <image name="ErrorBars" width="120" height="120"/>
+        <image name="Fan" width="120" height="120"/>
+        <image name="Impulse" width="120" height="120"/>
+        <image name="Ohlc" width="120" height="120"/>
+        <image name="StackedBar" width="120" height="120"/>
+        <image name="StackedColumn" width="120" height="120"/>
+        <image name="StackedColumn100" width="120" height="120"/>
+        <image name="Themes" width="120" height="120"/>
+        <image name="ZoomPan" width="120" height="120"/>
+    </resources>
+</document>
