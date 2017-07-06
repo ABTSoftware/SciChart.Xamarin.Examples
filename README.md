@@ -10,10 +10,14 @@ Contains BETA v2.x of SciChart for Xamarin.iOS and Xamarin.Android
  the Xamarin.iOS Bindings source code
  the Xamarin.Android Bindings source code
  the Xamarin.iOS & Android Example code 
+ 
+### NOTE: NuGet Feed Setup 
+
+*Scroll to end of page for NuGet feed setup...*
 
 # SciChart.Xamarin.Examples
 
-BETA! Xamarin Examples for [SciChart](https://www.scichart.com): High Performance Realtime [iOS Chart Library](https://www.scichart.com/ios-chart-features) and [Android Chart Library](https://www.scichart.com/ios-chart-features).
+Xamarin Examples for [SciChart](https://www.scichart.com): High Performance Realtime [iOS Chart Library](https://www.scichart.com/ios-chart-features) and [Android Chart Library](https://www.scichart.com/ios-chart-features).
 
 ![Tooltips in Xamarin Charts](https://www.scichart.com/wp-content/uploads/2017/06/Xamarin-RolloverModifier-Tooltips.png)
 
@@ -32,19 +36,6 @@ _Please ensure you have the latest Stable versions of Xamarin as they can and do
 ![Xamarin Scatter Charts](https://www.scichart.com/wp-content/uploads/2017/06/Xamarin-Scatter-Chart-1.png)
 
 ![Xamarin Heatmap Spectrogram Chart](https://www.scichart.com/wp-content/uploads/2017/06/Xamarin-Heatmap-Chart-.png)
-
-### NOTE: NuGet Feed Setup 
-
-[SciChart.Android](https://www.myget.org/feed/abtsoftware/package/nuget/SciChart.Android) and [SciChart.iOS](https://www.myget.org/feed/abtsoftware/package/nuget/SciChart.iOS) Xamarin binding libraries are hosted by a [MyGet NuGet feed](https://www.myget.org/gallery/abtsoftware). **You will need to setup this NuGet feed before you can build the Xamarin examples**. 
-
-Instructions for setting up the SciChart NuGet feed can be found at [SciChart.com: Getting Nightly Bulkds with NuGet](http://support.scichart.com/index.php?/Knowledgebase/Article/View/17232/37/getting-nightly-builds-with-nuget). 
-
-After that, you can include SciChart packages in your application with the following NuGet Command:
-
-```
-> Install-Package SciChart.iOS // iOS
-> Install-Package SciChart.Android // Android
-```
 
 # Repository Contents
 
@@ -98,6 +89,18 @@ Tutorials are coming soon for our Xamarin.iOS and Xamarin.Android Charts!
 
 SciChart iOS & Android is a commercial chart control with world-class tech support. If you need help integrating SciChart to your Xamarin iOS or Android apps, [Contact Us](https://www.scichart.com/contact-us) and we will do our best to help! 
 
+### NOTE: NuGet Feed Setup 
+
+[SciChart.Android](https://www.myget.org/feed/abtsoftware/package/nuget/SciChart.Android) and [SciChart.iOS](https://www.myget.org/feed/abtsoftware/package/nuget/SciChart.iOS) Xamarin binding libraries are hosted by a [MyGet NuGet feed](https://www.myget.org/gallery/abtsoftware). **You will need to setup this NuGet feed before you can build the Xamarin examples**. 
+
+Instructions for setting up the SciChart NuGet feed can be found at [SciChart.com: Getting Nightly Builds with NuGet](http://support.scichart.com/index.php?/Knowledgebase/Article/View/17232/37/getting-nightly-builds-with-nuget). 
+
+After that, you can include SciChart packages in your application with the following NuGet Command:
+
+```
+> Install-Package SciChart.iOS // iOS
+> Install-Package SciChart.Android // Android
+```
 
 *Enjoy! - @SciChart Team*
 
