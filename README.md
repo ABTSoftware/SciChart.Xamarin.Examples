@@ -42,6 +42,8 @@ _Please ensure you have the latest Stable versions of Xamarin as they can and do
 
 ![Xamarin Stacked Grouped Column Charts](https://www.scichart.com/wp-content/uploads/2017/07/xamarin-dashboard-style.png)
 
+![Xamarin Line Charts](https://www.scichart.com/wp-content/uploads/2017/07/xamarin-performance-demo.png) 
+
 ![Xamarin Scatter Charts](https://www.scichart.com/wp-content/uploads/2017/07/xamarin-scatter-chart.png)
 
 ![Xamarin Heatmap Spectrogram Chart](https://www.scichart.com/wp-content/uploads/2017/07/xamarin-heatmap-chart-showcase.png)
