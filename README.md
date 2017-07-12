@@ -28,7 +28,7 @@ After that, you can include SciChart packages in your application with the follo
 
 Xamarin Examples for [SciChart](https://www.scichart.com): High Performance Realtime [iOS Chart Library](https://www.scichart.com/ios-chart-features) and [Android Chart Library](https://www.scichart.com/ios-chart-features).
 
-![Tooltips in Xamarin Charts](https://www.scichart.com/wp-content/uploads/2017/06/Xamarin-RolloverModifier-Tooltips.png)
+![Xamarin Charts](https://www.scichart.com/wp-content/uploads/2017/06/scichart-iOS-collage-min.png)
 
 Examples are provided for Xamarin.iOS, Xamarin.Android and support Xamarin Studio on OSX, Windows and Visual Studio 2015 or above on Windows. If you are looking for other platforms then please see here:
 
