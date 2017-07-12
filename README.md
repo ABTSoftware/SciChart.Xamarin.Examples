@@ -38,13 +38,13 @@ Examples are provided for Xamarin.iOS, Xamarin.Android and support Xamarin Studi
 
 _Please ensure you have the latest Stable versions of Xamarin as they can and do often release bug fixes for crashes, hangs and the like!_
 
-![Xamarin Stock Charts](https://www.scichart.com/wp-content/uploads/2017/06/Xamarin-Realtime-Ticking-Stock-Chart.png)
+![Xamarin Stock Charts](https://www.scichart.com/wp-content/uploads/2017/07/xamarin-realtime-ticking-stock-charts.png)
 
-![Xamarin Stacked Grouped Column Charts](https://www.scichart.com/wp-content/uploads/2017/06/Xamarin-Stacked-Column-Side-by-Side-Chart.png)
+![Xamarin Stacked Grouped Column Charts](https://www.scichart.com/wp-content/uploads/2017/07/xamarin-dashboard-style.png)
 
-![Xamarin Scatter Charts](https://www.scichart.com/wp-content/uploads/2017/06/Xamarin-Scatter-Chart-1.png)
+![Xamarin Scatter Charts](https://www.scichart.com/wp-content/uploads/2017/07/xamarin-scatter-chart.png)
 
-![Xamarin Heatmap Spectrogram Chart](https://www.scichart.com/wp-content/uploads/2017/06/Xamarin-Heatmap-Chart-.png)
+![Xamarin Heatmap Spectrogram Chart](https://www.scichart.com/wp-content/uploads/2017/07/xamarin-heatmap-chart-showcase.png)
 
 # Repository Contents
 
