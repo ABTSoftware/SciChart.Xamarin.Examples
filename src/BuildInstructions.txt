@@ -1,0 +1,34 @@
+Xamarin.Examples.Deploy.sln Build Instructions
+----------------------------------------------
+
+Xamarin.iOS and Xamarin.Android examples for SciChart - a High Performance Realtime Chart Component. 
+
+Development environment requires:
+
+Windows
+-------
+
+Requires Visual Studio 2015 and Xamarin.iOS 10.3, Xamarin.Android 7 
+ OR Xamarin Studio with Xamarin.Android and Xamarin.iOS 
+
+Requires Android SDK 24,25 and Android NDK 
+Requires Java 8
+Requires Mac Build machine with XCode 8.2
+
+OSX
+---
+
+Requires Xamarin Studio with Xamarin.iOS 10.3, Xamarin.Android 7 and XCode 8.2
+Requires Android SDK 24,25 and Android NDK 
+Requires Java 8
+
+Build Instructions
+------------------
+1. To be able add/update SciChart.iOS/Android Nuget package you should add new Nuget Feed Source (https://www.visualstudio.com/en-us/docs/package/nuget/consume#windows-add-the-feed-to-your-nuget-configuration). 
+Follow this link to get just right feed source you need http://support.scichart.com/index.php?/Knowledgebase/Article/View/17232/37/getting-nightly-builds-with-nuget
+
+2. Install/Update SciChart.iOS/Android package
+
+3. Rebuild Solution
+
+4. Set startup project to Xamarin.Android or Xamarin.iOS demo and run!
