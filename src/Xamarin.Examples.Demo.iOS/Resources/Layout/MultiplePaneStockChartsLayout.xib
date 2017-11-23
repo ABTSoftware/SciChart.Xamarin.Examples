@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="150" customClass="MultiplePaneStockChartsLayout">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <point key="canvasLocation" x="151.7917" y="-455.5"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="46" customClass="SCIChartSurface">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="368"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints/>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" id="213" translatesAutoresizingMaskIntoConstraints="NO" distribution="fillEqually">
+                    <rect key="frame" x="0.0" y="368" width="414" height="368"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" id="175" translatesAutoresizingMaskIntoConstraints="NO" customClass="SCIChartSurface" fixedFrame="YES">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="123"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </view>
+                        <view contentMode="scaleToFill" id="178" translatesAutoresizingMaskIntoConstraints="NO" customClass="SCIChartSurface" fixedFrame="YES">
+                            <rect key="frame" x="0.0" y="123" width="414" height="122"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <subviews/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </view>
+                        <view contentMode="scaleToFill" id="180" translatesAutoresizingMaskIntoConstraints="NO" customClass="SCIChartSurface" fixedFrame="YES">
+                            <rect key="frame" x="0.0" y="245" width="414" height="123"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint id="159" firstItem="46" firstAttribute="top" secondItem="150" secondAttribute="top"/>
+                <constraint id="160" firstItem="46" firstAttribute="leading" secondItem="150" secondAttribute="leading"/>
+                <constraint id="161" firstItem="46" firstAttribute="trailing" secondItem="150" secondAttribute="trailing"/>
+                <constraint id="163" firstItem="150" firstAttribute="bottom" secondItem="46" secondAttribute="bottom" multiplier="2"/>
+                <constraint id="214" firstItem="213" firstAttribute="top" secondItem="46" secondAttribute="bottom"/>
+                <constraint id="216" firstItem="150" firstAttribute="bottom" secondItem="213" secondAttribute="bottom"/>
+                <constraint id="217" firstItem="213" firstAttribute="leading" secondItem="150" secondAttribute="leading"/>
+                <constraint id="218" firstItem="213" firstAttribute="trailing" secondItem="150" secondAttribute="trailing"/>
+            </constraints>
+            <connections>
+                <outlet property="PriceSurface" destination="46" id="name-outlet-46"/>
+                <outlet property="MacdSurface" destination="175" id="name-outlet-175"/>
+                <outlet property="RsiSurface" destination="178" id="name-outlet-178"/>
+                <outlet property="VolumeSurface" destination="180" id="name-outlet-180"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="Annotations" width="120" height="120"/>
+        <image name="Axis" width="120" height="120"/>
+        <image name="DigitalLine" width="120" height="120"/>
+        <image name="ErrorBars" width="120" height="120"/>
+        <image name="Fan" width="120" height="120"/>
+        <image name="Impulse" width="120" height="120"/>
+        <image name="Ohlc" width="120" height="120"/>
+        <image name="StackedBar" width="120" height="120"/>
+        <image name="StackedColumn" width="120" height="120"/>
+        <image name="Themes" width="120" height="120"/>
+        <image name="ZoomPan" width="120" height="120"/>
+        <image name="StackedColumns100" width="120" height="120"/>
+        <image name="GreenArrow" width="32" height="32"/>
+        <image name="RedArrow" width="32" height="32"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedScreenMetrics key="destination" type="retina55"/>
+    </simulatedMetricsContainer>
+</document>
