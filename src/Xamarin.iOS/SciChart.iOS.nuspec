@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <version>$version$</version>
+    <authors>SciChart Ltd</authors>
+    <owners>SciChart Ltd</owners>
+    <id>SciChart.iOS</id>
+    <title>SciChart.iOS</title>
+	<projectUrl>http://www.scichart.com</projectUrl>	
+	<licenseUrl>http://www.scichart.com/scichart-eula</licenseUrl>
+	<releaseNotes>Release Notes found at https://www.scichart.com/category/releases/</releaseNotes>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>SciChart - High Performance WPF,iOS and Android Charts for Scientific and Trading applications. Includes the 2D Charting libraries for Xamarin.iOS</description>
+    <copyright>Copyright © SciChart Ltd 2011-2017</copyright>
+  </metadata>
+  <files>
+    <file src="SciChart.iOS.Charting\bin\release\SciChart.iOS.Charting.dll" target="lib\Xamarin.iOS10" />	
+  </files>
+</package>

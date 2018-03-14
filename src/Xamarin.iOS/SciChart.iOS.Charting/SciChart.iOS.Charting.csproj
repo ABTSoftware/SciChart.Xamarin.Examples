@@ -1,0 +1,446 @@
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6492122C-A917-45EC-AE40-A290ACAF274E}</ProjectGuid>
+    <ProjectTypeGuids>{8FFB629D-F513-41CE-95D2-7ECE97B6EEEC};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SciChart.iOS.Charting</RootNamespace>
+    <AssemblyName>SciChart.iOS.Charting</AssemblyName>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>PublicPrivateKeyFile.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <IPhoneResourcePrefix>Resources;SciChart.framwork</IPhoneResourcePrefix>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+  </ItemGroup>
+  <ItemGroup>
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\DataDistributionCalculators\SCIDataDistributionCalculatorBase.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\DataDistributionCalculators\SCIDataDistributionCalculatorProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\DataDistributionCalculators\SCIUserDefinedDistributionCalculator.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\DataSeries\SCIDataSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\DataSeries\SCIDataSeriesProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\DataSeries\SCIUniformHeatmapDataSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\DataSeries\SCIOhlcDataSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\DataSeries\SCIOhlcDataSeriesProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\DataSeries\SCIOhlcSeriesDataView.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\DataSeries\SCIXyDataSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\DataSeries\SCIXyDataSeriesProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\DataSeries\SCIXySeriesDataView.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\DataSeries\SCIXyyDataSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\DataSeries\SCIXyyDataSeriesProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\DataSeries\SCIXyySeriesDataView.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\DataSeries\SCIXyzDataSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\DataSeries\SCIXyzDataSeriesProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\DataSeries\SCIXyzSeriesDataView.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\SCIAnnotationCollection.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\SCIAxisCollection.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\SCIChartModifierCollection.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCIAxisDragModifierBase.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCIAxisPinchZoomModifier.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCIChartModifierBase.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCIChartModifierProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCICursorModifier.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCICursorModifierStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCIGestureEventsHandlerProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCIGestureModifier.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCILegendItemView.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCILegendItemViewProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCILegendCellStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCILegendModifier.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCILegendItem.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCILegendModifierBase.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCIMultiSurfaceModifier.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCIPinchZoomModifier.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCIRelativeZoomModifierBase.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCIRolloverModifier.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCIRolloverModifierStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCITooltipDataView.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCITooltipModifier.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCITooltipModifierStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCITooltipModifierStyleProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCITooltipView.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCITooltipViewSetupBlock.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCIXAxisDragModifier.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCIYAxisDragModifier.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCIZoomExtentsModifier.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCIZoomPanModifier.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCIZoomPanModifierBase.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\CoordinateCalculators\SCICoordinateCalculatorBase.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\CoordinateCalculators\SCICoordinateCalculatorFactory.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\CoordinateCalculators\SCICoordinateCalculatorProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\CoordinateCalculators\SCIDoubleCoordinateCalculator.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\CoordinateCalculators\SCIFlippedDoubleCoordinateCalculator.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\CoordinateCalculators\SCILogarithmicCoordinateCalculatorProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\CoordinateCalculators\SCILogarithmicDoubleCoordinateCalculator.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCIAxisDeltaProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCIDateDeltaCalculatorProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCIDateTimeDeltaCalculator.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCIDeltaCalculatorProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCIDoubleAxisDelta.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCILogarithmicDeltaCalculator.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCINiceDoubleScale.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCINiceLogScale.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCINiceScaleProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCINiceTimeSpanScale.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCINumericDeltaCalculator.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCINumericDeltaCalculatorBase.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCITimeSpanDelta.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\DeltaCalculators\SCITimeSpanDeltaCalculatorBase.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\LabelProviders\SCIDateTimeLabelProvider.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\LabelProviders\SCILabelProviderBase.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\LabelProviders\SCILabelProviderProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\LabelProviders\SCILogarithmicNumericLabelProvider.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\LabelProviders\SCINumericLabelProvider.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\TickCoordinatesProviders\SCITickCoordinates.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\TickCoordinatesProviders\SCITickCoordinatesProviderDefault.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\TickCoordinatesProviders\SCITickCoordinatesProviderProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\TickProviders\SCIDateTimeTickProvider.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\TickProviders\SCILogarithmicNumericTickProvider.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\TickProviders\SCINumericTickProvider.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\TickProviders\SCITickProviderProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\TickProviders\SCITimeSpanTickProviderBase.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\ViewportManagers\SCIViewportManager.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\ViewportManagers\SCIViewportManagerProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Annotations\SCIAnnotationBase.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Annotations\SCIAnnotationProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Annotations\SCIAxisMarkerAnnotation.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Annotations\SCIAxisMarkerAnnotationStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Annotations\SCIBoxAnnotation.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Annotations\SCIBoxAnnotationStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Annotations\SCILineAnnotation.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Annotations\SCITextAnnotation.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Annotations\SCITextAnnotationStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Axes\SCIAxis2DProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Axes\SCIAxisArea.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Axes\SCIAxisAreaSizeSynchronization.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Axes\SCIAxisBase.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Axes\SCIAxisCore.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Axes\SCIAxisCoreProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Axes\SCIAxisDataView.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Axes\SCIAxisInfo.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Axes\SCIAxisInteractivityHelper.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Axes\SCIAxisInteractivityHelperProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Axes\SCIAxisParams.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Axes\SCIAxisRangeSynchronization.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Axes\SCIAxisStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Axes\SCICategoryDateTimeAxis.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Axes\SCICategoryNumericAxis.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Axes\SCIDateTimeAxis.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Axes\SCIDefaultTickLabel.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Axes\SCILogarithmicAxisProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Axes\SCILogarithmicNumericAxis.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Axes\SCINumericAxis.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Axes\SCINumericTickLabel.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Axes\SCIRangeChangedCallbackHelper.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Axes\SCITickLabelProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Axes\SCITimeSpanAxisBase.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\PointMarkers\SCICrossPointMarker.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\PointMarkers\SCIEllipsePointMarker.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\PointMarkers\SCIPointMarkerBase.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\PointMarkers\SCIPointMarkerClusterizer.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\PointMarkers\SCIPointMarkerProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\PointMarkers\SCISpritePointMarker.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\PointMarkers\SCISquarePointMarker.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\PointMarkers\SCITrianglePointMarker.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\Data\SCIRenderPassData.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\Data\SCIRenderPassDataProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\HitTest\SCIAxisHitTestProvider.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\HitTest\SCIBandHitTestProvider.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\HitTest\SCIBubbleHitTestProvider.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\HitTest\SCICandlestickHitTestProvider.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\HitTest\SCIColumnHitTestProvider.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\HitTest\SCIHeatMapHitTestProvider.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\HitTest\SCIHitTestProviderBase.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\HitTest\SCIHitTestProviderProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\HitTest\SCILineHitTestProvider.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\HitTest\SCIMountainHitTestProvider.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\HitTest\SCIOhlcHitTestProvider.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\HitTest\SCIOhlcSeriesInfo.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\HitTest\SCIPointMarkerHitTestProvider.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\HitTest\SCISeriesInfo.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\HitTest\SCIStackedMountainHitTestProvider.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\HitTest\SCIXySeriesInfo.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\HitTest\SCIXyySeriesInfo.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\HitTest\SCIXyzSeriesInfo.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\PaletteProviders\SCIPaletteProvider.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\PaletteProviders\SCIPaletteProviderProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIFastBandRenderableSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIBandSeriesStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIBubbleRenderableSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIBubbleSeriesStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCICandlestickSeriesStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIColumnSeriesStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIErrorBarsSeriesStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIFastCandlestickRenderableSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIFastColumnRenderableSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIFastFixedErrorBarsRenderableSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIFastImpulseRenderableSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIFastLineRenderableSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIFastMountainRenderableSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIFastOhlcRenderableSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIFastUniformHeatmapRenderableSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIUniformHeatmapSeriesStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIImpulseSeriesStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCILineSeriesStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIMountainSeriesStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIOhlcPointSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIOhlcSeriesStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIPointSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIPointSeriesProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIRenderableSeriesBase.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIRenderableSeriesProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIScatterSeriesStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIStackedColumnRenderableSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIStackedSeriesCollectionBase.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIHorizontallyStackedColumnsCollection.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIStackedMountainRenderableSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIStackedRenderableSeriesProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIVerticallyStackedColumnsCollection.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIXyScatterRenderableSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIXyyPointSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIXyzPointSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\SCIChartSurface.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\SCIChartSurfaceProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\SCIChartSurfaceView.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\SCIChartSurfaceViewBase.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Core\Framework\Delegates.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Core\Framework\SCICallbackHandler.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Core\Framework\SCICallbackHandlerProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Core\Framework\SCICallbackHelper.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Core\Framework\SCICallbackHelperProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Core\Framework\SCIInvalidatableElementProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Data\Model\ArrayController\SCIArrayController.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Data\Model\ArrayController\SCIArrayController2D.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Data\Model\ArrayController\SCIArrayControllerFIFO.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Data\Model\ArrayController\SCIArrayControllerProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Data\Model\Ranges\SCIDateRange.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Data\Model\Ranges\SCIDoubleRange.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Data\Model\Ranges\SCIFloatRange.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Data\Model\Ranges\SCIIndexRange.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Data\Model\Ranges\SCIIntegerRange.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Data\Model\Ranges\SCIRangeProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCIBrush2DProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCIBrushColoredTexture.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCIBrushLinearGradient.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCIBrushPalettedTexture.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCIBrushSolid.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCIBrushTexture.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCIDrawableProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Annotations\SCILineAnnotationStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCILinearGradientBrushProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCIOpenGLBrushProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCIOpenGLRenderSurface.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCIPathColorProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCIPen2DProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCIPenLinearGradient.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCIPenSolid.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCIRenderContext2DProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCIRenderSurfaceBase.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCIRenderSurfaceCallbackDelegateProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCIRenderSurfaceProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCIRenderSurfaceStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCIStyleProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCITextFormattingStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCITexturedBrushProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCITextureOpenGL.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\UIColor_SCIConvertToHexColorCode.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\DataSeries\SCIUniformHeatmapDataSeriesProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCISeriesSelectionModifier.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Annotations\SCILineAnnotationLabel.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Annotations\SCIAnnotationLabelStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Annotations\SCIHorizontalLineAnnotation.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Annotations\SCIVerticalLineAnnotation.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Themes\SCIThemeProviderProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Themes\SCIThemeColorProvider.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Themes\SCIThemeableProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIVerticallyStackedMountainsCollection.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\LabelProviders\SCICategoryDateTimeLabelProvider.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Numerics\LabelProviders\SCICategoryNumericLabelProvider.cs" />
+    <Compile Include="Extras\Charting\Model\DataSeries\SCIDataSeries.cs" />
+    <Compile Include="Extras\Charting\Model\DataSeries\XyDataSeries.cs" />
+    <Compile Include="Extras\Charting\Visuals\Annotations\SCIAxisMarkerAnnotation.cs" />
+    <Compile Include="Extras\Charting\Visuals\Annotations\SCIBoxAnnotation.cs" />
+    <Compile Include="Extras\Charting\Visuals\Annotations\SCILineAnnotation.cs" />
+    <Compile Include="Extras\Charting\Visuals\Annotations\SCITextAnnotation.cs" />
+    <Compile Include="Extras\Core\Model\ValuesFactory.cs" />
+    <Compile Include="Extras\Core\Utils\ArrayExtensions.cs" />
+    <Compile Include="Extras\Core\Utils\ComparableUtil.cs" />
+    <Compile Include="Extras\Data\Model\Ranges\SCIDateRange.cs" />
+    <Compile Include="Extras\Data\Model\Ranges\SCIDoubleRange.cs" />
+    <Compile Include="Extras\Data\Model\Ranges\SCIFloatRange.cs" />
+    <Compile Include="Extras\Data\Model\Ranges\SCIIndexRange.cs" />
+    <Compile Include="Extras\Data\Model\Ranges\SCIIntegerRange.cs" />
+    <Compile Include="Extras\Drawing\Brushes\TextureOpenGL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SciChart.linkwith.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\SCIRenderableSeriesCollection.cs" />
+    <Compile Include="Extras\Charting\Model\SCIRenderableSeriesCollection.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCIBrushStyleProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCISolidBrushStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCILinearGradientBrushStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCITextureBrushStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCISolidPenStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCIPenStyleProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCILinearGradientPenStyle.cs" />
+    <Compile Include="Extras\Charting\Model\SCIAxisCollection.cs" />
+    <Compile Include="Extras\Data\Model\Ranges\ISCIRangeProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\Data\SCIRenderPassInfo.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Core\Observable\SCIObservableCollection.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Core\Observable\SCICollectionChangedEventArgs.cs" />
+    <Compile Include="Extras\Charting\Model\SCIChartModifierCollection.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIBaseColumnRenderableSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIFastErrorBarsRenderableSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIBaseMountainRenderableSeries.cs" />
+    <Compile Include="Extras\Core\Observable\Enumerator.cs" />
+    <Compile Include="Extras\Charting\Model\SCIAnnotationCollection.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\SCIChartHeatmapColourMap.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\SCIChartControllerProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\DataSeries\SCIHlDataSeriesProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\DataSeries\SCIHlDataSeries.cs" />
+    <ObjcBindingCoreSource Include="Structs\Enums.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Annotations\SCIAnchorPointAnnotation.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Annotations\SCICustomAnnotation.cs" />
+    <Compile Include="Extras\Charting\Visuals\Annotations\SCICustomAnnotation.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Annotations\SCICustomAnnotationStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\DataSeries\SCICollectionObserver.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Data\Model\Ranges\SCIRangeFactory.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCIPenStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Core\Utility\Touch\SCIGestureController.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCIPanModifier.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIHlcPointSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\PointMarkers\SCICoreGraphicsPointMarker.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\Annotations\SCIAxisMarkerAnnotationBase.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCICustomRenderableSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCIPenDashed.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCIBrushStyle.cs" />
+    <ObjcBindingCoreSource Include="Structs\Structs.cs" />
+    <Compile Include="Extras\Core\Utility\SCIGenericTypeMapperHelper.cs" />
+    <Compile Include="Extras\Charting\Model\DataSeries\XyyDataSeries.cs" />
+    <Compile Include="Extras\Charting\Model\DataSeries\XyzDataSeries.cs" />
+    <Compile Include="Extras\Charting\Model\DataSeries\HlDataSeries.cs" />
+    <Compile Include="Extras\Charting\Model\DataSeries\OhlcDataSeries.cs" />
+    <Compile Include="Extras\Charting\Model\DataSeries\UniformHeatmapDataSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Core\Framework\SCIDisposableProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Core\Framework\SCIDisposableBase.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Core\Framework\SCISuspendableProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Core\Framework\SCIUpdateSuspenderProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Core\Framework\SCIUpdateSuspender.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Themes\SCIThemeManager.cs" />
+    <Compile Include="Extras\Charting\Themes\SCIThemeManager.cs" />
+    <Compile Include="..\..\Xamarin.Examples\AssemblyInfoCommon.cs">
+      <Link>Properties\AssemblyInfoCommon.cs</Link>
+    </Compile>
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\SCIPieChartSurface.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\SCIPieLayoutManager.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCIPieLegendItem.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCIPieLegendModifier.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCIPieSelectionModifier.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCIPieSeriesDataView.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Modifiers\SCIPieTooltipModifier.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\SCIPieRenderableSeriesCollection.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Model\SCIPieSegmentCollection.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIPieSegment.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIPieLayoutPassData.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIPieRenderableSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIPieRenderableSeriesProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIPieRenderPassData.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\SCIDonutRenderableSeries.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\HitTest\SCIPieHitTestInfo.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\HitTest\SCIPieHitTestProvider.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\HitTest\SCIPieSeriesInfo.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Drawing\SCIRadialGradientBrushStyle.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\Animation\SCIAnimation.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\Animation\SCIAnimationContextInvalidate.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\Animation\SCIAnimationsController.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\Animation\SCIBandRenderableSeriesAnimationProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\Animation\SCIBubbleRenderableSeriesAnimationProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\Animation\SCICandleStickRenderableSeriesAnimationProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\Animation\SCIColumnRenderableSeriesAnimationProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\Animation\SCIDrawLineRenderableSeriesAnimation.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\Animation\SCIErrorBarsRenderableSeriesAnimationProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\Animation\SCIFadeRenderableSeriesAnimation.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\Animation\SCIFixedErrorBarsRenderableSeriesAnimationProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\Animation\SCIHlcPointSeriesAnimatorProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\Animation\SCIMountainRenderableSeriesAnimationProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\Animation\SCIOhlcPointSeriesAnimatorProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\Animation\SCIOhlcRenderableSeriesAnimationProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\Animation\SCIRenderableSeriesAnimationProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\Animation\SCIScaleRenderableSeriesAnimation.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\Animation\SCIScatterRenderableSeriesAnimationProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\Animation\SCIStackedSeriesCollectionAnimnationProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\Animation\SCIWaveRenderableSeriesAnimation.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\Animation\SCIXyyPointSeriesAnimatorProtocol.cs" />
+    <ObjcBindingApiDefinition Include="ApiDefinition\Charting\Visuals\RenderableSeries\Animation\SCIXyzPointSeriesAnimatorProtocol.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <NativeReference Include="SciChart.framework">
+      <Kind>Framework</Kind>
+      <SmartLink>False</SmartLink>
+    </NativeReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ApiDefinition\Core\Observable\" />
+    <Folder Include="Extras\Core\Observable\" />
+    <Folder Include="ApiDefinition\Core\Utility\" />
+    <Folder Include="ApiDefinition\Core\Utility\Touch\" />
+    <Folder Include="Extras\Core\Utility\" />
+    <Folder Include="Extras\Charting\Themes\" />
+    <Folder Include="ApiDefinition\Charting\Visuals\RenderableSeries\Animation\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
+  <!-- Properties required for pre-build step of copying SciChart.Framework -->
+  <PropertyGroup>
+    <SciChartFrameworkSourceDir>$(ProjectDir)..\..\SciChart.framework</SciChartFrameworkSourceDir>
+    <SciChartFrameworkDestinationDir>$(ProjectDir)SciChart.framework</SciChartFrameworkDestinationDir>
+    <SciChartFrameworkSvnDir>$(ProjectDir)SciChart.framework\.svn</SciChartFrameworkSvnDir>
+  </PropertyGroup>
+  <!-- Before build target, copies SciChart.Framework from root dir to SciChart.iOS.Charting\SciChart.Framework -->
+  <!-- Also deletes .svn dir -->
+  <Target Name="BeforeBuild">
+    <CreateItem Include="$(SciChartFrameworkSourceDir)\**\*.*">
+      <Output TaskParameter="Include" ItemName="FrameworkFilesToCopy" />
+    </CreateItem>
+    <RemoveDir Directories="$(ProjectDir)SciChart.framework" />
+    <Copy SourceFiles="@(FrameworkFilesToCopy)" DestinationFiles="@(FrameworkFilesToCopy-&gt;'$(SciChartFrameworkDestinationDir)\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <RemoveDir Directories="$(ProjectDir)SciChart.framework\.svn" />
+  </Target>
+  <PropertyGroup>
+    <PreBuildEvent></PreBuildEvent>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <TextStylePolicy FileWidth="120" TabWidth="4" IndentWidth="4" RemoveTrailingWhitespace="True" NoTabsAfterNonTabs="False" EolMarker="Native" TabsToSpaces="True" scope="text/plain" />
+        </Policies>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+</Project>
