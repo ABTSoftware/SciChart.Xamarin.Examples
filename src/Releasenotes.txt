@@ -1,4 +1,0 @@
-SCICHART©® Release Notes
-
-For release notes and what's new in SciChart Xamarin, please see 
-http://www.scichart.com/category/xamarin/
