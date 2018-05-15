@@ -1,5 +1,6 @@
 ﻿using UIKit;
 using System;
+using Foundation;
 using SciChart.Examples.Demo.Fragments.Base;
 using SciChart.iOS.Charting;
 using Xamarin.Examples.Demo.iOS.Resources.Layout;
@@ -130,7 +131,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
     {
         private readonly string[] _xLabels = { "2000", "2010", "2014", "2050" };
 
-        public override string FormatLabel(SCIGenericType dataValue)
+		public override NSAttributedString FormatLabel(SCIGenericType dataValue)
         {
             var i = dataValue.intData;
             var result = "";
@@ -138,10 +139,10 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             {
                 result = _xLabels[i];
             }
-            return result;
+			return new NSAttributedString(result);
         }
 
-        public override string FormatCursorLabel(SCIGenericType dataValue)
+        public override NSAttributedString FormatCursorLabel(SCIGenericType dataValue)
         {
             var i = dataValue.intData;
             string result;
@@ -157,7 +158,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             {
                 result = _xLabels[3];
             }
-            return result;
+			return new NSAttributedString(result);
         }
     }
 }

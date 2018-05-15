@@ -4108,10 +4108,10 @@ namespace Xamarin.Examples.Demo.Droid
 			public const int Example_Theme_Provider_Chart_Fragment = 2130903093;
 			
 			// aapt resource value: 0x7f030036
-			public const int legend_item = 2130903094;
+			public const int horizontal_legend_placeholder_layout = 2130903094;
 			
 			// aapt resource value: 0x7f030037
-			public const int legend_placeholder_layout = 2130903095;
+			public const int legend_item = 2130903095;
 			
 			// aapt resource value: 0x7f030038
 			public const int MainView = 2130903096;
@@ -4208,6 +4208,9 @@ namespace Xamarin.Examples.Demo.Droid
 			
 			// aapt resource value: 0x7f030057
 			public const int text_annotation_layout = 2130903127;
+			
+			// aapt resource value: 0x7f030058
+			public const int vertical_legend_placeholder_layout = 2130903128;
 			
 			static Layout()
 			{

@@ -101,7 +101,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         private class PricePaneModel : BasePaneModel
         {
-            public PricePaneModel(PriceSeries prices) : base(PRICES, "$%.4f", true)
+			public PricePaneModel(PriceSeries prices) : base(PRICES, "$0.0000", true)
             {
                 var stockPrices = new OhlcDataSeries<DateTime, double> { SeriesName = "EUR/USD" };
                 stockPrices.Append(prices.TimeData, prices.OpenData, prices.HighData, prices.LowData, prices.CloseData);
@@ -152,15 +152,8 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         private class VolumePaneModel : BasePaneModel
         {
-            public VolumePaneModel(PriceSeries prices) : base(VOLUME, "", false)
+			public VolumePaneModel(PriceSeries prices) : base(VOLUME, "###E+0", false)
             {
-                YAxis.NumberFormatter = new NSNumberFormatter
-                {
-                    MaximumIntegerDigits = 3,
-                    NumberStyle = NSNumberFormatterStyle.Scientific,
-                    ExponentSymbol = @"E+"
-                };
-
                 var volumePrices = new XyDataSeries<DateTime, double> { SeriesName = "Volume" };
                 volumePrices.Append(prices.TimeData, prices.VolumeData.Select(x => (double)x));
                 AddRenderableSeries(new SCIFastColumnRenderableSeries
@@ -181,7 +174,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         private class RsiPaneModel : BasePaneModel
         {
-            public RsiPaneModel(PriceSeries prices) : base(RSI, "%.1f", false)
+			public RsiPaneModel(PriceSeries prices) : base(RSI, "0.0", false)
             {
                 var rsiSeries = new XyDataSeries<DateTime, double> { SeriesName = "RSI" };
                 var xData = prices.TimeData;
@@ -200,7 +193,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
 
         private class MacdPaneModel : BasePaneModel
         {
-            public MacdPaneModel(PriceSeries prices) : base(MACD, "%.2f", false)
+			public MacdPaneModel(PriceSeries prices) : base(MACD, "0.00", false)
             {
                 var macdPoints = prices.CloseData.Macd(12, 25, 9);
 
