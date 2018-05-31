@@ -33,7 +33,7 @@ namespace Xamarin.Examples.Demo.iOS
 
             var legendModifier = new SCIPieLegendModifier();
             legendModifier.Position = SCILegendPosition.Bottom;
-            legendModifier.PieSeries = donutSeries;
+			legendModifier.SourceSeries = donutSeries;
 
             Surface.ChartModifiers.Add(legendModifier);
             Surface.ChartModifiers.Add(new SCIPieSelectionModifier());

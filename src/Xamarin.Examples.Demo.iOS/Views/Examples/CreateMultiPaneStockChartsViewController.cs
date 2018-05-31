@@ -64,7 +64,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
                     new SCIPinchZoomModifier { Direction = SCIDirection2D.XDirection },
                     new SCIZoomPanModifier(),
                     new SCIZoomExtentsModifier(),
-                    new SCILegendModifier { ShowCheckBoxes = false, StyleOfItemCell = new SCILegendCellStyle() { SeriesNameFont = UIFont.FromName("Helvetica", 10f) } }
+                    new SCILegendModifier { ShowCheckBoxes = false }
                 };
             }
         }
