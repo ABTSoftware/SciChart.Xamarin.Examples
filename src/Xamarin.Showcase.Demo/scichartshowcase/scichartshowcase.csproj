@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -93,43 +93,11 @@
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.2.4.0.38779\lib\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
-    <Reference Include="SciChart.iOS.Charting">
-      <HintPath>..\packages\SciChart.iOS.2.0.1.527\lib\xamarin-ios\SciChart.iOS.Charting.dll</HintPath>
-    </Reference>
-    <Reference Include="SciChart.Android.Charting">
-      <HintPath>..\packages\SciChart.Android.2.0.1.527\lib\xamarin-android\SciChart.Android.Charting.dll</HintPath>
-    </Reference>
-    <Reference Include="SciChart.Android.Core">
-      <HintPath>..\packages\SciChart.Android.2.0.1.527\lib\xamarin-android\SciChart.Android.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="SciChart.Android.Data">
-      <HintPath>..\packages\SciChart.Android.2.0.1.527\lib\xamarin-android\SciChart.Android.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="SciChart.Android.Drawing">
-      <HintPath>..\packages\SciChart.Android.2.0.1.527\lib\xamarin-android\SciChart.Android.Drawing.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Extensions\" />
-    <Folder Include="Resources\" />
-    <Folder Include="ShowcaseListPage\" />
-    <Folder Include="Showcases\" />
-    <Folder Include="Showcases\AudioAnalyzer\" />
-    <Folder Include="Behaviors\" />
-    <Folder Include="Showcases\Medical\" />
-    <Folder Include="CustomViews\" />
-    <Folder Include="Services\" />
-    <Folder Include="Services\AudioService\" />
-    <Folder Include="CustomViews\Data\" />
-    <Folder Include="CustomViews\Data\DataSeries\" />
-    <Folder Include="CustomViews\Visuals\" />
-    <Folder Include="CustomViews\Visuals\Axes\" />
-    <Folder Include="CustomViews\Data\Ranges\" />
-    <Folder Include="CustomViews\RenderableSeries\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.4.0.38779\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.4.0.38779\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />
 </Project>
