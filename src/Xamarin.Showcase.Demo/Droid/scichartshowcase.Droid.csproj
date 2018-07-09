@@ -39,18 +39,6 @@
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SciChart.Android.Charting, Version=2.0.0.453, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL">
-      <HintPath>..\packages\SciChart.Android.2.1.0.769\lib\MonoAndroid440\SciChart.Android.Charting.dll</HintPath>
-    </Reference>
-    <Reference Include="SciChart.Android.Core, Version=2.0.0.453, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL">
-      <HintPath>..\packages\SciChart.Android.2.1.0.769\lib\MonoAndroid440\SciChart.Android.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="SciChart.Android.Data, Version=2.0.0.453, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL">
-      <HintPath>..\packages\SciChart.Android.2.1.0.769\lib\MonoAndroid440\SciChart.Android.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="SciChart.Android.Drawing, Version=2.0.0.453, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL">
-      <HintPath>..\packages\SciChart.Android.2.1.0.769\lib\MonoAndroid440\SciChart.Android.Drawing.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -93,6 +81,18 @@
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.2.4.0.38779\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="SciChart.Android.Charting">
+      <HintPath>..\packages\SciChart.Android.2.1.0.566\lib\MonoAndroid440\SciChart.Android.Charting.dll</HintPath>
+    </Reference>
+    <Reference Include="SciChart.Android.Core">
+      <HintPath>..\packages\SciChart.Android.2.1.0.566\lib\MonoAndroid440\SciChart.Android.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SciChart.Android.Data">
+      <HintPath>..\packages\SciChart.Android.2.1.0.566\lib\MonoAndroid440\SciChart.Android.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="SciChart.Android.Drawing">
+      <HintPath>..\packages\SciChart.Android.2.1.0.566\lib\MonoAndroid440\SciChart.Android.Drawing.dll</HintPath>
     </Reference>
     <Reference Include="AForge">
       <HintPath>..\packages\AForge.2.2.5\lib\AForge.dll</HintPath>

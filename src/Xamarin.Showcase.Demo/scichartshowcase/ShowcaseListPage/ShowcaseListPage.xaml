@@ -5,10 +5,13 @@
             <ListView RowHeight="80" x:Name="ShowcasesListView">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ImageCell 
-                            Text="{Binding Name}" 
-                            Detail="{Binding Description}" 
-                            ImageSource="{x:Null}"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Image />
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="{Binding Name}" FontSize="18" />
+                                <Label Text="{Binding Description}" FontSize="14" />
+                            </StackLayout>
+                        </StackLayout>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

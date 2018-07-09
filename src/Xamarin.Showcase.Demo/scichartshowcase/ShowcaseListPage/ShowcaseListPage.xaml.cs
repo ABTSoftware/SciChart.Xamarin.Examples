@@ -13,7 +13,9 @@ namespace scichartshowcase.ShowcaseListPage
         public ShowcaseListPage()
         {
             InitializeComponent();
-            
+
+            ShowcasesListView.ItemsSource = listViewDataSource;
+
             listViewDataSource.Add(new Showcase
             {
                 Name = "Audio Analyzer",
@@ -30,11 +32,9 @@ namespace scichartshowcase.ShowcaseListPage
 
             ShowcasesListView.ItemTapped += (sender, e) =>
             {
-                var viewCell = e.Item as Showcase;
+                var viewCell = sender as Showcase;
                 Navigation.PushAsync((Page)Activator.CreateInstance(viewCell.ContentPage));
             };
-
-            ShowcasesListView.ItemsSource = listViewDataSource;
         }
     }
 }

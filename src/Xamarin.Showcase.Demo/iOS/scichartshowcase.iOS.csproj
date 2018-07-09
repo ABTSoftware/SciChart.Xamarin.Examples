@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Xamarin.Forms.2.4.0.38779\build\netstandard1.0\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.2.4.0.38779\build\netstandard1.0\Xamarin.Forms.props')" />
   <PropertyGroup>
@@ -95,9 +95,6 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SciChart.iOS.Charting, Version=2.0.0.453, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL">
-      <HintPath>..\packages\SciChart.iOS.2.1.0.769\lib\Xamarin.iOS10\SciChart.iOS.Charting.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -121,6 +118,9 @@
     <Reference Include="AForge.Math">
       <HintPath>..\packages\AForge.Math.2.2.5\lib\AForge.Math.dll</HintPath>
     </Reference>
+    <Reference Include="SciChart.iOS.Charting">
+      <HintPath>..\packages\SciChart.iOS.2.1.0.566\lib\Xamarin.iOS10\SciChart.iOS.Charting.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\scichartshowcase\scichartshowcase.csproj">
@@ -130,28 +130,31 @@
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
-      <Visible>false</Visible>
+      <InProject>false</InProject>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\Contents.json">
-      <Visible>false</Visible>
+      <InProject>false</InProject>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\Banner.imageset\Banner.png">
-      <Visible>false</Visible>
+      <InProject>false</InProject>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\Banner.imageset\Contents.json">
-      <Visible>false</Visible>
+      <InProject>false</InProject>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\scichart-logo-ret1.imageset\Contents.json">
-      <Visible>false</Visible>
+      <InProject>false</InProject>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\scichart-logo-ret1.imageset\scichart-logo-ret1.png">
-      <Visible>false</Visible>
+      <InProject>false</InProject>
     </ImageAsset>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Resources\" />
+    <Folder Include="Renderers\" />
+    <Folder Include="DependencyServices\" />
+    <Folder Include="DependencyServices\AudioService\" />
     <Folder Include="Assets.xcassets\Banner.imageset\" />
     <Folder Include="Assets.xcassets\scichart-logo-ret1.imageset\" />
-    <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />

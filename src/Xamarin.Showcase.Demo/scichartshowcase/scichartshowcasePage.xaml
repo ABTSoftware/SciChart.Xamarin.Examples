@@ -22,6 +22,6 @@ Where can I get it?
                 </Label>
             </ScrollView>
         </StackLayout>
-        <Button x:Name="SkipButton" Text="Skip" HorizontalOptions="End" VerticalOptions="End" Grid.Row="1" Margin="0" />
+        <Button x:Name="SkipButton" Text="Skip" HorizontalOptions="End" VerticalOptions="End" Grid.Row="1" Margin="10" />
     </Grid>
 </ContentPage>
