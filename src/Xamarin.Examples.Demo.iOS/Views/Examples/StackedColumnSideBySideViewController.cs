@@ -104,7 +104,7 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             animation.StartAfterDelay(0.3f);
             columnsCollection.AddAnimation(animation);
 
-            var legendModifier = new SCILegendModifier { ShowCheckBoxes = false, StyleOfItemCell = new SCILegendCellStyle { SeriesNameFont = UIFont.FromName("Helvetica", 10f), SeriesNameTextColor = UIColor.White } };
+            var legendModifier = new SCILegendModifier { ShowCheckBoxes = false };
 
             using (Surface.SuspendUpdates())
             {
