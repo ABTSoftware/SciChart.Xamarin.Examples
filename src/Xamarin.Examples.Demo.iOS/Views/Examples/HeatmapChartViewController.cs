@@ -1,4 +1,6 @@
 ﻿using System;
+using UIKit;
+using Foundation;
 using System.Collections.Generic;
 using System.Linq;
 using System.Timers;
@@ -57,16 +59,15 @@ namespace Xamarin.Examples.Demo.iOS.Views.Examples
             var xAxis = new SCINumericAxis();
             var yAxis = new SCINumericAxis();
 
-            float[] coords = { 0, 0.2f, 0.4f, 0.6f, 0.8f, 1 };
-            uint[] colors = { 0xFF0000FF, 0xFF6495ed, 0xFF006400, 0xFF7FFF00, 0xFFFFFF00, 0xFFFF0000 };
-            var textureOpenGl = new SCITextureOpenGL(coords, colors, colors.Length);
+            var stops = new NSNumber[] { 0, 0.2f, 0.4f, 0.6f, 0.8f, 1 };
+            var colors = new UIColor[] { 0xFF0000FF.ToColor(), 0xFF6495ed.ToColor(), 0xFF006400.ToColor(), 0xFF7FFF00.ToColor(), 0xFFFFFF00.ToColor(), 0xFFFF0000.ToColor() };
 
             var renderSeries = new SCIFastUniformHeatmapRenderableSeries
             {
                 DataSeries = _dataSeries,
                 Minimum = 0,
                 Maximum = 200,
-                ColorMap = textureOpenGl
+                ColorMap = new SCIColorMap(colors, stops)
             };
 
             Surface.XAxes.Add(xAxis);
