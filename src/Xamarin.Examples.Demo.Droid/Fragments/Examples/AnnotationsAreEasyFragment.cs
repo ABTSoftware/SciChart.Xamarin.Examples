@@ -1,5 +1,4 @@
 ﻿using Android.Content;
-using Android.Graphics;
 using Android.Util;
 using Android.Views;
 using SciChart.Charting.Model;
@@ -9,9 +8,11 @@ using SciChart.Charting.Visuals.Annotations;
 using SciChart.Charting.Visuals.Axes;
 using SciChart.Data.Model;
 using SciChart.Drawing.Common;
-using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo;
 using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
+using Android.Graphics;
+using Color = System.Drawing.Color;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
@@ -114,7 +115,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                         Y1Value = 4d,
                         X2Value = 2d,
                         Y2Value = 6d,
-                        Stroke = new SolidPenStyle(Activity, Color.Argb(0xFF, 0x55, 0x55, 0x55), thickness: 2)
+                        Stroke = new SolidPenStyle(Activity, Color.FromArgb(0xFF, 0x55, 0x55, 0x55), thickness: 2)
                     },
                     new LineArrowAnnotation(Activity)
                     {
@@ -122,7 +123,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                         Y1Value = 3.8,
                         X2Value = 2.5,
                         Y2Value = 6d,
-                        Stroke = new SolidPenStyle(Activity, Color.Argb(0xFF, 0x55, 0x55, 0x55), thickness: 2)
+                        Stroke = new SolidPenStyle(Activity, Color.FromArgb(0xFF, 0x55, 0x55, 0x55), thickness: 2)
                     },
 
                     // Boxes

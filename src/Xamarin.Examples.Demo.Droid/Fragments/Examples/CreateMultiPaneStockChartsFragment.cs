@@ -13,8 +13,8 @@ using SciChart.Charting.Visuals.RenderableSeries;
 using SciChart.Charting.Visuals.Rendering;
 using SciChart.Data.Model;
 using SciChart.Drawing.Common;
-using SciChart.Examples.Demo.Data;
-using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo.Data;
+using Xamarin.Examples.Demo;
 using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
@@ -68,15 +68,16 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     new ModifierGroup
                     {
                         MotionEventGroup = "ModifiersSharedEventsGroup",
+                        ReceiveHandledEvents = true,
                         ChildModifiers = new ChartModifierCollection
                         {
-                            new XAxisDragModifier {DragMode = AxisDragModifierBase.AxisDragMode.Pan, ClipModeX = ClipMode.StretchAtExtents}.WithReceiveHandledEvents(true),
-                            new PinchZoomModifier {Direction = Direction2D.XDirection}.WithReceiveHandledEvents(true),
-                            new ZoomPanModifier().WithReceiveHandledEvents(true),
-                            new ZoomExtentsModifier().WithReceiveHandledEvents(true),
-                            new LegendModifier(Activity).WithShowCheckBoxes(false),
+                            new XAxisDragModifier {DragMode = AxisDragModifierBase.AxisDragMode.Pan, ClipModeX = ClipMode.StretchAtExtents, ReceiveHandledEvents = true },
+                            new PinchZoomModifier {Direction = Direction2D.XDirection, ReceiveHandledEvents = true },
+                            new ZoomPanModifier() { ReceiveHandledEvents = true },
+                            new ZoomExtentsModifier() { ReceiveHandledEvents = true },
+                            new LegendModifier(Activity){ ReceiveHandledEvents = true },
                         }
-                    }.WithReceiveHandledEvents(true)
+                    }
                 };
             }
             _verticalGroup.AddSurfaceToGroup(surface);
@@ -127,13 +128,13 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 AddRenderableSeries(new FastLineRenderableSeries {DataSeries = maHigh, StrokeStyle = new SolidPenStyle(0xFF33DD33, 1f.ToDip(context)), YAxisId = PRICES});
 
                 var priceMarker = new AxisMarkerAnnotation(context) {Y1 = (Java.Lang.IComparable)stockPrices.YValues.Get(stockPrices.Count - 1), YAxisId = PRICES};
-                priceMarker.SetBackgroundColor(0xFFFF3333.ToColor());
+                priceMarker.SetBackgroundColor(0xFFFF3333.ToAndroidColor());
 
                 var maLowMarker = new AxisMarkerAnnotation(context) {Y1 = (Java.Lang.IComparable)maLow.YValues.Get(maLow.Count - 1), YAxisId = PRICES};
-                maLowMarker.SetBackgroundColor(0xFFFF3333.ToColor());
+                maLowMarker.SetBackgroundColor(0xFFFF3333.ToAndroidColor());
 
                 var maHighMarker = new AxisMarkerAnnotation(context) {Y1 = (Java.Lang.IComparable)maHigh.YValues.Get(maHigh.Count - 1), YAxisId = PRICES};
-                maHighMarker.SetBackgroundColor(0xFF33DD33.ToColor());
+                maHighMarker.SetBackgroundColor(0xFF33DD33.ToAndroidColor());
 
                 Annotations.Add(priceMarker);
                 Annotations.Add(maLowMarker);

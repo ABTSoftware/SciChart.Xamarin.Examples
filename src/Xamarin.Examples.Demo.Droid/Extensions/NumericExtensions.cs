@@ -16,5 +16,10 @@ namespace Xamarin.Examples.Demo.Droid.Extensions
             var dipValue = TypedValue.ApplyDimension(ComplexUnitType.Dip, value, context.Resources.DisplayMetrics);
             return (int) Math.Round(dipValue);
         }
+
+        public static float ToSp(this float value, Context context)
+        {
+            return TypedValue.ApplyDimension(ComplexUnitType.Sp, value, context.Resources.DisplayMetrics);
+        }
     }
 }

@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using SciChart.Examples.Demo.Fragments.Base;
 
-namespace SciChart.Examples.Demo.Application
+namespace Xamarin.Examples.Demo
 {
     public class ExampleManager
     {
@@ -13,22 +12,23 @@ namespace SciChart.Examples.Demo.Application
         public static ExampleManager Instance => _exampleManager ?? (_exampleManager = new ExampleManager());
 
         public List<Example> Examples { get; }
+        public List<Example> Examples3D { get; }
+        public List<Example> FeaturedExamples { get; }
 
         private ExampleManager()
         {
-            var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => Attribute.IsDefined(t, typeof(ExampleDefinition)));
+            var types = Assembly.GetExecutingAssembly().GetTypes().ToList();
 
-            Examples = types.Select(t => new Example(t)).OrderBy(ex => ex.Title).ToList();
+            Examples = types.Where(t => Attribute.IsDefined(t, typeof(ExampleDefinition))).Select(t => new Example(t)).OrderBy(ex => ex.Title).ToList();
+            Examples3D = types.Where(t => Attribute.IsDefined(t, typeof(Example3DDefinition))).Select(t => new Example(t)).OrderBy(ex => ex.Title).ToList();
+            FeaturedExamples = types.Where(t => Attribute.IsDefined(t, typeof(FeaturedExampleDefinition))).Select(t => new Example(t)).OrderBy(ex => ex.Title).ToList();
         }
 
-        public Example GetExampleByTitle(string exampleTitle)
+        public Example GetExampleByTitle(string exampleTitle, bool is3DExample)
         {
-            return Examples.FirstOrDefault(x => x.Title == exampleTitle);
-        }
+            var examples = is3DExample ? Examples3D : Examples;
 
-        public Example GetExampleByType(Type exampleType)
-        {
-            return Examples.FirstOrDefault(x => x.ExampleType.Equals(exampleType));
+            return examples.FirstOrDefault(x => x.Title == exampleTitle);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Android.Graphics;
+﻿using System.Drawing;
 using Android.Runtime;
 using Android.Views.Animations;
 using SciChart.Charting.Model.DataSeries;
@@ -9,12 +9,13 @@ using SciChart.Charting.Visuals.Axes;
 using SciChart.Charting.Visuals.PointMarkers;
 using SciChart.Charting.Visuals.RenderableSeries;
 using SciChart.Drawing.Common;
-using SciChart.Examples.Demo.Data;
-using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo.Data;
+using Xamarin.Examples.Demo;
 using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
-using Xamarin.Examples.Demo.Utils;
+using Xamarin.Examples.Demo;
 using Object = Java.Lang.Object;
+using Xamarin.Examples.Demo.Utils;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
@@ -65,7 +66,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     // Colors are incremented for visual purposes only
                     var newR = initialColor.R == 255 ? 255 : initialColor.R + 5;
                     var newB = initialColor.B == 0 ? 0 : initialColor.B - 2;
-                    initialColor = Color.Argb(255, (byte) newR, initialColor.G, (byte) newB);
+                    initialColor = Color.FromArgb(255, (byte) newR, initialColor.G, (byte) newB);
 
                     Surface.RenderableSeries.Add(rs);
 
@@ -94,7 +95,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
         }
     }
 
-    public class SelectedSeriesStyle : SeriesStyleBase<IRenderableSeries>
+    public class SelectedSeriesStyle : StyleBase<IRenderableSeries>
     {
         private readonly PenStyle _selectedStrokeStyle;
         private readonly IPointMarker _selectedPointMarker;

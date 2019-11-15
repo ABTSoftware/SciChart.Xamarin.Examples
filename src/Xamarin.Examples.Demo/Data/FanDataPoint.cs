@@ -1,5 +1,6 @@
 ﻿using System;
-namespace SciChart.Examples.Demo.Data
+
+namespace Xamarin.Examples.Demo.Data
 {
     public class FanDataPoint
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SciChart.Examples.Demo.Data
+namespace Xamarin.Examples.Demo.Data
 {
     public struct MacdPoint
     {

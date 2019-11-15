@@ -8,8 +8,8 @@ using SciChart.Charting.Visuals.Axes;
 using SciChart.Charting.Visuals.RenderableSeries;
 using SciChart.Data.Model;
 using SciChart.Drawing.Common;
-using SciChart.Examples.Demo.Data;
-using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo.Data;
+using Xamarin.Examples.Demo;
 using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
 using SciChart.Charting.Visuals.Annotations;
@@ -110,10 +110,10 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
             // Create axis markers annotations to show the last values on real-time chart
             _smaAxisMarker = new AxisMarkerAnnotation(Activity) { Y1Value = 0d };
-            _smaAxisMarker.SetBackgroundColor(SmaSeriesColor.ToColor());
+            _smaAxisMarker.SetBackgroundColor(SmaSeriesColor.ToAndroidColor());
 
             _ohlcAxisMarker = new AxisMarkerAnnotation(Activity) { Y1Value = 0d };
-            _ohlcAxisMarker.SetBackgroundColor(StrokeUpColor.ToColor());
+            _ohlcAxisMarker.SetBackgroundColor(StrokeUpColor.ToAndroidColor());
 
             // Populate the chart with Axis, RenderableSeries. The chart automatically updates when any property changes 
             using (MainSurface.SuspendUpdates())
@@ -129,9 +129,9 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 MainSurface.ChartModifiers = new ChartModifierCollection
                 {
                     new XAxisDragModifier(),
-                    new ZoomPanModifier{ Direction = Direction2D.XDirection }.WithReceiveHandledEvents(true),
+                    new ZoomPanModifier{ Direction = Direction2D.XDirection, ReceiveHandledEvents = true },
                     new ZoomExtentsModifier(),
-                    new LegendModifier(Activity).WithOrientation(Orientation.Horizontal).WithPosition(GravityFlags.CenterHorizontal | GravityFlags.Bottom, 20).WithReceiveHandledEvents(true),
+                    new LegendModifier(Activity) { ReceiveHandledEvents = true }.WithOrientation(Orientation.Horizontal).WithPosition(GravityFlags.CenterHorizontal | GravityFlags.Bottom, 20),
                 };
             }
         }
@@ -203,7 +203,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 
             Activity.RunOnUiThread(() =>
             {
-                _ohlcAxisMarker.SetBackgroundColor((price.Close >= price.Open ? StrokeUpColor : StrokeDownColor).ToColor());
+                _ohlcAxisMarker.SetBackgroundColor((price.Close >= price.Open ? StrokeUpColor : StrokeDownColor).ToAndroidColor());
             });
 
             _ohlcAxisMarker.Y1Value = price.Close;

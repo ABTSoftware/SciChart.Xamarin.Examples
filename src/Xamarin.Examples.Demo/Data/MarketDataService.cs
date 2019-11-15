@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Timers;
-using SciChart.Examples.Demo.Data;
 
 #if __ANDROID__
 using Android.Util;

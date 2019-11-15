@@ -1,8 +1,7 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
 
-
-namespace SciChart.Examples.Demo.Data
+namespace Xamarin.Examples.Demo.Data
 {
     public class DoubleSeries : List<XyPoint>
     {

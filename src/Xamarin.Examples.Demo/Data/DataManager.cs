@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using Random = System.Random;
 using System.Reflection;
+using System.Drawing;
 
-namespace SciChart.Examples.Demo.Data
+namespace Xamarin.Examples.Demo.Data
 {
     public class DataManager
     {
@@ -18,6 +19,9 @@ namespace SciChart.Examples.Demo.Data
         private const string PriceDataEurUsd = "Resources.Data.EURUSD_Daily.csv";
         private const string TradeTicks = "Resources.Data.TradeTicks.csv";
         private const string Waveform = "Resources.Data.waveform.txt";
+        private const string FFT = "Resources.Data.FourierTransform.txt";
+        private const string WaterfallData = "Resources.Data.WaterfallData.txt";
+
 
         public static readonly DataManager Instance = new DataManager();
 
@@ -25,6 +29,50 @@ namespace SciChart.Examples.Demo.Data
 
         private DataManager()
         {
+        }
+
+        public Color GetRandomColor()
+        {
+            var r = _random.Next(50, 255);
+            var g = _random.Next(50, 255);
+            var b = _random.Next(50, 255);
+
+            return Color.FromArgb(r, g, b);
+        }
+
+        public float GetRandomScale()
+        {
+            return (float)((_random.NextDouble() + 0.5) * 3);
+        }
+
+        public DoubleSeries GetExponentialCurve(double exponent, int pointCount)
+        {
+            var doubleSeries = new DoubleSeries(pointCount);
+
+            const double fudgeFactor = 1.4;
+            var x = 0.00001;
+            for (int i = 0; i < pointCount; i++)
+            {
+                x *= fudgeFactor;
+                var y = Math.Pow(i + 1, exponent);
+
+                doubleSeries.Add(new XyPoint() { X = x, Y = y });
+            }
+
+            return doubleSeries;
+        }
+
+        public double GetGaussianRandomNumber(double mean, double stdDev)
+        {
+            //these are uniform(0,1) random doubles
+            double u1 = _random.NextDouble();
+            double u2 = _random.NextDouble();
+
+            //random normal(0,1)
+            double randStdNormal = Math.Sqrt(-2.0 * Math.Log(u1)) * Math.Sin(2.0 * Math.PI * u2);
+
+            //random normal(mean,stdDev^2)
+            return mean * stdDev * randStdNormal;
         }
 
         public DoubleSeries GetRandomDoubleSeries(int count)
@@ -61,15 +109,14 @@ namespace SciChart.Examples.Demo.Data
                 if (i > 4)
                 {
                     dataPoint.MaxValue = nextValue + ((double)i - 5) * 0.3;
-                    dataPoint.Value1 = nextValue + ((double)i - 5) * 0.2;
-                    dataPoint.Value2 = nextValue + ((double)i - 5) * 0.1;
-                    dataPoint.Value3 = nextValue - ((double)i - 5) * 0.1;
-                    dataPoint.Value4 = nextValue - ((double)i - 5) * 0.2;
+                    dataPoint.Value4 = nextValue + ((double)i - 5) * 0.2;
+                    dataPoint.Value3 = nextValue + ((double)i - 5) * 0.1;
+                    dataPoint.Value2 = nextValue - ((double)i - 5) * 0.1;
+                    dataPoint.Value1 = nextValue - ((double)i - 5) * 0.2;
                     dataPoint.MinValue = nextValue - ((double)i - 5) * 0.3;
                 }
                 handler(dataPoint);
-
-                i += 1;
+                i++;
             }
         }
 
@@ -247,6 +294,60 @@ namespace SciChart.Examples.Demo.Data
                 while ((line = reader.ReadLine()) != null)
                 {
                     data.Add(double.Parse(line, NumberFormatInfo.InvariantInfo));
+                }
+            }
+
+            return data;
+        }
+
+        public List<List<double>> LoadFFT()
+        {
+            var data = new List<List<double>>();
+
+            var assembly = typeof(DataManager).GetTypeInfo().Assembly;
+            var stream = assembly.GetManifestResourceStream(ResourcePrefix + FFT);
+
+            using (var reader = new StreamReader(stream))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    var fft = new List<double>();
+
+                    var tokens = line.Split(',');
+                    foreach (var token in tokens)
+                    {
+                        fft.Add(double.Parse(token, NumberFormatInfo.InvariantInfo));
+                    }
+
+                    data.Add(fft);
+                }
+            }
+
+            return data;
+        }
+
+        public List<List<double>> LoadWaterfallData()
+        {
+            var data = new List<List<double>>();
+
+            var assembly = typeof(DataManager).GetTypeInfo().Assembly;
+            var stream = assembly.GetManifestResourceStream(ResourcePrefix + WaterfallData);
+
+            using (var reader = new StreamReader(stream))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    var slice = new List<double>();
+
+                    var tokens = line.Split(',');
+                    foreach (var token in tokens)
+                    {
+                        slice.Add(double.Parse(token, NumberFormatInfo.InvariantInfo));
+                    }
+
+                    data.Add(slice);
                 }
             }
 

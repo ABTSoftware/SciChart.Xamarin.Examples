@@ -11,7 +11,7 @@ using SciChart.Charting.Visuals.RenderableSeries;
 using SciChart.Core.Utility;
 using SciChart.Data.Model;
 using SciChart.Drawing.Common;
-using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
@@ -162,9 +162,9 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
         {
         }
 
-        public ICharSequence FormatLabelFormatted(IComparable dataValue)
+        public ICharSequence FormatLabelFormatted(double dataValue)
         {
-            var i = (int) ComparableUtil.ToDouble(dataValue);
+            var i = (int) dataValue;
             var result = "";
             if (i >= 0 && i < 4)
             {
@@ -173,9 +173,9 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             return new String(result);
         }
 
-        public ICharSequence FormatCursorLabelFormatted(IComparable dataValue)
+        public ICharSequence FormatCursorLabelFormatted(double dataValue)
         {
-            var i = (int)ComparableUtil.ToDouble(dataValue);
+            var i = (int) dataValue;
             string result;
             if (i >= 0 && i < 4)
             {

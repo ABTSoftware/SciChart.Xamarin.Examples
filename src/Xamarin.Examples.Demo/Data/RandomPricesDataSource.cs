@@ -1,6 +1,4 @@
 ﻿using System;
-using SciChart.Examples.Demo.Data;
-
 
 namespace Xamarin.Examples.Demo.Data
 {

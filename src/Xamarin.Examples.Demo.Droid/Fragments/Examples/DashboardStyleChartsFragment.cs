@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Android.Content;
-using Android.Graphics;
+using System.Drawing;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 using Android.Views;
@@ -9,7 +9,7 @@ using SciChart.Charting.Visuals;
 using SciChart.Charting.Visuals.Axes;
 using SciChart.Charting.Visuals.RenderableSeries;
 using SciChart.Drawing.Common;
-using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
@@ -117,8 +117,8 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     var rSeries = new StackedColumnRenderableSeries
                     {
                         DataSeries = dataSeries,
-                        StrokeStyle = new SolidPenStyle(context, new Color(SeriesColors[i * 2])),
-                        FillBrushStyle = new LinearGradientBrushStyle(0,0,0,1, new Color(SeriesColors[i * 2 + 1]), new Color(SeriesColors[i * 2]))
+                        StrokeStyle = new SolidPenStyle(context, Color.FromArgb(SeriesColors[i * 2])),
+                        FillBrushStyle = new LinearGradientBrushStyle(0,0,0,1, Color.FromArgb(SeriesColors[i * 2 + 1]), Color.FromArgb(SeriesColors[i * 2]))
 
                     };
                     seriesCollection.Add(rSeries);
@@ -139,8 +139,8 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     var rSeries = new StackedColumnRenderableSeries
                     {
                         DataSeries = dataSeries,
-                        StrokeStyle = new SolidPenStyle(context, new Color(SeriesColors[i * 2])),
-                        FillBrushStyle = new LinearGradientBrushStyle(0, 0, 0, 1, new Color(SeriesColors[i * 2 + 1]), new Color(SeriesColors[i * 2]))
+                        StrokeStyle = new SolidPenStyle(context, Color.FromArgb(SeriesColors[i * 2])),
+                        FillBrushStyle = new LinearGradientBrushStyle(0, 0, 0, 1, Color.FromArgb(SeriesColors[i * 2 + 1]), Color.FromArgb(SeriesColors[i * 2]))
 
                     };
                     collection.Add(rSeries);
@@ -162,8 +162,8 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                     var rSeries = new StackedMountainRenderableSeries
                     {
                         DataSeries = dataSeries,
-                        StrokeStyle = new SolidPenStyle(context, new Color(SeriesColors[i * 2])),
-                        AreaStyle = new LinearGradientBrushStyle(0, 0, 0, 1, new Color(SeriesColors[i * 2 + 1]), new Color(SeriesColors[i * 2]))
+                        StrokeStyle = new SolidPenStyle(context, Color.FromArgb(SeriesColors[i * 2])),
+                        AreaStyle = new LinearGradientBrushStyle(0, 0, 0, 1, Color.FromArgb(SeriesColors[i * 2 + 1]), Color.FromArgb(SeriesColors[i * 2]))
 
                     };
                     collection.Add(rSeries);

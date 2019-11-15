@@ -13,9 +13,9 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Base
 
         public abstract int ExampleLayoutId { get; }
 
-        public override void OnStart()
+        public override void OnViewCreated(View view, Bundle savedInstanceState)
         {
-            base.OnStart();
+            base.OnViewCreated(view, savedInstanceState);
 
             InitExample();
         }

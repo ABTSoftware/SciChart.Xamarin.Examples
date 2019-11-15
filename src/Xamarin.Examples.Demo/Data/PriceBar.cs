@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SciChart.Examples.Demo.Data
+namespace Xamarin.Examples.Demo.Data
 {
     public struct PriceBar
     {

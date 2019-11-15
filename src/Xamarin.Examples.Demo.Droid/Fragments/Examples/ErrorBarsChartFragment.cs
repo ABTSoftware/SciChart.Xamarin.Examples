@@ -9,10 +9,11 @@ using SciChart.Charting.Visuals.Axes;
 using SciChart.Charting.Visuals.PointMarkers;
 using SciChart.Charting.Visuals.RenderableSeries;
 using SciChart.Drawing.Common;
-using SciChart.Examples.Demo.Data;
-using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo.Data;
+using Xamarin.Examples.Demo;
 using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
+using Xamarin.Examples.Demo;
 using Xamarin.Examples.Demo.Utils;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples

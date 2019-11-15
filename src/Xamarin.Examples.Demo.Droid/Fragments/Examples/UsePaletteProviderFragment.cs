@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Android.Graphics;
+using System.Drawing;
 using Java.Lang;
 using SciChart.Charting.Model;
 using SciChart.Charting.Model.DataSeries;
@@ -14,8 +14,8 @@ using SciChart.Charting.Visuals.RenderableSeries.PaletteProviders;
 using SciChart.Core.Model;
 using SciChart.Data.Model;
 using SciChart.Drawing.Common;
-using SciChart.Examples.Demo.Data;
-using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo.Data;
+using Xamarin.Examples.Demo;
 using Xamarin.Examples.Demo.Droid.Components;
 using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;

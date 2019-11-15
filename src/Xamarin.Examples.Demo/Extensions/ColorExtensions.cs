@@ -1,4 +1,4 @@
-﻿namespace Xamarin.Examples.Demo.Extensions
+﻿namespace Xamarin.Examples.Demo
 {
     public static class ColorExtension
     {

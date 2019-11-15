@@ -2,8 +2,8 @@
 using Android.App;
 using Android.Views;
 using Android.Widget;
-using SciChart.Examples.Demo.Application;
-using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo;
+using Xamarin.Examples.Demo;
 
 namespace Xamarin.Examples.Demo.Droid.Application
 {
@@ -12,10 +12,10 @@ namespace Xamarin.Examples.Demo.Droid.Application
         private readonly Activity _activity;
         private readonly List<Example> _examples;
 
-        public ExampleAdapter(Activity activity)
+        public ExampleAdapter(Activity activity, List<Example> examples)
         {
             _activity = activity;
-            _examples = ExampleManager.Instance.Examples;
+            _examples = examples;
         }
 
         public override long GetItemId(int position)

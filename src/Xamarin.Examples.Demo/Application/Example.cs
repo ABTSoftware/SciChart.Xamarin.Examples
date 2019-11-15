@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
-using SciChart.Examples.Demo.Fragments.Base;
 
-namespace SciChart.Examples.Demo.Application
+namespace Xamarin.Examples.Demo
 {
     public class Example
     {
@@ -12,12 +11,15 @@ namespace SciChart.Examples.Demo.Application
         public string Description { get; }
         public ExampleIcon? Icon { get; }
 
+        public bool IsExample3D { get; }
+
         public Example(Type exampleType)
         {
             ExampleType = exampleType;
 
-            var attribute = exampleType.GetCustomAttributes<ExampleDefinition>().Single();
+            var attribute = exampleType.GetCustomAttributes<ExampleDefinitionBase>().Single();
 
+            IsExample3D = attribute.IsExample3D;
             Title = attribute.Title;
             Description = attribute.Description;
             Icon = attribute.Icon;

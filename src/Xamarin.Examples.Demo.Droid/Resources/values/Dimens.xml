@@ -3,4 +3,7 @@
   <dimen name="example_list_item_margin">0dp</dimen>
 
   <dimen name="toolbar_title_size">18sp</dimen>
+
+  <dimen name="horizontal_margin">8dp</dimen>
+  <dimen name="vertical_margin">8dp</dimen>
 </resources>

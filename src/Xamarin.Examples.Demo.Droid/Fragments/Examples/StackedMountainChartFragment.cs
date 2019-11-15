@@ -7,7 +7,7 @@ using SciChart.Charting.Visuals.Animations;
 using SciChart.Charting.Visuals.Axes;
 using SciChart.Charting.Visuals.RenderableSeries;
 using SciChart.Drawing.Common;
-using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples

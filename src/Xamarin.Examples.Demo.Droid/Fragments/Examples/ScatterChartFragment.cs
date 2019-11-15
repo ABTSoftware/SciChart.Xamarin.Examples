@@ -1,6 +1,6 @@
 ﻿using System;
 using Android.Content;
-using Android.Graphics;
+using System.Drawing;
 using Android.Views.Animations;
 using SciChart.Charting.Model;
 using SciChart.Charting.Model.DataSeries;
@@ -12,7 +12,7 @@ using SciChart.Charting.Visuals.PointMarkers;
 using SciChart.Charting.Visuals.RenderableSeries;
 using SciChart.Data.Model;
 using SciChart.Drawing.Common;
-using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo;
 using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
 using static SciChart.Charting.Modifiers.AxisDragModifierBase;
@@ -51,8 +51,8 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
                 {
                     new ZoomExtentsModifier(),
                     new PinchZoomModifier(),
-                    new CursorModifier().WithReceiveHandledEvents(true),
-                    new XAxisDragModifier().WithReceiveHandledEvents(true),
+                    new CursorModifier(){ ReceiveHandledEvents = true },
+                    new XAxisDragModifier(){ ReceiveHandledEvents = true },
                     new YAxisDragModifier {DragMode = AxisDragMode.Pan}
                 };
 

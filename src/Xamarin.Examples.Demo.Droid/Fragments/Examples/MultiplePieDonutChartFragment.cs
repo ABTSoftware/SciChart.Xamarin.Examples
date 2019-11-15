@@ -4,7 +4,8 @@ using SciChart.Charting.Visuals;
 using SciChart.Charting.Visuals.Legend;
 using SciChart.Charting.Visuals.RenderableSeries;
 using SciChart.Drawing.Common;
-using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo;
+using System.Drawing;
 using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
 
@@ -61,7 +62,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             donutSeries.Animate(800);
         }
 
-        private BrushStyle createRadialBrush(int centerColor, int edgeColor)
+        private BrushStyle createRadialBrush(Color centerColor, Color edgeColor)
         {
             var fillStyle = new RadialGradientBrushStyle(0.5f, 0.5f, 0.5f, 0.5f, new[] { centerColor, edgeColor }, new[] { 0f, 1f });
             return fillStyle;

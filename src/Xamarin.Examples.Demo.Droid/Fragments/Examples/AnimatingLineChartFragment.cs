@@ -14,7 +14,7 @@ using SciChart.Data.Model;
 using SciChart.Data.Numerics;
 using SciChart.Data.Numerics.PointResamplers;
 using SciChart.Drawing.Common;
-using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo;
 using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
 

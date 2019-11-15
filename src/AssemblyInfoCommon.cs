@@ -19,9 +19,8 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-
 [assembly: AssemblyCompany("SciChart Ltd")]
-[assembly: AssemblyCopyright("Copyright © SciChart Ltd 2011-2017, www.scichart.com")]
+[assembly: AssemblyCopyright("Copyright © SciChart Ltd 2011-2019, www.scichart.com")]
 [assembly: AssemblyTrademark("SCICHART™")]
 
 //[assembly: AssemblyDelaySign(false)]
@@ -37,4 +36,4 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.0.0.453")]
+[assembly: AssemblyVersion("3.0.0.0")]

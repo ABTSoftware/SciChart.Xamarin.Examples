@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Android.Graphics;
 using Android.Views.Animations;
 using SciChart.Charting.Model;
 using SciChart.Charting.Model.DataSeries;
@@ -10,10 +9,14 @@ using SciChart.Charting.Visuals.Axes;
 using SciChart.Charting.Visuals.RenderableSeries;
 using SciChart.Data.Model;
 using SciChart.Drawing.Common;
-using SciChart.Examples.Demo.Data;
-using SciChart.Examples.Demo.Fragments.Base;
+using Xamarin.Examples.Demo.Data;
+using Xamarin.Examples.Demo;
 using Xamarin.Examples.Demo.Droid.Components;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
+using Android.Graphics;
+
+using Color = System.Drawing.Color;
+using AndroidColor = Android.Graphics.Color;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
 {
@@ -35,7 +38,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
         private void SetupSurface()
         {
             // surface background. If you set color for chart background than it is color only for axes area
-            Surface.SetBackgroundColor(Color.Orange);
+            Surface.SetBackgroundColor(AndroidColor.Orange);
             // chart area (viewport) background fill color            
             Surface.RenderableSeriesAreaFillStyle = new SolidBrushStyle(color: 0xFFFFB6C1);
             // chart area border color and thickness
@@ -50,7 +53,6 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             var xAxisMinorGridLineBrush = new SolidPenStyle(color: Color.Yellow, thickness: 0.5f, strokeDashArray: new float[] { 10, 3, 10, 3 }, antiAliasing:true);
             var xAxisMajorTickBrush = new SolidPenStyle(color: Color.Green, thickness: 1);
             var xAxisMinorTickBrush = new SolidPenStyle(color: Color.Yellow, thickness: 0.5f, strokeDashArray: new float[] { 10, 3, 10, 3 }, antiAliasing: true);
-            var xAxisLabelColor = Color.Purple;
             var xAxisFontName = "Helvetica";
             var xAxisFontSize = 14.0f;
             var xAxisDrawLabels = true;

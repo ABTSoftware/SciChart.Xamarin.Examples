@@ -17,8 +17,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
-    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
     <AndroidSupportedAbis>armeabi-v7a,x86</AndroidSupportedAbis>
     <BaseIntermediateOutputPath>..\..\..\tmpDm\</BaseIntermediateOutputPath>
     <AndroidStoreUncompressedFileExtensions />
@@ -38,6 +37,8 @@
     <WarningLevel>4</WarningLevel>
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkMode>None</AndroidLinkMode>
+    <MandroidI18n />
+    <AndroidSupportedAbis />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -122,10 +123,12 @@
       <HintPath>..\packages\Xamarin.Android.Support.Vector.Drawable.25.3.1\lib\MonoAndroid70\Xamarin.Android.Support.Vector.Drawable.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Drawing.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\ExampleAdapter.cs" />
     <Compile Include="Components\BillionsLabelProvider.cs" />
+    <Compile Include="Components\PointMetadataProvider3D.cs" />
     <Compile Include="Components\SpinnerStringAdapter.cs" />
     <Compile Include="Components\ThousandsLabelProvider.cs" />
     <Compile Include="Extensions\ContextExtensions.cs" />
@@ -133,6 +136,36 @@
     <Compile Include="ExampleActivity.cs" />
     <Compile Include="Extensions\NumericExtensions.cs" />
     <Compile Include="Fragments\Base\ExampleBaseFragment.cs" />
+    <Compile Include="Fragments\Examples3D\CreateBubble3DChartFragment.cs" />
+    <Compile Include="Fragments\Examples3D\CreateCustomFreeSurface3DChartFragment.cs" />
+    <Compile Include="Fragments\Examples3D\CreateCylindroidMesh3DChartFragment.cs" />
+    <Compile Include="Fragments\Examples3D\CreateRealtimeGeoid3DChartFragment.cs" />
+    <Compile Include="Fragments\Examples3D\CreateRealtimePointCloud3DChartFragment.cs" />
+    <Compile Include="Fragments\Examples3D\CreateRealtimeUniformMesh3DChartFragment.cs" />
+    <Compile Include="Fragments\Examples3D\CreateRealtimeWaterfall3DChartFragment.cs" />
+    <Compile Include="Fragments\Examples3D\CreateUniformMesh3DChartFragment.cs" />
+    <Compile Include="Fragments\Examples3D\CreateEllipsoidMesh3DChartFragment.cs" />
+    <Compile Include="Fragments\Examples3D\CreatePointCloud3DChartFragment.cs" />
+    <Compile Include="Fragments\Examples3D\CreatePointLine3DChartFragment.cs" />
+    <Compile Include="Fragments\Examples3D\CreatePolarMesh3DChartFragment.cs" />
+    <Compile Include="Fragments\Examples3D\CreateScatter3DChartFragment.cs" />
+    <Compile Include="Fragments\Examples3D\CreateSparseColumn3DChartFragment.cs" />
+    <Compile Include="Fragments\Examples3D\CreateSparseImpluseSeries3DChartFragment.cs" />
+    <Compile Include="Fragments\Examples3D\CreateUniformImpulseSeries3DChartFragment.cs" />
+    <Compile Include="Fragments\Examples3D\CreateUniformColumn3DChartFragment.cs" />
+    <Compile Include="Fragments\Examples3D\CreateWaterfall3DChartFragment.cs" />
+    <Compile Include="Fragments\Examples3D\DateAxis3DFragment.cs" />
+    <Compile Include="Fragments\Examples3D\LogarithmicAxis3DFragment.cs" />
+    <Compile Include="Fragments\Examples3D\ModifyCamera3DPropertiesFragment.cs" />
+    <Compile Include="Fragments\Examples3D\SelectScatterPoint3DChartFragment.cs" />
+    <Compile Include="Fragments\Examples3D\SeriesCustomTooltips3DChartFragment.cs" />
+    <Compile Include="Fragments\Examples3D\SeriesTooltips3DChartFragment.cs" />
+    <Compile Include="Fragments\Examples3D\Style3DChartFragment.cs" />
+    <Compile Include="Fragments\Examples3D\SurfaceMeshContours3DChartFragment.cs" />
+    <Compile Include="Fragments\Examples3D\SurfaceMeshFloorAndCeiling3DChartFragment.cs" />
+    <Compile Include="Fragments\Examples3D\SurfaceMeshWithMetadataProvider3DChartFragment.cs" />
+    <Compile Include="Fragments\Examples3D\ThemeManager3DChartFragment.cs" />
+    <Compile Include="Fragments\Examples3D\UseChartModifiers3DFragment.cs" />
     <Compile Include="Fragments\Examples\AnimatingLineChartFragment.cs" />
     <Compile Include="Fragments\Examples\AnnotationsAreEasyFragment.cs" />
     <Compile Include="Fragments\Examples\BandChartFragment.cs" />
@@ -352,6 +385,62 @@
   <ItemGroup>
     <AndroidResource Include="Resources\Drawable\PieChart.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Example_Single_3D_Chart_Fragment.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\example_radio_button_background.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Example_Chart3D_Camera_Properies_Fragment.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Example_Chart3D_Modifiers_Fragment.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Example_ThemeManager3D_Fragment.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\example_globe_heightmap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\Axis3D.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\Scatter3D.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\Surface3D.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout-land\Example_Chart3D_Camera_Properies_Fragment.axml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Example_Single_3D_Chart_With_Modifier_Tip_Fragment.axml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
   <Import Project="..\Xamarin.Examples.Demo\Xamarin.Examples.Demo.projitems" Label="Shared" Condition="Exists('..\Xamarin.Examples.Demo\Xamarin.Examples.Demo.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -403,22 +492,27 @@
   -->
   <ItemGroup>
     <Reference Include="SciChart.Android.Core">
-      <HintPath>..\packages\SciChart.Android.2.5.0.946\lib\MonoAndroid440\SciChart.Android.Core.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.3.0.0.2856\lib\MonoAndroid440\SciChart.Android.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SciChart.Android.Data">
-      <HintPath>..\packages\SciChart.Android.2.5.0.946\lib\MonoAndroid440\SciChart.Android.Data.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.3.0.0.2856\lib\MonoAndroid440\SciChart.Android.Data.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SciChart.Android.Drawing">
-      <HintPath>..\packages\SciChart.Android.2.5.0.946\lib\MonoAndroid440\SciChart.Android.Drawing.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.3.0.0.2856\lib\MonoAndroid440\SciChart.Android.Drawing.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SciChart.Android.Charting">
-      <HintPath>..\packages\SciChart.Android.2.5.0.946\lib\MonoAndroid440\SciChart.Android.Charting.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.3.0.0.2856\lib\MonoAndroid440\SciChart.Android.Charting.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="SciChart.Android.Charting3D">
+      <HintPath>..\packages\SciChart.Android.3.0.0.2856\lib\MonoAndroid440\SciChart.Android.Charting3D.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

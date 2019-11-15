@@ -18,4 +18,15 @@
     <item>SciChartv4Dark</item>
   </string-array>
 
+  <string name="pitch">Pitch</string>
+  <string name="yaw">Yaw</string>
+  <string name="radius">Radius</string>
+  <string name="fov">FOV</string>
+  <string name="orthowidth">OrthoWidth</string>
+  <string name="orthoheight">OrthoHeight</string>
+  <string name="lhs">LHS</string>
+  <string name="rhs">RHS</string>
+  <string name="perspective">Perspective</string>
+  <string name="orthogonal">Orthogonal</string>
+
 </resources>

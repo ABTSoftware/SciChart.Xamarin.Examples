@@ -5,7 +5,7 @@ using Android.Support.V7.App;
 using Android.Util;
 using Android.Widget;
 using Java.Interop;
-using SciChart.Examples.Demo.Application;
+using Xamarin.Examples.Demo;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 
@@ -41,7 +41,8 @@ namespace Xamarin.Examples.Demo.Droid
         private void SetUpExample(Bundle savedInstanceState)
         {
             var exampleId = Intent.GetStringExtra(DemoKeys.ExampleId);
-            _example = ExampleManager.Instance.GetExampleByTitle(exampleId);
+            var isExample3D = Intent.GetBooleanExtra(DemoKeys.IsExample3D, false);
+            _example = ExampleManager.Instance.GetExampleByTitle(exampleId, isExample3D);
 
             Title = _example.Title;
             FindViewById<TextView>(Resource.Id.exampleTitle).Text = Title;
