@@ -1,0 +1,573 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{909ABA3B-6AA5-483D-86FC-692957A1B4BB}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Xamarin.Examples.Demo.iOS</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>Xamarin.Examples.Demo.iOS</AssemblyName>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchArch>i386, x86_64</MtouchArch>
+    <MtouchLink>Full</MtouchLink>
+    <MtouchDebug>True</MtouchDebug>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignProvision>
+    </CodesignProvision>
+    <MtouchSdkVersion>11.0</MtouchSdkVersion>
+    <MtouchProfiling>false</MtouchProfiling>
+    <MtouchFastDev>False</MtouchFastDev>
+    <MtouchNoSymbolStrip>False</MtouchNoSymbolStrip>
+    <MtouchUseLlvm>False</MtouchUseLlvm>
+    <MtouchUseThumb>False</MtouchUseThumb>
+    <MtouchEnableBitcode>False</MtouchEnableBitcode>
+    <OptimizePNGs>True</OptimizePNGs>
+    <MtouchTlsProvider>Default</MtouchTlsProvider>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <MtouchFloat32>False</MtouchFloat32>
+    <IOSDebugOverWiFi>False</IOSDebugOverWiFi>
+    <IOSDebuggerPort>10000</IOSDebuggerPort>
+    <MtouchExtraArgs>-v -v -v -v</MtouchExtraArgs>
+    <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>i386, x86_64</MtouchArch>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchDebug>True</MtouchDebug>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchSdkVersion>11.0</MtouchSdkVersion>
+    <MtouchFloat32>true</MtouchFloat32>
+    <MtouchExtraArgs>-v -v -v -v</MtouchExtraArgs>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\iPhone\Ad-Hoc</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <BuildIpa>True</BuildIpa>
+    <CodesignProvision>
+    </CodesignProvision>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\iPhone\AppStore</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <CodesignProvision>Automatic:AppStore</CodesignProvision>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <None Include="Entitlements.plist" />
+    <None Include="Info.plist" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Extensions\ColorExtensions.cs" />
+    <None Include="packages.config" />
+    <Compile Include="..\AssemblyInfoCommon.cs">
+      <Link>Properties\AssemblyInfoCommon.cs</Link>
+    </Compile>
+    <Compile Include="Components\BillionsLabelProvider.cs" />
+    <Compile Include="Components\ThousandsLabelProvider.cs" />
+    <Compile Include="Extensions\UIColorExtension.cs" />
+    <Compile Include="Extensions\UIImageExtensions.cs" />
+    <Compile Include="Examples\TopPanels\RealtimeExamplePanel.cs" />
+    <Compile Include="Examples\Examples\MountainChartViewController.cs" />
+    <Compile Include="Examples\Examples\BubbleChartViewController.cs" />
+    <Compile Include="Examples\Examples\StackedMountainChartViewController.cs" />
+    <Compile Include="Examples\Examples\FifoChartViewController.cs" />
+    <Compile Include="Examples\Examples\UsingThemeManagerViewController.cs" />
+    <Compile Include="Examples\Examples\AnnotationsAreEasyViewController.cs" />
+    <Compile Include="Examples\Examples\SeriesSelectionViewController.cs" />
+    <Compile Include="Examples\Examples\StackedColumnChartViewController.cs" />
+    <Compile Include="Examples\Examples\PieChartViewController.cs" />
+    <Compile Include="Examples\Examples\LegendViewController.cs" />
+    <Compile Include="Examples\Examples\PaletteProviderViewController.cs" />
+    <Compile Include="Examples\Examples\InteractionWithAnnotationsViewController.cs" />
+    <Compile Include="Examples\Examples\ScatterChartViewController.cs" />
+    <Compile Include="Examples\Examples\ImpulseChartViewController.cs" />
+    <Compile Include="Examples\Examples\StackedBarChartViewController.cs" />
+    <Compile Include="Examples\Examples\CustomStylingViewController.cs" />
+    <Compile Include="Examples\Examples\StackedColumnSideBySideViewController.cs" />
+    <Compile Include="Examples\Examples\DashboardStyleChartsViewController.cs" />
+    <Compile Include="Examples\Examples\CandlestickChartViewController.cs" />
+    <Compile Include="Examples\Examples\CustomThemeViewController.cs" />
+    <Compile Include="Examples\Examples\UsingTooltipModifierTooltipsViewController.cs" />
+    <Compile Include="Examples\Examples\ColumnChartViewController.cs" />
+    <Compile Include="Examples\Examples\FanChartViewController.cs" />
+    <Compile Include="Examples\Examples\PerformanceDemoViewController.cs" />
+    <Compile Include="Examples\Examples\HeatmapChartViewController.cs" />
+    <Compile Include="Examples\Examples\ECGMonitorViewController.cs" />
+    <Compile Include="Examples\Examples\BandChartViewController.cs" />
+    <Compile Include="Examples\Examples\LineChartViewController.cs" />
+    <Compile Include="Examples\Examples\CreateRealtimeTickingStockChartsViewController.cs" />
+    <Compile Include="Examples\Examples\UsingCursorModifierTooltipsViewController.cs" />
+    <Compile Include="Examples\Examples\CreateMultiPaneStockChartsViewController.cs" />
+    <Compile Include="Examples\Examples\NestedPieChartsViewController.cs" />
+    <Compile Include="Examples\Examples\UsingRolloverModifierTooltipsViewController.cs" />
+    <Compile Include="Examples\Examples\ErrorBarsChartViewController.cs" />
+    <Compile Include="Examples\Examples\DonutChartViewController.cs" />
+    <Compile Include="Examples\Examples\CustomLayouts\DashboardStyleChartsLayout.cs" />
+    <Compile Include="Examples\Examples\CustomLayouts\RealtimeTickingStockChartsLayout.designer.cs" />
+    <Compile Include="Examples\Examples\CustomLayouts\MultiplePaneStockChartsLayout.cs" />
+    <Compile Include="Examples\Examples\CustomLayouts\MultiplePaneStockChartsLayout.designer.cs" />
+    <Compile Include="Examples\Examples\CustomLayouts\RealtimeTickingStockChartsLayout.cs" />
+    <InterfaceDefinition Include="Examples\Examples\CustomLayouts\MultiplePaneStockChartsLayout.xib" />
+    <Compile Include="Examples\Examples\CustomLayouts\DashboardStyleChartsLayout.designer.cs" />
+    <InterfaceDefinition Include="Examples\Examples\CustomLayouts\RealtimeTickingStockChartsLayout.xib" />
+    <InterfaceDefinition Include="Examples\Examples\CustomLayouts\DashboardStyleChartsLayout.xib" />
+    <Compile Include="Examples\Base\ExampleBaseViewController.cs" />
+    <Compile Include="Examples\Base\SingleChartWithTopPanelViewController.cs" />
+    <Compile Include="Examples\Base\SingleChartWithModifierTipViewController.cs" />
+    <Compile Include="Examples\Base\CustomLayoutViewController.cs" />
+    <Compile Include="Examples\Base\SingleChartViewController.cs" />
+    <Compile Include="Examples\Examples3D\Style3DChartViewController.cs" />
+    <Compile Include="Examples\Examples3D\UseChartModifiers3DViewController.cs" />
+    <Compile Include="Examples\Examples3D\UniformColumn3DChartViewController.cs" />
+    <Compile Include="Examples\Examples3D\RealtimePointCloud3DChartViewController.cs" />
+    <Compile Include="Examples\Examples3D\PointLine3DChartViewController.cs" />
+    <Compile Include="Examples\Examples3D\SurfaceMeshWithMetadataProvider3DChartViewController.cs" />
+    <Compile Include="Examples\Examples3D\SeriesCustomTooltips3DChartViewController.cs" />
+    <Compile Include="Examples\Examples3D\Scatter3DChartViewController.cs" />
+    <Compile Include="Examples\Examples3D\SparseImpluseSeries3DChartViewController .cs" />
+    <Compile Include="Examples\Examples3D\LogarithmicAxis3DViewController.cs" />
+    <Compile Include="Examples\Examples3D\RealtimeUniformMesh3DChartViewController.cs" />
+    <Compile Include="Examples\Examples3D\ThemeManager3DChartViewController.cs" />
+    <Compile Include="Examples\Examples3D\FreeSurface3DChartViewController.cs" />
+    <Compile Include="Examples\Examples3D\Bubble3DChartViewController.cs" />
+    <Compile Include="Examples\Examples3D\SurfaceMeshFloorAndCeiling3DChartViewController.cs" />
+    <Compile Include="Examples\Examples3D\RealtimeGeoid3DChartViewController.cs" />
+    <Compile Include="Examples\Examples3D\RealtimeWaterfall3DChartViewController.cs" />
+    <Compile Include="Examples\Examples3D\SelectScatterPoint3DChartViewController.cs" />
+    <Compile Include="Examples\Examples3D\PolarMesh3DChartViewController.cs" />
+    <Compile Include="Examples\Examples3D\SeriesTooltips3DChartViewController.cs" />
+    <Compile Include="Examples\Examples3D\ModifyCamera3DPropertiesViewController.cs" />
+    <Compile Include="Examples\Examples3D\UniformImpulseSeries3DChartViewController.cs" />
+    <Compile Include="Examples\Examples3D\Waterfall3DChartViewController.cs" />
+    <Compile Include="Examples\Examples3D\UniformMesh3DChartViewController.cs" />
+    <Compile Include="Examples\Examples3D\SurfaceMeshContours3DChartViewController.cs" />
+    <Compile Include="Examples\Examples3D\PointCloud3DChartViewController.cs" />
+    <Compile Include="Examples\Examples3D\EllipsoidMesh3DChartViewController.cs" />
+    <Compile Include="Examples\Examples3D\CylindroidMesh3DChartViewController.cs" />
+    <Compile Include="Examples\Examples3D\DateAxis3DViewController.cs" />
+    <Compile Include="Examples\Examples3D\SparseColumn3DChartViewController.cs" />
+    <InterfaceDefinition Include="Examples\Examples3D\CustomLayouts\ModifyCamera3DPropertiesLayout.xib" />
+    <Compile Include="Examples\Examples3D\CustomLayouts\ModifyCamera3DPropertiesLayout.cs" />
+    <Compile Include="Examples\Examples3D\CustomLayouts\ModifyCamera3DPropertiesLayout.designer.cs" />
+    <Compile Include="Views\MainMenu\GradientView.cs" />
+    <Compile Include="Views\MainMenu\GradientView.designer.cs" />
+    <Compile Include="Views\MainMenu\MainMenuLayout.cs" />
+    <Compile Include="Views\MainMenu\MainMenuViewController.cs" />
+    <Compile Include="Views\MainMenu\MainMenuViewController.designer.cs" />
+    <Compile Include="Views\MainMenu\MenuItemCell.cs" />
+    <Compile Include="Views\MainMenu\MenuItemCell.designer.cs" />
+    <InterfaceDefinition Include="Views\MainMenu\MenuItemCell.xib" />
+    <Compile Include="Views\ExamplesList\ExampleTableViewCell.cs" />
+    <Compile Include="Views\ExamplesList\ExampleTableViewCell.designer.cs">
+      <DependentUpon>ExampleTableViewCell.cs</DependentUpon>
+    </Compile>
+    <InterfaceDefinition Include="Views\ExamplesList\ExampleTableViewCell.xib" />
+    <Compile Include="Views\ExamplesList\ExamplesListController.cs" />
+    <Compile Include="Views\ExamplesList\MainViewController.designer.cs">
+      <DependentUpon>ExamplesListController.cs</DependentUpon>
+    </Compile>
+    <InterfaceDefinition Include="Views\Main.storyboard" />
+    <InterfaceDefinition Include="Views\LaunchScreen.storyboard" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\SciChart_BerryBlue.plist" />
+    <BundleResource Include="Resources\Fonts\Montserrat-SemiBold.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\Fonts\RobotoCondensed-BoldItalic.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\Fonts\Montserrat-Light.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\example_globe_heightmap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="Calabash">
+      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.20.3\lib\Xamarin.iOS10\Calabash.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="Xamarin.UITest">
+      <HintPath>..\packages\Xamarin.UITest.2.0.9\lib\Xamarin.UITest.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Resources\Images.xcassets\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Annotations.imageset\Annotations.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Annotations.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\BandChart.imageset\.DS_Store">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\BandChart.imageset\BandChart.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\BandChart.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\BubbleChart.imageset\.DS_Store">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\BubbleChart.imageset\BubbleChart.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\BubbleChart.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\CandlestickChart.imageset\.DS_Store">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\CandlestickChart.imageset\CandlestickChart.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\CandlestickChart.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ColumnChart.imageset\.DS_Store">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ColumnChart.imageset\ColumnChart.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ColumnChart.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\CubeChart.imageset\.DS_Store">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\CubeChart.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\CubeChart.imageset\CubeChart.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\FeatureChart.imageset\.DS_Store">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\FeatureChart.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\FeatureChart.imageset\FeatureChart.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\HeatmapChart.imageset\.DS_Store">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\HeatmapChart.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\HeatmapChart.imageset\HeatmapChart.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\MountainChart.imageset\.DS_Store">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\MountainChart.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\MountainChart.imageset\MountainChart.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\RealTime.imageset\.DS_Store">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\RealTime.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\RealTime.imageset\RealTime.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ScatterChart.imageset\.DS_Store">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ScatterChart.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ScatterChart.imageset\ScatterChart.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\StackedMountainChart.imageset\.DS_Store">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\StackedMountainChart.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\StackedMountainChart.imageset\StackedMountainChart.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\LineChart.imageset\.DS_Store">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\LineChart.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\LineChart.imageset\linechart.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Axis.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Axis.imageset\Axis.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\DigitalLine.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\DigitalLine.imageset\DigitalLine.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ErrorBars.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ErrorBars.imageset\ErrorBars.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Fan.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Fan.imageset\Fan.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Impulse.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Impulse.imageset\Impulse.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Ohlc.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Ohlc.imageset\Ohlc.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\StackedBar.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\StackedBar.imageset\StackedBar.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\StackedColumn.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\StackedColumn.imageset\StackedColumn.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Themes.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Themes.imageset\Themes.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ZoomPan.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ZoomPan.imageset\ZoomPan.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\StackedColumns100.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\StackedColumns100.imageset\StackedColumns100.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\RedArrow.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\GreenArrow.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\GreenArrow.imageset\method-draw-image.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\RedArrow.imageset\method-draw-image %282%29.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-568h%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-Portrait.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-Portrait%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-40.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-60.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-58.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-87.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-80.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-120.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-120-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-180.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-20.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-40-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-29.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-58-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-40-2.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-80-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-76.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-152.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-167.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-1024.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-120-2.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-180-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-48.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-55.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-58-2.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-87-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-80-2.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-88.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-100.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-172.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-196.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-1024-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-16.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-32.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-32-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-64.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-128.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-256.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-256-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-512.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-512-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-1024-2.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Сharts2d.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\Charts3d.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\Сharts2d.imageset\2d_icon[white].png" />
+    <ImageAsset Include="Resources\Images.xcassets\Сharts2d.imageset\2d_icon[white]%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Сharts2d.imageset\2d_icon[white]%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Charts3d.imageset\3d_icon[white].png" />
+    <ImageAsset Include="Resources\Images.xcassets\Charts3d.imageset\3d_icon[white]%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Charts3d.imageset\3d_icon[white]%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\FeaturedApps.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\FeaturedApps.imageset\featured_icon[white].png" />
+    <ImageAsset Include="Resources\Images.xcassets\FeaturedApps.imageset\featured_icon[white]%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\FeaturedApps.imageset\featured_icon[white]%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Axis3D.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\Axis3D.imageset\Axis3D.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Axis3D.imageset\Axis3D-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Axis3D.imageset\Axis3D-2.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Scatter3D.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\Surface3D.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\Scatter3D.imageset\Scatter3D.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Scatter3D.imageset\Scatter3D-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Scatter3D.imageset\Scatter3D-2.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Surface3D.imageset\Surface3D.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Surface3D.imageset\Surface3D-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Surface3D.imageset\Surface3D-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Images.xcassets\Axis.imageset\" />
+    <Folder Include="Resources\Images.xcassets\DigitalLine.imageset\" />
+    <Folder Include="Resources\Images.xcassets\ErrorBars.imageset\" />
+    <Folder Include="Resources\Images.xcassets\Fan.imageset\" />
+    <Folder Include="Resources\Images.xcassets\GreenArrow.imageset\" />
+    <Folder Include="Resources\Images.xcassets\Impulse.imageset\" />
+    <Folder Include="Resources\Images.xcassets\Ohlc.imageset\" />
+    <Folder Include="Resources\Images.xcassets\RedArrow.imageset\" />
+    <Folder Include="Resources\Images.xcassets\StackedBar.imageset\" />
+    <Folder Include="Resources\Images.xcassets\StackedColumn.imageset\" />
+    <Folder Include="Resources\Images.xcassets\StackedColumns100.imageset\" />
+    <Folder Include="Resources\Images.xcassets\Themes.imageset\" />
+    <Folder Include="Resources\Images.xcassets\ZoomPan.imageset\" />
+    <Folder Include="Resources\Images.xcassets\Сharts2d.imageset\" />
+    <Folder Include="Resources\Images.xcassets\Charts3d.imageset\" />
+    <Folder Include="Resources\Images.xcassets\FeaturedApps.imageset\" />
+    <Folder Include="Views\" />
+    <Folder Include="Views\MainMenu\" />
+    <Folder Include="Views\ExamplesList\" />
+    <Folder Include="Resources\Images.xcassets\Axis3D.imageset\" />
+    <Folder Include="Resources\Images.xcassets\Scatter3D.imageset\" />
+    <Folder Include="Resources\Images.xcassets\Surface3D.imageset\" />
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <Import Project="..\Xamarin.Examples.Demo\Xamarin.Examples.Demo.projitems" Label="Shared" Condition="Exists('..\Xamarin.Examples.Demo\Xamarin.Examples.Demo.projitems')" />
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="SciChart.iOS.Charting">
+      <HintPath>../packages/SciChart.iOS.3.0.0.59/lib/Xamarin.iOS10/SciChart.iOS.Charting.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

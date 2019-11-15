@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cZE-iV-UFb" customClass="MenuItemCell">
+            <rect key="frame" x="0.0" y="0.0" width="221" height="207"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="221" height="207"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jfE-ka-pXw" misplaced="YES">
+                        <rect key="frame" x="54" y="53" width="113" height="101"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LineChart" translatesAutoresizingMaskIntoConstraints="NO" id="Wci-8o-RtX" misplaced="YES">
+                                <rect key="frame" x="38" y="0.0" width="37" height="37"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVm-4y-0bb" misplaced="YES">
+                                <rect key="frame" x="0.0" y="80" width="113" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="0Ds-cZ-7Vr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2D CHARTS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJS-PE-MFm" misplaced="YES">
+                                <rect key="frame" x="10" y="52" width="93" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="dDi-Gp-JA2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                                <color key="textColor" red="0.2784313725" green="0.70588235290000001" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="oVm-4y-0bb" secondAttribute="trailing" id="5AW-dL-ErJ"/>
+                            <constraint firstItem="sJS-PE-MFm" firstAttribute="centerX" secondItem="jfE-ka-pXw" secondAttribute="centerX" id="7ZY-rb-EEQ"/>
+                            <constraint firstItem="Wci-8o-RtX" firstAttribute="top" secondItem="jfE-ka-pXw" secondAttribute="top" id="7z7-by-vXw"/>
+                            <constraint firstItem="Wci-8o-RtX" firstAttribute="centerX" secondItem="jfE-ka-pXw" secondAttribute="centerX" id="Hfv-NM-asF"/>
+                            <constraint firstItem="oVm-4y-0bb" firstAttribute="leading" secondItem="jfE-ka-pXw" secondAttribute="leading" id="NVR-Ps-a8N"/>
+                            <constraint firstAttribute="bottom" secondItem="oVm-4y-0bb" secondAttribute="bottom" id="QcQ-Ak-qfT"/>
+                            <constraint firstItem="sJS-PE-MFm" firstAttribute="top" secondItem="Wci-8o-RtX" secondAttribute="bottom" constant="15" id="dy0-je-gXj"/>
+                            <constraint firstItem="oVm-4y-0bb" firstAttribute="top" secondItem="sJS-PE-MFm" secondAttribute="bottom" constant="7" id="eJc-fw-Oy5"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sJS-PE-MFm" secondAttribute="trailing" constant="10" id="uX9-zc-ImW"/>
+                            <constraint firstItem="sJS-PE-MFm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jfE-ka-pXw" secondAttribute="leading" constant="10" id="vE8-aV-UJd"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="jfE-ka-pXw" firstAttribute="centerY" secondItem="cZE-iV-UFb" secondAttribute="centerY" id="9OD-r0-iQT"/>
+                <constraint firstItem="jfE-ka-pXw" firstAttribute="centerX" secondItem="cZE-iV-UFb" secondAttribute="centerX" id="YyD-DZ-ZJg"/>
+            </constraints>
+            <color key="backgroundColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="0" alpha="0"/>
+            <connections>
+                <outlet property="Icon" destination="Wci-8o-RtX" id="name-outlet-Wci-8o-RtX"/>
+                <outlet property="Title" destination="7ZY-rb-EEQ" id="name-outlet-7ZY-rb-EEQ"/>
+                <outlet property="Subtitle" destination="oVm-4y-0bb" id="name-outlet-oVm-4y-0bb"/>
+                <outlet property="TitleLabel" destination="sJS-PE-MFm" id="name-outlet-sJS-PE-MFm"/>
+                <outlet property="ContainerView" destination="jfE-ka-pXw" id="name-outlet-jfE-ka-pXw"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="LineChart" width="36.66667" height="36.66667"/>
+    </resources>
+</document>
