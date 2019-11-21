@@ -1,0 +1,53 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial3D_01-CreateSimpleScatterChart3D", "Tutorial3D_01-CreateSimpleScatterChart3D\Tutorial3D_01-CreateSimpleScatterChart3D.csproj", "{C2860520-FCBB-4719-8420-59A7D9966F5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial3D_02-ZoomingAndRotating", "Tutorial3D_02-ZoomingAndRotating\Tutorial3D_02-ZoomingAndRotating.csproj", "{F79376D5-B1A2-49BF-86E8-5F07D57E5D1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial3D_03-CursorsAndTooltips", "Tutorial3D_03-CursorsAndTooltips\Tutorial3D_03-CursorsAndTooltips.csproj", "{BEA6F978-8F2F-44EB-BCFA-766899348708}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial3D_04-PlottingRealtimeData", "Tutorial3D_04-PlottingRealtimeData\Tutorial3D_04-PlottingRealtimeData.csproj", "{E9A0D916-F33B-46C5-931F-AE6FF6C92F1F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Release|iPhone = Release|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C2860520-FCBB-4719-8420-59A7D9966F5B}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{C2860520-FCBB-4719-8420-59A7D9966F5B}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{C2860520-FCBB-4719-8420-59A7D9966F5B}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{C2860520-FCBB-4719-8420-59A7D9966F5B}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{C2860520-FCBB-4719-8420-59A7D9966F5B}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{C2860520-FCBB-4719-8420-59A7D9966F5B}.Debug|iPhone.Build.0 = Debug|iPhone
+		{C2860520-FCBB-4719-8420-59A7D9966F5B}.Release|iPhone.ActiveCfg = Release|iPhone
+		{C2860520-FCBB-4719-8420-59A7D9966F5B}.Release|iPhone.Build.0 = Release|iPhone
+		{F79376D5-B1A2-49BF-86E8-5F07D57E5D1D}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{F79376D5-B1A2-49BF-86E8-5F07D57E5D1D}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{F79376D5-B1A2-49BF-86E8-5F07D57E5D1D}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{F79376D5-B1A2-49BF-86E8-5F07D57E5D1D}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{F79376D5-B1A2-49BF-86E8-5F07D57E5D1D}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{F79376D5-B1A2-49BF-86E8-5F07D57E5D1D}.Debug|iPhone.Build.0 = Debug|iPhone
+		{F79376D5-B1A2-49BF-86E8-5F07D57E5D1D}.Release|iPhone.ActiveCfg = Release|iPhone
+		{F79376D5-B1A2-49BF-86E8-5F07D57E5D1D}.Release|iPhone.Build.0 = Release|iPhone
+		{BEA6F978-8F2F-44EB-BCFA-766899348708}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{BEA6F978-8F2F-44EB-BCFA-766899348708}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{BEA6F978-8F2F-44EB-BCFA-766899348708}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{BEA6F978-8F2F-44EB-BCFA-766899348708}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{BEA6F978-8F2F-44EB-BCFA-766899348708}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{BEA6F978-8F2F-44EB-BCFA-766899348708}.Debug|iPhone.Build.0 = Debug|iPhone
+		{BEA6F978-8F2F-44EB-BCFA-766899348708}.Release|iPhone.ActiveCfg = Release|iPhone
+		{BEA6F978-8F2F-44EB-BCFA-766899348708}.Release|iPhone.Build.0 = Release|iPhone
+		{E9A0D916-F33B-46C5-931F-AE6FF6C92F1F}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{E9A0D916-F33B-46C5-931F-AE6FF6C92F1F}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{E9A0D916-F33B-46C5-931F-AE6FF6C92F1F}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{E9A0D916-F33B-46C5-931F-AE6FF6C92F1F}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{E9A0D916-F33B-46C5-931F-AE6FF6C92F1F}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{E9A0D916-F33B-46C5-931F-AE6FF6C92F1F}.Debug|iPhone.Build.0 = Debug|iPhone
+		{E9A0D916-F33B-46C5-931F-AE6FF6C92F1F}.Release|iPhone.ActiveCfg = Release|iPhone
+		{E9A0D916-F33B-46C5-931F-AE6FF6C92F1F}.Release|iPhone.Build.0 = Release|iPhone
+	EndGlobalSection
+EndGlobal

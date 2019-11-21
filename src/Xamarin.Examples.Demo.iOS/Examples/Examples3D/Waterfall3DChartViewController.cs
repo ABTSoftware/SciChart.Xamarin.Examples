@@ -41,8 +41,6 @@ namespace Xamarin.Examples.Demo.iOS
                 Surface.ZAxis = new SCINumericAxis3D();
                 Surface.RenderableSeries.Add(rSeries3D);
                 Surface.ChartModifiers.Add(CreateDefault3DModifiers());
-
-                Surface.Camera = new SCICamera3D();
             }
         }
     }
