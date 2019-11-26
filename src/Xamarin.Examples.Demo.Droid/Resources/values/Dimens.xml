@@ -6,4 +6,8 @@
 
   <dimen name="horizontal_margin">8dp</dimen>
   <dimen name="vertical_margin">8dp</dimen>
+
+  <dimen name="main_screen_example_category_margin">30dp</dimen>
+  <dimen name="main_screen_heading_font_size">16sp</dimen>
+  <dimen name="main_screen_description_font_size">12sp</dimen>
 </resources>

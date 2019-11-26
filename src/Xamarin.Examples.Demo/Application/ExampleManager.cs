@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 
 namespace Xamarin.Examples.Demo
@@ -24,11 +25,22 @@ namespace Xamarin.Examples.Demo
             FeaturedExamples = types.Where(t => Attribute.IsDefined(t, typeof(FeaturedExampleDefinition))).Select(t => new Example(t)).OrderBy(ex => ex.Title).ToList();
         }
 
-        public Example GetExampleByTitle(string exampleTitle, bool is3DExample)
+        public Example GetExampleByTitle(string exampleTitle, string categoryId)
         {
-            var examples = is3DExample ? Examples3D : Examples;
+            var examples = GetExamplesByCategory(categoryId);
 
             return examples.FirstOrDefault(x => x.Title == exampleTitle);
+        }
+
+        public List<Example> GetExamplesByCategory(string categoryId)
+        {
+            if (categoryId == DemoKeys.Featured)
+                return FeaturedExamples;
+
+            if (categoryId == DemoKeys.Charts3D)
+                return Examples3D;
+
+            return Examples;
         }
     }
 }

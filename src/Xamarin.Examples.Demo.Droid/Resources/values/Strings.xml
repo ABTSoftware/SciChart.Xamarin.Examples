@@ -29,4 +29,11 @@
   <string name="perspective">Perspective</string>
   <string name="orthogonal">Orthogonal</string>
 
+  <string name="featured">FEATURED CHARTS</string>
+  <string name="featured_description">SELECTION OF FEATURED CHARTS</string>
+  <string name="charts2D">2D CHARTS</string>
+  <string name="charts2D_description">SELECTION OF 2D CHARTS</string>
+  <string name="charts3D">3D CHARTS</string>
+  <string name="charts3D_description">SELECTION OF 3D CHARTS</string>
+
 </resources>

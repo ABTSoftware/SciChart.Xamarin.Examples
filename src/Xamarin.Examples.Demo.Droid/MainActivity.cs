@@ -1,51 +1,71 @@
 ﻿using Android.App;
 using Android.Content;
-using Android.Content.PM;
 using Android.OS;
+using Android.Support.V7.App;
 using Android.Widget;
-using Xamarin.Examples.Demo;
 using Xamarin.Examples.Demo.Droid.Application;
+using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace Xamarin.Examples.Demo.Droid
 {
-    [Activity(Label = "Xamarin Demo", MainLauncher = true, Icon = "@drawable/icon", ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize)]
-    public class MainActivity : Activity
+    [Activity(Label = "ExampleListActivity")]
+    public class MainActivity : AppCompatActivity
     {
-        private ListView listView;
+        private ListView _listView;
+        private string _category = DemoKeys.Charts2D;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            // Set your trial or purchased license key here!
-            // 
-            // If you don't have a trial key you can get one from www.scichart.com/licensing-scichart-android
-            // 
-            // Use code similar to the following: 
-            // 
-            // var licensingContract = @"Get your license from www.scichart.com/licensing-scichart-android";
-            // SciChart.Charting.Visuals.SciChartSurface.SetRuntimeLicenseKey(licensingContract);
-
             SetContentView(Resource.Layout.MainView);
 
-            listView = FindViewById<ListView>(Resource.Id.examplesList);
-            listView.ChoiceMode = ChoiceMode.Single;
-            listView.Adapter = new ExampleAdapter(this, ExampleManager.Instance.Examples);
+            var toolbar = FindViewById<Toolbar>(Resource.Id.appToolbar);
+            SetSupportActionBar(toolbar);
 
-            var examples2dButton = FindViewById<RadioButton>(Resource.Id.examples2dButton);
-            var examples3dButton = FindViewById<RadioButton>(Resource.Id.examples3dButton);
-
-            examples2dButton.Click += (s, e) =>
+            var actionBar = SupportActionBar;
+            if (actionBar != null)
             {
-                listView.Adapter = new ExampleAdapter(this, ExampleManager.Instance.Examples);
-            };
+                actionBar.SetDisplayShowHomeEnabled(true);
+                actionBar.SetDisplayHomeAsUpEnabled(true);
+                actionBar.SetHomeAsUpIndicator(GetDrawable(Resource.Drawable.ic_home_24dp));
+            }
 
-            examples3dButton.Click += (s, e) =>
+            toolbar.NavigationClick += (sender, args) => OnBackPressed();
+
+            var categoryIcon = FindViewById<ImageView>(Resource.Id.category_icon);
+            var categoryTitle = FindViewById<TextView>(Resource.Id.category_title);
+
+            _listView = FindViewById<ListView>(Resource.Id.examplesList);
+            _listView.ChoiceMode = ChoiceMode.Single;
+
+            if (savedInstanceState != null)
             {
-                listView.Adapter = new ExampleAdapter(this, ExampleManager.Instance.Examples3D);
-            };
+                _category = savedInstanceState.GetString(DemoKeys.CategoryId);
+            }
+            else
+            {
+                var extras = Intent.Extras;
+                if (extras != null)
+                    _category = extras.GetString(DemoKeys.CategoryId);
+            }
 
-            listView.ItemClick += (s, e) =>
+            var examples = ExampleManager.Instance.GetExamplesByCategory(_category);
+
+            int categoryIconDrawable;
+            if (_category == DemoKeys.Featured)
+                categoryIconDrawable = Resource.Drawable.ic_featured_icon_white;
+            else if (_category == DemoKeys.Charts3D)
+                categoryIconDrawable = Resource.Drawable.ic_3d_icon_white;
+            else
+                categoryIconDrawable = Resource.Drawable.ic_2d_icon_white;
+
+            categoryIcon.SetImageResource(categoryIconDrawable);
+            categoryTitle.Text = _category;
+
+            _listView.Adapter = new ExampleAdapter(this, examples);
+
+            _listView.ItemClick += (s, e) =>
             {
                 OpenExample(e.Position);
             };
@@ -53,18 +73,25 @@ namespace Xamarin.Examples.Demo.Droid
 
         private void OpenExample(int exampleIndex)
         {
-            var adapter = listView.Adapter as ExampleAdapter;
+            var adapter = _listView.Adapter as ExampleAdapter;
             if (adapter != null)
             {
                 var example = adapter[exampleIndex];
 
                 var intent = new Intent(this, typeof(ExampleActivity));
                 intent.PutExtra(DemoKeys.ExampleId, example.Title);
-                intent.PutExtra(DemoKeys.IsExample3D, example.IsExample3D);
+                intent.PutExtra(DemoKeys.CategoryId, _category);
 
                 StartActivityForResult(intent, 1);
                 OverridePendingTransition(Resource.Animation.abc_grow_fade_in_from_bottom, Resource.Animation.abc_shrink_fade_out_from_bottom);
             }
+        }
+
+        protected override void OnSaveInstanceState(Bundle outState)
+        {
+            base.OnSaveInstanceState(outState);
+
+            outState.PutString(DemoKeys.CategoryId, _category);
         }
     }
 }

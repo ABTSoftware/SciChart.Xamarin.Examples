@@ -5,7 +5,6 @@ using Android.Support.V7.App;
 using Android.Util;
 using Android.Widget;
 using Java.Interop;
-using Xamarin.Examples.Demo;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 
@@ -41,15 +40,15 @@ namespace Xamarin.Examples.Demo.Droid
         private void SetUpExample(Bundle savedInstanceState)
         {
             var exampleId = Intent.GetStringExtra(DemoKeys.ExampleId);
-            var isExample3D = Intent.GetBooleanExtra(DemoKeys.IsExample3D, false);
-            _example = ExampleManager.Instance.GetExampleByTitle(exampleId, isExample3D);
+            var categoryId = Intent.GetStringExtra(DemoKeys.CategoryId);
+            _example = ExampleManager.Instance.GetExampleByTitle(exampleId, categoryId);
 
             Title = _example.Title;
             FindViewById<TextView>(Resource.Id.exampleTitle).Text = Title;
 
             if (savedInstanceState != null)
             {
-                _exampleFragment = FragmentManager.FindFragmentByTag<ExampleBaseFragment>(DemoKeys.FragmentTag);
+                _exampleFragment = SupportFragmentManager.FindFragmentByTag(DemoKeys.FragmentTag) as ExampleBaseFragment;
             }
             else
             {
@@ -58,7 +57,7 @@ namespace Xamarin.Examples.Demo.Droid
 
             if (_exampleFragment != null && !_exampleFragment.IsInLayout)
             {
-                FragmentManager.BeginTransaction()
+                SupportFragmentManager.BeginTransaction()
                     .Replace(Resource.Id.fragment_container, _exampleFragment, DemoKeys.FragmentTag)
                     .Commit();
             }

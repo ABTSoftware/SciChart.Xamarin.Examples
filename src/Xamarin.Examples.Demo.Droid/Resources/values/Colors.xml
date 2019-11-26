@@ -31,4 +31,6 @@
   <color name="sort_by_background">#222426</color>
   <color name="sort_by_top_item_background">#323436</color>
 
+  <color name="main_screen_text_color">#47b44f</color>
+
 </resources>

@@ -14,48 +14,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:popupTheme="@style/AppTheme.AppBar">
-            <TextView
-                android:gravity="center"
-                android:text="SciChart Xamarin.Android Examples"
-                android:id="@+id/category_title"
+             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="3dp"
-                android:layout_toRightOf="@+id/category_icon"
-                android:textSize="@dimen/toolbar_title_size" />
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/category_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true" />
+
+                <TextView
+                    android:gravity="center_vertical|left"
+                    android:id="@+id/category_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="3dp"
+                    android:layout_toRightOf="@+id/category_icon"
+                    android:textSize="@dimen/toolbar_title_size" />
+             </RelativeLayout>
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <RadioButton
-            android:text="2D Examples"
-            android:button="@android:color/transparent"
-            android:background="@drawable/example_radio_button_background"
-            android:textColor="@android:color/white"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:checked="true"
-            android:padding="7dp"
-            android:id="@+id/examples2dButton"
-            android:layout_width="0px"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-        <RadioButton
-            android:text="3D Examples"
-            android:button="@android:color/transparent"
-            android:background="@drawable/example_radio_button_background"
-            android:textColor="@android:color/white"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:padding="7dp"
-            android:id="@+id/examples3dButton"
-            android:layout_width="0px"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </RadioGroup>
     <ListView
         android:minWidth="25px"
         android:minHeight="25px"
