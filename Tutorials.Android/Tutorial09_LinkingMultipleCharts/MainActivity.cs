@@ -1,6 +1,6 @@
 ﻿using System.Timers;
 using Android.App;
-using Android.Graphics;
+using System.Drawing;
 using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Views;
@@ -14,6 +14,7 @@ using SciChart.Charting.Visuals.PointMarkers;
 using SciChart.Charting.Visuals.RenderableSeries;
 using SciChart.Data.Model;
 using SciChart.Drawing.Common;
+using FontStyle = SciChart.Drawing.Common.FontStyle;
 using Math = System.Math;
 using Orientation = SciChart.Core.Framework.Orientation;
 
@@ -25,6 +26,9 @@ namespace Tutorial09_LinkingMultipleCharts
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+
+            // set license key before using SciChart
+            SciChartSurface.SetRuntimeLicenseKey("");
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
@@ -68,7 +72,7 @@ namespace Tutorial09_LinkingMultipleCharts
                             HorizontalAnchorPoint = HorizontalAnchorPoint.Center,
                             VerticalAnchorPoint = VerticalAnchorPoint.Center,
                             FontStyle = new FontStyle(20, Color.White),
-                            Background = new ColorDrawable(Color.DarkGreen),
+                            Background = new ColorDrawable(Android.Graphics.Color.DarkGreen),
                             ZIndex = 1,
                             YAxisId = x % 200 == 0 ? AxisBase.DefaultAxisId : "SecondaryAxis"
                         };
@@ -127,7 +131,7 @@ namespace Tutorial09_LinkingMultipleCharts
             secondChart.RenderableSeries.Add(mountainSeries);
 
             // Share chart's XAxis VisibleRange with secondChart's XAxis VisibleRange           
-            secondChart.XAxes[0].VisibleRange = chart.XAxes[0].VisibleRange;
+            ((AxisBase)secondChart.XAxes[0]).VisibleRange = chart.XAxes[0].VisibleRange;
         }
 
         private void InitChart(SciChartSurface chart)

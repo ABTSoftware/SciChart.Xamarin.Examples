@@ -1,6 +1,6 @@
 ﻿using System.Timers;
 using Android.App;
-using Android.Graphics;
+using System.Drawing;
 using Android.OS;
 using Android.Views;
 using SciChart.Charting.Model.DataSeries;
@@ -23,6 +23,9 @@ namespace Tutorial06_AddRealtimeUpdates
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+
+            // set license key before using SciChart
+            SciChartSurface.SetRuntimeLicenseKey("");
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);

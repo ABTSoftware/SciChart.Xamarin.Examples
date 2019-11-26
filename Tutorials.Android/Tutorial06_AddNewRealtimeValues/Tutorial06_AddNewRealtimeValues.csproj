@@ -51,21 +51,17 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
-    <Reference Include="SciChart.Android.Charting, Version=2.0.0.486, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL">
-      <HintPath>..\packages\SciChart.Android.2.0.0.486\lib\xamarin-android\SciChart.Android.Charting.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="SciChart.Android.Charting, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL">
+      <HintPath>..\packages\SciChart.Android.3.0.0.4121\lib\MonoAndroid440\SciChart.Android.Charting.dll</HintPath>
     </Reference>
-    <Reference Include="SciChart.Android.Core, Version=2.0.0.486, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL">
-      <HintPath>..\packages\SciChart.Android.2.0.0.486\lib\xamarin-android\SciChart.Android.Core.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="SciChart.Android.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL">
+      <HintPath>..\packages\SciChart.Android.3.0.0.4121\lib\MonoAndroid440\SciChart.Android.Core.dll</HintPath>
     </Reference>
-    <Reference Include="SciChart.Android.Data, Version=2.0.0.486, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL">
-      <HintPath>..\packages\SciChart.Android.2.0.0.486\lib\xamarin-android\SciChart.Android.Data.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="SciChart.Android.Data, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL">
+      <HintPath>..\packages\SciChart.Android.3.0.0.4121\lib\MonoAndroid440\SciChart.Android.Data.dll</HintPath>
     </Reference>
-    <Reference Include="SciChart.Android.Drawing, Version=2.0.0.486, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL">
-      <HintPath>..\packages\SciChart.Android.2.0.0.486\lib\xamarin-android\SciChart.Android.Drawing.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="SciChart.Android.Drawing, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL">
+      <HintPath>..\packages\SciChart.Android.3.0.0.4121\lib\MonoAndroid440\SciChart.Android.Drawing.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -78,9 +74,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -89,6 +82,7 @@
     <AndroidResource Include="Resources\drawable\Icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

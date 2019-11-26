@@ -1,5 +1,5 @@
 ﻿using Android.App;
-using Android.Graphics;
+using System.Drawing;
 using Android.OS;
 using Android.Views;
 using SciChart.Charting.Model.DataSeries;

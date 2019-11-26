@@ -1,6 +1,6 @@
 ﻿using System.Timers;
 using Android.App;
-using Android.Graphics;
+using System.Drawing;
 using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Views;
@@ -14,6 +14,7 @@ using SciChart.Charting.Visuals.PointMarkers;
 using SciChart.Charting.Visuals.RenderableSeries;
 using SciChart.Data.Model;
 using SciChart.Drawing.Common;
+using FontStyle = SciChart.Drawing.Common.FontStyle;
 using Math = System.Math;
 using Orientation = SciChart.Core.Framework.Orientation;
 
@@ -92,7 +93,7 @@ namespace Tutorial08_AddMultipleAxes
                             HorizontalAnchorPoint = HorizontalAnchorPoint.Center,
                             VerticalAnchorPoint = VerticalAnchorPoint.Center,
                             FontStyle = new FontStyle(20, Color.White),
-                            Background = new ColorDrawable(Color.DarkGreen),
+                            Background = new ColorDrawable(Android.Graphics.Color.DarkGreen),
                             ZIndex = 1,
                             YAxisId = x % 200 == 0 ? AxisBase.DefaultAxisId : "SecondaryAxis"
                         };
