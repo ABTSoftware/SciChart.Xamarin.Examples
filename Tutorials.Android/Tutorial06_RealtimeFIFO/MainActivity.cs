@@ -25,6 +25,9 @@ namespace Tutorial06_AddRealtimeUpdates
         {
             base.OnCreate(bundle);
 
+            // set license key before using SciChart
+            SciChartSurface.SetRuntimeLicenseKey("");
+
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
