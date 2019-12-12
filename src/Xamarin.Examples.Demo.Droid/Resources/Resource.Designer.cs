@@ -3543,7 +3543,7 @@ namespace Xamarin.Examples.Demo.Droid
 			public const int HeatmapChart = 2131230844;
 			
 			// aapt resource value: 0x7F080135
-			public const int Icon = 2131231029;
+			public const int icon = 2131231029;
 			
 			// aapt resource value: 0x7F08007D
 			public const int ic_2d_icon_white = 2131230845;
