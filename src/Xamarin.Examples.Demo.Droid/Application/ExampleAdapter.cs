@@ -2,8 +2,6 @@
 using Android.App;
 using Android.Views;
 using Android.Widget;
-using Xamarin.Examples.Demo;
-using Xamarin.Examples.Demo;
 
 namespace Xamarin.Examples.Demo.Droid.Application
 {

@@ -6,9 +6,9 @@ namespace Xamarin.Examples.Demo.Droid.Components
 {
     public class ThousandsLabelProvider : NumericLabelProvider
     {
-        public override ICharSequence FormatLabelFormatted(IComparable dataValue)
+        public override ICharSequence FormatLabelFormatted(double dataValue)
         {
-            return new String(base.FormatLabelFormatted((Double)(ComparableUtil.ToDouble(dataValue) / 1000d)) + "k");
+            return new String(base.FormatLabelFormatted((Double)(dataValue / 1000d)) + "k");
         }
     }
 }

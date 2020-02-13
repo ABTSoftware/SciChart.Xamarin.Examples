@@ -2,19 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Android;
 using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Xamarin.Examples.Demo.Droid.Application;
 
 namespace Xamarin.Examples.Demo.Droid
 {
     [Activity(Label = "Xamarin Demo", MainLauncher = true, Icon = "@drawable/icon")]
     public class StartupActivity : Activity
     {
+        private readonly PermissionManager _permissionManager;
+
+        public StartupActivity()
+        {
+            _permissionManager = new PermissionManager(this);
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -33,6 +41,15 @@ namespace Xamarin.Examples.Demo.Droid
             FindViewById(Resource.Id.charts2dCard).Click += Open2DExamples;
             FindViewById(Resource.Id.charts3dCard).Click += Open3DExamples;
             FindViewById(Resource.Id.featuredChartsCard).Click += OpenFeaturedExamples;
+
+            RequestPermissions();
+        }
+
+        private void RequestPermissions()
+        {
+            // permissions for Audio Analyzer
+            _permissionManager.TryRequestPermission(Manifest.Permission.RecordAudio);
+            _permissionManager.TryRequestPermission(Manifest.Permission.ModifyAudioSettings);
         }
 
         private void Open2DExamples(object sender, EventArgs e)
