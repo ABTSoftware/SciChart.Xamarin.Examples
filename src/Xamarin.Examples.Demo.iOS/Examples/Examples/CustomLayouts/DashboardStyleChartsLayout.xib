@@ -11,8 +11,8 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <subviews>
-                <segmentedControl contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="12" opaque="NO" misplaced="YES">
-                    <rect key="frame" x="0.0" y="572" width="600" height="29"/>
+                <segmentedControl contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="12" opaque="NO">
+                    <rect key="frame" x="0.0" y="705" width="414" height="32"/>
                     <segments>
                         <segment title="Side by Side"/>
                         <segment title="Stacked Columns"/>

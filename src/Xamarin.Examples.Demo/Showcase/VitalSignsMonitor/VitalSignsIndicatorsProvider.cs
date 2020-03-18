@@ -1,18 +1,18 @@
 ﻿using System;
 
-namespace Xamarin.Examples.Demo.Showcase.ECG
+namespace Xamarin.Examples.Demo.Showcase.VitalSignsMonitor
 {
-    public class EcgIndicatorsProvider
+    public class VitalSignsIndicatorsProvider
     {
         private readonly Random _random = new Random();
 
         private static readonly string[] BpmValues = new string[] {"67", "69", "72", "74"};
 
         private static readonly string[] BpValues = new string[] {"120/70", "115/70", "115/75", "120/75"};
-        private static readonly int[] BpbValues = new int[] {5, 6, 7};
+        private static readonly int[] BpbValues = new int[] {3, 4, 5};
 
         private static readonly string[] BvValues = new string[] {"13.1", "13.2", "13.3", "13.0"};
-        private static readonly int[] BvbValues = new int[] {9, 10, 11};
+        private static readonly int[] BvbValues = new int[] {8, 9, 10};
 
         private static readonly string[] BoValues = new string[] {"93", "95", "96", "97"};
 

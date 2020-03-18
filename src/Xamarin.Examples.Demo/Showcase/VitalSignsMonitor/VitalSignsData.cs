@@ -1,8 +1,8 @@
-﻿namespace Xamarin.Examples.Demo.Showcase.ECG
+﻿namespace Xamarin.Examples.Demo.Showcase.VitalSignsMonitor
 {
-    public class ECGData
+    public class VitalSignsData
     {
-        public ECGData(double xValue, double ecgHeartRate, double bloodPressure, double bloodVolume, double bloodOxygenation, bool isATrace)
+        public VitalSignsData(double xValue, double ecgHeartRate, double bloodPressure, double bloodVolume, double bloodOxygenation, bool isATrace)
         {
             XValue = xValue;
             ECGHeartRate = ecgHeartRate;

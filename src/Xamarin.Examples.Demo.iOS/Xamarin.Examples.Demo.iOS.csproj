@@ -150,7 +150,6 @@
     <Compile Include="Examples\Examples\FanChartViewController.cs" />
     <Compile Include="Examples\Examples\PerformanceDemoViewController.cs" />
     <Compile Include="Examples\Examples\HeatmapChartViewController.cs" />
-    <Compile Include="Examples\Examples\ECGMonitorViewController.cs" />
     <Compile Include="Examples\Examples\BandChartViewController.cs" />
     <Compile Include="Examples\Examples\LineChartViewController.cs" />
     <Compile Include="Examples\Examples\CreateRealtimeTickingStockChartsViewController.cs" />
@@ -226,6 +225,32 @@
     </Compile>
     <InterfaceDefinition Include="Views\Main.storyboard" />
     <InterfaceDefinition Include="Views\LaunchScreen.storyboard" />
+    <Compile Include="Examples\Featured\Vital Signs\VitalSignsMonitorViewController.cs" />
+    <Compile Include="Examples\Featured\Vital Signs\VitalSignsMonitorViewController.designer.cs">
+      <DependentUpon>VitalSignsMonitorViewController.cs</DependentUpon>
+    </Compile>
+    <InterfaceDefinition Include="Examples\Featured\Vital Signs\VitalSignsMonitorViewController.xib" />
+    <Compile Include="Examples\Featured\Vital Signs\RightAlignedOuterVerticallyStackedYAxisLayoutStrategy.cs" />
+    <Compile Include="Examples\Featured\Vital Signs\VitalSignsDataBatch.cs" />
+    <Compile Include="Examples\Featured\Vital Signs\DimTracePaletteProvider.cs" />
+    <Compile Include="Examples\Featured\AudioAnalyzer\AudioAnalyzerViewController.cs" />
+    <Compile Include="Examples\Featured\AudioAnalyzer\AudioAnalyzerViewController.designer.cs">
+      <DependentUpon>AudioAnalyzerViewController.cs</DependentUpon>
+    </Compile>
+    <InterfaceDefinition Include="Examples\Featured\AudioAnalyzer\AudioAnalyzerViewController.xib" />
+    <Compile Include="Examples\Featured\AudioAnalyzer\FFTPaletteProvider.cs" />
+    <Compile Include="Examples\Featured\AudioAnalyzer\DefaultAudioAnalyzerDataProvider.cs" />
+    <Compile Include="Examples\Featured\AudioAnalyzer\AudioRecorder.cs" />
+    <Compile Include="Examples\Featured\ECG\ECGMonitorViewController.cs" />
+    <Compile Include="Components\BorderedView.cs" />
+    <Compile Include="Components\BorderedView.designer.cs">
+      <DependentUpon>BorderedView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\StepProgressBar\ProgressBarStyle.cs" />
+    <Compile Include="Components\StepProgressBar\StepProgressBar.cs" />
+    <Compile Include="Components\StepProgressBar\StepProgressBar.designer.cs">
+      <DependentUpon>StepProgressBar.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\SciChart_BerryBlue.plist" />
@@ -539,6 +564,8 @@
     <ImageAsset Include="Resources\Images.xcassets\Surface3D.imageset\Surface3D.png" />
     <ImageAsset Include="Resources\Images.xcassets\Surface3D.imageset\Surface3D-1.png" />
     <ImageAsset Include="Resources\Images.xcassets\Surface3D.imageset\Surface3D-2.png" />
+    <ImageAsset Include="Resources\Images.xcassets\icon.heart.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\icon.heart.imageset\example_heart_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Images.xcassets\Axis.imageset\" />
@@ -563,14 +590,19 @@
     <Folder Include="Resources\Images.xcassets\Axis3D.imageset\" />
     <Folder Include="Resources\Images.xcassets\Scatter3D.imageset\" />
     <Folder Include="Resources\Images.xcassets\Surface3D.imageset\" />
+    <Folder Include="Resources\Images.xcassets\icon.heart.imageset\" />
+    <Folder Include="Examples\Featured\" />
+    <Folder Include="Examples\Featured\Vital Signs\" />
+    <Folder Include="Examples\Featured\AudioAnalyzer\" />
+    <Folder Include="Examples\Featured\ECG\" />
+    <Folder Include="Components\StepProgressBar\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Xamarin.iOS\SciChart.iOS.Charting\SciChart.iOS.Charting.csproj">
+      <Project>{6492122c-a917-45ec-ae40-a290acaf274e}</Project>
+      <Name>SciChart.iOS.Charting</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\Xamarin.Examples.Demo\Xamarin.Examples.Demo.projitems" Label="Shared" Condition="Exists('..\Xamarin.Examples.Demo\Xamarin.Examples.Demo.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <ItemGroup>
-    <Reference Include="SciChart.iOS.Charting">
-      <HintPath>../packages/SciChart.iOS.3.0.1.4864/lib/Xamarin.iOS10/SciChart.iOS.Charting.dll</HintPath>
-    </Reference>
-  </ItemGroup>
 </Project>

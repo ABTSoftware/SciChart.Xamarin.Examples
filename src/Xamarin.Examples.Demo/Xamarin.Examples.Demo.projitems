@@ -28,9 +28,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Showcase\AudioAnalyzer\Radix2FFT.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Showcase\AudioAnalyzer\StubAudioAnalyzerDataProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Showcase\DataProviderBase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Showcase\ECG\DefaultECGDataProvider.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Showcase\ECG\ECGData.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Showcase\ECG\EcgIndicatorsProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Showcase\VitalSignsMonitor\DefaultVitalSignsDataProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Showcase\VitalSignsMonitor\VitalSignsData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Showcase\VitalSignsMonitor\VitalSignsIndicatorsProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Showcase\IDataProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\ColorUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ColorExtensions.cs" />

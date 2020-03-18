@@ -44,5 +44,7 @@
 	<string>Resources/Images.xcassets/LaunchImage.launchimage</string>
 	<key>CFBundleName</key>
 	<string>SciChart-Xamarin</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Analyze your voice</string>
 </dict>
 </plist>
