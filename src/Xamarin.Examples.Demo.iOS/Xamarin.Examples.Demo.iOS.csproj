@@ -251,6 +251,9 @@
     <Compile Include="Components\StepProgressBar\StepProgressBar.designer.cs">
       <DependentUpon>StepProgressBar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Examples\Examples\SplineBandChartViewController.cs" />
+    <Compile Include="Examples\Examples\SplineLineChartViewController.cs" />
+    <Compile Include="Examples\Examples\SplineMountainChartViewController.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\SciChart_BerryBlue.plist" />
