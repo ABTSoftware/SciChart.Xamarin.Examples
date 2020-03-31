@@ -601,11 +601,12 @@
     <Folder Include="Components\StepProgressBar\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Xamarin.iOS\SciChart.iOS.Charting\SciChart.iOS.Charting.csproj">
-      <Project>{6492122c-a917-45ec-ae40-a290acaf274e}</Project>
-      <Name>SciChart.iOS.Charting</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="..\Xamarin.Examples.Demo\Xamarin.Examples.Demo.projitems" Label="Shared" Condition="Exists('..\Xamarin.Examples.Demo\Xamarin.Examples.Demo.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="SciChart.iOS.Charting">
+      <HintPath>../packages/SciChart.iOS.3.0.1.4911/lib/Xamarin.iOS10/SciChart.iOS.Charting.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>
