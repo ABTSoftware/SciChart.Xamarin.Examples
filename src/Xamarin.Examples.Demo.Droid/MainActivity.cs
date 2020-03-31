@@ -1,9 +1,13 @@
-﻿using Android.App;
+﻿using System.Linq;
+using System.Reflection;
+using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Support.V7.App;
 using Android.Widget;
 using Xamarin.Examples.Demo.Droid.Application;
+using Xamarin.Examples.Demo.Droid.Fragments.Base;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace Xamarin.Examples.Demo.Droid
@@ -11,8 +15,12 @@ namespace Xamarin.Examples.Demo.Droid
     [Activity(Label = "ExampleListActivity")]
     public class MainActivity : AppCompatActivity
     {
+        private const int ExampleRequestCode = 42;
+
         private ListView _listView;
         private string _category = DemoKeys.Charts2D;
+
+        private Example _example;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -76,15 +84,24 @@ namespace Xamarin.Examples.Demo.Droid
             var adapter = _listView.Adapter as ExampleAdapter;
             if (adapter != null)
             {
-                var example = adapter[exampleIndex];
+                _example = adapter[exampleIndex];
 
-                var intent = new Intent(this, typeof(ExampleActivity));
-                intent.PutExtra(DemoKeys.ExampleId, example.Title);
-                intent.PutExtra(DemoKeys.CategoryId, _category);
-
-                StartActivityForResult(intent, 1);
-                OverridePendingTransition(Resource.Animation.abc_grow_fade_in_from_bottom, Resource.Animation.abc_shrink_fade_out_from_bottom);
+                if (this.AskForPermissions(ExampleRequestCode, _example))
+                {
+                    StartExampleActivity(_example);
+                }
             }
+        }
+
+        private void StartExampleActivity(Example example)
+        {
+            var intent = new Intent(this, typeof(ExampleActivity));
+            intent.PutExtra(DemoKeys.ExampleId, example.Title);
+            intent.PutExtra(DemoKeys.CategoryId, _category);
+
+            StartActivityForResult(intent, 1);
+            OverridePendingTransition(Resource.Animation.abc_grow_fade_in_from_bottom,
+                Resource.Animation.abc_shrink_fade_out_from_bottom);
         }
 
         protected override void OnSaveInstanceState(Bundle outState)
@@ -92,6 +109,18 @@ namespace Xamarin.Examples.Demo.Droid
             base.OnSaveInstanceState(outState);
 
             outState.PutString(DemoKeys.CategoryId, _category);
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+        {
+            if (requestCode == ExampleRequestCode && _example != null)
+            {
+                StartExampleActivity(_example); 
+            }
+            else
+            {
+                base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            }
         }
     }
 }

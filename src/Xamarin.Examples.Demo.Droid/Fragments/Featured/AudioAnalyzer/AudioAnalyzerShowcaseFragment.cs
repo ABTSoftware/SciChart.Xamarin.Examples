@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Reactive.Linq;
+using Android;
 using Java.Lang;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Charting.Numerics.CoordinateCalculators;
@@ -16,6 +17,7 @@ using Xamarin.Examples.Demo.Showcase.AudioAnalyzer;
 namespace Xamarin.Examples.Demo.Droid.Fragments.Featured.AudioAnalyzer
 {
     [FeaturedExampleDefinition("Audio Analyzer", "Showcases a real-time audio recorder", ExampleIcon.FeatureChart)]
+    [PermissionsDefinition(Manifest.Permission.RecordAudio, Manifest.Permission.ModifyAudioSettings)]
     public class AudioAnalyzerShowcaseFragment : ExampleBaseFragment
     {
         public override int ExampleLayoutId => Resource.Layout.Example_Audio_Analyzer_Fragment;

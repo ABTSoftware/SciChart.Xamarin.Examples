@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -38,7 +38,7 @@
 
     <include
         android:id="@+id/heartRateIndicator"
-        layout="@layout/Example_ECG_Heart_Rate_Indicator_Layout"
+        layout="@layout/Example_Vital_Signs_Heart_Rate_Indicator_Layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline1"
@@ -48,7 +48,7 @@
 
     <include
         android:id="@+id/bloodPressureIndicator"
-        layout="@layout/Example_ECG_Blood_Pressure_Indicator_Layout"
+        layout="@layout/Example_Vital_Signs_Blood_Pressure_Indicator_Layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
@@ -58,7 +58,7 @@
 
     <include
         android:id="@+id/bloodVolumeIndicator"
-        layout="@layout/Example_ECG_Blood_Volume_Indicator_Layout"
+        layout="@layout/Example_Vital_Signs_Blood_Volume_Indicator_Layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
@@ -68,7 +68,7 @@
 
     <include
         android:id="@+id/bloodOxygenationIndicator"
-        layout="@layout/Example_EGC_Blood_Oxygenation_Indicator_Layout"
+        layout="@layout/Example_Vital_Signs_Blood_Oxygenation_Indicator_Layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

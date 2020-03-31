@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     android:background="@drawable/example_ecg_layout_background">
 
-    <TextView
+      <TextView
         android:id="@+id/nibpLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:text="@string/nibp"
         android:textColor="@color/blood_pressure_color"
         android:textSize="18sp"
@@ -22,7 +22,7 @@
         android:id="@+id/nibpInfoLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:text="@string/nibpInfo"
         android:textAlignment="textEnd"
@@ -34,17 +34,17 @@
     <Xamarin.Examples.Demo.Droid.Components.StepProgressBar
         android:id="@+id/bloodPressureBar"
         android:layout_width="wrap_content"
-        android:layout_height="20dp"
+        android:layout_height="16dp"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
-        android:spacing="2dp"
-        app:max="10"
-        app:barSize="3dp"
+        app:spacing="2dp"
+        app:barSize="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:max="5"
         app:progressBackgroundColor="@color/blood_pressure_bar_background_color"
         app:progressColor="@color/blood_pressure_bar_color"
-        tools:progress="6" />
+        tools:progress="5" />
 
     <TextView
         android:id="@+id/bloodPressureValue"
@@ -61,5 +61,6 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/bloodPressureBar"
         tools:text="115/70" />
+
 
 </android.support.constraint.ConstraintLayout>

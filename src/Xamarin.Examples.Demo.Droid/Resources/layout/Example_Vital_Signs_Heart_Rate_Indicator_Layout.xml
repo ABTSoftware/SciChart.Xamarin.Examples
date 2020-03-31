@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,37 +6,16 @@
     android:layout_height="match_parent"
     android:background="@drawable/example_ecg_layout_background">
 
-    <ImageView
+      <ImageView
         android:id="@+id/heartIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:contentDescription="@string/heart_icon_description"
         android:src="@drawable/example_heart_icon_24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <TextView
-        android:id="@+id/bpmLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:gravity="end|bottom"
-        android:singleLine="true"
-        android:text="@string/bpm"
-        android:textColor="@color/heart_rate_color"
-        android:textStyle="normal|bold"
-        app:layout_constraintEnd_toStartOf="@+id/heartIcon"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <android.support.constraint.Barrier
-      android:id="@+id/barrier"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      app:barrierDirection="bottom"
-      app:constraint_referenced_ids="heartIcon, bpmLabel"/>
 
     <TextView
         android:id="@+id/bpmValueLabel"
@@ -51,7 +30,7 @@
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/barrier"
+        app:layout_constraintTop_toBottomOf="@id/heartIcon"
         tools:text="69"
         tools:textColor="@color/color_primary" />
 
@@ -60,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:singleLine="true"
         android:text="@string/ecg"
         android:textAlignment="viewStart"
@@ -83,7 +62,5 @@
         app:autoSizeMinTextSize="6sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-
 
 </android.support.constraint.ConstraintLayout>

@@ -20,17 +20,17 @@ using SciChart.Drawing.Common;
 using Xamarin.Examples.Demo.Droid.Components;
 using Xamarin.Examples.Demo.Droid.Extensions;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
-using Xamarin.Examples.Demo.Showcase.ECG;
+using Xamarin.Examples.Demo.Showcase.VitalSignsMonitor;
 
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Featured.ECG
 {
-    [FeaturedExampleDefinition("ECG", "Showcases a real-time ECG monitor", ExampleIcon.FeatureChart)]
-    public class ECGShowcaseFragment : ExampleBaseFragment
+    [FeaturedExampleDefinition("Vital Signs Monitor", "Showcases a real-time vital signs monitor", ExampleIcon.FeatureChart)]
+    public class VitalSignsMonitorShowcaseFragment : ExampleBaseFragment
     {
         private const int FifoCapacity = 7850;
 
-        public override int ExampleLayoutId => Resource.Layout.Example_ECG_Fragment;
+        public override int ExampleLayoutId => Resource.Layout.Example_Vital_Signs_Monitor_Fragment;
 
         public SciChartSurface Surface => View.FindViewById<SciChartSurface>(Resource.Id.chart);
 
@@ -60,11 +60,11 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Featured.ECG
         private readonly XyDataSeries<double, double> _lastBloodOxygenationSweepDataSeries = new XyDataSeries<double, double>() { FifoCapacity = new Integer(1) };
 
         private IDisposable _dataSubscription;
-        private readonly DefaultECGDataProvider _dataProvider = new DefaultECGDataProvider();
+        private readonly DefaultVitalSignsDataProvider _dataProvider = new DefaultVitalSignsDataProvider();
 
-        private readonly EcgIndicatorsProvider _indicatorsProvider = new EcgIndicatorsProvider();
+        private readonly VitalSignsIndicatorsProvider _indicatorsProvider = new VitalSignsIndicatorsProvider();
 
-        private readonly ECGDataBatch _dataBatch = new ECGDataBatch();
+        private readonly VitalSignsDataBatch _dataBatch = new VitalSignsDataBatch();
 
         protected override void InitExample()
         {
@@ -92,7 +92,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Featured.ECG
                     _bloodVolumeDataSeries.Append(xValues, _dataBatch.BloodVolumeValuesA);
                     _bloodVolumeSweepDataSeries.Append(xValues, _dataBatch.BloodVolumeValuesB);
 
-                    var lastEcgData = _dataBatch.LastECGData;
+                    var lastEcgData = _dataBatch.LastVitalSignsData;
                     var xValue = lastEcgData.XValue;
 
                     _lastEcgSweepDataSeries.Append(xValue, lastEcgData.ECGHeartRate);
@@ -140,10 +140,10 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Featured.ECG
             using (Surface.SuspendUpdates())
             {
                 Surface.XAxes.Add(xAxis);
-                Surface.YAxes.Add(GenerateYAxis(ecgId));
-                Surface.YAxes.Add(GenerateYAxis(bloodPressureId));
-                Surface.YAxes.Add(GenerateYAxis(bloodVolumeId));
-                Surface.YAxes.Add(GenerateYAxis(bloodOxygenationId));
+                Surface.YAxes.Add(GenerateYAxis(ecgId, _dataProvider.EcgHeartRateRange));
+                Surface.YAxes.Add(GenerateYAxis(bloodPressureId, _dataProvider.BloodPressureRange));
+                Surface.YAxes.Add(GenerateYAxis(bloodVolumeId, _dataProvider.BloodVolumeRange));
+                Surface.YAxes.Add(GenerateYAxis(bloodOxygenationId, _dataProvider.BloodOxygenationRange));
 
                 var ecgSeries = GenerateSeries(ecgId, Tuple.Create(_ecgDataSeries, _ecgSweepDataSeries, _lastEcgSweepDataSeries), heartRateColor);
                 var bloodPressureSeries = GenerateSeries(bloodPressureId, Tuple.Create(_bloodPressureDataSeries, _bloodPressureSweepDataSeries, _lastBloodPressureDataSeries), bloodPressureColor);
@@ -159,14 +159,14 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Featured.ECG
             }
         }
 
-        private NumericAxis GenerateYAxis(string axisId)
+        private NumericAxis GenerateYAxis(string axisId, (double, double) visibleRange)
         {
             return new NumericAxis(Activity)
             {
                 AxisId = axisId,
                 Visibility = (int)ViewStates.Gone,
-                GrowBy = new DoubleRange(0.05, 0.05),
-                AutoRange = AutoRange.Always,
+                VisibleRange = new DoubleRange(visibleRange.Item1, visibleRange.Item2),
+                AutoRange = AutoRange.Never,
                 DrawMajorBands = false,
                 DrawMinorGridLines = false,
                 DrawMajorGridLines = false,

@@ -2,13 +2,13 @@
 using System.Linq;
 using Java.Lang;
 using SciChart.Core.Model;
-using Xamarin.Examples.Demo.Showcase.ECG;
+using Xamarin.Examples.Demo.Showcase.VitalSignsMonitor;
 
 namespace Xamarin.Examples.Demo.Droid.Fragments.Featured.ECG
 {
-    public class ECGDataBatch
+    public class VitalSignsDataBatch
     {
-        public ECGDataBatch()
+        public VitalSignsDataBatch()
         {
             XValues = new DoubleValues();
           
@@ -35,9 +35,9 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Featured.ECG
         public DoubleValues BloodVolumeValuesB { get; set; }
         public DoubleValues BloodOxygenationValuesB { get; set; }
 
-        public ECGData LastECGData { get; private set; }
+        public VitalSignsData LastVitalSignsData { get; private set; }
 
-        public void UpdateData(IList<ECGData> ecgDataList)
+        public void UpdateData(IList<VitalSignsData> ecgDataList)
         {
             XValues.Clear();
 
@@ -81,7 +81,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Featured.ECG
                 }
             }
 
-            LastECGData = ecgDataList.Last();
+            LastVitalSignsData = ecgDataList.Last();
         }
     }
 }

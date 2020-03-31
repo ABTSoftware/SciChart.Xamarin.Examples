@@ -187,7 +187,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\ExampleAdapter.cs" />
-    <Compile Include="Application\PermissionManager.cs" />
+    <Compile Include="Application\PermissionExtensions.cs" />
     <Compile Include="Components\BillionsLabelProvider.cs" />
     <Compile Include="Components\PointMetadataProvider3D.cs" />
     <Compile Include="Components\SpinnerStringAdapter.cs" />
@@ -198,6 +198,7 @@
     <Compile Include="ExampleActivity.cs" />
     <Compile Include="Extensions\NumericExtensions.cs" />
     <Compile Include="Fragments\Base\ExampleBaseFragment.cs" />
+    <Compile Include="Fragments\Base\PermissionsDefinition.cs" />
     <Compile Include="Fragments\Examples3D\CreateBubble3DChartFragment.cs" />
     <Compile Include="Fragments\Examples3D\CreateCustomFreeSurface3DChartFragment.cs" />
     <Compile Include="Fragments\Examples3D\CreateCylindroidMesh3DChartFragment.cs" />
@@ -253,6 +254,9 @@
     <Compile Include="Fragments\Examples\PieChartFragment.cs" />
     <Compile Include="Fragments\Examples\ScatterChartFragment.cs" />
     <Compile Include="Fragments\Examples\SeriesSelectionFragment.cs" />
+    <Compile Include="Fragments\Examples\SplineBandChartFragment.cs" />
+    <Compile Include="Fragments\Examples\SplineLineChartFragment.cs" />
+    <Compile Include="Fragments\Examples\SplineMountainChartFragment.cs" />
     <Compile Include="Fragments\Examples\StackedBarChartFragment.cs" />
     <Compile Include="Fragments\Examples\StackedColumnChartFragment.cs" />
     <Compile Include="Fragments\Examples\StackedColumnSideBySideFragment.cs" />
@@ -267,8 +271,8 @@
     <Compile Include="Fragments\Featured\AudioAnalyzer\FFTPaletteProvider.cs" />
     <Compile Include="Fragments\Featured\ECGMonitorFragment.cs" />
     <Compile Include="Fragments\Featured\ECG\DimTracePaletteProvider.cs" />
-    <Compile Include="Fragments\Featured\ECG\ECGDataBatch.cs" />
-    <Compile Include="Fragments\Featured\ECG\ECGShowcaseFragment.cs" />
+    <Compile Include="Fragments\Featured\ECG\VitalSignsDataBatch.cs" />
+    <Compile Include="Fragments\Featured\ECG\VitalSignsMonitorShowcaseFragment.cs" />
     <Compile Include="Fragments\Featured\ECG\RightAlignedOuterVerticallyStackedYAxisLayoutStrategy.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -575,32 +579,32 @@
     <AndroidResource Include="Resources\layout\Example_List_Item.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\Example_ECG_Fragment.xml">
+    <AndroidResource Include="Resources\layout\Example_Vital_Signs_Monitor_Fragment.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout-land\Example_ECG_Fragment.xml">
+    <AndroidResource Include="Resources\layout-land\Example_Vital_Signs_Monitor_Fragment.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\Example_EGC_Blood_Oxygenation_Indicator_Layout.xml">
+    <AndroidResource Include="Resources\layout\Example_Vital_Signs_Blood_Oxygenation_Indicator_Layout.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\Example_ECG_Blood_Volume_Indicator_Layout.xml">
+    <AndroidResource Include="Resources\layout\Example_Vital_Signs_Blood_Volume_Indicator_Layout.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\Example_ECG_Blood_Pressure_Indicator_Layout.xml">
+    <AndroidResource Include="Resources\layout\Example_Vital_Signs_Blood_Pressure_Indicator_Layout.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\Example_ECG_Heart_Rate_Indicator_Layout.xml">
+    <AndroidResource Include="Resources\layout\Example_Vital_Signs_Heart_Rate_Indicator_Layout.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -711,27 +715,27 @@
   -->
   <ItemGroup>
     <Reference Include="SciChart.Android.Core">
-      <HintPath>..\packages\SciChart.Android.3.0.1.4203\lib\MonoAndroid440\SciChart.Android.Core.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.3.0.1.4249\lib\MonoAndroid440\SciChart.Android.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SciChart.Android.Data">
-      <HintPath>..\packages\SciChart.Android.3.0.1.4203\lib\MonoAndroid440\SciChart.Android.Data.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.3.0.1.4249\lib\MonoAndroid440\SciChart.Android.Data.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SciChart.Android.Drawing">
-      <HintPath>..\packages\SciChart.Android.3.0.1.4203\lib\MonoAndroid440\SciChart.Android.Drawing.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.3.0.1.4249\lib\MonoAndroid440\SciChart.Android.Drawing.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SciChart.Android.Charting">
-      <HintPath>..\packages\SciChart.Android.3.0.1.4203\lib\MonoAndroid440\SciChart.Android.Charting.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.3.0.1.4249\lib\MonoAndroid440\SciChart.Android.Charting.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SciChart.Android.Charting3D">
-      <HintPath>..\packages\SciChart.Android3D.3.0.1.4203\lib\MonoAndroid440\SciChart.Android.Charting3D.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android3D.3.0.1.4249\lib\MonoAndroid440\SciChart.Android.Charting3D.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

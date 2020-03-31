@@ -3,9 +3,11 @@ using Android.App;
 using Android.OS;
 using Android.Support.V7.App;
 using Android.Util;
+using Android.Views;
 using Android.Widget;
 using Java.Interop;
 using Xamarin.Examples.Demo.Droid.Fragments.Base;
+using Orientation = Android.Content.Res.Orientation;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace Xamarin.Examples.Demo.Droid
@@ -21,6 +23,10 @@ namespace Xamarin.Examples.Demo.Droid
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.Example_Activity);
+
+            Window.AddFlags(WindowManagerFlags.KeepScreenOn);
+            if(Resources.Configuration.Orientation == Orientation.Landscape)
+                Window.AddFlags(WindowManagerFlags.Fullscreen);
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.exampleToolbar);
             if (toolbar != null)
