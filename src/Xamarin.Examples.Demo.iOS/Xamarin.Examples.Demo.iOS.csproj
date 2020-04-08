@@ -254,6 +254,8 @@
     <Compile Include="Examples\Examples\SplineBandChartViewController.cs" />
     <Compile Include="Examples\Examples\SplineLineChartViewController.cs" />
     <Compile Include="Examples\Examples\SplineMountainChartViewController.cs" />
+    <Compile Include="Examples\Examples\RoundedColumnsSeries\RoundedColumnRenderableSeries.cs" />
+    <Compile Include="Examples\Examples\RoundedColumnsSeries\RoundedColumnsChartViewController.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\SciChart_BerryBlue.plist" />
@@ -599,6 +601,7 @@
     <Folder Include="Examples\Featured\AudioAnalyzer\" />
     <Folder Include="Examples\Featured\ECG\" />
     <Folder Include="Components\StepProgressBar\" />
+    <Folder Include="Examples\Examples\RoundedColumnsSeries\" />
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
@@ -606,7 +609,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <Reference Include="SciChart.iOS.Charting">
-      <HintPath>../packages/SciChart.iOS.3.0.1.4914/lib/Xamarin.iOS10/SciChart.iOS.Charting.dll</HintPath>
+      <HintPath>../packages/SciChart.iOS.3.0.1.4917/lib/Xamarin.iOS10/SciChart.iOS.Charting.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
