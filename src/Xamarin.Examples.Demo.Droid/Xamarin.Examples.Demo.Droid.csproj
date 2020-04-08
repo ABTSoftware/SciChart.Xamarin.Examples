@@ -283,6 +283,8 @@
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
     <Compile Include="StartupActivity.cs" />
+    <Compile Include="Fragments\Examples\RoundedColumnsSeries\RoundedColumnsChartFragment.cs" />
+    <Compile Include="Fragments\Examples\RoundedColumnsSeries\RoundedColumnsRenderableSeries.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Example_Activity.axml">
@@ -620,6 +622,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Fragments\Examples\RoundedColumnsSeries\" />
+  </ItemGroup>
   <Import Project="..\Xamarin.Examples.Demo\Xamarin.Examples.Demo.projitems" Label="Shared" Condition="Exists('..\Xamarin.Examples.Demo\Xamarin.Examples.Demo.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -715,27 +720,27 @@
   -->
   <ItemGroup>
     <Reference Include="SciChart.Android.Core">
-      <HintPath>..\packages\SciChart.Android.3.0.1.4249\lib\MonoAndroid440\SciChart.Android.Core.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.3.1.0.4259\lib\MonoAndroid440\SciChart.Android.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SciChart.Android.Data">
-      <HintPath>..\packages\SciChart.Android.3.0.1.4249\lib\MonoAndroid440\SciChart.Android.Data.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.3.1.0.4259\lib\MonoAndroid440\SciChart.Android.Data.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SciChart.Android.Drawing">
-      <HintPath>..\packages\SciChart.Android.3.0.1.4249\lib\MonoAndroid440\SciChart.Android.Drawing.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.3.1.0.4259\lib\MonoAndroid440\SciChart.Android.Drawing.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SciChart.Android.Charting">
-      <HintPath>..\packages\SciChart.Android.3.0.1.4249\lib\MonoAndroid440\SciChart.Android.Charting.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.3.1.0.4259\lib\MonoAndroid440\SciChart.Android.Charting.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SciChart.Android.Charting3D">
-      <HintPath>..\packages\SciChart.Android3D.3.0.1.4249\lib\MonoAndroid440\SciChart.Android.Charting3D.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android3D.3.1.0.4259\lib\MonoAndroid440\SciChart.Android.Charting3D.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
