@@ -11,7 +11,7 @@ namespace Xamarin.Examples.Demo.iOS
     {
         private DoubleTouchDownGestureRecognizer doubleTapGesture;
         private CGPoint InitialLocation = CGPoint.Empty;
-        private readonly nfloat ScaleFactor = 50;
+        private readonly nfloat ScaleFactor = -50;
         private bool CanPan;
 
         public CustomGestureModifier() { }
