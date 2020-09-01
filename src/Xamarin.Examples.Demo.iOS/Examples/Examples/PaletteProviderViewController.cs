@@ -135,7 +135,7 @@ namespace Xamarin.Examples.Demo.iOS
             }
         }
 
-        private class AnnotationDragListener : NSObject, ISCIAnnotationDragListener
+        private class AnnotationDragListener : NSObject, IISCIAnnotationDragListener
         {
             public void OnDragStarted(IISCIAnnotation annotation) => UpdateAnnotation(annotation);
             public void OnDragAnnotation(IISCIAnnotation annotation, nfloat xDelta, nfloat yDelta) => UpdateAnnotation(annotation);
