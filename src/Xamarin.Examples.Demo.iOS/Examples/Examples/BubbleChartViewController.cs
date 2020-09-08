@@ -39,6 +39,7 @@ namespace Xamarin.Examples.Demo.iOS
                 Surface.RenderableSeries.Add(lineSeries);
                 Surface.RenderableSeries.Add(rSeries);
                 Surface.ChartModifiers.Add(new SCIZoomExtentsModifier());
+                Surface.ChartModifiers.Add(new SCIRubberBandXyZoomModifier());
 
                 SCIAnimations.ScaleSeriesWithZeroLine(rSeries, 10600, 3, new SCIElasticEase());
                 SCIAnimations.ScaleSeriesWithZeroLine(lineSeries, 10600, 3, new SCIElasticEase());

@@ -48,7 +48,7 @@ namespace Xamarin.Examples.Demo.iOS
                 Surface.ChartModifiers.Add(CreateDefault3DModifiers());
 
                 Surface.Camera = new SCICamera3D();
-                Surface.Viewport.WorldDimensions = new SCIVector3(200, 50, 200);
+                Surface.Viewport.WorldDimensions.AssignX(200, 50, 200);
             }
         }
     }

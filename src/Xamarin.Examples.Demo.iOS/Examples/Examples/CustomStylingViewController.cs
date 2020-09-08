@@ -29,7 +29,7 @@ namespace Xamarin.Examples.Demo.iOS
                 AxisBandsStyle = new SCISolidBrushStyle(0x55ff6655),
                 MajorGridLineStyle = new SCISolidPenStyle(UIColor.Green, 1),
                 MinorGridLineStyle = new SCISolidPenStyle(UIColor.Yellow, 0.5f, new NSNumber[] { 10, 3, 10, 3 }),
-                TickLabelStyle = new SCIFontStyle("Helvetica", 14, UIColor.Purple),
+                TickLabelStyle = new SCIFontStyle(new UIFontDescriptor().CreateWithFace("Helvetica").CreateWithSize(14), UIColor.Purple),
                 DrawMajorTicks = true,
                 DrawMinorTicks = true,
                 DrawMajorGridLines = true,

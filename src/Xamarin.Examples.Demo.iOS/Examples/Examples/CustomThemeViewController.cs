@@ -75,6 +75,7 @@ namespace Xamarin.Examples.Demo.iOS
                 // Apply a theme to the chartå
                 // The custom theme is named SciChart_BerryBlue and is included as a .plist in the application resources
                 // The .plist contains all the keys for theme colors and brushes and styles to apply to the chart
+                SCIThemeManager.AddTheme(SCIChart_BerryBlueStyleKey, Foundation.NSBundle.MainBundle);
                 SCIThemeManager.ApplyTheme(Surface, SCIChart_BerryBlueStyleKey);
             }
         }

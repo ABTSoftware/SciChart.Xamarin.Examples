@@ -48,8 +48,8 @@ namespace Xamarin.Examples.Demo.iOS
 
             pieSeries.Scale = 0;
             donutSeries.Scale = 0;
-            pieSeries.AnimateWithDuration(0.7);
-            donutSeries.AnimateWithDuration(0.7);
+            pieSeries.Animate(0.7);
+            donutSeries.Animate(0.7);
         }
     }
 }

@@ -16,9 +16,9 @@
 	<integer>2</integer>
 	<key>renderableSeriesAreaStrokeThickness</key>
 	<integer>1</integer>
-	<key>majorTickLinesLength</key>
+	<key>majorTickLineLength</key>
 	<integer>8</integer>
-	<key>minorTickLinesLength</key>
+	<key>minorTickLineLength</key>
 	<integer>4</integer>
 	<key>sciChartBackground</key>
 	<dict>

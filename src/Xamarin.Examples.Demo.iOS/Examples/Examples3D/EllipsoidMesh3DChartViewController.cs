@@ -47,7 +47,7 @@ namespace Xamarin.Examples.Demo.iOS
                 Surface.RenderableSeries.Add(rSeries3D);
                 Surface.ChartModifiers.Add(CreateDefault3DModifiers());
 
-                Surface.WorldDimensions = new SCIVector3(200, 200, 200);
+                Surface.WorldDimensions.AssignX(200, 200, 200);
             }
         }
     }

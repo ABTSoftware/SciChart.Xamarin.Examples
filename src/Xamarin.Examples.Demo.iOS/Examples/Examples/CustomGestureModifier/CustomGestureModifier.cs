@@ -34,26 +34,35 @@ namespace Xamarin.Examples.Demo.iOS
             return new UIPanGestureRecognizer();
         }
 
-        protected override void InternalHandleGesture(UIGestureRecognizer gestureRecognizer)
+        protected override void OnGestureBegan(SCIGestureModifierEventArgs args)
         {
             if (!CanPan) return;
 
-            UIPanGestureRecognizer gesture = (UIPanGestureRecognizer)gestureRecognizer;
+            UIPanGestureRecognizer gesture = (UIPanGestureRecognizer)args.GestureRecognizer;
             UIView parentView = ParentSurface.ModifierSurface.View;
 
-            switch (gesture.State)
-            {
-                case UIGestureRecognizerState.Began:
-                    InitialLocation = gestureRecognizer.LocationInView(parentView);
-                    break;
-                case UIGestureRecognizerState.Changed:
-                    performZoom(InitialLocation, gesture.TranslationInView(parentView).Y);
-                    gesture.SetTranslation(CGPoint.Empty, parentView);
-                    break;
-                default:
-                    CanPan = false;
-                    break;
-            }
+            InitialLocation = gesture.LocationInView(parentView);
+        }
+
+        protected override void OnGestureChanged(SCIGestureModifierEventArgs args)
+        {
+            if (!CanPan) return;
+
+            UIPanGestureRecognizer gesture = (UIPanGestureRecognizer)args.GestureRecognizer;
+            UIView parentView = ParentSurface.ModifierSurface.View;
+
+            performZoom(InitialLocation, gesture.TranslationInView(parentView).Y);
+            gesture.SetTranslation(CGPoint.Empty, parentView);
+        }
+
+        protected override void OnGestureEnded(SCIGestureModifierEventArgs args)
+        {
+            CanPan = false;
+        }
+
+        protected override void OnGestureCancelled(SCIGestureModifierEventArgs args)
+        {
+            CanPan = false;
         }
 
         void performZoom(CGPoint point, nfloat yScaleFactor)

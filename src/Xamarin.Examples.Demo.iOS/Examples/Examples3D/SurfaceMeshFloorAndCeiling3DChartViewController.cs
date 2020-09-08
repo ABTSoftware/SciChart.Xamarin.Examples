@@ -82,7 +82,7 @@ namespace Xamarin.Examples.Demo.iOS
                 Surface.ChartModifiers.Add(new SCIZoomExtentsModifier3D { ResetPosition = new SCIVector3(-1300, 1300, -1300) });
 
                 Surface.Camera = new SCICamera3D { Position = new SCIVector3(-1300, 1300, -1300) };
-                Surface.WorldDimensions = new SCIVector3(1100, 400, 400);
+                Surface.WorldDimensions.AssignX(1100, 400, 400);
             }
         }
     }

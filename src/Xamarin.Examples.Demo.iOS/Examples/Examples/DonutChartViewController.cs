@@ -30,7 +30,7 @@ namespace Xamarin.Examples.Demo.iOS
             Surface.ChartModifiers.Add(new SCIPieSegmentSelectionModifier());
 
             rSeries.Scale = 0;
-            rSeries.AnimateWithDuration(0.7);
+            rSeries.Animate(0.7);
         }
     }
 }

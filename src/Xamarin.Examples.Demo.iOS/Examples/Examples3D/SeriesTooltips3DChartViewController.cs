@@ -65,7 +65,7 @@ namespace Xamarin.Examples.Demo.iOS
                 };
 
                 Surface.Camera = new SCICamera3D { Position = new SCIVector3(-160, 190, -520), Target = new SCIVector3(-45, 150, 0) };
-                Surface.WorldDimensions = new SCIVector3(600, 300, 180);
+                Surface.WorldDimensions.AssignX(600, 300, 180);
             }
         }
 
