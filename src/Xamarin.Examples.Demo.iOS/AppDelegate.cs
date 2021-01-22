@@ -14,7 +14,7 @@ namespace Xamarin.Examples.Demo.iOS
         {
             // Set your trial or purchased license key here!
             // SciChart.iOS.Charting.SCIChartSurface.SetRuntimeLicenseKey("");
-            
+
             return true;
         }
     }

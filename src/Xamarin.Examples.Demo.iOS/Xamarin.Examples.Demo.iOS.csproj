@@ -259,6 +259,7 @@
     <Compile Include="Examples\Examples\CustomGestureModifier\CustomGestureModifierChartViewController.cs" />
     <Compile Include="Examples\Examples\CustomGestureModifier\CustomGestureModifier.cs" />
     <Compile Include="Examples\Examples\CustomGestureModifier\DoubleTouchDownGestureRecognizer.cs" />
+    <Compile Include="Examples\Examples\UsingSeriesValueModifierViewController.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\SciChart_BerryBlue.plist" />
@@ -613,7 +614,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <Reference Include="SciChart.iOS.Charting">
-      <HintPath>../packages/SciChart.iOS.4.0.0.5001/lib/Xamarin.iOS10/SciChart.iOS.Charting.dll</HintPath>
+      <HintPath>../packages/SciChart.iOS.4.2.0.5017/lib/Xamarin.iOS10/SciChart.iOS.Charting.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
