@@ -154,15 +154,15 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
         }
     }
 
-    class YearsLabelFormatter : Object, ILabelFormatter
+    class YearsLabelFormatter : LabelFormatterBase
     {
         private readonly string[] _xLabels = {"2000", "2010", "2014", "2050"};
 
-        public void Update(Object axis)
+        public override void Update(Object axis)
         {
         }
 
-        public ICharSequence FormatLabelFormatted(double dataValue)
+        public override ICharSequence FormatLabelFormatted(double dataValue)
         {
             var i = (int) dataValue;
             var result = "";
@@ -173,7 +173,7 @@ namespace Xamarin.Examples.Demo.Droid.Fragments.Examples
             return new String(result);
         }
 
-        public ICharSequence FormatCursorLabelFormatted(double dataValue)
+        public override ICharSequence FormatCursorLabelFormatted(double dataValue)
         {
             var i = (int) dataValue;
             string result;
