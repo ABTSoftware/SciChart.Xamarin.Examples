@@ -86,7 +86,7 @@ namespace Xamarin.Examples.Demo.iOS
 
         private void SetTheme(string themeName)
         {
-            SCIThemeManager.ApplyTheme(Surface, _themesDictionary[themeName]);
+            SCIThemeManager.ApplyTheme(_themesDictionary[themeName], Surface);
             SelectThemeButton.SetTitle(themeName, UIControlState.Normal);
         }
     }

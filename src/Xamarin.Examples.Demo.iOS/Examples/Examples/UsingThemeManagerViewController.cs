@@ -12,9 +12,9 @@ namespace Xamarin.Examples.Demo.iOS
         private static readonly Dictionary<string, string> _themesDictionary = new Dictionary<string, string>
         {
             { "Black Steel", SCIThemeManager.BlackSteel },
-            { "Bright Spark", SCIThemeManager.Bright_Spark },
+            { "Bright Spark", SCIThemeManager.BrightSpark },
             { "Chrome", SCIThemeManager.Chrome },
-            { "Chart V4 Dark", SCIThemeManager.SciChartv4Dark },
+            { "Chart V4 Dark", SCIThemeManager.V4Dark },
             { "Electric", SCIThemeManager.Electric },
             { "Expression Dark", SCIThemeManager.ExpressionDark },
             { "Expression Light", SCIThemeManager.ExpressionLight },
@@ -114,8 +114,7 @@ namespace Xamarin.Examples.Demo.iOS
 
         private void SetTheme(string themeName)
         {
-            SCIThemeManager.ApplyTheme(Surface, _themesDictionary[themeName]);
+            SCIThemeManager.ApplyTheme(_themesDictionary[themeName], Surface);
             SelectThemeButton.SetTitle(themeName, UIControlState.Normal);
-        }
-    }
+        }    }
 }

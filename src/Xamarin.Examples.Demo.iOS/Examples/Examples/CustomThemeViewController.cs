@@ -7,7 +7,7 @@ namespace Xamarin.Examples.Demo.iOS
     [ExampleDefinition("Create a Custom Theme", description: "Demonstrates how to create a Custom Theme using a PList", icon: ExampleIcon.Themes)]
     public class CustomThemeViewController : SingleChartViewController<SCIChartSurface>
     {
-        private const string SCIChart_BerryBlueStyleKey = "SciChart_BerryBlue";
+        private const string BerryBlue = "SciChart_BerryBlue";
 
         // Setting up the chart with some axis, and data
         protected override void InitExample()
@@ -75,8 +75,8 @@ namespace Xamarin.Examples.Demo.iOS
                 // Apply a theme to the chartå
                 // The custom theme is named SciChart_BerryBlue and is included as a .plist in the application resources
                 // The .plist contains all the keys for theme colors and brushes and styles to apply to the chart
-                SCIThemeManager.AddTheme(SCIChart_BerryBlueStyleKey, Foundation.NSBundle.MainBundle);
-                SCIThemeManager.ApplyTheme(Surface, SCIChart_BerryBlueStyleKey);
+                SCIThemeManager.AddTheme(BerryBlue, Foundation.NSBundle.MainBundle);
+                SCIThemeManager.ApplyTheme(BerryBlue, Surface);
             }
         }
     }
