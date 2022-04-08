@@ -723,27 +723,27 @@
   -->
   <ItemGroup>
     <Reference Include="SciChart.Android.Core">
-      <HintPath>..\packages\SciChart.Android.4.4.0.4569\lib\MonoAndroid440\SciChart.Android.Core.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.4.4.0.4571\lib\MonoAndroid440\SciChart.Android.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SciChart.Android.Data">
-      <HintPath>..\packages\SciChart.Android.4.4.0.4569\lib\MonoAndroid440\SciChart.Android.Data.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.4.4.0.4571\lib\MonoAndroid440\SciChart.Android.Data.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SciChart.Android.Drawing">
-      <HintPath>..\packages\SciChart.Android.4.4.0.4569\lib\MonoAndroid440\SciChart.Android.Drawing.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.4.4.0.4571\lib\MonoAndroid440\SciChart.Android.Drawing.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SciChart.Android.Charting">
-      <HintPath>..\packages\SciChart.Android.4.4.0.4569\lib\MonoAndroid440\SciChart.Android.Charting.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android.4.4.0.4571\lib\MonoAndroid440\SciChart.Android.Charting.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SciChart.Android.Charting3D">
-      <HintPath>..\packages\SciChart.Android3D.4.4.0.4569\lib\MonoAndroid440\SciChart.Android.Charting3D.dll</HintPath>
+      <HintPath>..\packages\SciChart.Android3D.4.4.0.4571\lib\MonoAndroid440\SciChart.Android.Charting3D.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
