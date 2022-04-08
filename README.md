@@ -1,5 +1,5 @@
 
-# SciChartXamarin
+# SciChart for Xamarin.iOS & Xamarin.Android
 SciChart Xamarin, source code for our High Performance Scientific &amp; Financial Charting on Xamarin.
 This repository contains v4.x of SciChart for Xamarin.iOS and Xamarin.Android:
  
